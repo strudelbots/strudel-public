@@ -34,7 +34,6 @@ jobs:
         with:
          python-version: '3.10.12'
 
-
       - name: install poetry
         run: echo "install poetry"
 
