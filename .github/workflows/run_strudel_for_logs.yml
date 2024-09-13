@@ -60,3 +60,7 @@ jobs:
             echo "pulling nginx image"
             docker pull nginx
         
+      - name: run docker compose
+        run: |
+            docker compose -f docker_compose_run.yml --env-file ./DevOps/envs/compose_dev.env up -d
+            sleep 10
