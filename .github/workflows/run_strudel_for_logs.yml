@@ -48,3 +48,8 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
+      - name: pull strudel image
+        id: pull-strudel-image
+        run: |
+            echo "pulling strudel image"
+            docker pull ${{ steps.login-ecr.outputs.registry }}/shtruddel:latest
