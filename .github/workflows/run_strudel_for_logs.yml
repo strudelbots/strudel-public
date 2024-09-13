@@ -29,7 +29,6 @@ jobs:
           ls -alt
           cd $current_dir
           echo $PWD
-
       - name: Install python
         uses: actions/setup-python@v5
         with:
