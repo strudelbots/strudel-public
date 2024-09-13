@@ -18,10 +18,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: run-reusable-actions
-        id: run-reusable-actions
-        uses: ./.github/actions
-
       - name: Install python
         uses: actions/setup-python@v5
         with:
