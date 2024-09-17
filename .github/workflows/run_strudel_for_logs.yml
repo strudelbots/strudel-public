@@ -39,12 +39,13 @@ jobs:
         run: | 
           echo STRUDEL_ACCESS_KEY_ID is not defined!
           echo Please follow instruction in strudel-manual XXX
+          exit 1
       - name: "check is STRUDEL_SECRET_KEY exists"
         if: ${{ env.strudel_secret_key == '' }}
         run: | 
           echo STRUDEL_SECRET_KEY is not defined!
           echo Please follow instruction in strudel-manual XXX
-
+          exit 1
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
