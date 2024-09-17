@@ -62,5 +62,5 @@ jobs:
         
       - name: run docker compose
         run: |
-            docker compose -f docker_compose_run.yml --env-file ./DevOps/envs/compose_dev.env up -d
+            docker compose -f docker_compose_run.yml up -d
             sleep 10
