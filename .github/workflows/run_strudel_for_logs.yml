@@ -1,14 +1,17 @@
-name: run-e2e-tests-on-docker
+name: ruin-strudel-on-branch
 # source: https://github.com/marketplace/actions/install-poetry-action
 
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "*" ]
 
 jobs:
-  e2e-tests-docker:
+  run-strudel:
     runs-on: ubuntu-22.04
+    env:
+      strudel_access_key: ${{ secrets.STRUDEL_ECR_ACCESS_KEY_ID }}
+      strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -29,6 +32,18 @@ jobs:
         uses: actions/setup-python@v5
         with:
          python-version: '3.10.12'
+
+      - name: "check is STRUDEL_ACCESS_KEY_ID exists"
+
+        if: ${{ env.strudel_access_key == '' }}
+        run: | 
+          echo STRUDEL_ACCESS_KEY_ID is not defined!
+          echo Please follow instruction in strudel-manual XXX
+      - name: "check is STRUDEL_SECRET_KEY exists"
+        if: ${{ env.strudel_secret_key == '' }}
+        run: | 
+          echo STRUDEL_SECRET_KEY is not defined!
+          echo Please follow instruction in strudel-manual XXX
 
 
       - name: Configure AWS credentials
