@@ -10,7 +10,7 @@ jobs:
   run-strudel:
     runs-on: ubuntu-22.04
     env:
-      strudel_access_key: ${{ secrets.STRUDEL_ECR_ACCESS_KEY_ID }}
+      strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
       strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
     steps:
       - name: Check out repository
