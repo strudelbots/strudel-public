@@ -30,8 +30,6 @@ jobs:
         with:
          python-version: '3.10.12'
 
-#      - name: install poetry
-#        run: echo "install poetry"
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -43,22 +41,11 @@ jobs:
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
-#      - name: pull strudel image
-#        id: pull-strudel-image
-#        run: |
-#            echo "pulling strudel image"
-#            docker pull ${{ steps.login-ecr.outputs.registry }}/shtruddel:latest
-#
-#      - name: pull nginx
-#        id: pull-nginx-image
-#        run: |
-#            echo "pulling nginx image"
-#            docker pull nginx
         
       - name: run docker compose
         run: |
             docker compose -f docker_compose_run.yml up -d
-            sleep 10
+            sleep 6
 
       - name: run strudel sanity test
         run: |
