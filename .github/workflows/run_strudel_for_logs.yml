@@ -10,14 +10,10 @@ jobs:
   e2e-tests-docker:
     runs-on: ubuntu-22.04
     steps:
-      #----------------------------------------------
-      #       check-out repo and set-up python
-      #----------------------------------------------
       - name: Check out repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-
 
       - name: Clone the Strudel manager Repository
         run: |
@@ -48,17 +44,17 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: pull strudel image
-        id: pull-strudel-image
-        run: |
-            echo "pulling strudel image"
-            docker pull ${{ steps.login-ecr.outputs.registry }}/shtruddel:latest
-
-      - name: pull nginx
-        id: pull-nginx-image
-        run: |
-            echo "pulling nginx image"
-            docker pull nginx
+#      - name: pull strudel image
+#        id: pull-strudel-image
+#        run: |
+#            echo "pulling strudel image"
+#            docker pull ${{ steps.login-ecr.outputs.registry }}/shtruddel:latest
+#
+#      - name: pull nginx
+#        id: pull-nginx-image
+#        run: |
+#            echo "pulling nginx image"
+#            docker pull nginx
         
       - name: run docker compose
         run: |
