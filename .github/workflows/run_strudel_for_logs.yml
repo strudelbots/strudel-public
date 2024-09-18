@@ -1,4 +1,4 @@
-name: ruin-strudel-on-branch
+name: run-strudel-on-branch
 # source: https://github.com/marketplace/actions/install-poetry-action
 
 
@@ -47,8 +47,8 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.STRUDEL_ECR_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.STRUDEL_ECR_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ secrets.STRUDEL_ACCESS_KEY_ID
+          aws-secret-access-key: ${{ secrets.STRUDEL_SECRET_ACCESS_KEY }}
           aws-region: eu-central-1
 
       - name: Login to Amazon ECR
