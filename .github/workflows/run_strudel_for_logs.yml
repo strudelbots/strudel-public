@@ -5,7 +5,6 @@ name: ruin-strudel-on-branch
 on:
   push:
     branches: [ "*" ]
-
 jobs:
   run-strudel:
     runs-on: ubuntu-22.04
@@ -20,14 +19,12 @@ jobs:
 
       - name: Clone the Strudel manager Repository
         run: |
-          echo $PWD
           export current_dir=$(pwd)
           cd /tmp
           git clone https://github.com/strudel-ai/strudel-public.git
           cd strudel-public
           ls -alt
           cd $current_dir
-          echo $PWD
       - name: Install python
         uses: actions/setup-python@v5
         with:
