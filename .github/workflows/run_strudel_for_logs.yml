@@ -59,7 +59,6 @@ jobs:
         run: |
             docker compose -f docker_compose_run.yml up -d
             sleep 6
-
       - name: run strudel sanity test
         run: |
             echo "start sanity test"
