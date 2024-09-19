@@ -6,16 +6,6 @@ services:
     expose:
       - "8000"
       - "8080"
-#    environment:
-#        - TEMPLATES_URI=$TEMPLATES_URI
-#        - MIN_LINEAR_REGRESSION_THRESHOLD=$MIN_LINEAR_REGRESSION_THRESHOLD
-#        - LOGGER_MODULE=$LOGGER_MODULE
-#        - LOG_PREFIX=$LOG_PREFIX
-#        - PRIORETIZER_URI=$PRIORETIZER_URI
-#        - ADD_STRUDEL_COMMENT_TO_LOGS=$ADD_STRUDEL_COMMENT_TO_LOGS
-#        - SERVER_NAMES=logs
-#        - S3_BUCKET_SUFFIX=$S3_BUCKET_SUFFIX
-#        - STRUDEL_PATTERN_COLLECTOR_ACTIVE=$STRUDEL_PATTERN_COLLECTOR_ACTIVE
     command: [ "sh", "-c", "python --version && python manage.py migrate && python manage.py runserver 0.0.0.0:8080" ]
 
   templates:
@@ -24,20 +14,6 @@ services:
     expose:
       - "8000" # should we remove that in prod?
       - "8080"
-#    depends_on:
-#     - logs
-#    environment:
-#        - TEMPLATES_URI=$TEMPLATES_URI
-#        - ADD_STRUDEL_COMMENT_TO_LOGS=$ADD_STRUDEL_COMMENT_TO_LOGS
-#        - MIN_LINEAR_REGRESSION_THRESHOLD=$MIN_LINEAR_REGRESSION_THRESHOLD
-#        - LOGGER_MODULE=$LOGGER_MODULE
-#        - LOG_PREFIX=$LOG_PREFIX
-#        - PRIORETIZER_URI=$PRIORETIZER_URI
-#        - SERVER_NAMES=templates
-#        - S3_BUCKET_SUFFIX=$S3_BUCKET_SUFFIX
-#        - STRUDEL_PATTERN_COLLECTOR_ACTIVE=$STRUDEL_PATTERN_COLLECTOR_ACTIVE
-#        - S3_AWS_ACCESS_KEY_ID=$S3_AWS_ACCESS_KEY_ID
-#        - S3_AWS_SECRET_ACCESS_KEY=$S3_AWS_SECRET_ACCESS_KEY
     command: [ "sh", "-c", "python --version && python manage.py migrate && python manage.py runserver 0.0.0.0:8080" ]
 
 
