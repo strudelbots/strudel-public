@@ -103,7 +103,7 @@ def analyze_files(python_files):
                         f.write(response.json()['modified_source'])
                 _write_result_file((file, file_name), response)
         else:
-            continue
+            raise ValueError(f'Unexpected status code: {response.status_code}')
     return files_200, files_400
 
 if __name__ == '__main__':
