@@ -7,7 +7,7 @@ import requests
 url = 'http://localhost:8080/add_logs/'
 
 OVERWRITE_ORIG_FILES = True
-def _write_result_file(file:tuple, response, write_full_modified_file=False):
+def _file_changed_by_strudel(file:tuple, response):
 
     response_json = response.json()
     original_source = _read_file_as_string(file[0])
@@ -28,7 +28,6 @@ def _is_diff_beside_WS(modified_source, original_source):
                 continue
             return True
         elif s[0] == '+':
-            #print(u'Add "{}" to position {}'.format(s[-1], i))
             return True
     return False
 
@@ -96,12 +95,12 @@ def analyze_files(python_files):
         elif response.status_code == 200:
             print("file 200: "+ file)
             files_200 += 1
-            diff = False
+            diff = _file_changed_by_strudel((file, file_name), response)
             if OVERWRITE_ORIG_FILES and diff:
                 print("writing file: " + file)
                 with open(file, 'w') as f:
                         f.write(response.json()['modified_source'])
-                _write_result_file((file, file_name), response)
+                _file_changed_by_strudel((file, file_name), response)
         else:
             raise ValueError(f'Unexpected status code: {response.status_code}')
     return files_200, files_400
