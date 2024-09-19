@@ -111,6 +111,6 @@ if __name__ == '__main__':
     if not python_files:
         print('No python files found' )
         exit(0)
-    result, files_200, files_400, = analyze_files(python_files)
+    files_200, files_400, = analyze_files(python_files)
     print(f'files_200, {files_200}')
     print(f'files_400, {files_400}')
