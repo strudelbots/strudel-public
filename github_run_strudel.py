@@ -104,7 +104,7 @@ def analyze_files(python_files):
                 _write_result_file((file, file_name), response)
         else:
             continue
-    return results, files_200, files_400, total_time_microseconds
+    return files_200, files_400, total_time_microseconds
 
 if __name__ == '__main__':
     python_files, not_python_files =  get_all_files()
