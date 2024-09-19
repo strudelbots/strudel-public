@@ -52,7 +52,6 @@ def get_all_files():
                 python_files.append(file)
     return python_files, []
 
-
 def _get_files_from_disc(python_files):
     not_python_files = []
     directory = os.getcwd()
@@ -100,7 +99,7 @@ def analyze_files(python_files):
                 print("writing file: " + file)
                 with open(file, 'w') as f:
                         f.write(response.json()['modified_source'])
-                _file_changed_by_strudel((file, file_name), response)
+
         else:
             raise ValueError(f'Unexpected status code: {response.status_code}')
     return files_200, files_400
