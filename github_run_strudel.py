@@ -64,11 +64,7 @@ def analyze_files(python_files):
                     'Content-Type': 'application/json',
                     "X-Request-Id": "run-strudel-"+str(index)
                     }
-        start = datetime.datetime.now()
         response = requests.post(url, json=payload_dict, headers=headers)
-        end = datetime.datetime.now()
-        latency = (end - start).microseconds
-        total_time_microseconds += latency
         if response.status_code == 400:
             print(f'ERROR 400, {file}')
 
