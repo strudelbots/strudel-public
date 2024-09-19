@@ -9,4 +9,5 @@ Used to share public parts of Strudel
 2. Copy the git action (from the strudel-public repository) 
 `run_strudel_for_logs.yml` to your repository in the `.github/workflows` folder.
 1. Set up keys to access strudel 
+2. enable workflows to write to the repository
 
