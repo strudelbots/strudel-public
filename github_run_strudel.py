@@ -71,14 +71,11 @@ def _get_files_from_disc(python_files):
 def analyze_files(python_files):
     if len(python_files) > 5000:
         raise ValueError('Too many files to analyze')
-    total_files = 0
     files_200 = 0
     files_400 = 0
     for index, file in enumerate(python_files):
         file_string = _read_file_as_string(file)
         file_name = file.split("/")[-1]
-        n_lines = len(file_string.splitlines())
-        n_chars = len(file_string)
         if len(file_string) > 80000:
             continue
         payload_dict = {"source": "not used", "file_content": file_string, "file_name":  file}
@@ -89,7 +86,6 @@ def analyze_files(python_files):
         response = requests.post(url, json=payload_dict, headers=headers)
         if response.status_code == 400:
             print(f'ERROR 400, {file}')
-
             files_400 += 1
         elif response.status_code == 200:
             print("file 200: "+ file)
