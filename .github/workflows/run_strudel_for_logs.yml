@@ -1,5 +1,4 @@
 name: run-strudel-on-branch
-# source: https://github.com/marketplace/actions/install-poetry-action
 
 on:
   push:
@@ -15,6 +14,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
 
       - name: Clone the Strudel manager Repository
         run: |
@@ -60,7 +63,7 @@ jobs:
         
       - name: run docker compose
         run: |
-            docker compose -f /tmp/strudel-public/docker_compose_run.yml up -d
+            docker compose -f /tmp/strudel-public/docker_compose_run.yml up -d --quiet-pull
             sleep 10
       - name: run strudel sanity test
         run: |
@@ -83,7 +86,6 @@ jobs:
         # To compare changes between the current commit and the last pushed remote commit set `since_last_remote_commit: true`. e.g
         with:
           since_last_remote_commit: true
-
       - name: List all changed files
         env:
           ALL_CHANGED_FILES: ${{ steps.get-changed-files.outputs.all_changed_files }}
@@ -96,3 +98,10 @@ jobs:
            export ROOT_DIR=$(pwd)/
            export OVERWRITE_ORIG_FILES=True
            python /tmp/strudel-public/github_run_strudel.py
+      - name: Commit and push Strudel logs
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then echo "no files to push" && exit 0; fi
+          git config --global user.name 'strudel-loger'
+          git config --global user.email 'strudel-logger@users.noreply.github.com'
+          git commit -am "Automated strudel-logger commit for branch ${{ steps.extract_branch.outputs.branch }}"
+          git push
