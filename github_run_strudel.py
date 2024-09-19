@@ -13,7 +13,10 @@ def _write_result_file(file:tuple, response, write_full_modified_file=False):
     original_source = _read_file_as_string(file[0])
     modified_source = response_json['modified_source']
     diff = _is_diff_beside_WS(modified_source, original_source)
-    print("Found diff in file: ", file[0])
+    if diff:
+        print("Found diff in file: ", file[0])
+    else:
+        print("No diff: " + file[0])
     return diff
 
 def _is_diff_beside_WS(modified_source, original_source):
