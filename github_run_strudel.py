@@ -93,13 +93,11 @@ def analyze_files(python_files):
             files_400 += 1
         elif response.status_code == 200:
             print("file 200: "+ file)
-
-            if "e2e_tests" not in file :
-                print('e2e tests not in file')
-                diff = False
-                if OVERWRITE_ORIG_FILES and diff:
-                    print("writing file: " + file)
-                    with open(file, 'w') as f:
+            files_200 += 1
+            diff = False
+            if OVERWRITE_ORIG_FILES and diff:
+                print("writing file: " + file)
+                with open(file, 'w') as f:
                         f.write(response.json()['modified_source'])
                 _write_result_file((file, file_name), response)
         else:
