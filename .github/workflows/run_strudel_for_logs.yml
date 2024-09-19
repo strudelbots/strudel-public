@@ -27,7 +27,11 @@ jobs:
       - name: Install python
         uses: actions/setup-python@v5
         with:
-         python-version: '3.10.12'
+           python-version: '3.10.12'
+           cache: 'pip' # caching pip dependencies
+      - name: Install requests
+        run: pip install requests
+
 
       - name: "check is STRUDEL_ACCESS_KEY_ID exists"
 
@@ -86,3 +90,9 @@ jobs:
         run: |
           echo "all changed files: $ALL_CHANGED_FILES"
 
+      - name: Run Strudel
+        run: |
+           export ALL_CHANGED_FILES="${{ steps.get-changed-files.outputs.all_changed_files }}"
+           export ROOT_DIR=$(pwd)/
+           export OVERWRITE_ORIG_FILES=True
+           python /tmp/strudel-public/github_run_strudel.py
