@@ -6,8 +6,8 @@ import requests
 url = 'http://localhost:8080/add_logs/'
 
 OVERWRITE_ORIG_FILES = True
-def read_file_as_string(test_program, test_dir=""):
-    file_full_name = os.path.join(test_dir, "e2e_tests", test_program)
+def read_file_as_string(file_name, dir=""):
+    file_full_name = os.path.join(dir, "", file_name)
     text_file = open(file_full_name ,'r')
     python_string = text_file.read()
     text_file.close()
