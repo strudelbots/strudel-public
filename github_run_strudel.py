@@ -36,8 +36,10 @@ def _read_file_as_string(file_name, dir=""):
     return python_string
 def get_all_files():
     python_files = []
-    changed_files = os.getenv('ALL_CHANGED_FILES', 'github_run_strudel.py')
-    if changed_files:
+    changed_files = os.getenv('ALL_CHANGED_FILES', None)
+    if not changed_files:
+        print('No changed files found')
+    else:
         all_files = changed_files.split(' ')
         if len(all_files) ==0:
             raise ValueError('ALL_CHANGED_FILES is empty')
