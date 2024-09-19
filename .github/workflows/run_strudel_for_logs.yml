@@ -1,7 +1,6 @@
 name: run-strudel-on-branch
 # source: https://github.com/marketplace/actions/install-poetry-action
 
-
 on:
   push:
     branches: [ "*" ]
@@ -57,8 +56,8 @@ jobs:
         
       - name: run docker compose
         run: |
-            docker compose -f docker_compose_run.yml up -d
-            sleep 6
+            docker compose -f /tmp/strudel-public/docker_compose_run.yml up -d
+            sleep 10
       - name: run strudel sanity test
         run: |
             echo "start sanity test"
