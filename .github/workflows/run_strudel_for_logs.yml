@@ -1,14 +1,16 @@
-name: run-e2e-tests-on-docker
+name: run-strudel-on-branch
 # source: https://github.com/marketplace/actions/install-poetry-action
 
 
 on:
   push:
-    branches: [ "main" ]
-
+    branches: [ "*" ]
 jobs:
-  e2e-tests-docker:
+  run-strudel:
     runs-on: ubuntu-22.04
+    env:
+      strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
+      strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -17,25 +19,36 @@ jobs:
 
       - name: Clone the Strudel manager Repository
         run: |
-          echo $PWD
           export current_dir=$(pwd)
           cd /tmp
           git clone https://github.com/strudel-ai/strudel-public.git
           cd strudel-public
           ls -alt
           cd $current_dir
-          echo $PWD
       - name: Install python
         uses: actions/setup-python@v5
         with:
          python-version: '3.10.12'
 
+      - name: "check is STRUDEL_ACCESS_KEY_ID exists"
+
+        if: ${{ env.strudel_access_key == '' }}
+        run: | 
+          echo STRUDEL_ACCESS_KEY_ID is not defined!
+          echo Please follow instruction in strudel-manual XXX
+          exit 1
+      - name: "check is STRUDEL_SECRET_KEY exists"
+        if: ${{ env.strudel_secret_key == '' }}
+        run: | 
+          echo STRUDEL_SECRET_KEY is not defined!
+          echo Please follow instruction in strudel-manual XXX
+          exit 1
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.STRUDEL_ECR_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.STRUDEL_ECR_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.STRUDEL_SECRET_KEY }}
           aws-region: eu-central-1
 
       - name: Login to Amazon ECR
@@ -46,7 +59,6 @@ jobs:
         run: |
             docker compose -f docker_compose_run.yml up -d
             sleep 6
-
       - name: run strudel sanity test
         run: |
             echo "start sanity test"
@@ -71,7 +83,7 @@ jobs:
 
       - name: List all changed files
         env:
-          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+          ALL_CHANGED_FILES: ${{ steps.get-changed-files.outputs.all_changed_files }}
         run: |
           echo "all changed files: $ALL_CHANGED_FILES"
 
