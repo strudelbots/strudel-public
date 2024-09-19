@@ -6,7 +6,28 @@ import requests
 url = 'http://localhost:8080/add_logs/'
 
 OVERWRITE_ORIG_FILES = True
-def read_file_as_string(file_name, dir=""):
+def _write_result_file(file:tuple, response, write_full_modified_file=False):
+
+    response_json = response.json()
+    original_source = _read_file_as_string(file[0])
+    modified_source = response_json['modified_source']
+    diff = _is_diff_beside_WS(modified_source, original_source)
+    return diff
+
+def _is_diff_beside_WS(modified_source, original_source):
+    for i, s in enumerate(difflib.ndiff(original_source, modified_source)):
+        if s[0] == ' ':
+            continue
+        elif s[0] == '-':
+            if s == '- \n' or s == '-  ':
+                continue
+            return True
+        elif s[0] == '+':
+            #print(u'Add "{}" to position {}'.format(s[-1], i))
+            return True
+    return False
+
+def _read_file_as_string(file_name, dir=""):
     file_full_name = os.path.join(dir, "", file_name)
     text_file = open(file_full_name ,'r')
     python_string = text_file.read()
@@ -53,7 +74,7 @@ def analyze_files(python_files):
     files_200 = 0
     files_400 = 0
     for index, file in enumerate(python_files):
-        file_string = read_file_as_string(file)
+        file_string = _read_file_as_string(file)
         file_name = file.split("/")[-1]
         n_lines = len(file_string.splitlines())
         n_chars = len(file_string)
@@ -79,8 +100,6 @@ def analyze_files(python_files):
                     print("writing file: " + file)
                     with open(file, 'w') as f:
                         f.write(response.json()['modified_source'])
-
-            if SAVE_EACH_FILE_RESULT:
                 _write_result_file((file, file_name), response)
         else:
             continue
