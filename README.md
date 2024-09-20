@@ -3,7 +3,7 @@ Used to share public parts of Strudel
 ## Overview 
 
 ## Pre-Requisites
-1. Register to strudel. <a href="https://www.w3schools.com">Visit W3Schools</a>
+1. Register to strudel. <a mailto="mailto:foo@bar.example.com?subject=Hello%20World">Visit W3Schools</a>
 2. [mail](mailto:foo@bar.example.com?subject=Hello%20World&body=Hello%20World&nbsp;)
 3. Github account with: 
    1. Repository on which you want to install 
