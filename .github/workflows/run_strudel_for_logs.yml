@@ -5,6 +5,8 @@ on:
     branches: [ "*" ]
 jobs:
   run-strudel:
+    permissions:
+      actions: write
     runs-on: ubuntu-22.04
     env:
       strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}

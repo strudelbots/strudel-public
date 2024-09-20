@@ -13,16 +13,16 @@ Used to share public parts of Strudel
 
 ## Onboarding  
 ### Onboarding strudel on-prem
-1. Open your github project in your favorite IDE
+1. Open your Github project in your favorite IDE
 2. Create a new directory (if it does not already exists): 
 `.github/workflows`
-2. Copy the git action (from the strudel-public repository) 
+2. Copy the Github action (in this repository) 
 `run_strudel_for_logs.yml` to your repository in the `.github/workflows` folder.
-1. Set up keys to access strudel
+1. Set up keys to access Strudel:
      1. Go to the repository &rarr; Settings &rarr; Secrets and variables  &rarr; Actions 
      3. Add a new secret with the name `STRUDEL_ACCESS_KEY_ID` and the value of the API key you received from Strudel
      4. Add a new secret with the name `STRUDEL_SECRET_KEY` and the value of the API URL you received from Strudel
-2. Enable workflows to write to the repository
+2. Enable workflows to write to the repository. 
 
 ### Onboarding strudel cloud solution
 
