@@ -5,7 +5,7 @@ Used to share public parts of Strudel
 ## Pre-Requisites
 1. Register to strudel. 
 2. Github account with: 
-   1. Repository on which you wan to install 
+   1. Repository on which you want to install 
    2. Ability to add secrets at the repository
    3. Ability to add actions to the repository
    4. Ability to configure write permission to actions
