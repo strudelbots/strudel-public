@@ -1,8 +1,20 @@
 # strudel-public
 Used to share public parts of Strudel 
+## Overview 
 
-## Using strudel on-prem
-## Set-up strudel action in your github repository
+## Pre-Requisites
+1. Register to strudel. 
+2. Github account with: 
+   1. Repository on which you wan to install 
+   2. Ability to add secrets at the repository
+   3. Ability to add actions to the repository
+   4. Ability to configure write permission to actions
+   Manual onboarding 
+   Automatic onboarding 
+   Usage 
+
+## Onboarding  
+### Using strudel on-prem
 1. Open your github project in your favorite IDE
 2. Create a new directory (if it does not already exists): 
 `.github/workflows`
@@ -11,3 +23,4 @@ Used to share public parts of Strudel
 1. Set up keys to access strudel 
 2. enable workflows to write to the repository
 
+### Using strudel cloud solution 
