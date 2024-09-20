@@ -18,8 +18,11 @@ Used to share public parts of Strudel
 `.github/workflows`
 2. Copy the git action (from the strudel-public repository) 
 `run_strudel_for_logs.yml` to your repository in the `.github/workflows` folder.
-1. Set up keys to access strudel 
-2. enable workflows to write to the repository
+1. Set up keys to access strudel
+     1. Go to the repository `-->` settings `-->` secrets and variables  `-->` actions 
+     3. Add a new secret with the name `STRUDEL_ACCESS_KEY_ID` and the value of the API key you received from Strudel
+     4. Add a new secret with the name `STRUDEL_SECRET_KEY` and the value of the API URL you received from Strudel
+2. Enable workflows to write to the repository
 
 ### Onboarding strudel cloud solution
 
