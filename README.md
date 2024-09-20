@@ -3,7 +3,7 @@ Used to share public parts of Strudel
 ## Overview 
 
 ## Pre-Requisites
-1. Register to strudel. <a href="mailto:foo@bar.example.com?subject=Hello%20World@body=shai">eMail Strudel Support</a>
+1. Register to strudel. <a href="mailto:foo@bar.example.com?subject=Hello%20World@amp;body=shai">eMail Strudel Support</a>
 3. Github account with: 
    1. Repository on which you want to install 
    2. Ability to add secrets at the repository
