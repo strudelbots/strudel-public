@@ -5,16 +5,14 @@ Used to share public parts of Strudel
 ## Pre-Requisites
 1. Register to strudel. <a href="mailto:foo@bar.example.com?subject=Hello%20World&amp;body=put%20body%20">eMail Strudel Support</a>
 3. Github account with: 
-   1. Repository on which you want to install 
-   2. Ability to add secrets at the repository
-   3. Ability to add actions to the repository
-   4. Ability to configure write permission to actions
-   Manual onboarding 
-   Automatic onboarding 
-   Usage 
+   1. Repository with python code on which you want to install Strudel 
+   2. Permission to  to add repository secrets at the repository
+   3. Permission to add Github actions  to the repository
+   4. Permission to configure write permission to actions
+    
 
 ## Onboarding  
-### Using strudel on-prem
+### Onboarding strudel on-prem
 1. Open your github project in your favorite IDE
 2. Create a new directory (if it does not already exists): 
 `.github/workflows`
@@ -23,4 +21,7 @@ Used to share public parts of Strudel
 1. Set up keys to access strudel 
 2. enable workflows to write to the repository
 
-### Using strudel cloud solution 
+### Onboarding strudel cloud solution
+
+## Using Strudel Alpha
+## Providing feedback 
