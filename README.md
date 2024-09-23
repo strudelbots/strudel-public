@@ -51,7 +51,7 @@ Used to share public parts of Strudel
    This step is optional and can be used to run strudel test 
    that verifies your set-up is correct 
       2. Copy the following code into the file:
-   ```yaml
+```yaml
     name: run-strudel-for-logs
     on:
         push:
@@ -62,7 +62,7 @@ Used to share public parts of Strudel
         secrets:
             strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
             strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
-    ```
+```
    2. Enable workflows to write to the repository. 
    2. Commit the changes to the repository
    3. Manually run the new work flow. 
