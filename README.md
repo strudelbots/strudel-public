@@ -37,9 +37,9 @@ Used to share public parts of Strudel
               strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
               strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
       ```
-      2. Enable workflows to write to the repository. 
-      2. Commit the changes to the repository
-      3. Manually run the new work flow. 
+   2. Enable workflows to write to the repository. 
+   2. Commit the changes to the repository
+   3. Manually run the new work flow. 
 
 
 ## Using Strudel Alpha
