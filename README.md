@@ -17,7 +17,7 @@ Used to share public parts of Strudel
 2. Create a new directory (if it does not already exist): 
 `.github/workflows`
 #### Create strudel test action in your repository (optional):
-2. Set up keys to access Strudel:
+1. Set up keys to access Strudel:
      1. Go to the repository &rarr; Settings &rarr; Secrets and variables  &rarr; Actions 
      3. Add a new secret with the name `STRUDEL_ACCESS_KEY_ID` and the value of the API key you received from Strudel
      4. Add a new secret with the name `STRUDEL_SECRET_KEY` and the value of the API URL you received from Strudel
