@@ -39,7 +39,7 @@ jobs:
 2. Enable workflows to write to the repository. 
 2. Commit the changes to the repository
 3. Manually run the new work flow. 
-### Onboarding strudel cloud solution
+
 
 ## Using Strudel Alpha
 ## Providing feedback 
