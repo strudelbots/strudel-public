@@ -71,7 +71,7 @@ jobs:
       - name: run strudel sanity test
         run: |
             echo "start sanity test"
-            export STATUSCODE=$(curl --silent --output /dev/stderr --write-out "%{http_code}" --location '127.0.0.1:8080/add_logs/' \
+            export STATUSCODE=$(curl --silent --output /dev/null --write-out "%{http_code}" --location '127.0.0.1:8080/add_logs/' \
             --header 'X-Request-Id: 7' \
             --header 'Content-Type: application/json' \
             --data '{"source": "test",
