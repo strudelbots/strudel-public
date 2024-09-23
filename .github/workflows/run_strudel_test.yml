@@ -2,12 +2,17 @@ name: run-strudel-test
 
 on:
   workflow_call:
+    secrets:
+      strudel_access_key:
+        required: true
+      strudel_secret_key:
+        required: true
 jobs:
   run-strudel-test:
     runs-on: ubuntu-22.04
-    env:
-      strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
-      strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
+#    env:
+#      strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
+#      strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
