@@ -17,7 +17,12 @@ Used to share public parts of Strudel
 2. Create a new directory (if it does not already exist): 
 `.github/workflows`
 #### Create strudel test action in your repository (optional):
-1. Create a new file in the `.github/workflows` directory with the name `strudel-test.yml`
+2. Set up keys to access Strudel:
+     1. Go to the repository &rarr; Settings &rarr; Secrets and variables  &rarr; Actions 
+     3. Add a new secret with the name `STRUDEL_ACCESS_KEY_ID` and the value of the API key you received from Strudel
+     4. Add a new secret with the name `STRUDEL_SECRET_KEY` and the value of the API URL you received from Strudel
+
+2. Create a new file in the `.github/workflows` directory with the name `strudel-test.yml`
 This step is optional and can be used to run strudel test 
 that verifies your set-up is correct 
 2. Copy the following code into the file:
@@ -32,10 +37,6 @@ that verifies your set-up is correct
            strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
            strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
    ```
-2. Set up keys to access Strudel:
-     1. Go to the repository &rarr; Settings &rarr; Secrets and variables  &rarr; Actions 
-     3. Add a new secret with the name `STRUDEL_ACCESS_KEY_ID` and the value of the API key you received from Strudel
-     4. Add a new secret with the name `STRUDEL_SECRET_KEY` and the value of the API URL you received from Strudel
 2. Enable workflows to write to the repository. 
 2. Commit the changes to the repository
 3. Manually run the new work flow. 
