@@ -1,0 +1,82 @@
+name: run-strudel-on-branch
+
+on:
+  push:
+    branches: [ "*" ]
+  workflow_dispatch:
+jobs:
+  run-strudel:
+    runs-on: ubuntu-22.04
+    env:
+      strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
+      strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
+
+      - name: Clone the Strudel manager Repository
+        run: |
+          export current_dir=$(pwd)
+          cd /tmp
+          git clone https://github.com/strudel-ai/strudel-public.git
+          cd strudel-public
+          ls -alt
+          cd $current_dir
+      - name: Install python
+        uses: actions/setup-python@v5
+        with:
+           python-version: '3.10.12'
+      - name: Install requests
+        run: pip install requests
+
+
+      - name: "check is STRUDEL_ACCESS_KEY_ID exists"
+
+        if: ${{ env.strudel_access_key == '' }}
+        run: | 
+          echo STRUDEL_ACCESS_KEY_ID is not defined!
+          echo Please follow instruction in strudel-manual XXX
+          exit 1
+      - name: "check is STRUDEL_SECRET_KEY exists"
+        if: ${{ env.strudel_secret_key == '' }}
+        run: | 
+          echo STRUDEL_SECRET_KEY is not defined!
+          echo Please follow instruction in strudel-manual XXX
+          exit 1
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.STRUDEL_SECRET_KEY }}
+          aws-region: eu-central-1
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+        
+      - name: run docker compose
+        run: |
+            docker compose -f /tmp/strudel-public/docker_compose_run.yml up -d --quiet-pull
+            sleep 10
+      - name: run strudel sanity test
+        run: |
+            echo "start sanity test"
+            export STATUSCODE=$(curl --silent --output /dev/stderr --write-out "%{http_code}" --location '127.0.0.1:8080/add_logs/' \
+            --header 'X-Request-Id: 7' \
+            --header 'Content-Type: application/json' \
+            --data '{"source": "test",
+            "file_content": "def foo():\n  print(a)",
+            "file_name": "test"}')
+            printf "\n\n****   status code is $STATUSCODE \n\n"
+            if [ $STATUSCODE -ne 200 ]; then echo "sanity test fails, status $STATUSCODE"; fi
+            if [ $STATUSCODE -ne 200 ]; then exit 22; fi
+            echo "**** end sanity test"
+            echo "**** end run strudel"
+
