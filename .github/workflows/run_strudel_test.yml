@@ -1,11 +1,11 @@
-name: run-strudel-on-branch
+name: run-strudel-test
 
 on:
   push:
     branches: [ "*" ]
   workflow_dispatch:
 jobs:
-  run-strudel:
+  run-strudel-test:
     runs-on: ubuntu-22.04
     env:
       strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
@@ -36,14 +36,14 @@ jobs:
         run: pip install requests
 
 
-      - name: "check is STRUDEL_ACCESS_KEY_ID exists"
+      - name: "Check that STRUDEL_ACCESS_KEY_ID exists"
 
         if: ${{ env.strudel_access_key == '' }}
         run: | 
           echo STRUDEL_ACCESS_KEY_ID is not defined!
           echo Please follow instruction in strudel-manual XXX
           exit 1
-      - name: "check is STRUDEL_SECRET_KEY exists"
+      - name: "Check that STRUDEL_SECRET_KEY exists"
         if: ${{ env.strudel_secret_key == '' }}
         run: | 
           echo STRUDEL_SECRET_KEY is not defined!
@@ -78,5 +78,4 @@ jobs:
             if [ $STATUSCODE -ne 200 ]; then echo "sanity test fails, status $STATUSCODE"; fi
             if [ $STATUSCODE -ne 200 ]; then exit 22; fi
             echo "**** end sanity test"
-            echo "**** end run strudel"
 
