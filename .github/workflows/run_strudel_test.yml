@@ -1,9 +1,7 @@
 name: run-strudel-test
 
 on:
-  push:
-    branches: [ "*" ]
-  workflow_dispatch:
+  workflow_call:
 jobs:
   run-strudel-test:
     runs-on: ubuntu-22.04
