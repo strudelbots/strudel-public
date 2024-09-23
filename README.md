@@ -32,7 +32,7 @@ Used to share public parts of Strudel
         workflow_dispatch:
       jobs:
         run-strudel-test:
-          uses: strudel-ai/strudel-public/.github/workflows/run_strudel_test.yml@v0.1.0
+          uses: strudel-ai/strudel-public/.github/workflows/run_strudel_test.yml@v0.2.0
           secrets:
               strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
               strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
