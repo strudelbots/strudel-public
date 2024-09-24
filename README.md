@@ -30,7 +30,7 @@ Used to share public parts of Strudel
 
 ### Create strudel test github action in your repository (optional)
 
-2. Create a new file in the `.github/workflows` directory with the name `strudel-test.yml`
+2. Create a new file in the `.github/workflows` directory with the name `run-strudel-for-logs.yml`
 This step is optional and can be used to run strudel test 
 that verifies your set-up is correct 
 2. Copy the following code into the file:
