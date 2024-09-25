@@ -9,6 +9,26 @@ on:
         required: true
 
 jobs:
+  pre_run_strudel_on_pull_request:
+    runs-on: ubuntu-22.04
+    outputs:
+      run_strudel: ${{ steps.check_head_commit_message.outputs.run_strudel_value }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: check head commit message
+        id: check_head_commit_message
+        env:
+          sha_last_commit: ${{ github.event.pull_request.head.sha }}
+        run: |
+          echo "sha_commit_message: $sha_last_commit"
+          export message_last_commit=$(git log -1 --pretty=%B $sha_last_commit)
+          echo "message_last_commit: $message_last_commit"
+          if [[ $message_last_commit == *"add-logs"* ]]; then export use_strudel=false;  fi
+          if [[ ! $message_last_commit == *"add-logs"* ]]; then export use_strudel=true;  fi
+          echo "run_strudel_value=$use_strudel" >> "$GITHUB_OUTPUT"
+
   run-strudel:
     if: ${{ contains(github.event.head_commit.message, 'trace') &&
            contains(github.event.head_commit.message, 'strudel') &&
