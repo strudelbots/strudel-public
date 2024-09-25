@@ -30,9 +30,7 @@ jobs:
           echo "run_strudel_value=$use_strudel" >> "$GITHUB_OUTPUT"
 
   run-strudel:
-    if: ${{ contains(github.event.head_commit.message, 'trace') &&
-           contains(github.event.head_commit.message, 'strudel') &&
-           contains(github.event.head_commit.message, 'logs') }}
+    if: ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel=='true' }}
     env:
       strudel_access_key: ${{ secrets.strudel_access_key }}
       strudel_secret_key: ${{ secrets.strudel_secret_key }}
