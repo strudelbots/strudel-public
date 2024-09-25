@@ -144,4 +144,4 @@ jobs:
           git config --global user.email 'strudel-logger@users.noreply.github.com'
           git checkout ${{ steps.extract_branch.outputs.branch }}
           git commit -am "Automated strudel-logger commit for branch ${{ steps.extract_branch.outputs.branch }}"
-#          git push
+          git push
