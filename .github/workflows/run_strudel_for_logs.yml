@@ -53,7 +53,7 @@ jobs:
         id: extract_branch
         shell: bash
         run: |
-          echo"start extract branch"
+          echo "start extract branch"
           export branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
           echo "branch is $branch"
           echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
