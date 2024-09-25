@@ -48,6 +48,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+
       - name: Extract branch name
         id: extract_branch
         shell: bash
