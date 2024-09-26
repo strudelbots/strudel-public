@@ -1,0 +1,11 @@
+name: 'Setup Action'
+description: 'A composite action that runs a sequence of steps'
+outputs:
+  current-date:
+    description: "current-date"
+    value: ${{ steps.get-current-date.outputs.current-date }}
+runs:
+    using: 'composite'
+    steps:
+      - name: get strudel actiomn
+        run: echo "get-strudel-action"
