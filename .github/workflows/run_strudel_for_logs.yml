@@ -33,6 +33,7 @@ jobs:
           echo "use_strudel": $use_strudel
 #          echo "run_strudel_value=$use_strudel" >> "$GITHUB_OUTPUT"
 
+
   run-strudel:
     needs: pre_run_strudel_on_pull_request
     if: ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel=='true' }}
