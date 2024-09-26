@@ -6,7 +6,6 @@ import requests
 
 url = 'http://localhost:8080/add_logs/'
 
-OVERWRITE_ORIG_FILES = True
 def _file_changed_by_strudel(file:tuple, response):
 
     response_json = response.json()
@@ -52,26 +51,6 @@ def get_all_files():
                 python_files.append(file)
     return python_files, []
 
-def _get_files_from_disc(python_files):
-    not_python_files = []
-    directory = os.getcwd()
-    for dirpath, dirnames, filenames in os.walk(directory):
-        if 'venv' in dirpath:
-            continue
-        if 'tox' in dirpath:
-            continue
-        for filename in filenames:
-            if filename.endswith('.py') and not 'strudel' in filename:
-                full_name = os.path.join(dirpath, filename)
-                if single_file and full_name != single_file:
-                    continue
-                python_files.append(full_name)
-            else:
-                not_python_files.append(os.path.join(dirpath, filename))
-    print("Total python files: " + str(len(python_files)), "Total not python files: " + str(len(not_python_files)))
-    return not_python_files
-
-
 def analyze_files(python_files):
     if len(python_files) > 5000:
         raise ValueError('Too many files to analyze')
@@ -95,7 +74,7 @@ def analyze_files(python_files):
             print("file 200: "+ file)
             files_200 += 1
             diff = _file_changed_by_strudel((file, file_name), response)
-            if OVERWRITE_ORIG_FILES and diff:
+            if diff:
                 print("writing file: " + file)
                 with open(file, 'w') as f:
                         f.write(response.json()['modified_source'])
