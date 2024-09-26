@@ -18,12 +18,6 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
-#      - uses: actions/checkout@v4
-#        with:
-#          ref: ${{ github.event.pull_request.head.sha }}
-#      - name: run-reusable-actions
-#        id: run-reusable-actions
-#        uses: ./.github/actions/determine_commit_message
       - name: check head commit message
         id: check_head_commit_message
         env:
@@ -35,15 +29,17 @@ jobs:
           curl -sSL https://raw.githubusercontent.com/strudel-ai/strudel-public/refs/heads/main/determine_strudel_action.sh -o tmp.sh
           chmod +x tmp.sh
           command=$(././tmp.sh  "$last_commit")
-          if [[ ! $command == "add-logs" ]]; then export use_strudel=false;  fi
-          if [[ $command == "add-logs" ]]; then export use_strudel=true;  fi
-          echo "use_strudel": $use_strudel
-          echo "run_strudel_value=$use_strudel" >> "$GITHUB_OUTPUT"
+          echo "command is $command"
+          echo "run_strudel_value=$command" >> "$GITHUB_OUTPUT"
+
+#          if [[ ! $command == "none" ]]; then export use_strudel=false;  fi
+#          if [[ $command == "add-logs" ]]; then export use_strudel=true;  fi
+#          if [[ $command == "remove-logs" ]]; then export use_strudel=true;  fi
 
 
   run-strudel:
     needs: pre_run_strudel_on_pull_request
-    if: ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel=='true' }}
+    if: ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel!='none' }}
     env:
       strudel_access_key: ${{ secrets.strudel_access_key }}
       strudel_secret_key: ${{ secrets.strudel_secret_key }}
