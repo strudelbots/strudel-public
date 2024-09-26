@@ -8,4 +8,5 @@ runs:
     using: 'composite'
     steps:
       - name: get strudel actomn
+        shell: bash
         run: echo "get-strudel-action"
