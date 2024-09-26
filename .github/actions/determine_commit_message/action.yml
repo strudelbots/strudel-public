@@ -7,9 +7,6 @@ outputs:
 runs:
     using: 'composite'
     steps:
-      - name: get strudel actomn
-        shell: bash
-        run: echo "get-strudel-action"
       - name: check head commit message
         id: check_head_commit_message
         env:
