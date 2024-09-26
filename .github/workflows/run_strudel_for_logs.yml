@@ -28,7 +28,7 @@ jobs:
           last_commit="'$message_last_commit'"
           echo "last_commit " + $last_commit
           PWD=$(pwd)
-          $PWD/determine_strudel_action.sh $last_commit
+          $PWD/determine_strudel_action.sh "$last_commit"
 #          if [[ ! $message_last_commit == *"add-logs"* ]]; then export use_strudel=false;  fi
 #          if [[ $message_last_commit == *"add-logs"* ]]; then export use_strudel=true;  fi
 #          echo "use_strudel": $use_strudel
