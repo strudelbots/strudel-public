@@ -14,5 +14,10 @@ if [ "$output" != "remove-logs" ]; then
   echo "Test failed remove-logs"
   exit 1
 fi
+output=$(../determine_strudel_action.sh "strudel please remove trace logs")
+if [ "$output" != "remove-logs" ]; then
+  echo "Test failed remove-logs"
+  exit 1
+fi
 
 echo "Test passed!"

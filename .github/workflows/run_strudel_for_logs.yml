@@ -32,10 +32,6 @@ jobs:
           echo "command is $command"
           echo "run_strudel_value=$command" >> "$GITHUB_OUTPUT"
 
-#          if [[ ! $command == "none" ]]; then export use_strudel=false;  fi
-#          if [[ $command == "add-logs" ]]; then export use_strudel=true;  fi
-#          if [[ $command == "remove-logs" ]]; then export use_strudel=true;  fi
-
 
   run-strudel:
     needs: pre_run_strudel_on_pull_request
@@ -142,7 +138,8 @@ jobs:
            export ALL_CHANGED_FILES="${{ steps.get-changed-files.outputs.all_changed_files }}"
            export ROOT_DIR=$(pwd)/
            export OVERWRITE_ORIG_FILES=True
-           python /tmp/strudel-public/github_run_strudel.py
+           echo run_strudel ${{ steps.pre_run_strudel_on_pull_request.outputs.run_strudel }}
+           python /tmp/strudel-public/github_run_strudel.py ${{ pre_run_strudel_on_pull_request.outputs.run_strudel  }}
       - name: Commit and push Strudel logs
         run: |
           if [ -z "$(git status --porcelain)" ]; then echo "no files to push" && exit 0; fi
