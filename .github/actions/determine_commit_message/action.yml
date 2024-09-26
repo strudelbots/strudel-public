@@ -9,14 +9,12 @@ runs:
     steps:
       - name: check head commit message
         id: check_head_commit_message
-        env:
-          sha_last_commit: ${{ github.event.pull_request.head.sha }}
         shell: bash
         run: |
-          echo "sha_commit_message: $sha_last_commit"
           last_commit=$(git log -1 --pretty=%B $sha_last_commit)
           echo "last_commit:  $last_commit"
-          PWD=$(pwd)
+          PWD=${{ github.action_path }}
+          echo "PWD: $PWD"
           command=$($PWD/determine_strudel_action.sh  "$last_commit")
           if [[ ! $command == "add-logs" ]]; then export use_strudel=false;  fi
           if [[ $command == "add-logs" ]]; then export use_strudel=true;  fi
