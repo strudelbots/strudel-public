@@ -20,7 +20,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: run-reusable-actions
         id: run-reusable-actions
-        uses: ./.github/determine_strudel_action
+        uses: ./.github/actions/determine_commit_message
       - name: check head commit message
         id: check_head_commit_message
         env:
