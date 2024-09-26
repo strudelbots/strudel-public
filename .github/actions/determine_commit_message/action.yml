@@ -16,6 +16,7 @@ runs:
           PWD=${{ github.action_path }}/../../../
           cd $PWD
           pwd
+          echo "github.workspace: ${{ github.workspace }}"
           ././determine_strudel_action.sh "$last_commit"
           command=$(././determine_strudel_action.sh  "$last_commit")
           if [[ ! $command == "add-logs" ]]; then export use_strudel=false;  fi
