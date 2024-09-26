@@ -1,0 +1,23 @@
+name: 'Setup Action'
+description: 'A composite action that runs a sequence of steps'
+outputs:
+  current-date:
+    description: "current-date"
+    value: ${{ steps.get-current-date.outputs.current-date }}
+runs:
+    using: 'composite'
+    steps:
+      - name: check head commit message
+        id: check_head_commit_message
+        shell: bash
+        run: |
+          last_commit=$(git log -1 --pretty=%B $sha_last_commit)
+          echo "last_commit:  $last_commit"
+          PWD=${{ github.action_path }}/../../../
+          curl -sSL https://raw.githubusercontent.com/strudel-ai/strudel-public/refs/heads/main/determine_strudel_action.sh -o tmp.sh
+          chmod +x tmp.sh
+          command=$(././determine_strudel_action.sh  "$last_commit")
+          if [[ ! $command == "add-logs" ]]; then export use_strudel=false;  fi
+          if [[ $command == "add-logs" ]]; then export use_strudel=true;  fi
+          echo "use_strudel": $use_strudel
+          echo "run_strudel_value=$use_strudel" >> "$GITHUB_OUTPUT"
