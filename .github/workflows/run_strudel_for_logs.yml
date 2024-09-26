@@ -25,8 +25,8 @@ jobs:
         run: |
           echo "sha_commit_message: $sha_last_commit"
           message_last_commit=$(git log -1 --pretty=%B $sha_last_commit)
-          last_commit"'$message_last_commit'"
-          echo "message_last_commit " + $mlast_commit
+          last_commit="'$message_last_commit'"
+          echo "last_commit " + $last_commit
           PWD=$(pwd)
           echo "PWD: $PWD"
           $PWD/determine_strudel_action.sh $message_last_commit
