@@ -26,6 +26,7 @@ jobs:
           echo "sha_commit_message: $sha_last_commit"
           export message_last_commit="$(git log -1 --pretty=%B $sha_last_commit)"
           echo "message_last_commit: $message_last_commit"
+          echo $pwd
           determine_strudel_action.sh $message_last_commit
 #          if [[ ! $message_last_commit == *"add-logs"* ]]; then export use_strudel=false;  fi
 #          if [[ $message_last_commit == *"add-logs"* ]]; then export use_strudel=true;  fi
