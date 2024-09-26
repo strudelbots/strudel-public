@@ -14,10 +14,13 @@ jobs:
     outputs:
       run_strudel: ${{ steps.check_head_commit_message.outputs.run_strudel_value }}
     steps:
-
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+
+#      - uses: actions/checkout@v4
+#        with:
+#          ref: ${{ github.event.pull_request.head.sha }}
       - name: run-reusable-actions
         id: run-reusable-actions
         uses: ./.github/actions/determine_commit_message
