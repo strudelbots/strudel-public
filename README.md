@@ -54,13 +54,15 @@ that verifies your set-up is correct
 2. Create a new file in the `.github/workflows` directory with the name `run_strudel_for_logs.yml'
 2. Copy the following code into the file:
 ```yaml
-    name: run-strudel-for-logs
-    on:
-        push:
-            branches: [ "*" ]
+    name: strudel-for-logs
+    pull_request:
+# if you want to run the workflow only for other branches than main change the name of the branch 
+      branches:
+        - main
+
     jobs:
       run-strudel-for-logs:
-        uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.2.0
+        uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.4.0
         secrets:
             strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
             strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
