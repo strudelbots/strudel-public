@@ -55,11 +55,12 @@ that verifies your set-up is correct
 2. Copy the following code into the file:
 ```yaml
     name: strudel-for-logs
-    pull_request:
+    on: 
+      pull_request:
 # If you want to run the workflow only for other 
 # branches than main change the name of the branch 
-      branches:
-        - main
+        branches:
+          - main
 
     jobs:
       run-strudel-for-logs:
