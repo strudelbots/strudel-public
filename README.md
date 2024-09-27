@@ -56,7 +56,8 @@ that verifies your set-up is correct
 ```yaml
     name: strudel-for-logs
     pull_request:
-# if you want to run the workflow only for other branches than main change the name of the branch 
+# If you want to run the workflow only for other 
+# branches than main change the name of the branch 
       branches:
         - main
 
