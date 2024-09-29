@@ -9,8 +9,6 @@ Used to share public parts of Strudel
    1. Repository with python code on which you want to install Strudel 
    2. Permission to  to add repository secrets at the repository
    3. Permission to add Github actions  to the repository
-   4. Permission to configure write permission to actions
-    
 
 
 ## Onboarding  (On Prem Through Github Actions
