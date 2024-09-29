@@ -42,9 +42,8 @@ that verifies your set-up is correct
 2. Commit and push the changes to the repository
 3. Manually run the new work flow. 
 
-### Create Strudel add-logs Github Action in your repository:
-1. Set up keys to access Strudel (if not done already):
-2. Create a new file in the `.github/workflows` directory with the name `run_strudel_for_logs.yml'
+### Create Strudel add-logs Github Action in Your Repository
+1. Create a new file in the `.github/workflows` directory with the name `run_strudel_for_logs.yml'
 2. Copy the following code into the file:
 ```yaml
     name: strudel-for-logs
