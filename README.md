@@ -28,17 +28,17 @@ Used to share public parts of Strudel
 This step is optional and can be used to run strudel test 
 that verifies your set-up is correct 
 2. Copy the following code into the file:
-   ```yaml
-   name: strudel-test
-   on:
-     workflow_dispatch:
-   jobs:
-     run-strudel-test:
-       uses: strudel-ai/strudel-public/.github/workflows/run_strudel_test.yml@v0.2.0
-       secrets:
-           strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
-           strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
-   ```
+```yaml
+name: strudel-test
+on:
+  workflow_dispatch:
+jobs:
+  run-strudel-test:
+    uses: strudel-ai/strudel-public/.github/workflows/run_strudel_test.yml@v0.2.0
+    secrets:
+        strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
+        strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
+```
 2. Commit and push the changes to the repository
 3. Manually run the new work flow. 
 
@@ -46,23 +46,22 @@ that verifies your set-up is correct
 1. Create a new file in the `.github/workflows` directory with the name `run_strudel_for_logs.yml'
 2. Copy the following code into the file:
 ```yaml
-    name: strudel-for-logs
-    on: 
-      pull_request:
+ name: strudel-for-logs
+on: 
+pull_request:
 # If you want to run the workflow only for other 
 # branches than main change the name of the branch 
-        branches:
-          - main
-    jobs:
-      run-strudel-for-logs:
-        uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.4.0
-        secrets:
-            strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
-            strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
-      permissions:
-        actions: write
-        contents: write
-
+     branches:
+       - main
+jobs:
+run-strudel-for-logs:
+  uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.4.0
+  secrets:
+    strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
+    strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
+permissions:
+  actions: write
+  contents: write
 ```
 2. Commit and push the changes to the repository
 
