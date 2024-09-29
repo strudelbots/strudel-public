@@ -12,7 +12,7 @@ Used to share public parts of Strudel
 
 
 ## Onboarding  (On Prem Through Github Actions)
-### Set up keys to access Strudel
+### Setup Keys to Access Strudel
 1. Go to the repository &rarr; Settings &rarr; Secrets and variables  &rarr; Actions 
 1. Add a new secret with the name `STRUDEL_ACCESS_KEY_ID` and the value 
    of the access key you received from Strudel support. 
