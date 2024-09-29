@@ -13,12 +13,12 @@ Used to share public parts of Strudel
 
 
 ## Onboarding  (On Prem Through Github Actions
-### Set up keys to access Strudel:
-     1. Go to the repository &rarr; Settings &rarr; Secrets and variables  &rarr; Actions 
-     3. Add a new secret with the name `STRUDEL_ACCESS_KEY_ID` and the value 
-        of the access key you received from Strudel support. 
-     4. Add a new secret with the name `STRUDEL_SECRET_KEY` and the value of the 
-        secret key you received from Strudel Support. 
+### Set up keys to access Strudel
+1. Go to the repository &rarr; Settings &rarr; Secrets and variables  &rarr; Actions 
+1. Add a new secret with the name `STRUDEL_ACCESS_KEY_ID` and the value 
+   of the access key you received from Strudel support. 
+1. Add a new secret with the name `STRUDEL_SECRET_KEY` and the value of the 
+   secret key you received from Strudel Support. 
 
 2. Open your Github project in your favorite IDE
 2. Create a new directory (if it does not already exist):`.github/workflows`
