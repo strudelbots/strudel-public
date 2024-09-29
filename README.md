@@ -11,8 +11,9 @@ Used to share public parts of Strudel
    4. Permission to configure write permission to actions
     
 
-## Onboarding  (On Prem Through Github Actions)
-1. Set up keys to access Strudel:
+
+## Onboarding  (On Prem Through Github Actions
+### Set up keys to access Strudel:
      1. Go to the repository &rarr; Settings &rarr; Secrets and variables  &rarr; Actions 
      3. Add a new secret with the name `STRUDEL_ACCESS_KEY_ID` and the value 
         of the access key you received from Strudel support. 
