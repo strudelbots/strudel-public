@@ -28,7 +28,7 @@ Used to share public parts of Strudel
      4. Add a new secret with the name `STRUDEL_SECRET_KEY` and the value of the 
         secret key you received from Strudel Support. 
 
-### Create strudel test github action in your repository (optional)
+### Create Strudel-Test Action in your Github Repository (optional)
 
 1. Create a new file in the `.github/workflows` directory with the name `strudel-test.yml`
 This step is optional and can be used to run strudel test 
@@ -45,8 +45,7 @@ that verifies your set-up is correct
            strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
            strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
    ```
-2. Enable workflows to write to the repository. 
-2. Commit the changes to the repository
+2. Commit and push the changes to the repository
 3. Manually run the new work flow. 
 
 ### Create strudel add-logs github action in your repository:
@@ -68,9 +67,12 @@ that verifies your set-up is correct
         secrets:
             strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
             strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
+      permissions:
+        actions: write
+        contents: write
+
 ```
-2. Enable workflows to write to the repository (if not done already). 
-2. Commit the changes to the repository 
+2. Commit and push the changes to the repository 
 
 
 ## Using Strudel Alpha
