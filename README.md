@@ -42,7 +42,7 @@ that verifies your set-up is correct
 2. Commit and push the changes to the repository
 3. Manually run the new work flow. 
 
-### Create strudel add-logs github action in your repository:
+### Create Strudel add-logs Github Action in your repository:
 1. Set up keys to access Strudel (if not done already):
 2. Create a new file in the `.github/workflows` directory with the name `run_strudel_for_logs.yml'
 2. Copy the following code into the file:
@@ -54,7 +54,6 @@ that verifies your set-up is correct
 # branches than main change the name of the branch 
         branches:
           - main
-
     jobs:
       run-strudel-for-logs:
         uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.4.0
@@ -66,8 +65,7 @@ that verifies your set-up is correct
         contents: write
 
 ```
-2. Commit and push the changes to the repository 
-
+2. Commit and push the changes to the repository
 
 ## Using Strudel Alpha
 ## Providing feedback 
