@@ -67,13 +67,13 @@ permissions:
 
 ## Using Strudel Alpha
 ### Using Strudel with Pull Requests
-In this mode Strudel will add logs to your pull requests. 
-Work on your code without considering logging, just focus on the business 
-logic you need to implement. 
-1. start by creating a new branch. 
-2. work on your code
-3. when you feel ready for code review create a pull request.
-4. Strudel will add logs to your pull request.
-5. Review the logs and make sure they are correct.
-6. Merge the pull request.
+In this mode, Strudel will automatically add logging to your pull requests, 
+allowing you to focus entirely on your business logic without worrying about log implementation.
+
+1. Start by creating a new branch.
+2. Work on your code as usual.
+3. When you're ready for a code review, create a pull request.
+3. Strudel will automatically insert the necessary logs into your pull request.
+4. Review the logs to ensure they are accurate.
+5. Once satisfied, merge the pull request.
 ## Providing feedback 
