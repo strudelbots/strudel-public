@@ -108,7 +108,7 @@ jobs:
         
       - name: run docker compose
         run: |
-            docker compose -f /tmp/strudel-public/docker_compose_run.yml -e LOGGER_MODULE=${{ inputs.logger_name }} up  -d --quiet-pull
+            docker compose -f /tmp/strudel-public/docker_compose_run.yml up  -d --quiet-pull
             sleep 10
       - name: run strudel sanity test
         run: |

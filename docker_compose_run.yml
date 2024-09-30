@@ -3,6 +3,8 @@ services:
   logs:
     container_name: logs
     image: 446759808364.dkr.ecr.eu-central-1.amazonaws.com/shtruddel:latest
+    environment:
+      - LOGGER_NAME=bogs
     expose:
       - "8000"
       - "8080"
@@ -11,6 +13,9 @@ services:
   templates:
     container_name: templates
     image: 446759808364.dkr.ecr.eu-central-1.amazonaws.com/shtruddel:latest
+    environment:
+      - LOGGER_NAME=bogs
+
     expose:
       - "8000" # should we remove that in prod?
       - "8080"
