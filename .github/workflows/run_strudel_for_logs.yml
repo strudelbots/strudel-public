@@ -2,6 +2,10 @@ name: run-strudel-on-branch
 
 on:
   workflow_call:
+    inputs:
+      logger_name:
+        required: true
+        type: string
     secrets:
       strudel_access_key:
         required: true
@@ -31,7 +35,6 @@ jobs:
           command=$(././tmp.sh  "$last_commit")
           echo "command is $command"
           echo "run_strudel_value=$command" >> "$GITHUB_OUTPUT"
-
 
   run-strudel:
     needs: pre_run_strudel_on_pull_request
@@ -105,7 +108,7 @@ jobs:
         
       - name: run docker compose
         run: |
-            docker compose -f /tmp/strudel-public/docker_compose_run.yml up -d --quiet-pull
+            docker compose -f /tmp/strudel-public/docker_compose_run.yml up -e LOGGER_MODULE=${{ inputs.logger_name }} -d --quiet-pull
             sleep 10
       - name: run strudel sanity test
         run: |
