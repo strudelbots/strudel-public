@@ -6,6 +6,7 @@ on:
       logger_name:
         required: true
         type: string
+        description: 'strudel'
     secrets:
       strudel_access_key:
         required: true
@@ -108,7 +109,7 @@ jobs:
         
       - name: run docker compose
         run: |
-            export LOGGER_NAME=ludes
+            export LOGGER_NAME=${{ inputs.logger_name }}
             docker compose -f /tmp/strudel-public/docker_compose_run.yml up  -d --quiet-pull
             sleep 10
             docker ps -a
