@@ -4,7 +4,7 @@ services:
     container_name: logs
     image: 446759808364.dkr.ecr.eu-central-1.amazonaws.com/shtruddel:latest
     environment:
-      - LOGGER_NAME=strudel
+      - LOGGER_NAME=shtruddel
     expose:
       - "8000"
       - "8080"
@@ -14,7 +14,7 @@ services:
     container_name: templates
     image: 446759808364.dkr.ecr.eu-central-1.amazonaws.com/shtruddel:latest
     environment:
-      - LOGGER_NAME=strudel
+      - LOGGER_NAME=shtruddel
 
     expose:
       - "8000" # should we remove that in prod?
