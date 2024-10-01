@@ -7,7 +7,7 @@ on:
        - main
 jobs:
   run-strudel-for-logs:
-    uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.4.0
+    uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.5.0
     with:
       logger_name: strudel
     secrets:
