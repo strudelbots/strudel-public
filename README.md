@@ -34,7 +34,7 @@ on:
   workflow_dispatch:
 jobs:
   run-strudel-test:
-    uses: strudel-ai/strudel-public/.github/workflows/run_strudel_test.yml@v0.5.0
+    uses: strudel-ai/strudel-public/.github/workflows/run_strudel_test.yml@v0.6.0
     secrets:
         strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
         strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
@@ -55,7 +55,7 @@ on:
        - main
 jobs:
   run-strudel-for-logs:
-    uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.5.0
+    uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.6.0
     with:
       logger_name: strudel
     secrets:
