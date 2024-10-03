@@ -49,8 +49,9 @@ allowing you to focus entirely on your business logic without worrying about log
 
 1. Start by creating a new branch.
 2. Work on your code as usual.
-3. When you're ready for a code review, create a pull request.
-3. Strudel will automatically insert the necessary logs into your pull request.
+3. When you're ready for a code review, create a pull request. 
+   3.1 [You can create a pull request using the web api](https://docs.github.com/en/github/collaborating-with-pull-requests/creating-a-pull-request) 
+4. Strudel will automatically insert the necessary logs into your pull request.
 4. Review the logs to ensure they are accurate.
 5. Once satisfied, merge the pull request.
 ## Providing feedback 
