@@ -58,11 +58,16 @@ You can use either the GitHub web interface or the GitHub CLI.
 4. Strudel will automatically insert the required logging code into your pull request.
 5. Reviewers will review the code, now with logging included.
 6. Once the review is complete and everyone is satisfied, merge the pull request.
-In this mode, Strudel will automatically add logging code to your pull requests, 
-allowing you to focus entirely on your business logic without worrying about log implementation.
+
 
 ### Add trace-level logging code to your pull request 
-What is trace level. 
+In this mode, Strudel adds logging code that enables detailed tracing. 
+These logs provide insights into the full execution flow, including method calls 
+and control flow, helping you quickly understand the behavior at every level.
+
+This is especially useful during development when you need to verify the flow of execution.
+
+
 
 ### Remove all logging-code to your pull request
 To remove all Strudel logging-code from a pull request just add the following
