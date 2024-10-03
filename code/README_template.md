@@ -68,7 +68,7 @@ If you want to change the logger name, you can do so by adding the following lin
 <pre>
 uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml       
    <b>with:
-       logger_name: \<you logger name\> </b>
+       logger_name: @#003 your logger name\> </b>
    secrets:
 </pre>
 ## Frequently Asked Questions
