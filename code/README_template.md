@@ -67,8 +67,8 @@ logs of the form `strudel.<log-level>(<log message>)`.
 If you want to change the logger name, you can do so by adding the following line to your code:
 <pre>
 uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml       
-   with:
-      logger_name: <your-logger-name>
+   <b>with:
+       logger_name: <you logger name> </b>
    secrets:
 </pre>
 ## Frequently Asked Questions
