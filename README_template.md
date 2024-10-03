@@ -50,9 +50,9 @@ allowing you to focus entirely on your business logic without worrying about log
 1. Start by creating a new branch.
 2. Work on your code as usual.
 3. When you're ready for a code review, create a pull request. 
-   1. [You can create a pull request using the web api.](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=webui) 
-   1. <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=webui" target="_blank">Squarespace</a>
-   2. [You can create a pull request using the Github cli.](https://external.ink?to=/docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=cli#creating-the-pull-request) 
+   1. [You can create a pull request using the web api.](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=webui)
+   2. [You can create a pull request using the Github cli.](https://external.ink?to=/docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=cli#creating-the-pull-request)
+3. Now commit to your branch a commit message with the words `strudel`,`add`, `logs` (in any order).  
 4. Strudel will automatically insert the necessary logs into your pull request.
 4. Review the logs to ensure they are accurate.
 5. Once satisfied, merge the pull request.
