@@ -8,8 +8,6 @@ on:
 jobs:
   run-strudel-for-logs:
     uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.6.0
-    with:
-      logger_name: strudel
     secrets:
       strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
       strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
