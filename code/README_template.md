@@ -70,7 +70,7 @@ uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml
    with:
       logger_name: <your-logger-name>
    secrets:
-<\pre>
+</pre>
 ## Frequently Asked Questions
 ## Limitations 
 
