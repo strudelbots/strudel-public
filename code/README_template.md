@@ -61,6 +61,16 @@ allowing you to focus entirely on your business logic without worrying about log
 To remove all Strudel logging-code from a pull request just add the forlowing
 words to your commit message: `strudel`, `remove`, `logs` (in any order).
 ## Configuring Strudel 
+### Setting the logger name
+By default, Strudel will use the name `strudel` as the logger name. That is, Strudel produces
+logs of the form `strudel.<log-level>(<log message>)`. 
+If you want to change the logger name, you can do so by adding the following line to your code:
+```
+    uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml        
+    *with:*
+      *logger_name: <your-logger-name>*
+    secrets:
+```
 ## Frequently Asked Questions
 ## Limitations 
 
