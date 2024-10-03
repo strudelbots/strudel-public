@@ -67,6 +67,10 @@ and control flow, helping you quickly understand the behavior at every level.
 
 This is especially useful during development when you need to verify the flow of execution.
 
+To enable trace-level logging code Commit with a message 
+that includes the words `strudel`, `add`,  `logs`, and `trace` 
+(in any order).
+
 
 
 ### Remove all logging-code to your pull request
