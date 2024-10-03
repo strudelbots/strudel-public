@@ -4,12 +4,13 @@ Used to share public parts of Strudel
 ## About Strudel 
 
 ## Pre-Requisites
-1. Register to strudel. <a href="mailto:support@strudel-ai.com?subject=Strudel%20Alpha%20Registration&amp;body=put%20body%20">eMail Strudel Support</a>
-3. You will get an email with Strudel secrets, keep this email and do not share your secrets with anyone.
-4. Github account with: 
-   1. Repository with python code on which you want to install Strudel 
-   2. Permission to to add repository secrets at the repository
-   3. Permission to add Github actions  to the repository
+1. **Register for Strudel**: Contact Strudel Support via email, <a href="mailto:support@strudel-ai.com?subject=Strudel%20Alpha%20Registration&amp;body=put%20body%20">eMail Strudel Support</a>
+2. **Receive Strudel Secrets**: You will receive an email containing your Strudel secrets. Keep this email safe and do not share the secrets with anyone.
+2. **GitHub Account**:
+   1. A repository with Python code where you want to install Strudel. 
+   2. Permission to add repository secrets. 
+   3. Permission to add GitHub Actions to the repository.
+
 
 
 ## Onboarding  (On Prem Through Github Actions)
