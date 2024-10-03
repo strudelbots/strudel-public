@@ -1,13 +1,14 @@
 # strudel-public
 Used to share public parts of Strudel 
-## Overview 
+
+## About Strudel 
 
 ## Pre-Requisites
-1. Register to strudel. <a href="mailto:support@strudel-ai.com?subject=Hello%20World&amp;body=put%20body%20">eMail Strudel Support</a>
+1. Register to strudel. <a href="mailto:support@strudel-ai.com?subject=Strudel%20Alpha%20Registration&amp;body=put%20body%20">eMail Strudel Support</a>
 3. You will get an email with Strudel secrets, keep this email and do not share your secrets with anyone.
 4. Github account with: 
    1. Repository with python code on which you want to install Strudel 
-   2. Permission to  to add repository secrets at the repository
+   2. Permission to to add repository secrets at the repository
    3. Permission to add Github actions  to the repository
 
 
@@ -44,6 +45,7 @@ run-client-job-come-here
 
 ## Using Strudel Alpha
 ### Using Strudel with Pull Requests
+#### Add logging-code to your pull request
 In this mode, Strudel will automatically add logging code to your pull requests, 
 allowing you to focus entirely on your business logic without worrying about log implementation.
 
@@ -56,9 +58,11 @@ allowing you to focus entirely on your business logic without worrying about log
 4. Strudel will automatically insert the necessary logs into your pull request.
 4. The reviewers will review your code with the logs. 
 5. Once everyone is satisfied, merge the pull request.
-#### Add trace level logging-code to your pull request 
+#### Add trace-level logging code to your pull request 
+What is trace level. 
+
 #### Remove all logging-code to your pull request
-To remove all Strudel logging-code from a pull request just add the forlowing
+To remove all Strudel logging-code from a pull request just add the following
 words to your commit message: `strudel`, `remove`, `logs` (in any order).
 ## Configuring Strudel 
 ### Setting the logger name
