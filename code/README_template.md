@@ -44,10 +44,7 @@ run-client-job-come-here
 ```
 2. Commit and push the changes to the repository
 
-## Using Strudel Alpha
-### Using Strudel with Pull Requests
-#### Add logging-code to your pull request
-Add Logging Code to Your Pull Request
+## Add Logging Code to Your Pull Request
 With Strudel, logging code is automatically added to your pull requests, 
 letting you focus solely on business logic without worrying about implementing logs.
 
