@@ -44,7 +44,7 @@ run-client-job-come-here
 
 ## Using Strudel Alpha
 ### Using Strudel with Pull Requests
-In this mode, Strudel will automatically add logging to your pull requests, 
+In this mode, Strudel will automatically add logging code to your pull requests, 
 allowing you to focus entirely on your business logic without worrying about log implementation.
 
 1. Start by creating a new branch.
@@ -52,8 +52,16 @@ allowing you to focus entirely on your business logic without worrying about log
 3. When you're ready for a code review, create a pull request. 
    1. [You can create a pull request using the web api.](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=webui)
    2. [You can create a pull request using the Github cli.](https://external.ink?to=/docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=cli#creating-the-pull-request)
-3. Now commit to your branch a commit message with the words `strudel`,`add`, `logs` (in any order).  
+3. Commit to your branch a commit message with the words `strudel`,`add`, `logs` (in any order).  
 4. Strudel will automatically insert the necessary logs into your pull request.
-4. Review the logs to ensure they are accurate.
-5. Once satisfied, merge the pull request.
+4. The reviewers will review your code with the logs. 
+5. Once everyone is satisfied, merge the pull request.
+#### Add trace level logging-code to your pull request 
+#### Remove all logging-code to your pull request
+To remove all Strudel logging-code from a pull request just add the forlowing
+words to your commit message: `strudel`, `remove`, `logs` (in any order).
+## Configuring Strudel 
+## Frequently Asked Questions
+## Limitations 
+
 ## Providing feedback 
