@@ -61,10 +61,10 @@ You can use either the GitHub web interface or the GitHub CLI.
 In this mode, Strudel will automatically add logging code to your pull requests, 
 allowing you to focus entirely on your business logic without worrying about log implementation.
 
-#### Add trace-level logging code to your pull request 
+### Add trace-level logging code to your pull request 
 What is trace level. 
 
-#### Remove all logging-code to your pull request
+### Remove all logging-code to your pull request
 To remove all Strudel logging-code from a pull request just add the following
 words to your commit message: `strudel`, `remove`, `logs` (in any order).
 ## Configuring Strudel 
