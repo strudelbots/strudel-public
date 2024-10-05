@@ -9,12 +9,13 @@ By automating up to 50% of the development process, Strudel will empower
 teams to accelerate productivity and drive meaningful innovation. The result? Faster development cycles, higher-quality code, and engineers who can 
 focus on engineering the extraordinary.
 ## About Strudel MVP 
-Strudel MVP focuses on writing telemetry code. We automatically embed logging 
-code and business metrics into your Python code.
+Strudel's MVP simplifies telemetry integration 
+by automatically embedding logging and business metrics directly into your Python code.
 
 ## Pre-Requisites
 1. **Python**: Strudel MVP is currently available for Python projects only.
-1. **Register for Strudel**: Contact Strudel Support via email, <a href="mailto:support@strudel-ai.com?subject=Strudel%20Alpha%20Registration&amp;body=put%20body%20">eMail Strudel Support</a>
+1. **Register for Strudel**: Contact Strudel Support via email, 
+<a href="mailto:support@strudel-ai.com?subject=Strudel%20Alpha%20Registration&amp;</a>
 2. **Receive Strudel Secrets**: You will receive an email containing your Strudel secrets. Keep this email safe and do not share the secrets with anyone.
 2. **GitHub Account**:
    1. A repository with Python code where you want to install Strudel. 
