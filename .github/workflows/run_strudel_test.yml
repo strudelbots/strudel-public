@@ -77,7 +77,6 @@ jobs:
             echo "LOGGER_NAME=$LOGGER_NAME"
             docker compose -f /tmp/strudel-public/docker_compose_run.yml up -d --quiet-pull
             sleep 10
-            docker ps -a
       - name: run strudel sanity test
         run: |
             echo "***   start sanity test"

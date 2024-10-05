@@ -4,9 +4,9 @@ on:
   workflow_call:
     inputs:
       logger_name:
-        required: true
+        default: 'strudel'
+        required: false
         type: string
-        default: strudel
     secrets:
       strudel_access_key:
         required: true
