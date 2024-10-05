@@ -35,7 +35,7 @@ you received from Strudel support.
 received from Strudel Support. 
 
 
-### Create Strudel-Test Action in your Github Repository (optional)
+### Create Strudel Test Action in your Github Repository (optional)
 This step is optional and can be used to run a Strudel test to verify that your setup is correct.
 1. Open your repository in GitHub/IDE. 
 2. Create a new file in the `.github/workflows` directory with the name `strudel-test.yml`.
@@ -62,31 +62,28 @@ letting you focus solely on business logic without worrying about implementing l
 
 1. Start developing new functionality or fixing a bug in your Python code.
    1. Create a new branch
-   2. Work on your new code as usual.
+   2. Implement your changes by writing and testing your code, 
+   making commits regularly as you progress.
 2. When ready for a code review, create a pull request. 
 You can use either the GitHub web interface or the GitHub CLI.
    1. [You can create a pull request using the web api.](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=webui)
    2. [You can create a pull request using the Github cli.](https://external.ink?to=/docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=cli#creating-the-pull-request)
 
-4. Create a new Commit with a message that 
+4. Create a new commit with a message that 
 includes the words `strudel`, `add`,  and `logs` (in any order).
-4. Strudel automatically inserts the required logging code into your branch.
-5. Reviewers will review the code, now with the logging included (as if you wrote the logging code).
-6. Once the review is completed and everyone is satisfied, merge the pull request.
-
+4. Strudel automatically adds the necessary logging code to your branch.
+5. Code reviewers will see both the logging code and your business logic during the review.
+6. Once the review is approved and everyone is satisfied, merge the pull request.
 
 ### Add trace-level logging code to your pull request 
 In this mode, Strudel adds logging code that enables detailed tracing. 
 These logs provide insights into the full execution flow, including method calls 
 and control flow, helping you quickly understand the behavior at every level.
-
 This is especially useful during development when you need to verify the flow of execution.
 
 To enable trace-level logging code Commit with a message 
 that includes the words `strudel`, `add`,  `logs`, and `trace` 
 (in any order).
-
-
 
 ### Remove all logging-code to your pull request
 To remove all Strudel logging-code from a pull request just add the following
@@ -103,6 +100,5 @@ uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml
    secrets:
 </pre>
 ## Frequently Asked Questions
-## Limitations 
+We will add here questions and answers as we get them. 
 
-## Providing feedback 
