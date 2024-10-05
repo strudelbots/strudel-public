@@ -16,14 +16,14 @@ by automatically embedding logging and business metrics directly into your Pytho
 1. **Python**: Strudel MVP is currently available for Python projects only.
 1. **Register for Strudel**: Contact Strudel Support via email, 
 <a href="mailto:support@strudel-ai.com?subject=Strudel%20Alpha%20Registration&amp;</a>
-2. **Receive Strudel Secrets**: You will receive an email containing your Strudel secrets. Keep this email safe and do not share the secrets with anyone.
+2. **Receive Strudel Secrets**: You will receive an email containing your Strudel secrets. 
+Keep this email safe and do not share the secrets with anyone.
 2. **GitHub Account**:
    1. A repository with Python code where you want to install Strudel. 
    2. Permission to add repository secrets. 
    3. Permission to add GitHub Actions to the repository.
 
-
-
+   
 ## Onboarding  (On Prem Through Github Actions)
 ### Setup Keys to Access Strudel
 1. Go to the repository &rarr; Settings &rarr; Secrets and variables  &rarr; Actions 
