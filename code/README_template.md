@@ -36,10 +36,10 @@ received from Strudel Support.
 
 
 ### Create Strudel-Test Action in your Github Repository (optional)
-
-1. Create a new file in the `.github/workflows` directory with the name `strudel-test.yml`
 This step is optional and can be used to run strudel test 
-that verifies your set-up is correct 
+that verifies your set-up is correct. 
+1. Open your repository in GitHub/IDE. 
+2. Create a new file in the `.github/workflows` directory with the name `strudel-test.yml`.
 2. Copy the following code into the file:
 ```yaml
 test-client-job-come-here
@@ -48,7 +48,8 @@ test-client-job-come-here
 3. Manually run the new work flow. 
 
 ### Create Strudel add-logs Github Action in Your Repository
-1. Create a new file in the `.github/workflows` directory with the name `run_strudel_for_logs.yml`
+1. Create a new file in the `.github/workflows` directory with the name 
+`run_strudel_for_logs.yml`
 2. Copy the following code into the file:
 ```yaml
 run-client-job-come-here
@@ -59,16 +60,19 @@ run-client-job-come-here
 With Strudel, logging code is automatically added to your pull requests, 
 letting you focus solely on business logic without worrying about implementing logs.
 
-1. Create a new branch and work on your code as usual.
+1. Start developing new functionality or fixing a bug in your Python code.
+   1. Create a new branch
+   2. Work on your new code as usual.
 2. When ready for a code review, create a pull request. 
 You can use either the GitHub web interface or the GitHub CLI.
    1. [You can create a pull request using the web api.](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=webui)
    2. [You can create a pull request using the Github cli.](https://external.ink?to=/docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=cli#creating-the-pull-request)
 
-4. Commit with a message that includes the words `strudel`, `add`,  and `logs` (in any order).
-4. Strudel will automatically insert the required logging code into your pull request.
-5. Reviewers will review the code, now with logging included.
-6. Once the review is complete and everyone is satisfied, merge the pull request.
+4. Create a new Commit with a message that 
+includes the words `strudel`, `add`,  and `logs` (in any order).
+4. Strudel automatically inserts the required logging code into your branch.
+5. Reviewers will review the code, now with the logging included (as if you wrote the logging code).
+6. Once the review is completed and everyone is satisfied, merge the pull request.
 
 
 ### Add trace-level logging code to your pull request 
