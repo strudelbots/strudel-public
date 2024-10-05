@@ -29,13 +29,11 @@ Keep this email safe and do not share the secrets with anyone.
 ## Onboarding  (On Prem Through Github Actions)
 ### Setup Keys to Access Strudel
 1. Go to the repository &rarr; Settings &rarr; Secrets and variables  &rarr; Actions 
-1. Add a new secret with the name `STRUDEL_ACCESS_KEY_ID` and the value 
-   of the access key you received from Strudel support. 
-1. Add a new secret with the name `STRUDEL_SECRET_KEY` and the value of the 
-   secret key you received from Strudel Support. 
+1. Add a new secret,  `STRUDEL_ACCESS_KEY_ID`,  with the access key value 
+you received from Strudel support. 
+1. Add a new secret, e `STRUDEL_SECRET_KEY`, with the secret key value you 
+received from Strudel Support. 
 
-2. Open your Github project in your favorite IDE.
-2. Create a new directory (if it does not already exist):`.github/workflows`
 
 ### Create Strudel-Test Action in your Github Repository (optional)
 
