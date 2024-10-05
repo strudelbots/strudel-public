@@ -1,6 +1,6 @@
 
 
-# Strudel: Leave the grind to the bots. Engineer the extraordinary
+## Strudel: Leave the grind to the bots. Engineer the extraordinary
 Strudel is changing how we engineer software by merging human ingenuity with advanced automation. 
 With Strudel, software engineers can shift their focus from repetitive, time-consuming tasks to what truly 
 matters—innovation, problem-solving, and building exceptional solutions. 
