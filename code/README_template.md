@@ -1,16 +1,18 @@
 
 
-## Strudel: Leave the grind to the bots. Engineer the extraordinary.
+# Strudel: Leave the grind to the bots. Engineer the extraordinary
 Strudel is changing how we engineer software by merging human ingenuity with advanced automation. 
 With Strudel, software engineers can shift their focus from repetitive, time-consuming tasks to what truly 
 matters—innovation, problem-solving, and building exceptional solutions. 
-Strudel’s intelligent bots seamlessly handle routine tasks like writing telemetry code,
-performance monitoring, refactoring, freeing engineers to concentrate on strategic, 
-business-critical code.  
-
+Strudel’s intelligent bots seamlessly handle routine tasks. 
 By automating up to 50% of the development process, Strudel will empower
 teams to accelerate productivity and drive meaningful innovation. The result? Faster development cycles, higher-quality code, and engineers who can 
 focus on engineering the extraordinary.
+## About Strudel MVP 
+like writing telemetry code,
+performance monitoring, refactoring, freeing engineers to concentrate on strategic, 
+business-critical code.  
+
 ## Pre-Requisites
 1. **Register for Strudel**: Contact Strudel Support via email, <a href="mailto:support@strudel-ai.com?subject=Strudel%20Alpha%20Registration&amp;body=put%20body%20">eMail Strudel Support</a>
 2. **Receive Strudel Secrets**: You will receive an email containing your Strudel secrets. Keep this email safe and do not share the secrets with anyone.
