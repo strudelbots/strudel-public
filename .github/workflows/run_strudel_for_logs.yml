@@ -6,7 +6,7 @@ on:
       logger_name:
         required: true
         type: string
-        description: 'strudel'
+        default: strudel
     secrets:
       strudel_access_key:
         required: true
