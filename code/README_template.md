@@ -36,8 +36,7 @@ received from Strudel Support.
 
 
 ### Create Strudel-Test Action in your Github Repository (optional)
-This step is optional and can be used to run strudel test 
-that verifies your set-up is correct. 
+This step is optional and can be used to run a Strudel test to verify that your setup is correct.
 1. Open your repository in GitHub/IDE. 
 2. Create a new file in the `.github/workflows` directory with the name `strudel-test.yml`.
 2. Copy the following code into the file:
@@ -46,8 +45,9 @@ test-client-job-come-here
 ```
 2. Commit and push the changes to the repository
 3. Manually run the new work flow. 
+4. Check the steps and the logs of the action to ensure that the test ran successfully.
 
-### Create Strudel add-logs Github Action in Your Repository
+### Create Strudel Add-Logs  Action in Your Github Repository
 1. Create a new file in the `.github/workflows` directory with the name 
 `run_strudel_for_logs.yml`
 2. Copy the following code into the file:
