@@ -17,7 +17,7 @@ letting you focus solely on business logic without worrying about implementing l
 ## Pre-Requisites
 1. **Python**: Strudel MVP is currently available for Python projects only.
 1. **Register for Strudel**: Contact Strudel Support via email,
-<a href="mailto:support@strudel-ai.com?subject=hello">Send email</a>
+<a href="mailto:support@strudel-ai.com?subject=Strudel MVP Registration">Send email</a>
 2. **Receive Strudel Secrets**: You will receive an email containing your Strudel secrets. 
 Keep this email safe and do not share the secrets with anyone.
 2. **GitHub Account**:
