@@ -12,6 +12,7 @@ on:
         required: true
       strudel_secret_key:
         required: true
+  workflow_dispatch:
 jobs:
   run-strudel-test:
     runs-on: ubuntu-22.04
