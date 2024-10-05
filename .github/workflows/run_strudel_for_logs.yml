@@ -31,9 +31,9 @@ jobs:
         run: |
           last_commit=$(git log -1 --pretty=%B $sha_last_commit)
           echo "last_commit:  $last_commit"
-          curl -sSL https://raw.githubusercontent.com/strudel-ai/strudel-public/refs/heads/main/determine_strudel_action.sh -o tmp.sh
+          curl -sSL https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/code/determine_strudel_action.sh -o /tmp/tmp.sh
           chmod +x tmp.sh
-          command=$(././tmp.sh  "$last_commit")
+          command=$(/tmp/tmp.sh  "$last_commit")
           echo "command is $command"
           echo "run_strudel_value=$command" >> "$GITHUB_OUTPUT"
 
