@@ -78,17 +78,17 @@ jobs:
             docker compose -f /tmp/strudel-public/docker_compose_run.yml up -d --quiet-pull
             sleep 10
             docker ps -a
-#      - name: run strudel sanity test
-#        run: |
-#            echo "***   start sanity test"
-#            export STATUSCODE=$(curl --silent --output /dev/null --write-out "%{http_code}" --location '127.0.0.1:8080/add_logs/' \
-#            --header 'X-Request-Id: 7' \
-#            --header 'Content-Type: application/json' \
-#            --data '{"source": "test",
-#            "file_content": "def foo():\n  print(a)",
-#            "file_name": "test"}')
-#            printf "\n***   status code is $STATUSCODE \n"
-#            if [ $STATUSCODE -ne 200 ]; then echo "sanity test fails, status $STATUSCODE"; fi
-#            if [ $STATUSCODE -ne 200 ]; then exit 22; fi
-#            echo "***   end sanity test"
+      - name: run strudel sanity test
+        run: |
+            echo "***   start sanity test"
+            export STATUSCODE=$(curl --silent --output /dev/null --write-out "%{http_code}" --location '127.0.0.1:8080/add_logs/' \
+            --header 'X-Request-Id: 7' \
+            --header 'Content-Type: application/json' \
+            --data '{"source": "test",
+            "file_content": "def foo():\n  print(a)",
+            "file_name": "test"}')
+            printf "\n***   status code is $STATUSCODE \n"
+            if [ $STATUSCODE -ne 200 ]; then echo "sanity test fails, status $STATUSCODE"; fi
+            if [ $STATUSCODE -ne 200 ]; then exit 22; fi
+            echo "***   end sanity test"
 
