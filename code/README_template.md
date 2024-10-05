@@ -1,7 +1,7 @@
 
 
 ## About Strudel 
-Strudel is changing how software is engineered by merging human ingenuity with advanced automation. 
+Strudel is changing how we engineer software by merging human ingenuity with advanced automation. 
 With Strudel, software engineers can shift their focus from repetitive, time-consuming tasks to what truly 
 matters—innovation, problem-solving, and building exceptional solutions. 
 Strudel’s intelligent bots seamlessly handle routine tasks like logging, embedding business metrics, refactoring, 
