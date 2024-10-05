@@ -1,6 +1,6 @@
 
 
-## Strudel: Leave the grind to the bots. Engineer the extraordinary
+## Strudel: Leave the grind to the bots. Engineer the extraordinary.
 Strudel is changing how we engineer software by merging human ingenuity with advanced automation. 
 With Strudel, software engineers can shift their focus from repetitive, time-consuming tasks to what truly 
 matters—innovation, problem-solving, and building exceptional solutions. 
@@ -11,6 +11,8 @@ focus on engineering the extraordinary.
 ## About Strudel MVP 
 Strudel's MVP simplifies telemetry integration 
 by automatically embedding logging and business metrics directly into your Python code.
+With Strudel, logging code is automatically added to your pull requests, 
+letting you focus solely on business logic without worrying about implementing logs.
 
 ## Pre-Requisites
 1. **Python**: Strudel MVP is currently available for Python projects only.
