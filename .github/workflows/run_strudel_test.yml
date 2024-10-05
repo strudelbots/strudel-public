@@ -33,7 +33,7 @@ jobs:
         run: |
           export current_dir=$(pwd)
           cd /tmp
-          git clone https://github.com/strudel-ai/strudel-public.git
+          git clone https://github.com/strudelbots/strudel-public.git
           cd strudel-public
           ls -alt
           cd $current_dir
