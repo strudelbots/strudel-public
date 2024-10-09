@@ -82,6 +82,7 @@ def analyze_files(python_files):
                     modified_source = response.json()['modified_source']
                     lines = modified_source.split('\n')
                     for line in lines:
+                        print(f'line is: {line}')
                         f.write(line+'\n')
         else:
             raise ValueError(f'Unexpected status code: {response.status_code}')
