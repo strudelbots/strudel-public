@@ -79,7 +79,10 @@ def analyze_files(python_files):
             if diff:
                 print("writing file: " + file)
                 with open(file, 'w') as f:
-                        f.write(response.json()['modified_source'])
+                    modified_source = response.json()['modified_source']
+                    lines = modified_source.split('\n')
+                    for line in lines:
+                        f.write(line+'\n')
         else:
             raise ValueError(f'Unexpected status code: {response.status_code}')
     return files_200, files_400
