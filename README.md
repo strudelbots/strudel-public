@@ -8,7 +8,7 @@ Strudel’s intelligent bots seamlessly handle routine tasks.
 By automating up to 50% of the development process, Strudel will empower
 teams to accelerate productivity and drive meaningful innovation. The result? Faster development cycles, higher-quality code, and engineers who can 
 focus on engineering the extraordinary.
-## About Strudel MVP 
+## About Strudel Alpha 
 Strudel's MVP simplifies telemetry integration 
 by automatically embedding logging and business metrics directly into your Python code.
 With Strudel, logging code is automatically added to your pull requests, 
