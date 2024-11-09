@@ -36,26 +36,16 @@ jobs:
       - name: get ref
         shell: bash
         run: |
-          echo "1."
           workflow_ref=${{ github.workflow_ref }}
           echo "workflow_ref=$workflow_ref"
-          echo "2."
           repository="${{ github.repository }}/"
           echo "repository=$repository"
-          echo "3."
           repo_ref="@${{ github.ref }}"
           echo "repo_ref=$repo_ref"
-          echo "4."
           workflow_path=${workflow_ref#"$repository"}
           echo "workflow_path=$workflow_path"
-          echo "5."
           workflow_path=${workflow_path%"$repo_ref"}
-          echo "workflow_path=$workflow_path"
-          echo "6."
-          cat $workflow_path
-          cat $workflow_path | grep -F "uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml"
           ref=$(cat ${workflow_path} | grep -F "uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml"| cut -d"@" -f2)
-          echo "ref=${ref}"
           echo "ref=${ref}" >> $GITHUB_ENV
       - name: print ref
         run: |
