@@ -42,7 +42,19 @@ jobs:
         run: |
            echo "env ref=${{ env.ref }}"
 
-
+      - name: run docker compose
+        shell: bash
+        env:
+          version_tag: ${{ env.ref }}
+        run: |
+            #export LOGGER_NAME=${{ inputs.logger_name }}
+            echo "version_tag=$version_tag"
+            curl -sSL "https://raw.githubusercontent.com/strudelbots/strudel-public/refs/tags/${version_tag}/code/determine_strudel_action.sh" 
+            #cat /tmp/tmp.sh 
+            #echo "LOGGER_NAME=$LOGGER_NAME"
+            # docker compose -f /tmp/strudel-public/docker_compose_run.yml up -d --quiet-pull
+            sleep 10
+#
 #      - name: Clone the Strudel manager Repository
 #        run: |
 #          export current_dir=$(pwd)
@@ -85,19 +97,7 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: run docker compose
-        shell: bash
-        env:
-          version_tag: ${{ env.ref }}
-        run: |
-            #export LOGGER_NAME=${{ inputs.logger_name }}
-            echo "version_tag=$version_tag"
-            curl -sSL https://raw.githubusercontent.com/strudelbots/strudel-public/refs/tags/${{version_tag}}/code/determine_strudel_action.sh 
-            #cat /tmp/tmp.sh 
-            #echo "LOGGER_NAME=$LOGGER_NAME"
-            # docker compose -f /tmp/strudel-public/docker_compose_run.yml up -d --quiet-pull
-            sleep 10
-#      - name: run strudel sanity test
+       - name: run strudel sanity test
 #        run: |
 #            echo "***   start sanity test"
 #            export STATUSCODE=$(curl --silent --output /dev/null --write-out "%{http_code}" --location '127.0.0.1:8080/add_logs/' \
