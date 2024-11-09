@@ -30,6 +30,7 @@ jobs:
         run: |  
           echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}"
           echo ''
+          echo "action ref is ${{ github.action_ref }}
           echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
         id: extract_branch
 
