@@ -52,6 +52,7 @@ jobs:
           workflow_path=${workflow_path%"$repo_ref"}
           echo "workflow_path=$workflow_path"
           echo "6."
+          cat $workflow_path
 #      - name: Clone the Strudel manager Repository
 #        run: |
 #          export current_dir=$(pwd)
