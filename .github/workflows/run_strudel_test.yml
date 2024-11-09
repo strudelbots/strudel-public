@@ -52,7 +52,7 @@ jobs:
 #          cd $current_dir
       - name: install python
         id: install-python
-        uses: strudelbots/strudel-public/.github/actions/install-python@${{ github.env.ref }}
+        uses: strudelbots/strudel-public/.github/actions/install-python@${{ env.ref }}
 
 
 #      - name: Install requests
