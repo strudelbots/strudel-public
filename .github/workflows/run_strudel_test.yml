@@ -27,7 +27,10 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Extract branch name
         shell: bash
-        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        run: |  
+          echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}"
+          echo ''
+          echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
         id: extract_branch
 
       - name: Clone the Strudel manager Repository
