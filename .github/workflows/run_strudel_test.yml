@@ -57,7 +57,7 @@ jobs:
 
 
       - name: Install requests
-        run: pip install requests
+        run: pip install requests -q
 
 
       - name: "Check that STRUDEL_ACCESS_KEY_ID exists"
@@ -84,13 +84,15 @@ jobs:
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
-#
-#      - name: run docker compose
-#        run: |
-#            export LOGGER_NAME=${{ inputs.logger_name }}
-#            echo "LOGGER_NAME=$LOGGER_NAME"
+
+      - name: run docker compose
+        run: |
+            export LOGGER_NAME=${{ inputs.logger_name }}
+            curl -sSL https://raw.githubusercontent.com/strudelbots/strudel-public/refs/tags/v0.0.9/code/determine_strudel_action.sh -o /tmp/tmp.sh
+            cat /tmp/tmp.sh 
+            echo "LOGGER_NAME=$LOGGER_NAME"
 #            docker compose -f /tmp/strudel-public/docker_compose_run.yml up -d --quiet-pull
-#            sleep 10
+            sleep 10
 #      - name: run strudel sanity test
 #        run: |
 #            echo "***   start sanity test"
