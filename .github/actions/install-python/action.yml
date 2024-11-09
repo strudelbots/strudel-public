@@ -1,5 +1,5 @@
-name: 'Setup Action'
-description: 'A composite action that install python and requests
+name: 'Install Python'
+description: 'A composite action that install python and requests'
 runs:
     using: 'composite'
     steps:
