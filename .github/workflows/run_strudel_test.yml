@@ -60,7 +60,7 @@ jobs:
 #          cd $current_dir
       - name: run-reusable-actions
         id: run-reusable-actions
-        uses: strudelbots/strudel-public/.github/actions/install-python@{{ env.ref }}
+        uses: strudelbots/strudel-public/.github/actions/install-python@${{ env.ref }}
 
 #      - name: Install python
 #        uses: actions/setup-python@v5
