@@ -86,12 +86,13 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v2
 
       - name: run docker compose
+        shell: bash
         run: |
             export LOGGER_NAME=${{ inputs.logger_name }}
             curl -sSL https://raw.githubusercontent.com/strudelbots/strudel-public/refs/tags/v0.0.9/code/determine_strudel_action.sh -o /tmp/tmp.sh
             cat /tmp/tmp.sh 
             echo "LOGGER_NAME=$LOGGER_NAME"
-#            docker compose -f /tmp/strudel-public/docker_compose_run.yml up -d --quiet-pull
+            # docker compose -f /tmp/strudel-public/docker_compose_run.yml up -d --quiet-pull
             sleep 10
 #      - name: run strudel sanity test
 #        run: |
