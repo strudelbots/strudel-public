@@ -56,6 +56,10 @@ jobs:
           cat $workflow_path | grep -F "uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml"
           ref=$(cat ${workflow_path} | grep -F "uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml"| cut -d"@" -f2)
           echo "ref=${ref}"
+          echo "ref=${ref}" >> $GITHUB_ENV
+      - name: print ref
+        run: |
+           echo "env ref=${{ env.ref }}"
 #      - name: Clone the Strudel manager Repository
 #        run: |
 #          export current_dir=$(pwd)
