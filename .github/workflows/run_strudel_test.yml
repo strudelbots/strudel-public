@@ -59,9 +59,13 @@ jobs:
 #          cd strudel-public
 #          ls -alt
 #          cd $current_dir
-      - name: run-reusable-actions
-        id: run-reusable-actions
+      - name: install python
+        id: install-python
         uses: strudelbots/strudel-public/.github/actions/install-python@5-map-action-to-specific-strudel-image
+
+      - name: extract strudel version
+        id: extract-strudel-version
+        uses: strudelbots/strudel-public/.github/actions/extract-strudel-version@5-map-action-to-specific-strudel-image
 
 #      - name: Install python
 #        uses: actions/setup-python@v5
