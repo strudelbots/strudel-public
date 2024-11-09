@@ -39,7 +39,7 @@ jobs:
 
       - name: print ref
         run: |
-           echo "env ref=${{ github.env.ref }}"
+           echo "env ref=${{ env.ref }}"
 
 
 #      - name: Clone the Strudel manager Repository
