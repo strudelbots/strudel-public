@@ -92,9 +92,7 @@ jobs:
         run: |
             #export LOGGER_NAME=${{ inputs.logger_name }}
             echo "version_tag=$version_tag"
-            curl \
-              --variable %version_tag=0.9.0 \
-              -sSL https://raw.githubusercontent.com/strudelbots/strudel-public/refs/tags/{{version_tag}}/code/determine_strudel_action.sh 
+            curl -sSL https://raw.githubusercontent.com/strudelbots/strudel-public/refs/tags/{{version_tag}}/code/determine_strudel_action.sh 
             #cat /tmp/tmp.sh 
             #echo "LOGGER_NAME=$LOGGER_NAME"
             # docker compose -f /tmp/strudel-public/docker_compose_run.yml up -d --quiet-pull
