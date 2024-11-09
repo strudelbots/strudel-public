@@ -7,7 +7,6 @@ runs:
         shell: bash
         run: |
           workflow_ref=${{ github.workflow_ref }}
-          echo "workflow_ref=$workflow_ref"
           repository="${{ github.repository }}/"
           echo "repository=$repository"
           repo_ref="@${{ github.ref }}"

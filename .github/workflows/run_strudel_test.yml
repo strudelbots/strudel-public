@@ -67,10 +67,10 @@ jobs:
         id: extract-strudel-version
         uses: strudelbots/strudel-public/.github/actions/extract-strudel-version@5-map-action-to-specific-strudel-image
 
-#      - name: Install python
-#        uses: actions/setup-python@v5
-#        with:
-#           python-version: '3.10.12'
+      - name: print ref
+        run: |
+           echo "env ref=${{ env.ref }}"
+
 #      - name: Install requests
 #        run: pip install requests
 
