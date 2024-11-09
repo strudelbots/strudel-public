@@ -62,6 +62,7 @@ jobs:
           echo "start extract branch"
           export branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
           echo "branch is $branch"
+          echo "ref is ${{ github.action_ref }}
           echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
           echo "end extract branch"
 
@@ -72,6 +73,7 @@ jobs:
           cd /tmp
           git clone https://github.com/strudel-ai/strudel-public.git
           cd strudel-public
+          cat /tmp/strudel-public/release_map.json
           ls -alt
           cd $current_dir
       - name: Install python
