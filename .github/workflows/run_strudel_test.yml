@@ -25,14 +25,27 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Extract branch name
         shell: bash
         run: |  
           echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}"
-          echo ''
-          echo "action ref is ${{ github.action_ref }}"
           echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
         id: extract_branch
+
+      - name: get ref
+        shell: bash
+        run: |
+          workflow_ref=${{ github.workflow_ref }}
+          echo "workflow_ref=$workflow_ref"
+          repository="${{ github.repository }}/"
+          echo "repository=$repository"
+          repo_ref="@${{ github.ref }}"
+          echo "repo_ref=$repo_ref"
+          workflow_path=${workflow_ref#"$repository"}
+          echo "workflow_path=$workflow_path"
+          workflow_path=${workflow_path%"$repo_ref"}
+          echo "workflow_path=$workflow_path"
 
 #      - name: Clone the Strudel manager Repository
 #        run: |
