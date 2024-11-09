@@ -58,12 +58,16 @@ jobs:
 #          cd strudel-public
 #          ls -alt
 #          cd $current_dir
-      - name: Install python
-        uses: actions/setup-python@v5
-        with:
-           python-version: '3.10.12'
-      - name: Install requests
-        run: pip install requests
+      - name: run-reusable-actions
+        id: run-reusable-actions
+        uses: strudelbots/strudel-public/.github/workflows/github/install-python@{{ env.ref }}
+
+#      - name: Install python
+#        uses: actions/setup-python@v5
+#        with:
+#           python-version: '3.10.12'
+#      - name: Install requests
+#        run: pip install requests
 
 
       - name: "Check that STRUDEL_ACCESS_KEY_ID exists"

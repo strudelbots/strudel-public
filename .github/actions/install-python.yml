@@ -1,0 +1,9 @@
+name: 'Setup Action'
+description: 'A composite action that install python and requests
+runs:
+    using: 'composite'
+    steps:
+      - name: install python
+        uses: actions/setup-python@v5
+        with:
+           python-version: '3.10.12'
