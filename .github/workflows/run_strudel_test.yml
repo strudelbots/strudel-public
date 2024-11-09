@@ -58,38 +58,38 @@ jobs:
 #          cd strudel-public
 #          ls -alt
 #          cd $current_dir
-#      - name: Install python
-#        uses: actions/setup-python@v5
-#        with:
-#           python-version: '3.10.12'
-#      - name: Install requests
-#        run: pip install requests
-#
-#
-#      - name: "Check that STRUDEL_ACCESS_KEY_ID exists"
-#
-#        if: ${{ env.strudel_access_key == '' }}
-#        run: |
-#          echo STRUDEL_ACCESS_KEY_ID is not defined!
-#          echo Please follow instruction in strudel-manual XXX
-#          exit 1
-#      - name: "Check that STRUDEL_SECRET_KEY exists"
-#        if: ${{ env.strudel_secret_key == '' }}
-#        run: |
-#          echo STRUDEL_SECRET_KEY is not defined!
-#          echo Please follow instruction in strudel-manual XXX
-#          exit 1
-#
-#      - name: Configure AWS credentials
-#        uses: aws-actions/configure-aws-credentials@v4
-#        with:
-#          aws-access-key-id: ${{ secrets.strudel_access_key }}
-#          aws-secret-access-key: ${{ secrets.strudel_secret_key }}
-#          aws-region: eu-central-1
-#
-#      - name: Login to Amazon ECR
-#        id: login-ecr
-#        uses: aws-actions/amazon-ecr-login@v2
+      - name: Install python
+        uses: actions/setup-python@v5
+        with:
+           python-version: '3.10.12'
+      - name: Install requests
+        run: pip install requests
+
+
+      - name: "Check that STRUDEL_ACCESS_KEY_ID exists"
+
+        if: ${{ env.strudel_access_key == '' }}
+        run: |
+          echo STRUDEL_ACCESS_KEY_ID is not defined!
+          echo Please follow instruction in strudel-manual XXX
+          exit 1
+      - name: "Check that STRUDEL_SECRET_KEY exists"
+        if: ${{ env.strudel_secret_key == '' }}
+        run: |
+          echo STRUDEL_SECRET_KEY is not defined!
+          echo Please follow instruction in strudel-manual XXX
+          exit 1
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.strudel_access_key }}
+          aws-secret-access-key: ${{ secrets.strudel_secret_key }}
+          aws-region: eu-central-1
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
 #
 #      - name: run docker compose
 #        run: |
