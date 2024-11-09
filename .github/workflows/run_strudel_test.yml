@@ -52,7 +52,6 @@ jobs:
 #          cd $current_dir
       - name: install python
         id: install-python
-        env:
         uses: strudelbots/strudel-public/.github/actions/install-python@main
 
 
