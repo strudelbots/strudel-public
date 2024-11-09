@@ -36,17 +36,22 @@ jobs:
       - name: get ref
         shell: bash
         run: |
+          echo "1."
           workflow_ref=${{ github.workflow_ref }}
           echo "workflow_ref=$workflow_ref"
+          echo "2."
           repository="${{ github.repository }}/"
           echo "repository=$repository"
+          echo "3."
           repo_ref="@${{ github.ref }}"
           echo "repo_ref=$repo_ref"
+          echo "4."
           workflow_path=${workflow_ref#"$repository"}
           echo "workflow_path=$workflow_path"
+          echo "5."
           workflow_path=${workflow_path%"$repo_ref"}
           echo "workflow_path=$workflow_path"
-
+          echo "6."
 #      - name: Clone the Strudel manager Repository
 #        run: |
 #          export current_dir=$(pwd)
