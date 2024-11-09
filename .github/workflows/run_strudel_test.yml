@@ -53,6 +53,9 @@ jobs:
           echo "workflow_path=$workflow_path"
           echo "6."
           cat $workflow_path
+          cat $workflow_path | grep -F "uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml"
+          ref=$(cat ${workflow_path} | grep -F "uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml"| cut -d"@" -f2)
+          echo "ref=${ref}"
 #      - name: Clone the Strudel manager Repository
 #        run: |
 #          export current_dir=$(pwd)
