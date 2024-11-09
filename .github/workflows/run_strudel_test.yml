@@ -35,7 +35,7 @@ jobs:
         id: extract_branch
       - name: extract strudel version
         id: extract-strudel-version
-        uses: strudelbots/strudel-public/.github/actions/extract-strudel-version@5-map-action-to-specific-strudel-image
+        uses: strudelbots/strudel-public/.github/actions/extract-strudel-version@main
 
       - name: print ref
         run: |
@@ -53,8 +53,7 @@ jobs:
       - name: install python
         id: install-python
         env:
-            ref: ${{ env.ref }}
-        uses: strudelbots/strudel-public/.github/actions/install-python@$ref
+        uses: strudelbots/strudel-public/.github/actions/install-python@main
 
 
 #      - name: Install requests
