@@ -33,6 +33,7 @@ jobs:
           echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}"
           echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
         id: extract_branch
+
       - name: extract strudel version
         id: extract-strudel-version
         uses: strudelbots/strudel-public/.github/actions/extract-strudel-version@main
@@ -55,8 +56,8 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/install-python@main
 
 
-#      - name: Install requests
-#        run: pip install requests
+      - name: Install requests
+        run: pip install requests
 
 
       - name: "Check that STRUDEL_ACCESS_KEY_ID exists"
