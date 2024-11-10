@@ -34,6 +34,10 @@ jobs:
           echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
         id: extract_branch
 
+      - name: install python
+        id: extract-strudel-version
+        uses: strudelbots/strudel-public/.github/actions/install-python@5-map-action-to-specific-strudel-image
+
       - name: extract strudel version
         id: extract-strudel-version
         uses: strudelbots/strudel-public/.github/actions/extract-strudel-version@main
