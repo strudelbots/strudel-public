@@ -51,7 +51,7 @@ jobs:
             echo "url=$url"
             wget -q -P /tmp $url
             {
-              wget_result=$?"
+              wget_result=$?
               if [ $wget_result -ne 0 ]; then
                 echo "wget failed with $wget_result"
                 exit 1
