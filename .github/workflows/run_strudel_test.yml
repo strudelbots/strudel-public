@@ -35,7 +35,7 @@ jobs:
         id: extract_branch
 
       - name: install python
-        id: extract-strudel-version
+        id: install-python
         uses: strudelbots/strudel-public/.github/actions/install-python@5-map-action-to-specific-strudel-image
 
       - name: extract strudel version
