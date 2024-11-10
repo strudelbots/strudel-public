@@ -47,6 +47,9 @@ jobs:
 
       - name: check user keys
         uses: strudelbots/strudel-public/.github/actions/check-user-keys@5-map-action-to-specific-strudel-image
+        with:
+          access_token: ${{ secrets.strudel_access_key }}
+          secret_key: ${{ secrets.strudel_secret_key }}
 
 
 #      - name: "Check that STRUDEL_ACCESS_KEY_ID exists"

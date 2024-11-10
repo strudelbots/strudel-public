@@ -1,12 +1,16 @@
 name: 'Check user keys'
 description: 'A composite action that install python and requests'
+inputs:
+  access_token:
+    description: 'User access token'
+    required: true
+  secret_key:
+    description: 'User secret token'
+    required: true
 runs:
     using: 'composite'
     steps:
       - name: check-access-key
-        env:
-          strudel_access_key: ${{ secrets.strudel_access_key }}
-          strudel_secret_key: ${{ secrets.strudel_secret_key }}
         shell: bash
         run: |
           {
