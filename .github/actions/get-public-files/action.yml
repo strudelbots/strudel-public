@@ -13,7 +13,7 @@ runs:
                 echo "version_tag is not supported"
                 exit 1
               else
-                url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/$version_tag/code/determine_strudel_action.sh"            
+                url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/$version_tag/code/docker_compose_run.yml"            
               fi
             }
             echo "url=$url"
@@ -25,4 +25,4 @@ runs:
                 exit 1
               fi
             } 
-            ls -alt /tmp/determine_strudel_action.sh
+            ls -alt /tmp/docker_compose_run.yml
