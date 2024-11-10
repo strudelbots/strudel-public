@@ -50,7 +50,14 @@ jobs:
             url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/$version_tag/code/determine_strudel_action.sh"  
             echo "url=$url"
             wget -q -P /tmp $url
-            echo "wget result: $?"
+            {
+              wget_result=$?"
+              if [ $wget_result -ne 0 ]; then
+                echo "wget failed with $wget_result"
+                exit 1
+              fi
+            }
+              
             ls -alt /tmp/determine_strudel_action.sh
 #      - name: Clone the Strudel manager Repository
 #        run: |
