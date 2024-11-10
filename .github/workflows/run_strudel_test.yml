@@ -52,7 +52,7 @@ jobs:
             wget -q -P /tmp $url
             {
               wget_result=$?
-              if [ $wget_result -ne 0 ]; then
+              if [ $wget_result -ne 200 ]; then
                 echo "wget failed with $wget_result"
                 exit 1
               fi
