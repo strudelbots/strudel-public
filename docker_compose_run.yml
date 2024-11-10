@@ -7,7 +7,7 @@ services:
       - STRUDEL_TEMP_DIR=$STRUDEL_TEMP_DIR
       - HASHER_STORAGE_TYPE=$HASHER_STORAGE_TYPE
       - STRUDEL_USER_ACCESS_KEY_ID=$STRUDEL_USER_ACCESS_KEY_ID
-
+      - STRUDEL_USER_SECRET_KEY=$STRUDEL_USER_SECRET_KEY
     container_name: logs
     image: 446759808364.dkr.ecr.eu-central-1.amazonaws.com/shtruddel:v-0.0.1-b-1
     expose:
@@ -22,6 +22,7 @@ services:
       - STRUDEL_TEMP_DIR=$STRUDEL_TEMP_DIR
       - HASHER_STORAGE_TYPE=$HASHER_STORAGE_TYPE
       - STRUDEL_USER_ACCESS_KEY_ID=$STRUDEL_USER_ACCESS_KEY_ID
+      - STRUDEL_USER_SECRET_KEY=$STRUDEL_USER_SECRET_KEY
     container_name: templates
     image: 446759808364.dkr.ecr.eu-central-1.amazonaws.com/shtruddel:v-0.0.1-b-1
     expose:
