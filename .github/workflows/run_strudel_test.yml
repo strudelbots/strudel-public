@@ -60,7 +60,7 @@ jobs:
             export LOGGER_NAME=${{ inputs.logger_name }}
             export REPOSITORY_ROOT=${{ github.workspace }}
             export STRUDEL_TEMP_DIR=${{ runner.temp }}
-            echo HASHER_STORAGE_TYPE=s3
+            export HASHER_STORAGE_TYPE=s3
             docker compose -f /tmp/docker_compose_run.yml up  -d --quiet-pull
             sleep 10
             docker logs logs
