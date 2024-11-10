@@ -1,0 +1,22 @@
+name: 'Get public strudel files'
+description: 'Get public strudel files from strudel-public repository'
+runs:
+    using: 'composite'
+    steps:
+      - name: get-public-files
+        shell: bash
+        env:
+          version_tag: ${{ env.ref }}
+        run: |
+            url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/$version_tag/code/determine_strudel_action.sh"  
+            echo "url=$url"
+            wget -q -P /tmp $url
+            {
+              wget_result=$?
+              if [ $wget_result -ne 0 ]; then
+                echo "Failed to get files from strudel-public with $wget_result"
+                exit 1
+              fi
+            }
+              
+            ls -alt /tmp/determine_strudel_action.sh
