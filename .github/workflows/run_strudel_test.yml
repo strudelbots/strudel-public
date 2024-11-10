@@ -61,6 +61,8 @@ jobs:
             export REPOSITORY_ROOT=${{ github.workspace }}
             export STRUDEL_TEMP_DIR=${{ runner.temp }}
             export HASHER_STORAGE_TYPE=s3
+            export STRUDEL_USER_ACCESS_KEY_ID=${{ secrets.strudel_access_key }}
+            #export STRUDEL_USER_SECRET_ACCESS_KEY=${{ secrets.strudel_secret_key }}
             docker compose -f /tmp/docker_compose_run.yml up  -d --quiet-pull
             sleep 10
             docker image list

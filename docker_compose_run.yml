@@ -6,6 +6,8 @@ services:
       - REPOSITORY_ROOT=$REPOSITORY_ROOT
       - STRUDEL_TEMP_DIR=$STRUDEL_TEMP_DIR
       - HASHER_STORAGE_TYPE=$HASHER_STORAGE_TYPE
+      - STRUDEL_USER_ACCESS_KEY_ID=$STRUDEL_USER_ACCESS_KEY_ID
+      -
     container_name: logs
     image: 446759808364.dkr.ecr.eu-central-1.amazonaws.com/shtruddel:v-0.0.1-b-1
     expose:
