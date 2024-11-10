@@ -18,7 +18,7 @@ services:
       - REPOSITORY_ROOT=$REPOSITORY_ROOT
       - STRUDEL_TEMP_DIR=$STRUDEL_TEMP_DIR
     container_name: templates
-    image: 446759808364.dkr.ecr.eu-central-1.amazonaws.com/shtruddel-dev:latest
+    image: 446759808364.dkr.ecr.eu-central-1.amazonaws.com/shtruddel:latest
     expose:
       - "8000" # should we remove that in prod?
       - "8080"
