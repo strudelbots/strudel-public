@@ -15,7 +15,7 @@ runs:
           "file_name": "test"}')
           printf "\n***   status code is $STATUSCODE \n"
           if [ $STATUSCODE -ne 200 ]; then echo "sanity test fails, status $STATUSCODE"; fi
-          if [ $STATUSCODE -ne 200 ]; then exit 22; fi
+          if [ $STATUSCODE -ne 200 ]; then exit 20; fi
           echo "***   end sanity test - add logs"
 
       - name: Run remove logs sanity test
@@ -30,7 +30,7 @@ runs:
           "file_name": "test"}')
           printf "\n***   status code is $STATUSCODE \n"
           if [ $STATUSCODE -ne 200 ]; then echo "sanity test fails, status $STATUSCODE"; fi
-          if [ $STATUSCODE -ne 200 ]; then exit 22; fi
+          if [ $STATUSCODE -ne 200 ]; then exit 21; fi
           echo "***   end sanity test - remove logs"
 
       - name: Run error logs sanity test
@@ -44,8 +44,8 @@ runs:
           "file_content": "def foo():\n  print(a)",
           "file_name": "test"}')
           printf "\n***   status code is $STATUSCODE \n"
-          if [ $STATUSCODE -e 200 ]; then echo "sanity test fails, status $STATUSCODE"; fi
-          if [ $STATUSCODE -e 200 ]; then exit 22; fi
+          if [ $STATUSCODE -eq 200 ]; then echo "sanity test fails, status $STATUSCODE"; fi
+          if [ $STATUSCODE -eq 200 ]; then exit 22; fi
           echo "***   end sanity test - ERROR logs"
 
 
