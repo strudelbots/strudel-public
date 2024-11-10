@@ -45,8 +45,8 @@ jobs:
       - name: get strudel-public files
         uses: strudelbots/strudel-public/.github/actions/get-public-files@5-map-action-to-specific-strudel-image
 
-      - name: Install requests
-        run: pip install requests -q
+      - name: check user keys
+        uses: strudelbots/strudel-public/.github/actions/check-user-keys@5-map-action-to-specific-strudel-image
 
 
 #      - name: "Check that STRUDEL_ACCESS_KEY_ID exists"
