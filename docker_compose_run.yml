@@ -7,7 +7,7 @@ services:
       - STRUDEL_TEMP_DIR=$STRUDEL_TEMP_DIR
       - HASHER_STORAGE_TYPE=$HASHER_STORAGE_TYPE
     container_name: logs
-    image: 446759808364.dkr.ecr.eu-central-1.amazonaws.com/shtruddel:latest
+    image: 446759808364.dkr.ecr.eu-central-1.amazonaws.com/shtruddel:v-0.0.1-b-1
     expose:
       - "8000"
       - "8080"
@@ -20,7 +20,7 @@ services:
       - STRUDEL_TEMP_DIR=$STRUDEL_TEMP_DIR
       - HASHER_STORAGE_TYPE=$HASHER_STORAGE_TYPE
     container_name: templates
-    image: 446759808364.dkr.ecr.eu-central-1.amazonaws.com/shtruddel:latest
+    image: 446759808364.dkr.ecr.eu-central-1.amazonaws.com/shtruddel:v-0.0.1-b-1
     expose:
       - "8000" # should we remove that in prod?
       - "8080"
@@ -28,7 +28,7 @@ services:
 
 
   nginx:
-    image: 446759808364.dkr.ecr.eu-central-1.amazonaws.com/shtruddel_nginx:latest
+    image: 446759808364.dkr.ecr.eu-central-1.amazonaws.com/shtruddel_nginx:v-0.0.1-b-1
     container_name: nginx_proxy
     tty: true
     depends_on:
