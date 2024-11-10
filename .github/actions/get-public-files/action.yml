@@ -17,7 +17,7 @@ runs:
               fi
             }
             echo "url=$url"
-            wget -q -P /tmp $url
+            wget  -P /tmp $url
             {
               wget_result=$?
               if [ $wget_result -ne 0 ]; then
@@ -25,4 +25,4 @@ runs:
                 exit 1
               fi
             } 
-            ls -alt /tmp/docker_compose_run.yml
+            #ls -alt /tmp/docker_compose_run.yml
