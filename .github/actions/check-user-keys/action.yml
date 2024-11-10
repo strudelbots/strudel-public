@@ -5,7 +5,7 @@ runs:
     steps:
       - name: check-access-key
         shell: bash
-        if: ${{ env.strudel_access_key == '' }}
+        if: ${{ env.strudel_access_key != '' }}
         run: |
           echo STRUDEL_ACCESS_KEY_ID is not defined!
           echo Please follow instruction in strudel-manual XXX
