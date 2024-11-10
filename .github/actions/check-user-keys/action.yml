@@ -1,36 +1,20 @@
 name: 'Check user keys'
 description: 'A composite action that install python and requests'
-inputs:
-  access_token:
-    description: 'User access token'
-    required: true
-  secret_key:
-    description: 'User secret token'
-    required: true
 runs:
     using: 'composite'
     steps:
       - name: check-access-key
         shell: bash
+        if: ${{ env.strudel_access_key == '' }}
         run: |
-          {
-            if [ $strudel_access_key == '' ]; then
-              echo "strudel_access_key is not defined"
-              exit 1
-            fi
-          }
-          {
-            if [ $strudel_secret_key == '' ]; then
-              echo "strudel_secret_key is not defined"
-              exit 1
-            fi
-          }
-
-#      - name: check-secret-key
-#        shell: bash
-#        if: ${{ env.strudel_secret_key == '' }}
-#        run: |
-#          echo STRUDEL_SECRET_KEY is not defined!
-#          echo Please follow instruction in strudel-manual XXX
-#          exit 1
+          echo STRUDEL_ACCESS_KEY_ID is not defined!
+          echo Please follow instruction in strudel-manual XXX
+          exit 1
+      - name: check-secret-key
+        shell: bash
+        if: ${{ env.strudel_secret_key == '' }}
+        run: |
+          echo STRUDEL_SECRET_KEY is not defined!
+          echo Please follow instruction in strudel-manual XXX
+          exit 1
 
