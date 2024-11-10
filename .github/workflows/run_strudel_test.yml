@@ -47,7 +47,8 @@ jobs:
         env:
           version_tag: ${{ env.ref }}
         run: |
-            url=https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/code/determine_strudel_action.sh  
+            url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/$version_tag/code/determine_strudel_action.sh"  
+            echo "url=$url"
             wget -P /tmp $url
             ls -alt /tmp/determine_strudel_action.sh
 #      - name: Clone the Strudel manager Repository
