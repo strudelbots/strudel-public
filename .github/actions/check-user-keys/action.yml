@@ -4,17 +4,29 @@ runs:
     using: 'composite'
     steps:
       - name: check-access-key
+        env:
+          strudel_access_key: ${{ secrets.strudel_access_key }}
+          strudel_secret_key: ${{ secrets.strudel_secret_key }}
         shell: bash
-        if: ${{ env.strudel_access_key != '' }}
         run: |
-          echo STRUDEL_ACCESS_KEY_ID is not defined!
-          echo Please follow instruction in strudel-manual XXX
-          exit 1
-      - name: check-secret-key
-        shell: bash
-        if: ${{ env.strudel_secret_key == '' }}
-        run: |
-          echo STRUDEL_SECRET_KEY is not defined!
-          echo Please follow instruction in strudel-manual XXX
-          exit 1
+          {
+            if [ $strudel_access_key == '' ]; then
+              echo "strudel_access_key is not defined"
+              exit 1
+            fi
+          }
+          {
+            if [ $strudel_secret_key == '' ]; then
+              echo "strudel_secret_key is not defined"
+              exit 1
+            fi
+          }
+
+#      - name: check-secret-key
+#        shell: bash
+#        if: ${{ env.strudel_secret_key == '' }}
+#        run: |
+#          echo STRUDEL_SECRET_KEY is not defined!
+#          echo Please follow instruction in strudel-manual XXX
+#          exit 1
 
