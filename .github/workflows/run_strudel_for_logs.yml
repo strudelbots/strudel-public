@@ -60,7 +60,7 @@ jobs:
 
       - name: Extract user branch name
         id: extract_branch_name
-        uses: strudelbots/strudel-public/.github/actions/get_current_branch@main
+        uses: strudelbots/strudel-public/.github/actions/get_current_branch@8-change-run-logs-to-use-reusable-actions
 
       - name: extract strudel version
         id: extract_strudel_version
@@ -84,7 +84,7 @@ jobs:
       - name: List all changed files
         id: list-changed-files
         run: |
-          git diff --diff-filter=AMR --name-only origin/main origin/${{ steps.extract_branch.outputs.branch }}
+          git diff --diff-filter=AMR --name-only origin/main origin/${{ env.branch }}
           
 
 #          git diff --diff-filter=AMR --name-status origin/main origin/${{ steps.extract_branch.outputs.branch }}
