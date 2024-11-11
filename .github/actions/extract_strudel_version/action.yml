@@ -43,7 +43,7 @@ runs:
           strudel_workflow=${{ env.strudel_script }}
           echo "strudel workflow is: $strudel_workflow"
           echo "************************************"
-          cat ${workflow_path} | grep -F strudel_for_logs
+          cat ${workflow_path} | grep -F $strudel_script
           #echo "grep_result=$grep_result"
           #if [ $grep_result -eq 1 ]; then
           #    echo "Could not find Strudel version number."
