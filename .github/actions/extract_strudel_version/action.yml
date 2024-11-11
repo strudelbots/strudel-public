@@ -19,7 +19,7 @@ runs:
               #echo "export strudel_script=strudelbots/strudel-public/.github/workflows/run_strudel_test.yml" >> $GITHUB_ENV
             elif [ $mode == "run_logs" ]; then
               echo "mode is run_logs"
-              #echo "export strudel_script=strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml" >> $GITHUB_ENV
+              echo 'export strudel_script="strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml"' >> $GITHUB_ENV
             else
               echo "mode is not recognized"
               exit 101
