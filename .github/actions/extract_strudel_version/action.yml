@@ -5,7 +5,6 @@ inputs:
     description: 'either test_strudel or run_logs'
     required: true
 runs:
-
     using: 'composite'
     steps:
       - name: find mode
