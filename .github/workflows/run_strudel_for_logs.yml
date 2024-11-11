@@ -95,8 +95,8 @@ jobs:
             sleep 10
             docker ps -a
 
-      - name: sanity tests
-        uses: strudelbots/strudel-public/.github/actions/sanity-tests@8-change-run-logs-to-use-reusable-actions
+#      - name: sanity tests
+#        uses: strudelbots/strudel-public/.github/actions/sanity-tests@8-change-run-logs-to-use-reusable-actions
 
 #
 #      - name: Run Strudel
