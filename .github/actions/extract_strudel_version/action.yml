@@ -16,7 +16,7 @@ runs:
           workflow_path=${workflow_path%"$repo_ref"}
           cat ${workflow_path} > /tmp/my_file
           cat /tmp/my_file
-          #grep  shai /tmp/my_file
+          grep status /tmp/my_file
           exit 88
           {
            if [ -z "$grep_result" ]; then
