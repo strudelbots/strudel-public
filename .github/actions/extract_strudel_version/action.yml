@@ -29,6 +29,7 @@ runs:
         env:
             strudel_script: ${{ env.strudel_script }}
         run: |
+          {
           echo "strudel_script is: $strudel_script"
           workflow_ref=${{ github.workflow_ref }}
           repository="${{ github.repository }}/"
@@ -49,6 +50,7 @@ runs:
               exit 102
           fi
           exit 7
+          }
 #          ref=$(cat ${workflow_path} | grep -F "uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml"| cut -d"@" -f2)
 #          echo "***    Strudel =$ref  ***"
 #          echo "ref=${ref}" >> $GITHUB_ENV
