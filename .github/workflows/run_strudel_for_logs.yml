@@ -81,15 +81,15 @@ jobs:
       - name: login to ecr
         uses: strudelbots/strudel-public/.github/actions/login-to-ecr@main
 
-      - name: List all changed files
-        id: list-changed-files
-        run: |
-          git diff --diff-filter=AMR --name-only origin/main origin/${{ env.branch }}
-          {
-          echo 'ALL_CHANGED_FILES<<EOF'
-          git diff --diff-filter=AMR --name-only origin/main origin/${{ env.branch }}
-          echo EOF
-          } >> $GITHUB_ENV
+#      - name: List all changed files
+#        id: list-changed-files
+#        run: |
+#          git diff --diff-filter=AMR --name-only origin/main origin/${{ env.branch }}
+#          {
+#          echo 'ALL_CHANGED_FILES<<EOF'
+#          git diff --diff-filter=AMR --name-only origin/main origin/${{ env.branch }}
+#          echo EOF
+#          } >> $GITHUB_ENV
 
 #      - name: run docker compose
 #        run: |
@@ -103,16 +103,6 @@ jobs:
 #            docker ps -a
 #            docker logs logs
 
-#      - name: Get changed files
-#        id: get-changed-files
-#        uses: tj-actions/changed-files@v45
-#        with:
-#          since_last_remote_commit: false
-#      - name: List all changed files
-#        env:
-#          ALL_CHANGED_FILES: ${{ steps.get-changed-files.outputs.all_changed_files }}
-#        run: |
-#          echo "all changed files: $ALL_CHANGED_FILES"
 #
 #      - name: Run Strudel
 #        run: |
