@@ -27,7 +27,7 @@ runs:
       - name: extract strudel version
         shell: bash
         env:
-            strudel_script: strudel_for_logs
+            strudel_script: workflows/strudel_for_logs
         run: |
           {
           echo "strudel_script is: $strudel_script"
@@ -40,7 +40,6 @@ runs:
           echo "workflow_path=$workflow_path"
           workflow_path=${workflow_path%"$repo_ref"}
           #cat ${workflow_path}
-          echo "strudel workflow is: $strudel_workflow"
           echo "************************************"
           cat ${workflow_path} | grep -F $strudel_script
           #echo "grep_result=$grep_result"
