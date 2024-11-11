@@ -12,7 +12,7 @@ on:
         required: true
       strudel_secret_key:
         required: true
-  push:
+#  push:
 
 
 jobs:
