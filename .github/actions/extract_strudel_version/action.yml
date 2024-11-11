@@ -24,12 +24,13 @@ runs:
               exit 101
             fi
           }
-          exit 77
-#      - name: extract strudel version
-#        shell: bash
-#        env:
-#            strudel_script: ${{ env.strudel_script }}
-#        run: |
+      - name: extract strudel version
+        shell: bash
+        env:
+            strudel_script: ${{ env.strudel_script }}
+        run: |
+          echo "strudel_script is: $strudel_script"
+          exit 102
 #          {
 #          workflow_ref=${{ github.workflow_ref }}
 #          repository="${{ github.repository }}/"
