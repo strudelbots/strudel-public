@@ -39,11 +39,11 @@ runs:
           workflow_path=${workflow_ref#"$repository"}
           echo "workflow_path=$workflow_path"
           workflow_path=${workflow_path%"$repo_ref"}
-          # cat ${workflow_path}
+          cat ${workflow_path}
           strudel_workflow=${{ env.strudel_script }}
           echo "strudel workflow is: $strudel_workflow"
-          cat ${workflow_path} | grep -F logs || grep_result=$?
-          echo "grep_result=$grep_result"
+          cat ${workflow_path} | grep -F logs
+          #echo "grep_result=$grep_result"
           #if [ $grep_result -eq 1 ]; then
           #    echo "Could not find Strudel version number."
           #    echo "Make sure you launch this workflow from an official Strudel workflow file,"
