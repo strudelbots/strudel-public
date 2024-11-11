@@ -16,7 +16,9 @@ runs:
           workflow_path=${workflow_path%"$repo_ref"}
           cat ${workflow_path} | grep -F "uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml" || grep_result=$?
           if [ $grep_result -eq 1 ]; then
-              echo "Could not find version number"
+              echo "Could not find Strudel version number."
+              echo "Make sure you launch this workflow from an official Strudel workflow file, 
+              echo "see: https://github.com/strudelbots/strudel-public"
               exit 102
           fi
           ref=$(cat ${workflow_path} | grep -F "uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml"| cut -d"@" -f2)
