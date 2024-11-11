@@ -97,7 +97,7 @@ jobs:
             docker logs logs
 
       - name: sanity tests
-        uses: strudelbots/strudel-public/.github/actions/sanity-tests@main
+        uses: strudelbots/strudel-public/.github/actions/sanity-tests@8-change-run-logs-to-use-reusable-actions
 
 #
 #      - name: Run Strudel

@@ -21,6 +21,9 @@ runs:
               docker logs nginx_proxy
               echo "***  docker logs templates"
               docker logs template
+              echo "***  docker logs locker"
+              docker logs logs
+
               exit 13
           fi
           }
