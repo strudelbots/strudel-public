@@ -16,10 +16,16 @@ runs:
           workflow_path=${workflow_path%"$repo_ref"}
           cat ${workflow_path} > /tmp/my_file
           #cat /tmp/my_file
-          grep shai /tmp/my_file
-          grep_result=$? 
-          echo "grep_resul is: $grep_result"
-          exit 88
+          {
+            grep status /tmp/my_file
+            grep_result=$? 
+            if [ $grep_result -eq 0 ]; then
+              echo "grep_result=$grep_result"
+              exit 101
+            }
+            exit 88
+          }
+          exit 98
           {
            if [ -z "$grep_result" ]; then
               echo "grep_result=$grep_result"
