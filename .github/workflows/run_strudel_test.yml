@@ -27,12 +27,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-#      - name: Extract branch name
-#        shell: bash
-#        run: |
-#          echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}"
-#          echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
-#        id: extract_branch
 
       - name: Extract branch name
         id: exract-branch-name
@@ -44,12 +38,9 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/install-python@5-map-action-to-specific-strudel-image
 
       - name: extract strudel version
-        id: extract-strudel-version
-        uses: strudelbots/strudel-public/.github/actions/extract-strudel-version@main
+        id: extract_strudel_version
+        uses: strudelbots/strudel-public/.github/actions/extract_strudel_version@main
 
-      - name: Print strudel version
-        run: |
-           echo "strudel version=${{ env.ref }}"
 
       - name: get strudel-public files
         uses: strudelbots/strudel-public/.github/actions/get_public_files@5-map-action-to-specific-strudel-image
