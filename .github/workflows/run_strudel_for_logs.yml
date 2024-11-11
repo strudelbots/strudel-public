@@ -85,14 +85,11 @@ jobs:
         id: list-changed-files
         run: |
           git diff --diff-filter=AMR --name-only origin/main origin/${{ env.branch }}
-          
-
-#          git diff --diff-filter=AMR --name-status origin/main origin/${{ steps.extract_branch.outputs.branch }}
-#          {
-#          echo 'ALL_CHANGED_FILES<<EOF'
-#          git diff --diff-filter=AMR --name-only origin/main origin/${{ steps.extract_branch.outputs.branch }}
-#          echo EOF
-#          } >> $GITHUB_ENV
+          {
+          echo 'ALL_CHANGED_FILES<<EOF'
+          git diff --diff-filter=AMR --name-only origin/main origin/${{ env.branch }}
+          echo EOF
+          } >> $GITHUB_ENV
 
 #      - name: run docker compose
 #        run: |
