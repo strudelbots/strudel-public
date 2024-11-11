@@ -15,7 +15,7 @@ runs:
           echo "workflow_path=$workflow_path"
           workflow_path=${workflow_path%"$repo_ref"}
           cat ${workflow_path} | grep -F  status || grep_result=$?
-          if [ $grep_result -eq 1 ]; then
+          if [ $grep_result -ne 1 ]; then
               echo "grep_result=$grep_result"
               exit 102
           fi
