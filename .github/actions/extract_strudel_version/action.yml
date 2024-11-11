@@ -14,30 +14,11 @@ runs:
           workflow_path=${workflow_ref#"$repository"}
           echo "workflow_path=$workflow_path"
           workflow_path=${workflow_path%"$repo_ref"}
-          cat ${workflow_path} | grep -F  status || grep_result=$?
+          cat ${workflow_path} | grep -F "uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml" || grep_result=$?
           if [ $grep_result -eq 1 ]; then
-              echo "grep_result=$grep_result"
+              echo "Could not find version number"
               exit 102
           fi
-          exit 103
-          #cat /tmp/my_file
-          {            
-            grep shai /tmp/my_file || grep_result=$?
-            echo "*** grep_result   =   $grep_result"
-            if [ $grep_result -eq 1 ]; then
-              echo "grep_result=$grep_result"
-              exit 101
-            fi
-            exit 88
-          }
-          exit 98
-          {
-           if [ -z "$grep_result" ]; then
-              echo "grep_result=$grep_result"
-              exit 7
-          }
-          exit 8
-          
           ref=$(cat ${workflow_path} | grep -F "uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml"| cut -d"@" -f2)
           echo "***    Strudel =$ref  ***"
           echo "ref=${ref}" >> $GITHUB_ENV
