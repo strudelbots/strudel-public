@@ -48,8 +48,7 @@ runs:
               echo "see: https://github.com/strudelbots/strudel-public"
               exit 102
           fi
-          exit 7
+          ref=$(cat ${workflow_path} | grep -F $strudel_script | grep uses| cut -d"@" -f2)
+          echo "***    Strudel =$ref  ***"
+          echo "ref=${ref}" >> $GITHUB_ENV
           }
-#          ref=$(cat ${workflow_path} | grep -F "uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml"| cut -d"@" -f2)
-#          echo "***    Strudel =$ref  ***"
-#          echo "ref=${ref}" >> $GITHUB_ENV
