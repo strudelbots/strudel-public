@@ -13,7 +13,6 @@ on:
       strudel_secret_key:
         required: true
 #  push:
-
 jobs:
 #  pre_run_strudel_on_pull_request:
 #    runs-on: ubuntu-22.04
