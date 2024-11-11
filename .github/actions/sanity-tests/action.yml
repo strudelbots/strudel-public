@@ -17,7 +17,7 @@ runs:
           {
           if [ $STATUSCODE -ne 200 ]; then 
               echo "sanity test fails, status $STATUSCODE";
-              docker logs shtruddel_nginx
+              docker logs nginx_proxy
               exit 13
           fi
           }
