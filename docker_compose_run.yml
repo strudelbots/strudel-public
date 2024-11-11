@@ -13,7 +13,7 @@ services:
     expose:
       - "8000"
       - "8080"
-    command: [ "sh", "-c", "python --version && python manage.py migrate && python manage.py --noreload runserver 0.0.0.0:8080" ]
+    command: [ "sh", "-c", "python --version && python manage.py migrate && python manage.py  runserver 0.0.0.0:8080" ]
 
   templates:
     environment:
@@ -28,7 +28,7 @@ services:
     expose:
       - "8000" # should we remove that in prod?
       - "8080"
-    command: [ "sh", "-c", "python --version && python manage.py migrate && python manage.py runserver --noreload 0.0.0.0:8080" ]
+    command: [ "sh", "-c", "python --version && python manage.py migrate && python manage.py runserver 0.0.0.0:8080" ]
 
 
   nginx:
