@@ -19,7 +19,6 @@ runs:
             elif [ $mode == "run_logs" ]; then
               echo "mode is run_logs"
               echo "strudel_script=strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml" >> $GITHUB_ENV
-              #echo "strudel_script=shai-rubin" >> $GITHUB_ENV
             else
               echo "mode is not recognized"
               exit 101
@@ -31,16 +30,15 @@ runs:
             strudel_script: ${{ env.strudel_script }}
         run: |
           echo "strudel_script is: $strudel_script"
-          exit 102
-#          {
-#          workflow_ref=${{ github.workflow_ref }}
-#          repository="${{ github.repository }}/"
-#          echo "repository=$repository"
-#          repo_ref="@${{ github.ref }}"
-#          echo "repo_ref=$repo_ref"
-#          workflow_path=${workflow_ref#"$repository"}
-#          echo "workflow_path=$workflow_path"
-#          workflow_path=${workflow_path%"$repo_ref"}
+          workflow_ref=${{ github.workflow_ref }}
+          repository="${{ github.repository }}/"
+          echo "repository=$repository"
+          repo_ref="@${{ github.ref }}"
+          echo "repo_ref=$repo_ref"
+          workflow_path=${workflow_ref#"$repository"}
+          echo "workflow_path=$workflow_path"
+          workflow_path=${workflow_path%"$repo_ref"}
+          exit 103
 #          # cat ${workflow_path}
 #          strudel_workflow=${{ env.strudel_script }}
 #          echo "strudel workflow is: $strudel_workflow"
