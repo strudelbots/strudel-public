@@ -81,6 +81,9 @@ jobs:
       - name: login to ecr
         uses: strudelbots/strudel-public/.github/actions/login-to-ecr@main
 
+      - name: login to ecr
+        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@8-change-run-logs-to-use-reusable-actions
+
 #      - name: List all changed files
 #        id: list-changed-files
 #        run: |
