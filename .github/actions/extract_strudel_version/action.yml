@@ -27,7 +27,7 @@ runs:
       - name: extract strudel version
         shell: bash
         env:
-            strudel_script: ${{ env.strudel_script }}
+            strudel_script: strudel_for_logs
         run: |
           {
           echo "strudel_script is: $strudel_script"
