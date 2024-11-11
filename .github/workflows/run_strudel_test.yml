@@ -34,7 +34,9 @@ jobs:
 
       - name: extract strudel version
         id: extract_strudel_version
-        uses: strudelbots/strudel-public/.github/actions/extract_strudel_version@main
+        uses: strudelbots/strudel-public/.github/actions/extract_strudel_version@8-change-run-logs-to-use-reusable-actions)
+        with:
+          mode: 'strudel_test'
 
 
       - name: get strudel-public files
