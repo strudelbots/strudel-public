@@ -63,7 +63,7 @@ jobs:
 
       - name: extract strudel version
         id: extract_strudel_version
-        uses: strudelbots/strudel-public/.github/actions/extract_strudel_version@main
+        uses: strudelbots/strudel-public/.github/actions/extract_strudel_version@8-change-run-logs-to-use-reusable-actions
 
       - name: Print strudel version
         shell: bash
