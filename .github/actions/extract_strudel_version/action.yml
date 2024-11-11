@@ -24,10 +24,11 @@ runs:
               echo "mode is not recognized"
               exit 101
             fi
-            exit 77
           }
       - name: extract strudel version
         shell: bash
+        env:
+            strudel_script: ${{ env.strudel_script }}
         run: |
           {
           workflow_ref=${{ github.workflow_ref }}
@@ -40,8 +41,8 @@ runs:
           workflow_path=${workflow_path%"$repo_ref"}
           # cat ${workflow_path}
           strudel_workflow=${{ env.strudel_script }}
-          echo $strudel_workflow
-          cat ${workflow_path} | grep -F "uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml" || grep_result=$?
+          echo "strudel workflow is: $strudel_workflow"
+          cat ${workflow_path} | grep -F "$strudel_script" || grep_result=$?
           if [ $grep_result -eq 1 ]; then
               echo "Could not find Strudel version number."
               echo "Make sure you launch this workflow from an official Strudel workflow file," 
