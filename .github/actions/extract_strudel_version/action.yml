@@ -25,31 +25,31 @@ runs:
               exit 101
             fi
           }
-      - name: extract strudel version
-        shell: bash
-        env:
-            strudel_script: ${{ env.strudel_script }}
-        run: |
-          {
-          workflow_ref=${{ github.workflow_ref }}
-          repository="${{ github.repository }}/"
-          echo "repository=$repository"
-          repo_ref="@${{ github.ref }}"
-          echo "repo_ref=$repo_ref"
-          workflow_path=${workflow_ref#"$repository"}
-          echo "workflow_path=$workflow_path"
-          workflow_path=${workflow_path%"$repo_ref"}
-          # cat ${workflow_path}
-          strudel_workflow=${{ env.strudel_script }}
-          echo "strudel workflow is: $strudel_workflow"
-          exit 85
-          cat ${workflow_path} | grep -F "$strudel_script" || grep_result=$?
-          if [ $grep_result -eq 1 ]; then
-              echo "Could not find Strudel version number."
-              echo "Make sure you launch this workflow from an official Strudel workflow file," 
-              echo "see: https://github.com/strudelbots/strudel-public"
-              exit 102
-          fi
-          ref=$(cat ${workflow_path} | grep -F "uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml"| cut -d"@" -f2)
-          echo "***    Strudel =$ref  ***"
-          echo "ref=${ref}" >> $GITHUB_ENV
+#      - name: extract strudel version
+#        shell: bash
+#        env:
+#            strudel_script: ${{ env.strudel_script }}
+#        run: |
+#          {
+#          workflow_ref=${{ github.workflow_ref }}
+#          repository="${{ github.repository }}/"
+#          echo "repository=$repository"
+#          repo_ref="@${{ github.ref }}"
+#          echo "repo_ref=$repo_ref"
+#          workflow_path=${workflow_ref#"$repository"}
+#          echo "workflow_path=$workflow_path"
+#          workflow_path=${workflow_path%"$repo_ref"}
+#          # cat ${workflow_path}
+#          strudel_workflow=${{ env.strudel_script }}
+#          echo "strudel workflow is: $strudel_workflow"
+#          exit 85
+#          cat ${workflow_path} | grep -F "$strudel_script" || grep_result=$?
+#          if [ $grep_result -eq 1 ]; then
+#              echo "Could not find Strudel version number."
+#              echo "Make sure you launch this workflow from an official Strudel workflow file,"
+#              echo "see: https://github.com/strudelbots/strudel-public"
+#              exit 102
+#          fi
+#          ref=$(cat ${workflow_path} | grep -F "uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml"| cut -d"@" -f2)
+#          echo "***    Strudel =$ref  ***"
+#          echo "ref=${ref}" >> $GITHUB_ENV
