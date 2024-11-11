@@ -8,7 +8,7 @@ on:
   push:
 jobs:
   run-strudel-for-logs:
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@8-change-run-logs-to-use-reusable-actions
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@main
     secrets:
       strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
       strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}

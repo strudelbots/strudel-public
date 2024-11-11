@@ -60,11 +60,11 @@ jobs:
 
       - name: Extract user branch name
         id: extract_branch_name
-        uses: strudelbots/strudel-public/.github/actions/get_current_branch@8-change-run-logs-to-use-reusable-actions
+        uses: strudelbots/strudel-public/.github/actions/get_current_branch@main
 
       - name: extract strudel version
         id: extract_strudel_version
-        uses: strudelbots/strudel-public/.github/actions/extract_strudel_version@8-change-run-logs-to-use-reusable-actions
+        uses: strudelbots/strudel-public/.github/actions/extract_strudel_version@main
         with:
           mode: 'run_logs'
 
@@ -82,7 +82,7 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/login-to-ecr@main
 
       - name: get changed files
-        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@8-change-run-logs-to-use-reusable-actions
+        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@main
 
       - name: run docker compose
         run: |
@@ -96,7 +96,7 @@ jobs:
             docker ps -a
 
 #      - name: sanity tests
-#        uses: strudelbots/strudel-public/.github/actions/sanity-tests@8-change-run-logs-to-use-reusable-actions
+#        uses: strudelbots/strudel-public/.github/actions/sanity-tests@main
 
 #
 #      - name: Run Strudel
