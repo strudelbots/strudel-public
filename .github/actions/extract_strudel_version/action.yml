@@ -39,7 +39,7 @@ runs:
           workflow_path=${workflow_ref#"$repository"}
           echo "workflow_path=$workflow_path"
           workflow_path=${workflow_path%"$repo_ref"}
-          cat ${workflow_path}
+          #cat ${workflow_path}
           echo "************************************"
           cat ${workflow_path} | grep -F $strudel_script | grep uses || grep_result=$?
           if [[ $grep_result -eq 1 ]]; then
@@ -49,6 +49,6 @@ runs:
               exit 102
           fi
           ref=$(cat ${workflow_path} | grep -F $strudel_script | grep uses| cut -d"@" -f2)
-          echo "***    Strudel version =$ref  ***"
+          echo "***    Strudel version = $ref  ***"
           echo "ref=${ref}" >> $GITHUB_ENV
           }
