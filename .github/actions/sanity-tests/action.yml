@@ -19,10 +19,13 @@ runs:
               echo "***  sanity test fails, status $STATUSCODE";
               echo "***  docker logs nginx_proxy"
               docker logs nginx_proxy
-              echo "***  docker logs templates"
+              echo "***  end docker logs nginx_proxy"
+              echo "***  start docker logs templates"
               docker logs templates
-              echo "***  docker logs logs"
+              echo "***  end docker logs templates"
+              echo "***  start docker logs logs"
               docker logs logs
+              echo "***  end docker logs logs"
 
               exit 13
           fi

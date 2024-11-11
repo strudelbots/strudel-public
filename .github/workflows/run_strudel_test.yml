@@ -61,7 +61,6 @@ jobs:
             docker compose -f /tmp/docker_compose_run.yml up  -d --quiet-pull
             sleep 10
             docker ps -a
-            docker logs logs
 
       - name: sanity tests
         uses: strudelbots/strudel-public/.github/actions/sanity-tests@main
