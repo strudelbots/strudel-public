@@ -3,7 +3,7 @@ description: 'Get public strudel files from strudel-public repository'
 runs:
     using: 'composite'
     steps:
-      - name: get-public-files
+      - name: get_public_files
         shell: bash
         env:
           version_tag: ${{ env.ref }}

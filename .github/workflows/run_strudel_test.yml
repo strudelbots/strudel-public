@@ -36,7 +36,7 @@ jobs:
 
       - name: Extract branch name
         id: exract-branch-name
-        uses: strudelbots/strudel-public/.github/actions/get-currect-branch@5-map-action-to-specific-strudel-image
+        uses: strudelbots/strudel-public/.github/actions/get_current_branch@5-map-action-to-specific-strudel-image
 
 
       - name: install python
@@ -52,7 +52,7 @@ jobs:
            echo "env ref=${{ env.ref }}"
 
       - name: get strudel-public files
-        uses: strudelbots/strudel-public/.github/actions/get-public-files@5-map-action-to-specific-strudel-image
+        uses: strudelbots/strudel-public/.github/actions/get_public_files@5-map-action-to-specific-strudel-image
 
       - name: check user keys
         uses: strudelbots/strudel-public/.github/actions/check-user-keys@5-map-action-to-specific-strudel-image
