@@ -20,7 +20,7 @@ runs:
               echo "***  docker logs nginx_proxy"
               docker logs nginx_proxy
               echo "***  docker logs templates"
-              docker logs template
+              docker logs templates
               echo "***  docker logs locker"
               docker logs logs
 
