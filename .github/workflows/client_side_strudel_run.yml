@@ -5,7 +5,7 @@ on:
 # branches than main change the name of the branch
      branches:
        - main
-  push:
+#  push:
 jobs:
   run-strudel-for-logs:
     uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@main
