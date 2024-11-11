@@ -27,15 +27,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-
-      - name: Extract branch name
+      - name: Extract user branch name
         id: exract-branch-name
         uses: strudelbots/strudel-public/.github/actions/get_current_branch@5-map-action-to-specific-strudel-image
-
-
-      - name: install python
-        id: install-python
-        uses: strudelbots/strudel-public/.github/actions/install-python@5-map-action-to-specific-strudel-image
 
       - name: extract strudel version
         id: extract_strudel_version
@@ -47,6 +41,10 @@ jobs:
 
       - name: check user keys
         uses: strudelbots/strudel-public/.github/actions/check-user-keys@5-map-action-to-specific-strudel-image
+
+      - name: install python
+        id: install-python
+        uses: strudelbots/strudel-public/.github/actions/install-python@5-map-action-to-specific-strudel-image
 
       - name: login to ecr
         uses: strudelbots/strudel-public/.github/actions/login-to-ecr@5-map-action-to-specific-strudel-image
