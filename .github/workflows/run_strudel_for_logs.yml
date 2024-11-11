@@ -65,6 +65,11 @@ jobs:
         id: extract_strudel_version
         uses: strudelbots/strudel-public/.github/actions/extract_strudel_version@main
 
+      - name: Print strudel version
+        shell: bash
+        run: |
+          echo "strudel version: ${{ env.ref }}"
+
       - name: get strudel-public files
         uses: strudelbots/strudel-public/.github/actions/get_public_files@main
 
