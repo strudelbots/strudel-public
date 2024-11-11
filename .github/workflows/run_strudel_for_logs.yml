@@ -83,7 +83,7 @@ jobs:
       - name: List all changed files
         id: list-changed-files
         run: |
-          git diff --diff-filter=AMR --name-status origin/main origin/8-change-run-logs-to-use-reusable-actions
+          git diff origin/main origin/8-change-run-logs-to-use-reusable-actions
           
 
 #          git diff --diff-filter=AMR --name-status origin/main origin/${{ steps.extract_branch.outputs.branch }}
