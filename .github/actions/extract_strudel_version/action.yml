@@ -8,7 +8,7 @@ runs:
 
     using: 'composite'
     steps:
-      - name: extract_strudel_version
+      - name: find mode
         env:
           mode: ${{ inputs.mode }}
         shell: bash
@@ -18,12 +18,22 @@ runs:
               echo "mode is test_strudel"
             elif [ $mode == "run_logs" ]; then
               echo "mode is run_logs"
+              echo "export mode=$mode" >> $GITHUB_ENV
             else
               echo "mode is not recognized"
               exit 101
             fi
           }
-          exit 8
+
+      - name: extract strudel version
+        shell: bash
+        run: |
+          {
+            if ${{ env.mode }} == "test_strudel"; then
+              strudel_workflow="uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml"
+            else ${{ env.mode }} == "run_logs"; then
+              strudel_workflow="uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml"
+          }
           workflow_ref=${{ github.workflow_ref }}
           repository="${{ github.repository }}/"
           echo "repository=$repository"
@@ -32,7 +42,8 @@ runs:
           workflow_path=${workflow_ref#"$repository"}
           echo "workflow_path=$workflow_path"
           workflow_path=${workflow_path%"$repo_ref"}
-          cat ${workflow_path}
+          # cat ${workflow_path}
+          echo $strudel_workflow
           cat ${workflow_path} | grep -F "uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml" || grep_result=$?
           if [ $grep_result -eq 1 ]; then
               echo "Could not find Strudel version number."
