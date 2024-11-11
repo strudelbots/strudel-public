@@ -16,7 +16,7 @@ runs:
           workflow_path=${workflow_path%"$repo_ref"}
           cat ${workflow_path} > /tmp/my_file
           #cat /tmp/my_file
-          grep status /tmp/my_file)
+          grep status /tmp/my_file
           grep_result=$? 
           echo "grep_resul is : =$grep_result"
           exit 88
