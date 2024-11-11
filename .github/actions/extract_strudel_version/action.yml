@@ -14,8 +14,8 @@ runs:
         run: |
           {
             if [ $mode == "test_strudel" ]; then
-              echo "strudel_script=mode is test_strudel"
-              echo "run_strudel_test.yml" >> $GITHUB_ENV
+              echo "mode is test_strudel"
+              echo "strudel_script=run_strudel_test.yml" >> $GITHUB_ENV
             elif [ $mode == "run_logs" ]; then
               echo "mode is run_logs"
               echo "strudel_script=run_strudel_for_logs.yml" >> $GITHUB_ENV
