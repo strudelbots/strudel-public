@@ -22,7 +22,7 @@ runs:
             if [ $grep_result -eq 0 ]; then
               echo "grep_result=$grep_result"
               exit 101
-            }
+            fi
             exit 88
           }
           exit 98
