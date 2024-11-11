@@ -51,7 +51,7 @@ jobs:
 
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - name: Check out repository
         uses: actions/checkout@v4
         with:
@@ -83,7 +83,6 @@ jobs:
       - name: List all changed files
         id: list-changed-files
         run: |
-          
           git diff --name-only origin/main 8-change-run-logs-to-use-reusable-actions
           
 
