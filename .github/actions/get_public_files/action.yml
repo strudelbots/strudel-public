@@ -1,0 +1,28 @@
+name: 'Get public strudel files'
+description: 'Get public strudel files from strudel-public repository'
+runs:
+    using: 'composite'
+    steps:
+      - name: get_public_files
+        shell: bash
+        env:
+          version_tag: ${{ env.ref }}
+        run: |
+            {
+              if [ $version_tag == v* ]; then
+                echo "version_tag is not supported"
+                exit 1
+              else
+                url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/$version_tag/docker_compose_run.yml"            
+              fi
+            }
+            echo "url=$url"
+            wget  -P /tmp $url
+            {
+              wget_result=$?
+              if [ $wget_result -ne 0 ]; then
+                echo "Failed to get files from strudel-public with $wget_result"
+                exit 1
+              fi
+            } 
+            ls -alt /tmp/docker_compose_run.yml

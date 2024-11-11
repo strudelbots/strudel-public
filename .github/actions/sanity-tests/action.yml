@@ -1,0 +1,59 @@
+name: 'Sanity tests'
+description: 'Sanity Tests'
+runs:
+    using: 'composite'
+    steps:
+      - name: Run add logs sanity test
+        shell: bash
+        run: |
+          echo "***   start sanity test - add logs"
+          export STATUSCODE=$(curl --silent --output /dev/null --write-out "%{http_code}" --location '127.0.0.1:8080/add_logs/' \
+          --header 'X-Request-Id: 7' \
+          --header 'Content-Type: application/json' \
+          --data '{"source": "test",
+          "file_content": "def foo():\n  print(a)",
+          "file_name": "test"}')
+          printf "\n***   status code is $STATUSCODE \n"
+          {
+          if [ $STATUSCODE -ne 200 ]; then 
+              echo "***  sanity test fails, status $STATUSCODE";
+              echo "***  docker logs nginx_proxy"
+              docker logs nginx_proxy
+              echo "***  docker logs templates"
+              docker logs template
+              exit 13
+          fi
+          }
+          echo "***   end sanity test - add logs"
+
+      - name: Run remove logs sanity test
+        shell: bash
+        run: |
+          echo "***   start sanity test - remove logs"
+          export STATUSCODE=$(curl --silent --output /dev/null --write-out "%{http_code}" --location '127.0.0.1:8080/remove_logs/' \
+          --header 'X-Request-Id: 7' \
+          --header 'Content-Type: application/json' \
+          --data '{"source": "test",
+          "file_content": "def foo():\n  print(a)",
+          "file_name": "test"}')
+          printf "\n***   status code is $STATUSCODE \n"
+          if [ $STATUSCODE -ne 200 ]; then echo "sanity test fails, status $STATUSCODE"; fi
+          if [ $STATUSCODE -ne 200 ]; then exit 21; fi
+          echo "***   end sanity test - remove logs"
+
+      - name: Run error logs sanity test
+        shell: bash
+        run: |
+          echo "***   start sanity test - ERROR"
+          export STATUSCODE=$(curl --silent --output /dev/null --write-out "%{http_code}" --location '127.0.0.1:8080/error_logs/' \
+          --header 'X-Request-Id: 7' \
+          --header 'Content-Type: application/json' \
+          --data '{"source": "test",
+          "file_content": "def foo():\n  print(a)",
+          "file_name": "test"}')
+          printf "\n***   status code is $STATUSCODE \n"
+          if [ $STATUSCODE -eq 200 ]; then echo "sanity test fails, status $STATUSCODE"; fi
+          if [ $STATUSCODE -eq 200 ]; then exit 22; fi
+          echo "***   end sanity test - ERROR logs"
+
+

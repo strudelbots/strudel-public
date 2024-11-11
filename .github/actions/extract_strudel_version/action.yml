@@ -1,9 +1,9 @@
-name: 'extract-strudel-version'
+name: 'extract_strudel_version'
 description: 'A composite action that install python and requests'
 runs:
     using: 'composite'
     steps:
-      - name: extract-strudel-version
+      - name: extract_strudel_version
         shell: bash
         run: |
           workflow_ref=${{ github.workflow_ref }}
@@ -15,4 +15,5 @@ runs:
           echo "workflow_path=$workflow_path"
           workflow_path=${workflow_path%"$repo_ref"}
           ref=$(cat ${workflow_path} | grep -F "uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml"| cut -d"@" -f2)
+          echo "***    Strudel =$ref  ***"
           echo "ref=${ref}" >> $GITHUB_ENV
