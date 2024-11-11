@@ -58,7 +58,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract user branch name
-        id: exract-branch-name
+        id: extract_branch_name
         uses: strudelbots/strudel-public/.github/actions/get_current_branch@main
 
       - name: extract strudel version
@@ -67,10 +67,10 @@ jobs:
         with:
           mode: 'run_logs'
 
-      - name: Print strudel version
-        shell: bash
-        run: |
-          echo "strudel version: ${{ env.ref }}"
+#      - name: Print strudel version
+#        shell: bash
+#        run: |
+#          echo "strudel version: ${{ env.ref }}"
 
       - name: get strudel-public files
         uses: strudelbots/strudel-public/.github/actions/get_public_files@main
@@ -96,6 +96,15 @@ jobs:
             sleep 10
             docker ps -a
             docker logs logs
+      - name: List all changed files
+        id: list-changed-files
+        run: |
+          git diff --diff-filter=AMR --name-status origin/main origin/${{ steps.extract_branch.outputs.branch }}
+          {
+          echo 'ALL_CHANGED_FILES<<EOF'
+          git diff --diff-filter=AMR --name-only origin/main origin/${{ steps.extract_branch.outputs.branch }}
+          echo EOF
+          } >> $GITHUB_ENV
 
 #      - name: Get changed files
 #        id: get-changed-files
