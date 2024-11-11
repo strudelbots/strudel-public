@@ -17,6 +17,7 @@ runs:
           cat ${workflow_path} > /tmp/my_file
           #cat /tmp/my_file
           grep_result=$(grep status /tmp/my_file)
+          echo "grep_result=$grep_result"
           exit 88
           {
            if [ -z "$grep_result" ]; then
