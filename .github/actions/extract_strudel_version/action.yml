@@ -1,11 +1,36 @@
 name: 'extract_strudel_version'
 description: 'A composite action that install python and requests'
+inputs:
+  mode:  # is it test or run_logs
+    description: 'either test_strudel or run_logs'
+    required: true
 runs:
     using: 'composite'
     steps:
-      - name: extract_strudel_version
+      - name: find mode
+        env:
+          mode: ${{ inputs.mode }}
         shell: bash
         run: |
+          {
+            if [ $mode == "test_strudel" ]; then
+              echo "mode is test_strudel"
+              echo "strudel_script=strudelbots/strudel-public/.github/workflows/run_strudel_test.yml" >> $GITHUB_ENV
+            elif [ $mode == "run_logs" ]; then
+              echo "mode is run_logs"
+              echo "strudel_script=strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml" >> $GITHUB_ENV
+            else
+              echo "mode is not recognized"
+              exit 101
+            fi
+          }
+      - name: extract strudel version
+        shell: bash
+        env:
+            strudel_script: strudel_for_logs
+        run: |
+          {
+          echo "strudel_script is: $strudel_script"
           workflow_ref=${{ github.workflow_ref }}
           repository="${{ github.repository }}/"
           echo "repository=$repository"
@@ -14,6 +39,16 @@ runs:
           workflow_path=${workflow_ref#"$repository"}
           echo "workflow_path=$workflow_path"
           workflow_path=${workflow_path%"$repo_ref"}
-          ref=$(cat ${workflow_path} | grep -F "uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml"| cut -d"@" -f2)
-          echo "***    Strudel =$ref  ***"
+          #cat ${workflow_path}
+          echo "************************************"
+          cat ${workflow_path} | grep -F $strudel_script | grep uses || grep_result=$?
+          if [[ $grep_result -eq 1 ]]; then
+              echo "Could not find Strudel version number."
+              echo "Make sure you launch this workflow from an official Strudel workflow file,"
+              echo "see: https://github.com/strudelbots/strudel-public"
+              exit 102
+          fi
+          ref=$(cat ${workflow_path} | grep -F $strudel_script | grep uses| cut -d"@" -f2)
+          echo "***    Strudel version =$ref  ***"
           echo "ref=${ref}" >> $GITHUB_ENV
+          }

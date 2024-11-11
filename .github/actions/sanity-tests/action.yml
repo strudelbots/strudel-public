@@ -20,7 +20,10 @@ runs:
               echo "***  docker logs nginx_proxy"
               docker logs nginx_proxy
               echo "***  docker logs templates"
-              docker logs template
+              docker logs templates
+              echo "***  docker logs logs"
+              docker logs logs
+
               exit 13
           fi
           }
