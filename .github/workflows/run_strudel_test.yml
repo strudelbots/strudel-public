@@ -29,25 +29,25 @@ jobs:
 
       - name: Extract user branch name
         id: exract-branch-name
-        uses: strudelbots/strudel-public/.github/actions/get_current_branch@5-map-action-to-specific-strudel-image
+        uses: strudelbots/strudel-public/.github/actions/get_current_branch@main
 
       - name: extract strudel version
         id: extract_strudel_version
-        uses: strudelbots/strudel-public/.github/actions/extract_strudel_version@5-map-action-to-specific-strudel-image
+        uses: strudelbots/strudel-public/.github/actions/extract_strudel_version@main
 
 
       - name: get strudel-public files
-        uses: strudelbots/strudel-public/.github/actions/get_public_files@5-map-action-to-specific-strudel-image
+        uses: strudelbots/strudel-public/.github/actions/get_public_files@main
 
       - name: check user keys
-        uses: strudelbots/strudel-public/.github/actions/check-user-keys@5-map-action-to-specific-strudel-image
+        uses: strudelbots/strudel-public/.github/actions/check-user-keys@main
 
       - name: install python
         id: install-python
-        uses: strudelbots/strudel-public/.github/actions/install-python@5-map-action-to-specific-strudel-image
+        uses: strudelbots/strudel-public/.github/actions/install-python@main
 
       - name: login to ecr
-        uses: strudelbots/strudel-public/.github/actions/login-to-ecr@5-map-action-to-specific-strudel-image
+        uses: strudelbots/strudel-public/.github/actions/login-to-ecr@main
 
       - name: run docker compose
         run: |
@@ -62,4 +62,4 @@ jobs:
             docker logs logs
 
       - name: sanity tests
-        uses: strudelbots/strudel-public/.github/actions/sanity-tests@5-map-action-to-specific-strudel-image
+        uses: strudelbots/strudel-public/.github/actions/sanity-tests@main
