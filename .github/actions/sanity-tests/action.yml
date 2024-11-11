@@ -16,8 +16,11 @@ runs:
           printf "\n***   status code is $STATUSCODE \n"
           {
           if [ $STATUSCODE -ne 200 ]; then 
-              echo "sanity test fails, status $STATUSCODE";
+              echo "***  sanity test fails, status $STATUSCODE";
+              echo "***  docker logs nginx_proxy"
               docker logs nginx_proxy
+              echo "***  docker logs templates"
+              docker logs template
               exit 13
           fi
           }
