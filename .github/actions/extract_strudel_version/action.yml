@@ -18,7 +18,7 @@ runs:
           #cat /tmp/my_file
           {            
             grep shai /tmp/my_file || grep_result=$?
- 
+            echo "grep_result=$grep_result"
             if [ $grep_result -eq 0 ]; then
               echo "grep_result=$grep_result"
               exit 101
