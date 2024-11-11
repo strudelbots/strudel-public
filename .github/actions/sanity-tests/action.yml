@@ -14,8 +14,13 @@ runs:
           "file_content": "def foo():\n  print(a)",
           "file_name": "test"}')
           printf "\n***   status code is $STATUSCODE \n"
-          if [ $STATUSCODE -ne 200 ]; then echo "sanity test fails, status $STATUSCODE"; fi
-          if [ $STATUSCODE -ne 200 ]; then exit 20; fi
+          {
+          if [ $STATUSCODE -ne 200 ]; then 
+              echo "sanity test fails, status $STATUSCODE";
+              docker logs shtruddel_nginx
+              exit 13
+          fi
+          }
           echo "***   end sanity test - add logs"
 
       - name: Run remove logs sanity test
