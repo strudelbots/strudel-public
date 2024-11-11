@@ -21,6 +21,7 @@ runs:
               exit 7
           }
           exit 8
+          
           ref=$(cat ${workflow_path} | grep -F "uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml"| cut -d"@" -f2)
           echo "***    Strudel =$ref  ***"
           echo "ref=${ref}" >> $GITHUB_ENV
