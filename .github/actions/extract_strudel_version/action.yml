@@ -16,7 +16,7 @@ runs:
           workflow_path=${workflow_path%"$repo_ref"}
           cat ${workflow_path} > /tmp/my_file
           cat /tmp/my_file
-          grep_result=$(grep -F "uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml")
+          grep_result=$(grep -F "shai rubin" /tmp/my_file)
           echo "grep_result=$grep_result"
           exit 88
           {
