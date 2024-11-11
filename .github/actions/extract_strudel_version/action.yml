@@ -41,7 +41,7 @@ runs:
           workflow_path=${workflow_path%"$repo_ref"}
           #cat ${workflow_path}
           echo "************************************"
-          cat ${workflow_path} | grep -F $strudel_script
+          cat ${workflow_path} | grep -F "strudelbots/strudel-public/.github/workflows/$strudel_script"
           #echo "grep_result=$grep_result"
           #if [ $grep_result -eq 1 ]; then
           #    echo "Could not find Strudel version number."
