@@ -1,4 +1,4 @@
-name: strudel-test
+name: run strudel-test
 on:
   workflow_dispatch:
   push:

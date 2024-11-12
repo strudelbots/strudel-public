@@ -1,4 +1,4 @@
-name: strudel-for-logs
+name: run strudel-for-logs
 on:
   pull_request:
 # If you want to run the workflow only for other
