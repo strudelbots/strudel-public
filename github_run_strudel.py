@@ -41,12 +41,12 @@ def get_all_files():
     python_files = []
     changed_files = os.getenv('ALL_CHANGED_FILES', None)
     if not changed_files:
-        print(f'Found zero Python files out of {len(changed_files)} files that were changed.')
+        print(f'No files found for strudel.')
     else:
-        all_files = changed_files.split(' ')
+        all_files = changed_files.split('\n')
         if len(all_files) ==0:
             raise ValueError('ALL_CHANGED_FILES is empty')
-        print(f"**************** len of files: {len(all_files)}")
+        print(f"Length of files: {len(all_files)}")
         for file in all_files:
             if file.endswith('.py'):
                 python_files.append(file)
