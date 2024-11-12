@@ -67,7 +67,7 @@ jobs:
           mode: 'run_logs'
 
       - name: get strudel-public files
-        uses: strudelbots/strudel-public/.github/actions/get_public_files
+        uses: strudelbots/strudel-public/.github/actions/get_public_files@8-change-run-logs-to-use-reusable-actions
 
       - name: check user keys
         uses: strudelbots/strudel-public/.github/actions/check-user-keys@main
