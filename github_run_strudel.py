@@ -99,9 +99,9 @@ def _set_url(action):
 
 
 if __name__ == '__main__':
-    raise ValueError('Not supposed to be run as main')
     if len(sys.argv) < 2:
         raise ValueError('No action provided')
+    print(f'argv: {sys.argv}')
     action = sys.argv[1]
     url = _set_url(action)
     python_files, not_python_files =  get_all_files()
