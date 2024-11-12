@@ -97,13 +97,13 @@ jobs:
       - name: sanity tests
         uses: strudelbots/strudel-public/.github/actions/sanity-tests@8-change-run-logs-to-use-reusable-actions
 
-      - name: Run Strudel
-        run: |
-           export ALL_CHANGED_FILES="${{ steps.get-changed-files.outputs.all_changed_files }}"
-           export ROOT_DIR=$(pwd)/
-           export OVERWRITE_ORIG_FILES=True
-           echo run_strudel ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel }}
-           python /tmp/strudel-public/github_run_strudel.py ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel  }}
+#      - name: Run Strudel
+#        run: |
+#           export ALL_CHANGED_FILES="${{ steps.get-changed-files.outputs.all_changed_files }}"
+#           export ROOT_DIR=$(pwd)/
+#           export OVERWRITE_ORIG_FILES=True
+#           echo run_strudel ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel }}
+#           python /tmp/strudel-public/github_run_strudel.py ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel  }}
 #      - name: Commit and push Strudel logs
 #        run: |
 #          if [ -z "$(git status --porcelain)" ]; then echo "no files to push" && exit 0; fi
