@@ -99,6 +99,7 @@ jobs:
       - name: Run Strudel
         run: |
            export ALL_CHANGED_FILES="${{ env.ALL_CHANGED_FILES }}"
+           echo " *** ALL_CHANGED_FILES=$ALL_CHANGED_FILES"
            export ROOT_DIR=$(pwd)/
            export OVERWRITE_ORIG_FILES=True
            echo run_strudel ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel }}
