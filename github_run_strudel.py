@@ -41,7 +41,7 @@ def get_all_files():
     python_files = []
     changed_files = os.getenv('ALL_CHANGED_FILES', None)
     if not changed_files:
-        print('No changed files found')
+        print(f'Found zero Python files out of {len(changed_files)} files that were changed.')
     else:
         all_files = changed_files.split(' ')
         if len(all_files) ==0:
