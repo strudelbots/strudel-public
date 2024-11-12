@@ -94,7 +94,7 @@ jobs:
             docker ps -a
 
       - name: sanity tests
-        uses: strudelbots/strudel-public/.github/actions/sanity-tests@main
+        uses: strudelbots/strudel-public/.github/actions/sanity_tests@main
 
       - name: Run Strudel
         run: |
