@@ -97,7 +97,6 @@ def _set_url(action):
     else:
         raise ValueError('Invalid action')
 
-
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         raise ValueError('No action provided')
