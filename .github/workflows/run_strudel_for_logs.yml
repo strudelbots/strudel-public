@@ -102,7 +102,7 @@ jobs:
            export ROOT_DIR=$(pwd)/
            export OVERWRITE_ORIG_FILES=True
            echo run_strudel ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel }}
-           python /tmp/strudel-public/github_run_strudel.py ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel  }}
+           python /tmp/github_run_strudel.py ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel  }}
       - name: Commit and push Strudel logs
         run: |
           if [ -z "$(git status --porcelain)" ]; then echo "no files to push" && exit 0; fi
