@@ -41,12 +41,12 @@ def get_all_files():
     python_files = []
     changed_files = os.getenv('ALL_CHANGED_FILES', None)
     if not changed_files:
-        print('No changed files found')
+        print(f'No files found for strudel.')
     else:
-        all_files = changed_files.split(' ')
+        all_files = changed_files.split('\n')
         if len(all_files) ==0:
             raise ValueError('ALL_CHANGED_FILES is empty')
-        print(f"**************** len of files: {len(all_files)}")
+        print(f"Length of files: {len(all_files)}")
         for file in all_files:
             if file.endswith('.py'):
                 python_files.append(file)
@@ -97,8 +97,10 @@ def _set_url(action):
     else:
         raise ValueError('Invalid action')
 
-
 if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        raise ValueError('No action provided')
+    print(f'argv: {sys.argv}')
     action = sys.argv[1]
     url = _set_url(action)
     python_files, not_python_files =  get_all_files()

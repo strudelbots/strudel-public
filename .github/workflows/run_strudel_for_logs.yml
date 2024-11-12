@@ -13,35 +13,33 @@ on:
       strudel_secret_key:
         required: true
 #  push:
-
-
 jobs:
-#  pre_run_strudel_on_pull_request:
-#    runs-on: ubuntu-22.04
-#    outputs:
-#      run_strudel: ${{ steps.check_head_commit_message.outputs.run_strudel_value }}
-#    steps:
-#      - uses: actions/checkout@v4
-#        with:
-#          ref: ${{ github.event.pull_request.head.sha }}
-#
-#      - name: check head commit message
-#        id: check_head_commit_message
-#        env:
-#          sha_last_commit: ${{ github.event.pull_request.head.sha }}
-#        shell: bash
-#        run: |
-#          last_commit=$(git log -1 --pretty=%B $sha_last_commit)
-#          echo "last_commit:  $last_commit"
-#          curl -sSL https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/code/determine_strudel_action.sh -o /tmp/tmp.sh
-#          chmod +x /tmp/tmp.sh
-#          command=$(/tmp/tmp.sh  "$last_commit")
-#          echo "command is $command"
-#          echo "run_strudel_value=$command" >> "$GITHUB_OUTPUT"
+  pre_run_strudel_on_pull_request:
+    runs-on: ubuntu-22.04
+    outputs:
+      run_strudel: ${{ steps.check_head_commit_message.outputs.run_strudel_value }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: check head commit message
+        id: check_head_commit_message
+        env:
+          sha_last_commit: ${{ github.event.pull_request.head.sha }}
+        shell: bash
+        run: |
+          last_commit=$(git log -1 --pretty=%B $sha_last_commit)
+          echo "last_commit:  $last_commit"
+          curl -sSL https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/code/determine_strudel_action.sh -o /tmp/tmp.sh
+          chmod +x /tmp/tmp.sh
+          command=$(/tmp/tmp.sh  "$last_commit")
+          echo "command is $command"
+          echo "run_strudel_value=$command" >> "$GITHUB_OUTPUT"
 
   run-strudel:
-#    needs: pre_run_strudel_on_pull_request
-#    if: ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel!='none' }}
+    needs: pre_run_strudel_on_pull_request
+    if: ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel!='none' }}
     env:
       strudel_access_key: ${{ secrets.strudel_access_key }}
       strudel_secret_key: ${{ secrets.strudel_secret_key }}
@@ -95,22 +93,22 @@ jobs:
             sleep 10
             docker ps -a
 
-#      - name: sanity tests
-#        uses: strudelbots/strudel-public/.github/actions/sanity-tests@main
+      - name: sanity tests
+        uses: strudelbots/strudel-public/.github/actions/sanity-tests@main
 
-#
-#      - name: Run Strudel
-#        run: |
-#           export ALL_CHANGED_FILES="${{ steps.get-changed-files.outputs.all_changed_files }}"
-#           export ROOT_DIR=$(pwd)/
-#           export OVERWRITE_ORIG_FILES=True
-#           echo run_strudel ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel }}
-#           python /tmp/strudel-public/github_run_strudel.py ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel  }}
-#      - name: Commit and push Strudel logs
-#        run: |
-#          if [ -z "$(git status --porcelain)" ]; then echo "no files to push" && exit 0; fi
-#          git config --global user.name 'strudel-loger'
-#          git config --global user.email 'strudel-logger@users.noreply.github.com'
-#          git checkout ${{ steps.extract_branch.outputs.branch }}
-#          git commit -am "Automated strudel-logger commit for branch ${{ steps.extract_branch.outputs.branch }}"
-#          git push --set-upstream origin ${{ steps.extract_branch.outputs.branch }}
+      - name: Run Strudel
+        run: |
+           export ALL_CHANGED_FILES="${{ env.ALL_CHANGED_FILES }}"
+           echo " *** ALL_CHANGED_FILES=$ALL_CHANGED_FILES"
+           export ROOT_DIR=$(pwd)/
+           export OVERWRITE_ORIG_FILES=True
+           echo run_strudel ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel }}
+           python /tmp/github_run_strudel.py ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel  }}
+      - name: Commit and push Strudel logs
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then echo "no files to push" && exit 0; fi
+          git config --global user.name 'strudel-logger'
+          git config --global user.email 'strudel-logger@users.noreply.github.com'
+          git checkout ${{ env.branch }}
+          git commit -am "Automated strudel-logger commit for branch ${{ env.branch }}"
+#          git push --set-upstream origin ${{ env.branch }}

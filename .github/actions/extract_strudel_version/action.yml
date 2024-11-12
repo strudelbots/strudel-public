@@ -15,10 +15,10 @@ runs:
           {
             if [ $mode == "test_strudel" ]; then
               echo "mode is test_strudel"
-              echo "strudel_script=strudelbots/strudel-public/.github/workflows/run_strudel_test.yml" >> $GITHUB_ENV
+              echo "strudel_script=run_strudel_test.yml" >> $GITHUB_ENV
             elif [ $mode == "run_logs" ]; then
               echo "mode is run_logs"
-              echo "strudel_script=strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml" >> $GITHUB_ENV
+              echo "strudel_script=run_strudel_for_logs.yml" >> $GITHUB_ENV
             else
               echo "mode is not recognized"
               exit 101
@@ -27,7 +27,7 @@ runs:
       - name: extract strudel version
         shell: bash
         env:
-            strudel_script: strudel_for_logs
+            strudel_script: ${{ env.strudel_script }}
         run: |
           {
           echo "strudel_script is: $strudel_script"
@@ -49,6 +49,6 @@ runs:
               exit 102
           fi
           ref=$(cat ${workflow_path} | grep -F $strudel_script | grep uses| cut -d"@" -f2)
-          echo "***    Strudel version =$ref  ***"
+          echo "***    Strudel version = $ref  ***"
           echo "ref=${ref}" >> $GITHUB_ENV
           }

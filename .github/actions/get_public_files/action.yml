@@ -3,7 +3,7 @@ description: 'Get public strudel files from strudel-public repository'
 runs:
     using: 'composite'
     steps:
-      - name: get_public_files
+      - name: get_public_files 1
         shell: bash
         env:
           version_tag: ${{ env.ref }}
@@ -26,3 +26,26 @@ runs:
               fi
             } 
             ls -alt /tmp/docker_compose_run.yml
+      - name: get_public_files 2
+        shell: bash
+        env:
+          version_tag: ${{ env.ref }}
+        run: |
+            {
+              if [ $version_tag == v* ]; then
+                echo "version_tag is not supported"
+                exit 1
+              else
+                url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/$version_tag/github_run_strudel.py"            
+              fi
+            }
+            echo "url=$url"
+            wget  -P /tmp $url
+            {
+              wget_result=$?
+              if [ $wget_result -ne 0 ]; then
+                echo "Failed to get files from strudel-public with $wget_result"
+                exit 2
+              fi
+            } 
+            ls -alt /tmp/github_run_strudel.py
