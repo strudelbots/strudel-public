@@ -93,8 +93,8 @@ jobs:
             sleep 10
             docker ps -a
 
-#      - name: sanity tests
-#        uses: strudelbots/strudel-public/.github/actions/sanity-tests@main
+      - name: sanity tests
+        uses: strudelbots/strudel-public/.github/actions/sanity-tests@main
 
 #
 #      - name: Run Strudel
