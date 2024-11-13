@@ -14,6 +14,10 @@ runs:
         run: |
           echo "master_branch=${{ inputs.master_branch }}"
           master_branch=${{ inputs.master_branch }}
+          origin="origin/" 
+          {
+            if [[  $master_branch == "refs/tag*" ]]; then origin=""; fi
+          }
           git diff --diff-filter=AMR --name-only origin/$master_branch origin/${{ env.branch }}
           {
           echo 'ALL_CHANGED_FILES<<EOF'
