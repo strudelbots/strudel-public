@@ -8,6 +8,7 @@ runs:
         env:
           version_tag: ${{ env.ref }}
         run: |
+            echo "*** version_tag=$version_tag"
             {
               if [ $version_tag == v* ]; then
                 echo "version_tag is not supported"
