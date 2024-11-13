@@ -7,6 +7,10 @@ on:
         default: 'strudel'
         required: false
         type: string
+      master_branch:
+        default: 'main'
+        required: false
+        type: string
     secrets:
       strudel_access_key:
         required: true
@@ -81,7 +85,9 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/login-to-ecr@main
 
       - name: get changed files
-        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@main
+        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@pre-release-v0.10.0
+        with:
+          master_branch: ${{ inputs.master_branch }}
 
       - name: run docker compose
         run: |

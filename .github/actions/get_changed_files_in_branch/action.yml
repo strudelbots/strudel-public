@@ -1,16 +1,23 @@
 name: 'Get Changed Files'
 description: 'Login to AWS ECR'
+inputs:
+  master_branch:
+    description: 'The name of the master branch'
+    required: true
 runs:
+
     using: 'composite'
     steps:
       - name: List all changed files
         id: list-changed-files
         shell: bash
         run: |
-          git diff --diff-filter=AMR --name-only origin/main origin/${{ env.branch }}
+          echo "master_branch=${{ inputs.master_branch }}"
+          master_branch=${{ inputs.master_branch }}
+          git diff --diff-filter=AMR --name-only origin/$master_branch origin/${{ env.branch }}
           {
           echo 'ALL_CHANGED_FILES<<EOF'
-          git diff --diff-filter=AMR --name-only origin/main origin/${{ env.branch }}
+          git diff --diff-filter=AMR --name-only origin/$master_branch origin/${{ env.branch }}
           echo EOF
           } >> $GITHUB_ENV
 
