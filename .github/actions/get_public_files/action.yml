@@ -11,7 +11,7 @@ runs:
             echo "*** version_tag=$version_tag"
             file=docker_compose_run.yml
             {
-              if [[ $version_tag =~ v0* ]]; then
+              if [[ $version_tag =~ "v0*" ]]; then
                 url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/tags/$version_tag/"            
               else
                 url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/$version_tag/"            
