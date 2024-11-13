@@ -10,9 +10,8 @@ runs:
         run: |
             echo "*** version_tag=$version_tag"
             {
-              if [[ $version_tag =~ p* ]]; then
-                echo "version_tag is not supported"
-                exit 1
+              if [[ $version_tag =~ v0* ]]; then
+                url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/tags/$version_tag/docker_compose_run.yml"            
               else
                 url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/$version_tag/docker_compose_run.yml"            
               fi
