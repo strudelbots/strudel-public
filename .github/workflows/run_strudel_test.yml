@@ -38,7 +38,6 @@ jobs:
           mode: 'test_strudel'
 
 
-
       - name: get strudel-public files
         uses: strudelbots/strudel-public/.github/actions/get_public_files@pre-release-v0.10.0
 
