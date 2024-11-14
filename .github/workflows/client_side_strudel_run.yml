@@ -8,7 +8,7 @@ on:
   push:
 jobs:
   run-strudel-for-logs:
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@pre-release-v0.10.0
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@main
     with:
       master_branch: main
     secrets:
