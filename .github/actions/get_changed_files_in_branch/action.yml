@@ -22,7 +22,7 @@ runs:
           echo "master_branch=${{ inputs.master_branch }}"
           echo "branch=${{ env.branch }}"
           master_branch=${{ inputs.master_branch }}
-          current_branch=${{ env.branch }}
+          current_branch=${{ env.ref }}
           {
             if [[  $current_branch == "refs/tag*" ]]; then 
               origin="" 
