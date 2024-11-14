@@ -22,24 +22,10 @@ runs:
           echo "master_branch=${{ inputs.master_branch }}"
           echo "branch=${{ env.branch }}"
           master_branch=${{ inputs.master_branch }}
-          current_branch=${{ env.ref }}
-          echo "current_branch=$current_branch"
-          {
-            if [[ $current_branch == v0* ]] || [[ $current_branch == refs\/tag* ]]; then  
-              echo "current_branch is refs/tags: $current_branch"
-              git_command="git diff --diff-filter=AMR --name-only origin/$master_branch ${{ env.branch }}"
-            elif [[ $repository = "strudelbots/strudel-public" ]]; then
-              origin="origin"
-              master_branch="main"
-              git_command="git diff --diff-filter=AMR --name-only origin/$master_branch origin/${{ env.branch }}" 
-              echo "repository: $repository, origin: $origin, master_branch: $master_branch"
-            else
-              echo "repository is not strudelbots/strudel-public: $repository"
-              exit 23
-            fi
-          }
-          echo "**** git diff --diff-filter=AMR --name-only $origin/$master_branch $origin/${{ env.branch }}"
-          echo "command is: $git_command"
+          ref=${{ env.ref }}
+          echo "ref=$ref"
+          git_command="git diff --diff-filter=AMR --name-only origin/$master_branch ${{ env.branch }}"
+          echo "git command is: $git_command"
           eval " $git_command"
           #{
           #  echo 'ALL_CHANGED_FILES<<EOF'
@@ -49,3 +35,17 @@ runs:
           #} >> $GITHUB_ENV
 
 
+#          {
+#            if [[ $ref == v0* ]] || [[ $ref == refs\/tag* ]]; then
+#              echo "ref is refs/tags: $ref"
+#              git_command="git diff --diff-filter=AMR --name-only origin/$master_branch ${{ env.branch }}"
+#            elif [[ $repository = "strudelbots/strudel-public" ]]; then
+#              origin="origin"
+#              master_branch="main"
+#              git_command="git diff --diff-filter=AMR --name-only origin/$master_branch origin/${{ env.branch }}"
+#              echo "repository: $repository, origin: $origin, master_branch: $master_branch"
+#            else
+#              echo "repository is not strudelbots/strudel-public: $repository"
+#              exit 23
+#            fi
+#          }
