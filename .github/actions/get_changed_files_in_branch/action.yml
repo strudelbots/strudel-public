@@ -27,7 +27,7 @@ runs:
           {
             if [[ $current_branch == v0* ]] || [[ $current_branch == refs\/tag* ]]; then  
               echo "current_branch is refs/tags: $current_branch"
-              git_command="git diff --diff-filter=AMR --name-only origin/$master_branch origin/${{ env.branch }}"
+              git_command="git diff --diff-filter=AMR --name-only origin/$master_branch ${{ env.branch }}"
             elif [[ $repository = "strudelbots/strudel-public" ]]; then
               origin="origin"
               master_branch="main"
