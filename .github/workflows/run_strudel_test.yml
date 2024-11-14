@@ -44,6 +44,10 @@ jobs:
       - name: check user keys
         uses: strudelbots/strudel-public/.github/actions/check-user-keys@main
 
+      - name: Get changed files
+        id: get_changed_files
+        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@pre-release-v0.10.0
+
       - name: install python
         id: install-python
         uses: strudelbots/strudel-public/.github/actions/install-python@main
