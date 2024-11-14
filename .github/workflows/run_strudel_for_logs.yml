@@ -118,4 +118,4 @@ jobs:
           git config --global user.email 'strudel-logger@users.noreply.github.com'
           git checkout ${{ env.branch }}
           git commit -am "Automated strudel-logger commit for branch ${{ env.branch }}"
-#          git push --set-upstream origin ${{ env.branch }}
+          git push --set-upstream origin ${{ env.branch }}
