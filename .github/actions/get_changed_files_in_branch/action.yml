@@ -22,17 +22,15 @@ runs:
           echo "master_branch=${{ inputs.master_branch }}"
           echo "branch=${{ env.branch }}"
           master_branch=${{ inputs.master_branch }}
-          ref=${{ env.ref }}
-          echo "ref=$ref"
+  
           git_command="git diff --diff-filter=AMR --name-only origin/$master_branch ${{ env.branch }}"
           echo "git command is: $git_command"
           eval " $git_command"
-          #{
-          #  echo 'ALL_CHANGED_FILES<<EOF'
-          #  #git diff --diff-filter=AMR --name-only originmain origin/pre-release-v0.10.0
-          #  git diff --diff-filter=AMR --name-only $origin$master_branch $origin${{ env.branch }}
-          #  echo EOF
-          #} >> $GITHUB_ENV
+          {
+            echo 'ALL_CHANGED_FILES<<EOF'
+            eval " $git_command"
+            echo EOF
+          } >> $GITHUB_ENV
 
 
 #          {
