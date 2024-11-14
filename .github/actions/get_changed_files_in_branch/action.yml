@@ -29,6 +29,7 @@ runs:
               exit 23
             fi
           }
+          echo "*** git diff --diff-filter=AMR --name-only $origin/$master_branch $origin/${{ env.branch }}"
           git diff --diff-filter=AMR --name-only $origin/$master_branch $origin/${{ env.branch }}
           {
           echo 'ALL_CHANGED_FILES<<EOF'
