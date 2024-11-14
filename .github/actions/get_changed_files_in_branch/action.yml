@@ -28,7 +28,7 @@ runs:
               echo "current_branch is refs/tags: $current_branch"
               origin="" 
             elif [[ $repository = "strudelbots/strudel-public" ]]; then
-              origin="origin/"
+              origin="origin"
               master_branch="main"
               echo "repository: $repository, origin: $origin, master_branch: $master_branch"
             else
