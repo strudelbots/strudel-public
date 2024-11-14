@@ -29,10 +29,10 @@ runs:
               exit 23
             fi
           }
-          git diff --diff-filter=AMR --name-only $origin/$master_branch origin/${{ env.branch }}
+          git diff --diff-filter=AMR --name-only $origin/$master_branch $origin/${{ env.branch }}
           {
           echo 'ALL_CHANGED_FILES<<EOF'
-          git diff --diff-filter=AMR --name-only $origin/$master_branch origin/${{ env.branch }}
+          git diff --diff-filter=AMR --name-only $origin/$master_branch $origin/${{ env.branch }}
           echo EOF
           } >> $GITHUB_ENV
 
