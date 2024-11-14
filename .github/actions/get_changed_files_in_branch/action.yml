@@ -23,6 +23,7 @@ runs:
           echo "branch=${{ env.branch }}"
           master_branch=${{ inputs.master_branch }}
           current_branch=${{ env.ref }}
+          echo "current_branch=$current_branch"
           {
             if [[ $current_branch == v0* ]] || [[ $current_branch == refs\/tag* ]]; then  
               echo "current_branch is refs/tags: $current_branch"
