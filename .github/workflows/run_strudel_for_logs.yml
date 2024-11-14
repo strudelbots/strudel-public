@@ -54,7 +54,7 @@ jobs:
 
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Check out repository
         uses: actions/checkout@v4
         with:
@@ -77,6 +77,11 @@ jobs:
       - name: check user keys
         uses: strudelbots/strudel-public/.github/actions/check-user-keys@main
 
+      - name: get changed files
+        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@pre-release-v0.10.0
+        with:
+          master_branch: ${{ inputs.master_branch }}
+
       - name: install python
         id: install-python
         uses: strudelbots/strudel-public/.github/actions/install-python@main
@@ -84,10 +89,6 @@ jobs:
       - name: login to ecr
         uses: strudelbots/strudel-public/.github/actions/login-to-ecr@main
 
-      - name: get changed files
-        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@pre-release-v0.10.0
-        with:
-          master_branch: ${{ inputs.master_branch }}
 
       - name: run docker compose
         run: |
