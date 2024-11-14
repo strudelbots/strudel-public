@@ -7,7 +7,9 @@ on:
         default: 'strudel'
         required: false
         type: string
-        description: 'The name of the logger to use'
+      master_branch:
+        type: string
+        required: true
     secrets:
       strudel_access_key:
         required: true
@@ -21,11 +23,12 @@ jobs:
       strudel_access_key: ${{ secrets.strudel_access_key }}
       strudel_secret_key: ${{ secrets.strudel_secret_key }}
     steps:
-      - uses: actions/checkout@v4
+#      - uses: actions/checkout@v3
       - name: Check out repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: Extract user branch name
         id: exract-branch-name
@@ -37,12 +40,17 @@ jobs:
         with:
           mode: 'test_strudel'
 
-
       - name: get strudel-public files
         uses: strudelbots/strudel-public/.github/actions/get_public_files@main
 
       - name: check user keys
         uses: strudelbots/strudel-public/.github/actions/check-user-keys@main
+
+      - name: Get changed files
+        id: get_changed_files
+        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@main
+        with:
+          master_branch: ${{ inputs.master_branch }}
 
       - name: install python
         id: install-python
@@ -58,7 +66,7 @@ jobs:
             export HASHER_STORAGE_TYPE=s3
             export STRUDEL_USER_ACCESS_KEY_ID=${{ secrets.strudel_access_key }}
             export STRUDEL_USER_SECRET_KEY="${{ secrets.strudel_secret_key }}"
-            docker compose -f /tmp/docker_compose_run.yml up  --d -quiet-pull
+            docker compose -f /tmp/docker_compose_run.yml up  -d --quiet-pull
             sleep 15
             docker ps -a
 

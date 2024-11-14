@@ -8,16 +8,17 @@ runs:
         env:
           version_tag: ${{ env.ref }}
         run: |
+            echo "*** version_tag=$version_tag"
+            file=docker_compose_run.yml
             {
-              if [ $version_tag == v* ]; then
-                echo "version_tag is not supported"
-                exit 1
+              if [[ $version_tag == v0* ]]; then
+                url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/tags/$version_tag/"            
               else
-                url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/$version_tag/docker_compose_run.yml"            
+                url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/$version_tag/"            
               fi
             }
-            echo "url=$url"
-            wget  -P /tmp $url
+            echo "url=$url$file"
+            wget  -P /tmp $url$file
             {
               wget_result=$?
               if [ $wget_result -ne 0 ]; then
@@ -25,22 +26,10 @@ runs:
                 exit 1
               fi
             } 
-            ls -alt /tmp/docker_compose_run.yml
-      - name: get_public_files 2
-        shell: bash
-        env:
-          version_tag: ${{ env.ref }}
-        run: |
-            {
-              if [ $version_tag == v* ]; then
-                echo "version_tag is not supported"
-                exit 1
-              else
-                url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/$version_tag/github_run_strudel.py"            
-              fi
-            }
-            echo "url=$url"
-            wget  -P /tmp $url
+            ls -alt /tmp/$file
+            file=github_run_strudel.py
+            echo "url=$url$file"
+            wget  -P /tmp $url$file
             {
               wget_result=$?
               if [ $wget_result -ne 0 ]; then
@@ -48,4 +37,5 @@ runs:
                 exit 2
               fi
             } 
-            ls -alt /tmp/github_run_strudel.py
+            ls -alt /tmp/$file
+

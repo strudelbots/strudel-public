@@ -9,9 +9,12 @@ on:
 jobs:
   run-strudel-for-logs:
     uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@main
+    with:
+      master_branch: main
     secrets:
       strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
       strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
+
 permissions:
   actions: write
   contents: write
