@@ -8,9 +8,8 @@ on:
         required: false
         type: string
       master_branch:
-        default: 'main'
-        required: false
         type: string
+        required: true
     secrets:
       strudel_access_key:
         required: true

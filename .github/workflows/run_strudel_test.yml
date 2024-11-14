@@ -7,7 +7,9 @@ on:
         default: 'strudel'
         required: false
         type: string
-        description: 'The name of the logger to use'
+      master_branch:
+        type: string
+        required: true
     secrets:
       strudel_access_key:
         required: true
