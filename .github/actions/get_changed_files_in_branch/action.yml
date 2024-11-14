@@ -18,9 +18,10 @@ runs:
           master_branch=${{ inputs.master_branch }} 
           {
             if [[  $master_branch == "refs/tag*" ]]; then 
-              origin=""; 
+              origin="" 
             elif [[ $repository = "strudelbots/strudel-public" ]]; then
-              origin="origin/";
+              origin="origin/"
+              master_branch="main"
             else
               echo "repository is not strudelbots/strudel-public: $repository"
               exit 23
