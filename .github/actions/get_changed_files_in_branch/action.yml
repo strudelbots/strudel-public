@@ -37,7 +37,7 @@ runs:
             fi
           }
           echo "**** git diff --diff-filter=AMR --name-only $origin/$master_branch $origin/${{ env.branch }}"
-          git diff --diff-filter=AMR --name-only origin/nmain origin/pre-release-v0.10.0
+          git diff --diff-filter=AMR --name-only origin/main origin/pre-release-v0.10.0
           git diff --diff-filter=AMR --name-only $origin$master_branch $origin${{ env.branch }}
           #{
           #  echo 'ALL_CHANGED_FILES<<EOF'
