@@ -22,7 +22,7 @@ runs:
             elif [ repository = "strudelbots/strudel-public"]; then
               origin="origin/";
             else
-              echo "repository is not strudelbots/strudel-public"
+              echo "repository is not strudelbots/strudel-public: $repository"
               exit 23
             fi
           }
