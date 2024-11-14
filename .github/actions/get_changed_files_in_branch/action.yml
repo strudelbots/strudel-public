@@ -8,6 +8,9 @@ runs:
 
     using: 'composite'
     steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
       - name: List all changed files
         id: list-changed-files
         shell: bash
