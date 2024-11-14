@@ -15,9 +15,10 @@ runs:
           repository=$GITHUB_REPOSITORY
           echo "repository=$repository"
           echo "master_branch=${{ inputs.master_branch }}"
-          master_branch=${{ inputs.master_branch }} 
+          master_branch=${{ inputs.master_branch }}
+          current_branch=${{ env.branch }}
           {
-            if [[  $master_branch == "refs/tag*" ]]; then 
+            if [[  $current_branch == "refs/tag*" ]]; then 
               origin="" 
             elif [[ $repository = "strudelbots/strudel-public" ]]; then
               origin="origin/"
@@ -28,10 +29,10 @@ runs:
               exit 23
             fi
           }
-          git diff --diff-filter=AMR --name-only origin/$master_branch origin/${{ env.branch }}
+          git diff --diff-filter=AMR --name-only $origin/$master_branch origin/${{ env.branch }}
           {
           echo 'ALL_CHANGED_FILES<<EOF'
-          git diff --diff-filter=AMR --name-only origin/$master_branch origin/${{ env.branch }}
+          git diff --diff-filter=AMR --name-only $origin/$master_branch origin/${{ env.branch }}
           echo EOF
           } >> $GITHUB_ENV
 
