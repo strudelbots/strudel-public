@@ -26,10 +26,12 @@ runs:
           {
             if [[ $current_branch == v0* ]] || [[ $current_branch == refs\/tag* ]]; then  
               echo "current_branch is refs/tags: $current_branch"
+              git_command="git diff --diff-filter=AMR --name-only origin/$master_branch $origin/${{ env.ref }}"
               origin="" 
             elif [[ $repository = "strudelbots/strudel-public" ]]; then
               origin="origin"
               master_branch="main"
+              git_command = command="git diff --diff-filter=AMR --name-only origin/$master_branch origin/${{ env.branch }}" 
               echo "repository: $repository, origin: $origin, master_branch: $master_branch"
             else
               echo "repository is not strudelbots/strudel-public: $repository"
@@ -37,9 +39,8 @@ runs:
             fi
           }
           echo "**** git diff --diff-filter=AMR --name-only $origin/$master_branch $origin/${{ env.branch }}"
-          git diff --diff-filter=AMR --name-only origin/main origin/pre-release-v0.10.0
-          command="git diff --diff-filter=AMR --name-only $origin/$master_branch $origin/${{ env.branch }}"
-          eval " $command"
+          #git diff --diff-filter=AMR --name-only origin/main origin/pre-release-v0.10.0
+          eval " $git_command"
           #{
           #  echo 'ALL_CHANGED_FILES<<EOF'
           #  #git diff --diff-filter=AMR --name-only originmain origin/pre-release-v0.10.0
