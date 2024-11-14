@@ -1,5 +1,5 @@
 name: 'Get Changed Files'
-description: 'Login to AWS ECR'
+description: 'Get changed files'
 inputs:
   master_branch:
     description: 'The name of the master branch'
