@@ -13,6 +13,7 @@ runs:
         shell: bash
         run: |
           repository=$GITHUB_REPOSITORY
+          echo "repository=$repository"
           echo "master_branch=${{ inputs.master_branch }}"
           master_branch=${{ inputs.master_branch }} 
           {
