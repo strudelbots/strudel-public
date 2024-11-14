@@ -20,6 +20,7 @@ runs:
           repository=$GITHUB_REPOSITORY
           echo "repository=$repository"
           echo "master_branch=${{ inputs.master_branch }}"
+          echo "branch=${{ env.branch }}"
           master_branch=${{ inputs.master_branch }}
           current_branch=${{ env.branch }}
           {
