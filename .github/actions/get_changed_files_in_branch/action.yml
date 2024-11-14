@@ -18,7 +18,7 @@ runs:
           {
             if [[  $master_branch == "refs/tag*" ]]; then 
               origin=""; 
-            elif [ repository eq "strudelbots/strudel-public"]; then
+            elif [ repository = "strudelbots/strudel-public"]; then
               origin="origin/";
             else
               echo "repository is not strudelbots/strudel-public"
