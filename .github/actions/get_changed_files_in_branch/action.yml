@@ -12,12 +12,18 @@ runs:
         id: list-changed-files
         shell: bash
         run: |
-          echo "repository: $GITHUB_REPOSITORY"
+          repository=$GITHUB_REPOSITORY"
           echo "master_branch=${{ inputs.master_branch }}"
-          master_branch=${{ inputs.master_branch }}
-          origin="origin/" 
+          master_branch=${{ inputs.master_branch }} 
           {
-            if [[  $master_branch == "refs/tag*" ]]; then origin=""; fi
+            if [[  $master_branch == "refs/tag*" ]]; then 
+              origin=""; 
+            elif [ repository eq "strudelbots/strudel-public"]; then
+              origin="origin/";
+            else
+              echo "repository is not strudelbots/strudel-public"
+              exit 23
+            fi
           }
           git diff --diff-filter=AMR --name-only origin/$master_branch origin/${{ env.branch }}
           {
