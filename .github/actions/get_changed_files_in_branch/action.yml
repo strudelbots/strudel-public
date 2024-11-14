@@ -24,7 +24,7 @@ runs:
           master_branch=${{ inputs.master_branch }}
           current_branch=${{ env.ref }}
           {
-            if [[  $current_branch == "refs/tag*" ]]; then 
+            if [[  $current_branch == "refs/tag*" ]] || [[ $current_branch == "v0*" ]]; then 
               origin="" 
             elif [[ $repository = "strudelbots/strudel-public" ]]; then
               origin="origin/"
