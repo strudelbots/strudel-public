@@ -1,0 +1,37 @@
+name: 'Run docker compose'
+description: 'Run docker compose for strudel logs'
+inputs:
+  image_tag:
+    description: 'Image tag for strudel-public'
+    required: true
+    type: string
+  logger_name:
+      description: 'Logger name for strudel-public'
+      required: true
+      type: string
+  access_token:
+      description: 'Access token for strudel-public'
+      required: true
+      type: string
+  secret_key:
+        description: 'Secret token for strudel-public'
+        required: true
+        type: string
+runs:
+  using: 'composite'
+  steps:
+      - name: Run docker compose
+        shell: bash
+        run: |
+          echo "image_tag=${{ inputs.image_tag }}"
+          export IMAGE_TAG=${{ inputs.image_tag }}
+          export LOGGER_NAME=${{ inputs.logger_name }}
+          export REPOSITORY_ROOT=${{ github.workspace }}
+          export STRUDEL_USER_ACCESS_KEY_ID=${{ inputs.access_token }}
+          export STRUDEL_USER_SECRET_KEY=${{ inputs.secret_key }}
+          export HASHER_STORAGE_TYPE=s3
+          docker compose -f /tmp/docker_compose_run.yml up  -d --quiet-pull
+          sleep 15
+          docker ps -a
+
+

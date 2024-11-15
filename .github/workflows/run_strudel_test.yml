@@ -51,24 +51,24 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@main
         with:
           master_branch: ${{ inputs.master_branch }}
-
       - name: install python
         id: install-python
         uses: strudelbots/strudel-public/.github/actions/install-python@main
 
+      - name: get image tag
+        uses: strudelbots/strudel-public/.github/actions/get_image_tag@main
+        with:
+          version_tag: ${{ env.ref }}
       - name: login to ecr
-        uses: strudelbots/strudel-public/.github/actions/login-to-ecr@main
+        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@main
 
       - name: run docker compose
-        run: |
-            export LOGGER_NAME=${{ inputs.logger_name }}
-            export REPOSITORY_ROOT=${{ github.workspace }}
-            export HASHER_STORAGE_TYPE=s3
-            export STRUDEL_USER_ACCESS_KEY_ID=${{ secrets.strudel_access_key }}
-            export STRUDEL_USER_SECRET_KEY="${{ secrets.strudel_secret_key }}"
-            docker compose -f /tmp/docker_compose_run.yml up  -d --quiet-pull
-            sleep 15
-            docker ps -a
+        uses: strudelbots/strudel-public/.github/actions/run_compose@main
+        with:
+          image_tag: ${{ env.image_tag }}
+          logger_name: ${{ inputs.logger_name }}
+          access_token: ${{ secrets.strudel_access_key }}
+          secret_key: ${{ secrets.strudel_secret_key }}
 
       - name: sanity tests
         uses: strudelbots/strudel-public/.github/actions/sanity_tests@main
