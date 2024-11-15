@@ -1,5 +1,5 @@
-name: 'Run docker compose'
-description: 'Run docker compose for strudel logs'
+name: 'Get image tag for strudel-public'
+description: 'Get image tag for strudel-public'
 inputs:
   version_tag:
     description: 'Version tag for strudel-public'
@@ -21,7 +21,7 @@ runs:
           else 
             touch __init__.py
             version_tag=${{ inputs.version_tag }}
-            python3 get_image_for_tag.py $version_tag
+            python3 get_image_for_tag.py 7.7.7
 #            ref=$(python3 get_image_for_tag.py $version_tag)
 #            echo "image_tag=$ref"
 #            echo "image_tag=$ref" >> $GITHUB_ENV
