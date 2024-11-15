@@ -57,10 +57,11 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/install-python@main
 
       - name: login to ecr
-        uses: strudelbots/strudel-public/.github/actions/login-to-ecr@main
+        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@main
 
       - name: run docker compose
         run: |
+            export IMAGE_TAG=v0.0.1-b-1
             export LOGGER_NAME=${{ inputs.logger_name }}
             export REPOSITORY_ROOT=${{ github.workspace }}
             export HASHER_STORAGE_TYPE=s3

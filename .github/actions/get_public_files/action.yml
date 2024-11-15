@@ -38,4 +38,15 @@ runs:
               fi
             } 
             ls -alt /tmp/$file
+#            file=github_run_strudel.py
+#            echo "url=$url$file"
+#            wget  -P /tmp $url$file
+#            {
+#              wget_result=$?
+#              if [ $wget_result -ne 0 ]; then
+#                echo "Failed to get files from strudel-public with $wget_result"
+#                exit 2
+#              fi
+#            }
+#            ls -alt /tmp/$file
 
