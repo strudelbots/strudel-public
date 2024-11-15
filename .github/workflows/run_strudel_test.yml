@@ -60,16 +60,17 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/login_to_ecr@main
 
       - name: run docker compose
-        run: |
-            export IMAGE_TAG=v0.0.1-b-2
-            export LOGGER_NAME=${{ inputs.logger_name }}
-            export REPOSITORY_ROOT=${{ github.workspace }}
-            export HASHER_STORAGE_TYPE=s3
-            export STRUDEL_USER_ACCESS_KEY_ID=${{ secrets.strudel_access_key }}
-            export STRUDEL_USER_SECRET_KEY="${{ secrets.strudel_secret_key }}"
-            docker compose -f /tmp/docker_compose_run.yml up  -d --quiet-pull
-            sleep 15
-            docker ps -a
+        uses: strudelbots/strudel-public/.github/actions/run_compose@12-enable-image-upgrade-without-product-version-upgrade
+#        run: |
+#            export IMAGE_TAG=v0.0.1-b-2
+#            export LOGGER_NAME=${{ inputs.logger_name }}
+#            export REPOSITORY_ROOT=${{ github.workspace }}
+#            export HASHER_STORAGE_TYPE=s3
+#            export STRUDEL_USER_ACCESS_KEY_ID=${{ secrets.strudel_access_key }}
+#            export STRUDEL_USER_SECRET_KEY="${{ secrets.strudel_secret_key }}"
+#            docker compose -f /tmp/docker_compose_run.yml up  -d --quiet-pull
+#            sleep 15
+#            docker ps -a
 
       - name: sanity tests
         uses: strudelbots/strudel-public/.github/actions/sanity_tests@main
