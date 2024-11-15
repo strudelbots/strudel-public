@@ -40,14 +40,14 @@ runs:
               fi
             } 
             ls -alt /tmp/$file
-      - name: get_public_files 2
-        shell: bash
-        run: | 
-          cd ${{ runner.workspace }}
-          rm -rf strudel-public
-          git clone https://github.com/strudelbots/strudel-public.git
-          ls -alt
-          echo "pwd=$(pwd)"
+#      - name: get_public_files 2
+#        shell: bash
+#        run: |
+#          cd ${{ runner.workspace }}
+#          rm -rf strudel-public
+#          git clone https://github.com/strudelbots/strudel-public.git
+#          ls -alt
+#          echo "pwd=$(pwd)"
 #
 #      - name: check chekout files
 #        shell: bash
