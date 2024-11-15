@@ -57,7 +57,7 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/install-python@main
 
       - name: get image tag
-        uses: strudelbots/strudel-public/.github/actions/get_image_tag@main
+        uses: strudelbots/strudel-public/.github/actions/get_image_tag@15-pre-release-011x
         with:
           version_tag: ${{ env.ref }}
       - name: login to ecr
