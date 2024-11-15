@@ -11,6 +11,7 @@ runs:
       - name: Run docker compose
         shell: bash
         run: |
+          echo "image_tag=${{ inputs.image_tag }}"
           export IMAGE_TAG=${{ inputs.image_tag }}
           export LOGGER_NAME=${{ inputs.logger_name }}
           export REPOSITORY_ROOT=${{ github.workspace }}
