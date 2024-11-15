@@ -76,6 +76,10 @@ runs:
               fi
             } 
             ls -alt /tmp/image_map_data_classes.py
+            cd /tmp
+            mkdir -p strudel_code
+            mv image_map_data_classes.py strudel_code
+            ls -alt /tmp/strudel_code
 
 #      - name: get_public_files 2
 #        shell: bash
