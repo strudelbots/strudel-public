@@ -21,9 +21,10 @@ runs:
           else 
             touch __init__.py
             version_tag=${{ inputs.version_tag }}
-            ref=$(python3 get_image_for_tag.py $version_tag)
-            echo "image_tag=$ref"
-            echo "image_tag=$ref" >> $GITHUB_ENV
+            python3 get_image_for_tag.py $version_tag
+#            ref=$(python3 get_image_for_tag.py $version_tag)
+#            echo "image_tag=$ref"
+#            echo "image_tag=$ref" >> $GITHUB_ENV
           fi
           }
 
