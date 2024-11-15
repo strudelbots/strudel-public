@@ -6,7 +6,7 @@ runs:
       - name: Run docker compose
         shell: bash
         run: |
-          export IMAGE_TAG=v0.0.1-b-2
+          export IMAGE_TAG=v0.0.1-b-1
           export LOGGER_NAME=${{ inputs.logger_name }}
           export REPOSITORY_ROOT=${{ github.workspace }}
           export HASHER_STORAGE_TYPE=s3
