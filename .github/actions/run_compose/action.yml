@@ -28,7 +28,7 @@ runs:
           export LOGGER_NAME=${{ inputs.logger_name }}
           export REPOSITORY_ROOT=${{ github.workspace }}
           export STRUDEL_USER_ACCESS_KEY_ID=${{ inputs.access_token }}
-          export STRUDEL_USER_SECRET_KEY=${{ inputs.secret_token }}
+          export STRUDEL_USER_SECRET_KEY=${{ inputs.secret_key }}
           export HASHER_STORAGE_TYPE=s3
           docker compose -f /tmp/docker_compose_run.yml up  -d --quiet-pull
           sleep 15
