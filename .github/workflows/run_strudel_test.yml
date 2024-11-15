@@ -41,7 +41,7 @@ jobs:
           mode: 'test_strudel'
 
       - name: get strudel-public files
-        uses: strudelbots/strudel-public/.github/actions/get_public_files@main
+        uses: strudelbots/strudel-public/.github/actions/get_public_files@12-enable-image-upgrade-without-product-version-upgrade
 
       - name: check user keys
         uses: strudelbots/strudel-public/.github/actions/check-user-keys@main
