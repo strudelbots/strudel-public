@@ -43,9 +43,6 @@ jobs:
       - name: get strudel-public files
         uses: strudelbots/strudel-public/.github/actions/get_public_files@12-enable-image-upgrade-without-product-version-upgrade
 
-      - name: get image tag
-        uses: strudelbots/strudel-public/.github/actions/get_image_tag@12-enable-image-upgrade-without-product-version-upgrade
-
       - name: check user keys
         uses: strudelbots/strudel-public/.github/actions/check-user-keys@main
 
@@ -58,6 +55,9 @@ jobs:
       - name: install python
         id: install-python
         uses: strudelbots/strudel-public/.github/actions/install-python@main
+
+      - name: get image tag
+        uses: strudelbots/strudel-public/.github/actions/get_image_tag@12-enable-image-upgrade-without-product-version-upgrade
 
       - name: login to ecr
         uses: strudelbots/strudel-public/.github/actions/login_to_ecr@12-enable-image-upgrade-without-product-version-upgrade

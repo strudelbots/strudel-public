@@ -11,3 +11,7 @@ runs:
       - name: Install requests
         shell: bash
         run: pip install requests -q
+
+      - name: Install dataclasses-json
+        shell: bash
+        run: pip install dataclasses-json -q
