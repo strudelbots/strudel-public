@@ -22,7 +22,7 @@ runs:
             touch __init__.py
             python3 get_image_for_tag.py ${{ inputs.version_tag }}
           fi
-         }
+          }
 
 
 
