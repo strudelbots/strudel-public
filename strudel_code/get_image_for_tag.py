@@ -1,4 +1,3 @@
-import re
 import sys
 
 from strudel_code.image_map_data_classes import verify_release_tag, load_current_map
@@ -13,7 +12,7 @@ if __name__ == '__main__':
     try:
         release_tag = sys.argv[1]
     except IndexError:
-        print("Usage: python update_release_to_image_map.py <tag> <added_date>", sys.stderr)
+        print("Usage: python update_release_to_image_map.py <version_tag>" , sys.stderr)
         sys.exit(1)
     verify_release_tag(release_tag)
     image_tag = get_image_for_tag(release_tag)

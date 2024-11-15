@@ -1,11 +1,17 @@
 name: 'Run docker compose'
 description: 'Run docker compose for strudel logs'
+inputs:
+  version_tag:
+    description: 'Version tag for strudel-public'
+    required: true
+    type: string
 runs:
   using: 'composite'
   steps:
       - name: Run docker compose
         shell: bash
         run: |
+          echo "version_tag=${{ inputs.version_tag }}"
           cd /tmp
           touch __init__.py
           python3 get_image_for_tag.py
