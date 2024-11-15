@@ -8,7 +8,7 @@ on:
   push:
 jobs:
   run-strudel-for-logs:
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@12-enable-image-upgrade-without-product-version-upgrade
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@main
     with:
       master_branch: main
     secrets:
