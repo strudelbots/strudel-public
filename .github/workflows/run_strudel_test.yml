@@ -54,7 +54,7 @@ jobs:
 
       - name: install python
         id: install-python
-        uses: strudelbots/strudel-public/.github/actions/install-python@main
+        uses: strudelbots/strudel-public/.github/actions/install-python@main@12-enable-image-upgrade-without-product-version-upgrade
 
       - name: get image tag
         uses: strudelbots/strudel-public/.github/actions/get_image_tag@12-enable-image-upgrade-without-product-version-upgrade
