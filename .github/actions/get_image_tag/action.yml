@@ -1,0 +1,15 @@
+name: 'Run docker compose'
+description: 'Run docker compose for strudel logs'
+runs:
+  using: 'composite'
+  steps:
+      - name: Run docker compose
+        shell: bash
+        run: |
+          cd /tmp
+          python3 get_image_tag.py
+    
+
+
+
+
