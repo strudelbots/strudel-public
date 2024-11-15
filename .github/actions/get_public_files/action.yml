@@ -41,6 +41,7 @@ runs:
             } 
             ls -alt /tmp/$file
 
+            url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/"
             file=strudel_code/release_to_image_map.json
             echo "url=$url$file"
             wget -q -P /tmp $url$file
@@ -80,32 +81,3 @@ runs:
             mkdir -p strudel_code
             mv image_map_data_classes.py strudel_code
             ls -alt /tmp/strudel_code
-
-#      - name: get_public_files 2
-#        shell: bash
-#        run: |
-#          cd ${{ runner.workspace }}
-#          rm -rf strudel-public
-#          git clone https://github.com/strudelbots/strudel-public.git
-#          ls -alt
-#          echo "pwd=$(pwd)"
-#
-#      - name: check chekout files
-#        shell: bash
-#        run: |
-#            echo "pwd=$(pwd)"
-#            ls -alt
-
-
-#            file=github_run_strudel.py
-#            echo "url=$url$file"
-#            wget  -P /tmp $url$file
-#            {
-#              wget_result=$?
-#              if [ $wget_result -ne 0 ]; then
-#                echo "Failed to get files from strudel-public with $wget_result"
-#                exit 2
-#              fi
-#            }
-#            ls -alt /tmp/$file
-

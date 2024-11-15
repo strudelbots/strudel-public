@@ -34,7 +34,8 @@ jobs:
         run: |
           last_commit=$(git log -1 --pretty=%B $sha_last_commit)
           echo "last_commit:  $last_commit"
-          curl -sSL https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/code/determine_strudel_action.sh -o /tmp/tmp.sh
+          curl -sSL https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/strudel_code/determine_strudel_action.sh -o /tmp/tmp.sh
+          cat /tmp/tmp.sh
           chmod +x /tmp/tmp.sh
           command=$(/tmp/tmp.sh  "$last_commit")
           echo "command is $command"
@@ -61,7 +62,7 @@ jobs:
           fetch-depth: 0
 
       - name: Extract user branch name
-        id: extract_branch_name
+        id: exract-branch-name
         uses: strudelbots/strudel-public/.github/actions/get_current_branch@main
 
       - name: extract strudel version
@@ -76,7 +77,8 @@ jobs:
       - name: check user keys
         uses: strudelbots/strudel-public/.github/actions/check-user-keys@main
 
-      - name: get changed files
+      - name: Get changed files
+        id: get_changed_files
         uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@main
         with:
           master_branch: ${{ inputs.master_branch }}
@@ -85,21 +87,21 @@ jobs:
         id: install-python
         uses: strudelbots/strudel-public/.github/actions/install-python@main
 
+      - name: get image tag
+        uses: strudelbots/strudel-public/.github/actions/get_image_tag@main
+        with:
+          version_tag: ${{ env.ref }}
       - name: login to ecr
         uses: strudelbots/strudel-public/.github/actions/login_to_ecr@main
 
 
       - name: run docker compose
-        run: |
-            export IMAGE_TAG=v0.0.1-b-1
-            export LOGGER_NAME=${{ inputs.logger_name }}
-            export REPOSITORY_ROOT=${{ github.workspace }}
-            export HASHER_STORAGE_TYPE=s3
-            export STRUDEL_USER_ACCESS_KEY_ID=${{ secrets.strudel_access_key }}
-            export STRUDEL_USER_SECRET_KEY="${{ secrets.strudel_secret_key }}"
-            docker compose -f /tmp/docker_compose_run.yml up  -d --quiet-pull
-            sleep 15
-            docker ps -a
+        uses: strudelbots/strudel-public/.github/actions/run_compose@main
+        with:
+          image_tag: ${{ env.image_tag }}
+          logger_name: ${{ inputs.logger_name }}
+          access_token: ${{ secrets.strudel_access_key }}
+          secret_key: ${{ secrets.strudel_secret_key }}
 
       - name: sanity tests
         uses: strudelbots/strudel-public/.github/actions/sanity_tests@main

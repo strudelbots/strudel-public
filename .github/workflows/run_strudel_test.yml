@@ -51,6 +51,7 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@main
         with:
           master_branch: ${{ inputs.master_branch }}
+
       - name: install python
         id: install-python
         uses: strudelbots/strudel-public/.github/actions/install-python@main
@@ -62,6 +63,7 @@ jobs:
       - name: login to ecr
         uses: strudelbots/strudel-public/.github/actions/login_to_ecr@main
 
+
       - name: run docker compose
         uses: strudelbots/strudel-public/.github/actions/run_compose@main
         with:
@@ -72,3 +74,4 @@ jobs:
 
       - name: sanity tests
         uses: strudelbots/strudel-public/.github/actions/sanity_tests@main
+
