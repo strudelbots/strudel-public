@@ -18,7 +18,7 @@ runs:
               else
                 url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/$version_tag/"            
               fi
-            }
+            } 
             echo "url=$url$file"
             wget  -P /tmp $url$file
             {
@@ -40,6 +40,18 @@ runs:
               fi
             } 
             ls -alt /tmp/$file
+            file=/strudel_code/release_to_image_map.json
+            echo "url=$url$file"
+            wget  -P /tmp $url$file
+            {
+              wget_result=$?
+              if [ $wget_result -ne 0 ]; then
+                echo "Failed to get files from strudel-public with $wget_result"
+                exit 2
+              fi
+            } 
+            ls -alt /tmp/$file
+
 #      - name: get_public_files 2
 #        shell: bash
 #        run: |
