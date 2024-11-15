@@ -14,7 +14,7 @@ runs:
           echo "version_tag=${{ inputs.version_tag }}"
           cd /tmp
           touch __init__.py
-          python3 get_image_for_tag.py
+          python3 get_image_for_tag.py ${{ inputs.version_tag }}
     
 
 
