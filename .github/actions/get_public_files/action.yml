@@ -42,11 +42,10 @@ runs:
             ls -alt /tmp/$file
       - name: get_public_files 2
         shell: bash
-        uses: actions/checkout@v3
-        with:
-          repository: 'strudelbots/strudel-public'
-#          sparse-checkout: 'strudel_code'
-#          sparse-checkout-cone-mode: false
+        run: | 
+          cd /tmp
+          git clone https://github.com/strudelbots/strudel-public.git
+          ls -alt
 #
 #      - name: check chekout files
 #        shell: bash
