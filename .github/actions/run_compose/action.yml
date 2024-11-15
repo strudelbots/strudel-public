@@ -13,7 +13,7 @@ inputs:
       description: 'Access token for strudel-public'
       required: true
       type: string
-  secret_token:
+  secret_key:
         description: 'Secret token for strudel-public'
         required: true
         type: string
