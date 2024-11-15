@@ -11,11 +11,18 @@ runs:
       - name: Run docker compose
         shell: bash
         run: |
+          repository=${{ github.repository }}
           echo "version_tag=${{ inputs.version_tag }}"
           cd /tmp
-          touch __init__.py
-          python3 get_image_for_tag.py ${{ inputs.version_tag }}
-    
+          {
+          if [[ $repository = "strudelbots/strudel-public"]] ; then 
+            echo "export image_tag=v-0.0.1-b-1"
+            echo "export image_tag=v-0.0.1-b-1" >> GITHUB_ENV
+          else 
+            touch __init__.py
+            python3 get_image_for_tag.py ${{ inputs.version_tag }}
+          fi
+         }
 
 
 
