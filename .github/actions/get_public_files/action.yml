@@ -1,7 +1,9 @@
 name: 'Get public strudel files'
 description: 'Get public strudel files from strudel-public repository'
 runs:
+
     using: 'composite'
+
     steps:
       - name: get_public_files 1
         shell: bash
@@ -38,6 +40,21 @@ runs:
               fi
             } 
             ls -alt /tmp/$file
+      - name: get_public_files 2
+        shell: bash
+        uses: actions/checkout@v3
+        with:
+          repository: 'strudelbots/strudel-public'
+          sparse-checkout: 'strudel_code'
+          sparse-checkout-cone-mode: false
+
+      - name: check chekout files
+        shell: bash
+        run: |
+            echo "pwd=$(pwd)"
+            ls -alt
+
+
 #            file=github_run_strudel.py
 #            echo "url=$url$file"
 #            wget  -P /tmp $url$file
