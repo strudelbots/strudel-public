@@ -41,7 +41,7 @@ jobs:
           mode: 'test_strudel'
 
       - name: get strudel-public files
-        uses: strudelbots/strudel-public/.github/actions/get_public_files@12-enable-image-upgrade-without-product-version-upgrade
+        uses: strudelbots/strudel-public/.github/actions/get_public_files@maon
 
       - name: check user keys
         uses: strudelbots/strudel-public/.github/actions/check-user-keys@main
@@ -53,17 +53,17 @@ jobs:
           master_branch: ${{ inputs.master_branch }}
       - name: install python
         id: install-python
-        uses: strudelbots/strudel-public/.github/actions/install-python@12-enable-image-upgrade-without-product-version-upgrade
+        uses: strudelbots/strudel-public/.github/actions/install-python@maon
 
       - name: get image tag
-        uses: strudelbots/strudel-public/.github/actions/get_image_tag@12-enable-image-upgrade-without-product-version-upgrade
+        uses: strudelbots/strudel-public/.github/actions/get_image_tag@maon
         with:
           version_tag: ${{ env.ref }}
       - name: login to ecr
-        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@12-enable-image-upgrade-without-product-version-upgrade
+        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@maon
 
       - name: run docker compose
-        uses: strudelbots/strudel-public/.github/actions/run_compose@12-enable-image-upgrade-without-product-version-upgrade
+        uses: strudelbots/strudel-public/.github/actions/run_compose@maon
         with:
           image_tag: ${{ env.image_tag }}
           logger_name: ${{ inputs.logger_name }}
