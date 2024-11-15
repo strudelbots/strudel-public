@@ -7,7 +7,7 @@ runs:
         shell: bash
         run: |
           cd /tmp
-          python3 get_image_tag.py
+          python3 get_image_for_tag.py
     
 
 
