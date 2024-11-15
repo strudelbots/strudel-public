@@ -35,5 +35,3 @@ runs:
           docker ps -a
 
 
-
-
