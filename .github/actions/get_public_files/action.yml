@@ -20,7 +20,7 @@ runs:
               fi
             } 
             echo "url=$url$file"
-            wget  -P /tmp $url$file
+            wget -q -P /tmp $url$file
             {
               wget_result=$?
               if [ $wget_result -ne 0 ]; then
