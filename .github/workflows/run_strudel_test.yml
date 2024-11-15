@@ -57,7 +57,7 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/install-python@main
 
       - name: login to ecr
-        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@main
+        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@12-enable-image-upgrade-without-product-version-upgrade
 
       - name: run docker compose
         uses: strudelbots/strudel-public/.github/actions/run_compose@12-enable-image-upgrade-without-product-version-upgrade
