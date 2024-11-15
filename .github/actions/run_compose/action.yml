@@ -1,12 +1,17 @@
 name: 'Run docker compose'
 description: 'Run docker compose for strudel logs'
+inputs:
+  image_tag:
+    description: 'Image tag for strudel-public'
+    required: true
+    type: string
 runs:
   using: 'composite'
   steps:
       - name: Run docker compose
         shell: bash
         run: |
-          export IMAGE_TAG=v0.0.1-b-1
+          export IMAGE_TAG=${{ inputs.image_tag }}
           export LOGGER_NAME=${{ inputs.logger_name }}
           export REPOSITORY_ROOT=${{ github.workspace }}
           export HASHER_STORAGE_TYPE=s3
