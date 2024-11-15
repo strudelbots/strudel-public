@@ -61,7 +61,7 @@ jobs:
         with:
           version_tag: ${{ env.ref }}
       - name: login to ecr
-        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@main
+        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@15-pre-release-011x
 
 
       - name: run docker compose
