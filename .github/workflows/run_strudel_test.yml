@@ -63,6 +63,7 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/login_to_ecr@12-enable-image-upgrade-without-product-version-upgrade
 
       - name: run docker compose
+        if: ${{ env.image_tag == 'true' }}
         uses: strudelbots/strudel-public/.github/actions/run_compose@12-enable-image-upgrade-without-product-version-upgrade
         with:
           image_tag: ${{ env.image_tag }}
