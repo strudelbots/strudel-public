@@ -45,14 +45,14 @@ runs:
         uses: actions/checkout@v3
         with:
           repository: 'strudelbots/strudel-public'
-          sparse-checkout: 'strudel_code'
-          sparse-checkout-cone-mode: false
-
-      - name: check chekout files
-        shell: bash
-        run: |
-            echo "pwd=$(pwd)"
-            ls -alt
+#          sparse-checkout: 'strudel_code'
+#          sparse-checkout-cone-mode: false
+#
+#      - name: check chekout files
+#        shell: bash
+#        run: |
+#            echo "pwd=$(pwd)"
+#            ls -alt
 
 
 #            file=github_run_strudel.py
