@@ -17,7 +17,7 @@ runs:
           {
           if [[ $repository = "strudelbots/strudel-public" ]]; then 
             echo "export image_tag=v0.0.1-b-1"
-            echo "export image_tag=v0.0.1-b-1" >> GITHUB_ENV
+            echo "export image_tag=v0.0.1-b-1" >> $GITHUB_ENV
           else 
             touch __init__.py
             python3 get_image_for_tag.py ${{ inputs.version_tag }}
