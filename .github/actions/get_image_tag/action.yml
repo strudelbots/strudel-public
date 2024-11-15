@@ -20,7 +20,9 @@ runs:
             echo "image_tag=v-0.0.1-b-1" >> $GITHUB_ENV
           else 
             touch __init__.py
-            python3 get_image_for_tag.py ${{ inputs.version_tag }}
+            ref=(python3 get_image_for_tag.py ${{ inputs.version_tag }})
+            echo "image_tag=$ref"
+            echo "image_tag=$ref" >> $GITHUB_ENV
           fi
           }
 
