@@ -32,7 +32,7 @@ services:
 
 
   nginx:
-    image: 446759808364.dkr.ecr.eu-central-1.amazonaws.com/shtruddel_nginx:$IMAGE_TAG
+    image: 446759808364.dkr.ecr.eu-central-1.amazonaws.com/shtruddel_nginx
     container_name: nginx_proxy
     tty: true
     depends_on:
