@@ -44,6 +44,7 @@ runs:
         shell: bash
         run: | 
           cd ${{ runner.workspace }}
+          rm -rf strudel-public
           git clone https://github.com/strudelbots/strudel-public.git
           ls -alt
           echo "pwd=$(pwd)"
