@@ -11,10 +11,12 @@ def get_image_for_tag(release_tag):
     map = load_current_map()
     result = map.find_image(release_tag)
     if not result:
+        strudel.info(' "result" is evaluated to False') #  # STRUDEL_IF_LOG_0
         for entry in map.release_details:
             if release_tag.startswith(entry.release_tag):
 #                strudel.info(f"Found release tag: {release_tag}")
                 return entry.image[0]
+    strudel.info('Method "get_image_for_tag" returns "result"') #  # STRUDEL_RETURN_TRACE_0
     return result
 
 if __name__ == '__main__':
@@ -35,4 +37,5 @@ if __name__ == '__main__':
         print("no-tag-found", file=sys.stdout)
     else:
         print(image_tag.tag, file=sys.stdout)
+
 
