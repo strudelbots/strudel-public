@@ -78,7 +78,7 @@ jobs:
 
       - name: print docker logs
         shell: bash
-        run:
+        run: |
             echo "*** docker logs nginx_proxy" 
             docker logs nginx_proxy
             echo "*** docker logs nginx_proxy" 
