@@ -31,3 +31,30 @@ else
 	echo "*** test 3 failed ***"
 	exit 1
 fi
+output=$(python ../strudel_code/get_image_for_tag.py v0.11.11)
+echo
+echo "output:$output"
+if [[ $output = "v-0.0.2-b-2" ]]; then
+	echo "test 4 passed"
+else
+	echo "*** test 4 failed ***"
+	exit 1
+fi
+output=$(python ../strudel_code/get_image_for_tag.py v0.11.11-hotfix)
+echo
+echo "output:$output"
+if [[ $output = "v-0.0.2-b-2" ]]; then
+	echo "test 5 passed"
+else
+	echo "*** test 5 failed ***"
+	exit 1
+fi
+output=$(python ../strudel_code/get_image_for_tag.py v0.11.12-hotfix)
+echo
+echo "output:$output"
+if [[ $output = "no-tag-found" ]]; then
+	echo "test 5 passed"
+else
+	echo "*** test 5 failed ***"
+	exit 1
+fi

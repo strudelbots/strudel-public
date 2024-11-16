@@ -9,9 +9,13 @@ strudel.addHandler(logging.StreamHandler()) # STRUDEL_IMPORT_2
 strudel.setLevel(logging.INFO) # STRUDEL_IMPORT_3
 def get_image_for_tag(release_tag):
     map = load_current_map()
-    strudel.info('Return map.find_image(release_tag)') #  # STRUDEL_RETURN_TRACE_0
-    return map.find_image(release_tag)
-
+    result = map.find_image(release_tag)
+    if not result:
+        for entry in map.release_details:
+            if release_tag.startswith(entry.release_tag):
+#                strudel.info(f"Found release tag: {release_tag}")
+                return entry.image[0]
+    return result
 
 if __name__ == '__main__':
     try:
