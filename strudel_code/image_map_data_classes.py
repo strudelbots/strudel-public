@@ -50,7 +50,7 @@ class ImageMap:
 def verify_release_tag(tag):
     match = re.match(r"v0\.[0-9]{1,2}\.[0-9]{1,2}", tag)
     if not match:
-        raise ValueError(f"Invalid release tag: {tag}")
+        raise ValueError(f" ** Invalid release tag: {tag} **")
 
 
 map_file = "release_to_image_map.json"
