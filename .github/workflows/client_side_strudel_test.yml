@@ -4,8 +4,7 @@ on:
   push:
 jobs:
   run-strudel-test:
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@add-doccker-logs-enf-of-job
-#    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.11.11
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.11.11-hotfix
     with:
       logger_name: ansible
       master_branch: main
