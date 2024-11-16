@@ -25,5 +25,3 @@ runs:
           echo "image_tag=$output" >> $GITHUB_ENV
 
 
-# tag testing 1
-
