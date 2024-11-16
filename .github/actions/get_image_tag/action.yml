@@ -1,5 +1,5 @@
-name: 'Run docker compose'
-description: 'Run docker compose for strudel logs'
+name: 'Get image tag for strudel-public'
+description: 'Get image tag for strudel-public'
 inputs:
   version_tag:
     description: 'Version tag for strudel-public'
@@ -14,18 +14,14 @@ runs:
           repository=${{ github.repository }}
           echo "version_tag=${{ inputs.version_tag }}"
           cd /tmp
-          {
-          if [[ $repository = "strudelbots/strudel-public" ]]; then 
-            echo "image_tag=v-0.0.1-b-1"
-            echo "image_tag=v-0.0.1-b-1" >> $GITHUB_ENV
-          else 
-            touch __init__.py
-            ref=(python3 get_image_for_tag.py ${{ inputs.version_tag }})
-            echo "image_tag=$ref"
-            echo "image_tag=$ref" >> $GITHUB_ENV
+          touch __init__.py
+          version_tag=${{ inputs.version_tag }}
+          output=$(python3 get_image_for_tag.py $version_tag)
+          echo "image_tag=$output"
+          if [[ $output = "no-tag-found" ]]; then
+              echo "error: image tag not found"
+              exit 17
           fi
-          }
-
-
+          echo "image_tag=$output" >> $GITHUB_ENV
 
 

@@ -60,6 +60,7 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/get_image_tag@main
         with:
           version_tag: ${{ env.ref }}
+
       - name: login to ecr
         uses: strudelbots/strudel-public/.github/actions/login_to_ecr@main
 
