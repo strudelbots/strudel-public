@@ -41,7 +41,7 @@ jobs:
           mode: 'test_strudel'
 
       - name: get strudel-public files
-        uses: strudelbots/strudel-public/.github/actions/get_public_files@15-pre-release-011x
+        uses: strudelbots/strudel-public/.github/actions/get_public_files@main
 
       - name: check user keys
         uses: strudelbots/strudel-public/.github/actions/check-user-keys@main
@@ -57,16 +57,16 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/install-python@main
 
       - name: get image tag
-        uses: strudelbots/strudel-public/.github/actions/get_image_tag@15-pre-release-011x
+        uses: strudelbots/strudel-public/.github/actions/get_image_tag@main
         with:
           version_tag: ${{ env.ref }}
 
       - name: login to ecr
-        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@15-pre-release-011x
+        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@main
 
 
       - name: run docker compose
-        uses: strudelbots/strudel-public/.github/actions/run_compose@15-pre-release-011x
+        uses: strudelbots/strudel-public/.github/actions/run_compose@main
         with:
           image_tag: ${{ env.image_tag }}
           logger_name: ${{ inputs.logger_name }}
