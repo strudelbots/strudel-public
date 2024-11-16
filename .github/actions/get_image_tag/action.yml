@@ -14,17 +14,15 @@ runs:
           repository=${{ github.repository }}
           echo "version_tag=${{ inputs.version_tag }}"
           cd /tmp
-           
           touch __init__.py
           version_tag=${{ inputs.version_tag }}
           output=$(python3 get_image_for_tag.py $version_tag)
           echo "image_tag=$output"
-          if [[ $output == "no-tag-found" ]]; then
+          if [[ $output = "no-tag-found" ]]; then
               echo "error: image tag not found"
               exit 17
           fi
           echo "image_tag=$output" >> $GITHUB_ENV
-          }
 
 
 # tag testing 1

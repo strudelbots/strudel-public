@@ -53,7 +53,7 @@ runs:
               fi
             } 
             ls -alt /tmp/release_to_image_map.json
-            cat /tmp/release_to_image_map.json
+            #cat /tmp/release_to_image_map.json
 
             file=strudel_code/get_image_for_tag.py
             echo "url=$url$file"
