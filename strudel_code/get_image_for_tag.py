@@ -16,7 +16,7 @@ if __name__ == '__main__':
         sys.exit(1)
     try:
         verify_release_tag(release_tag)
-    except ValueError as e:
+    except Exception as e:
         print(f"  ****  invalid tag '{release_tag}' ****", file=sys.stderr)
         print("no-tag-found", file=sys.stdout)
         sys.exit(0)
