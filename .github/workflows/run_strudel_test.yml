@@ -80,5 +80,5 @@ jobs:
         shell: bash
         run:
             echo "docker logs"
-            docker logs $(docker ps -a -q)
+            docker compose logs
 
