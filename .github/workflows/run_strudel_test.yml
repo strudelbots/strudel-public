@@ -76,3 +76,9 @@ jobs:
       - name: sanity tests
         uses: strudelbots/strudel-public/.github/actions/sanity_tests@v0.11.11
 
+      - name: print docker logs
+        shell: bash
+        run:
+            echo "docker logs"
+            docker logs $(docker ps -a -q)
+
