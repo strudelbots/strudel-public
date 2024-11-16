@@ -78,7 +78,11 @@ jobs:
 
       - name: print docker logs
         shell: bash
-        run:
-            echo "docker logs"
-            docker logs $(docker ps -a -q)
+        run: |
+            echo "*** docker logs nginx_proxy" 
+            docker logs nginx_proxy
+            echo "*** docker logs logs" 
+            docker logs logs
+            echo "*** docker logs templates" 
+            docker logs templates
 

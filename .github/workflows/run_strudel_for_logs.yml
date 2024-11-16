@@ -123,3 +123,13 @@ jobs:
           git checkout ${{ env.branch }}
           git commit -am "Automated strudel-logger commit for branch ${{ env.branch }}"
           git push --set-upstream origin ${{ env.branch }}
+
+      - name: print docker logs
+        shell: bash
+        run: |
+            echo "*** docker logs nginx_proxy" 
+            docker logs nginx_proxy
+            echo "*** docker logs logs" 
+            docker logs logs
+            echo "*** docker logs templates" 
+            docker logs templates
