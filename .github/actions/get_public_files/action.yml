@@ -40,7 +40,7 @@ runs:
               fi
             } 
             ls -alt /tmp/$file
-            # NOTO: MAIN BRANCH 
+            # NOTE: MAIN BRANCH 
             url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/"
             file=strudel_code/release_to_image_map.json
             echo "url=$url$file"
