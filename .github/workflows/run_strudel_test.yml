@@ -81,8 +81,8 @@ jobs:
         run: |
             echo "*** docker logs nginx_proxy" 
             docker logs nginx_proxy
-            echo "*** docker logs nginx_proxy" 
+            echo "*** docker logs logs" 
             docker logs logs
-            echo "*** docker logs nginx_proxy" 
+            echo "*** docker logs templates" 
             docker logs templates
 
