@@ -54,7 +54,7 @@ jobs:
 
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
+#      - uses: actions/checkout@v3
       - name: Check out repository
         uses: actions/checkout@v4
         with:
@@ -91,6 +91,7 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/get_image_tag@v0.11.11
         with:
           version_tag: ${{ env.ref }}
+
       - name: login to ecr
         uses: strudelbots/strudel-public/.github/actions/login_to_ecr@v0.11.11
 
