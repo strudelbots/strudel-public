@@ -14,17 +14,16 @@ runs:
           repository=${{ github.repository }}
           echo "version_tag=${{ inputs.version_tag }}"
           cd /tmp
-          {
-          if [[ $repository = "strudel0000bots/strudel-public" ]]; then 
-            echo "image_tag=v-0.0.1-b-1"
-            echo "image_tag=v-0.0.1-b-1" >> $GITHUB_ENV
-          else 
-            touch __init__.py
-            version_tag=${{ inputs.version_tag }}
-            output=$(python3 get_image_for_tag.py 7.7.7)
-            echo "image_tag=$output"
-            exit 77
+           
+          touch __init__.py
+          version_tag=${{ inputs.version_tag }}
+          output=$(python3 get_image_for_tag.py $version_tag)
+          echo "image_tag=$output"
+          if [[ $output == "no-tag-found" ]]; then
+              echo "error: image tag not found"
+              exit 17
           fi
+          echo "image_tag=$output" >> $GITHUB_ENV
           }
 
 
