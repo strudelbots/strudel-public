@@ -88,15 +88,24 @@ uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml
 </pre>
 
 ## Frequently Asked Questions
-1. **How do I know if Strudel is working?** 
-   - Answer: You can check the logs of the Strudel action in the GitHub Actions tab.
-2. **Does strudel collect any IP or PII  from my repository?**
-   - No, Strudel does not collect any IP or PII from your repository. Strudel collects 
-   encrypted metadata in the following format: 
+Here's a refined version of your README file for improved style and conciseness:
+
+---
+
+## Frequently Asked Questions
+
+#### How can I verify that Strudel is working?  
+Check the logs for the Strudel action in the **GitHub Actions** tab.
+
+#### Does Strudel collect any IP or PII from my repository?  
+No, Strudel does not collect any IP or PII from your repository. 
+It gathers only encrypted metadata in the following format:  
+
 ```json
 {"f0b25bddf6b3213fd77fa89b02d8d3d5": [[3, 12]]}
 ```
-This format cryptographically ensures that no-one, including Strudel, can reverse engineers your code. 
+This format is cryptographically secure and ensures that no one, including Strudel, can reverse-engineer your code.  
+
 
 ## Roadmap
 ### Add trace-level logging code to your pull request 
