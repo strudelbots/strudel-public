@@ -48,7 +48,8 @@ runs:
               echo "see: https://github.com/strudelbots/strudel-public"
               exit 102
           fi
+          cat ${workflow_path} | grep -F $strudel_script | grep uses| cut -d"@" -f2
           ref=$(cat ${workflow_path} | grep -F $strudel_script | grep uses| cut -d"@" -f2)
           echo "**   Strudel version: $ref  **"
-          echo "ref=$ref" >> $GITHUB_ENV
+          #echo "ref=$ref" >> $GITHUB_ENV
           }
