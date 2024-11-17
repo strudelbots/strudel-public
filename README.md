@@ -97,19 +97,15 @@ letting you focus solely on business logic without worrying about implementing l
 
 1. Create a new branch, for example, `test-strudel-logging`. 
 2. Change a few files in this branch (e.g., add/remove functionality, fix a bug, or just add a few lines). 
-2. Commit your changes In the commit message write the following message: `strudel add logs`
+2. Commit your changes. **In the commit message write the 
+following text: `strudel add logs`**.
 3. Push your branch to the repository.
 4. Go to action tab in github, you will see a new action running. `run strudel-for-logs`
-4. Strudel automatically adds the necessary logging code to your branch.
-5. Code reviewers will see both the logging code and your business logic during the review.
-6. Once the review is approved and everyone is satisfied, merge the pull request.
+4. Strudel automatically adds the necessary logging code to the files you change in your branch.
+5. When you open pull request, Code reviewers will see both the logging code and your business logic during the review.
 
 
-To enable trace-level logging code Commit with a message 
-that includes the words `strudel`, `add`,  `logs`, and `trace` 
-(in any order)
-
-### Remove all logging-code to your pull request
+## Remove all logging-code to your branch
 To remove all Strudel logging-code from a pull request just add the following
 words to your commit message: `strudel`, `remove`, `logs` (in any order).
 
