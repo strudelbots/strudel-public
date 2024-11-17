@@ -27,7 +27,7 @@ Keep this email safe and do not share the secrets with anyone.
    
 ## Onboarding  (On Prem Through Github Actions)
 ### Setup Keys to Access Strudel
-1. Go to the repository &rarr; Settings &rarr; Secrets and variables  &rarr; Actions 
+1. Go to the `repository &rarr; Settings &rarr; Secrets` and `variables  &rarr; Actions`. 
 1. Add a new secret,  `STRUDEL_ACCESS_KEY_ID`,  with the access key value 
 you received from Strudel support. 
 1. Add a new secret, e `STRUDEL_SECRET_KEY`, with the secret key value you 
