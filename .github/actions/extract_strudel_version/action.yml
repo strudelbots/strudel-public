@@ -50,5 +50,5 @@ runs:
           fi
           ref=$(cat ${workflow_path} | grep -F $strudel_script | grep uses| cut -d"@" -f2)
           echo "**   Strudel version: $ref  **"
-          echo "ref=v0.11.11" >> $GITHUB_ENV
+          echo "ref=$ref" >> $GITHUB_ENV
           }
