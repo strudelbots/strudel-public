@@ -66,10 +66,15 @@ letting you focus solely on business logic without worrying about implementing l
 2. Commit your changes. **In the commit message write the 
 following text: `strudel add logs`**.
 3. Push your branch to the repository.
-4. Go to action tab in github, you will see a new action running. `run strudel-for-logs`
+4. Go to action tab in Github, you will see a new action running. `run strudel-for-logs`
 4. Strudel automatically adds the necessary logging code to the files you change in your branch.
-5. When you open pull request, Code reviewers will see both the logging code and your business logic during the review.
+You can see the new code if you open a pull request, or pull strudel changes back into your local branch. 
+5. When you open pull request, reviewers will see both the logging code and your business logic during the review.
 
+
+## Automatic Logging Updates in Your Pull Request
+Strudel streamlines logging updates in your pull requests. Simply include `strudel add logs` in your commit message, 
+and Strudel will automatically update the logging code each time you make changes.
 
 ## Remove all logging-code to your branch
 To remove all Strudel logging-code from a pull request just add the following
@@ -88,9 +93,6 @@ uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml
 </pre>
 
 ## Frequently Asked Questions
-Here's a refined version of your README file for improved style and conciseness:
-
----
 
 ## Frequently Asked Questions
 
@@ -99,8 +101,7 @@ Check the logs for the Strudel action in the **GitHub Actions** tab.
 
 #### Does Strudel collect any IP or PII from my repository?  
 No, Strudel does not collect any IP or PII from your repository. 
-It gathers only encrypted metadata in the following format:  
-
+It gathers only encrypted metadata in the following format:
 ```json
 {"f0b25bddf6b3213fd77fa89b02d8d3d5": [[3, 12]]}
 ```
