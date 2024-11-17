@@ -107,9 +107,14 @@ It gathers only encrypted metadata in the following format:
 This format is cryptographically secure and ensures that no one, including Strudel, can reverse-engineer your code.  
 
 
-## Roadmap
+## In the next release
 ### Add trace-level logging code to your pull request 
 In this mode, Strudel adds logging code that enables detailed tracing. 
 These logs provide insights into the full execution flow, including method calls 
 and control flow, helping you quickly understand the behavior at every level.
 This is especially useful during development when you need to verify the flow of execution.
+
+### More options to trigger Strudel 
+In addition to the commit message, you will be able to trigger Strudel using a
+GitHub label or a comment in the pull request. This will give you more flexibility
+in controlling when Strudel adds logging code to your pull request.
