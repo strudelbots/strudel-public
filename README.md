@@ -8,14 +8,14 @@ Strudel’s intelligent bots seamlessly handle routine tasks.
 By automating up to 50% of the development process, Strudel will empower
 teams to accelerate productivity and drive meaningful innovation. The result? Faster development cycles, higher-quality code, and engineers who can 
 focus on engineering the extraordinary.
-## About Strudel MVP (version 0.11.11)
-Strudel's MVP simplifies telemetry integration 
+## About Strudel Pilot (version 0.11.11)
+Strudel's pilot simplifies telemetry integration 
 by automatically embedding logging and business metrics directly into your Python code.
 With Strudel, logging code is automatically added to your pull requests, 
 letting you focus solely on business logic without worrying about implementing logs.
 
 ## Pre-Requisites
-1. **Python**: Strudel MVP is currently available for Python projects only (python versions 3.10+).
+1. **Python**: Strudel pilot is currently available for Python projects only (python versions 3.10+).
 1. **Register for Strudel**: [strudelbots.com](https://www.strudelbots.com/pilot-program)
 2. **Receive Strudel Secrets**: You will receive an email containing your Strudel secrets. 
 Keep this email safe and do not share the secrets with anyone.
