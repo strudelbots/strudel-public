@@ -106,11 +106,11 @@ You can see the new code if you open a pull request, or pull strudel changes bac
 5. When you open pull request, reviewers will see both the logging code and your business logic during the review.
 
 
-## Automatic Logging Updates in Your Pull Request
+### Automatic Logging Updates in Your Pull Request
 Strudel streamlines logging updates in your pull requests. Simply include `strudel add logs` in your commit message, 
 and Strudel will automatically update the logging code each time you make changes.
 
-## Remove all logging-code to your branch
+### Remove all logging-code to your branch
 To remove all Strudel logging-code from a pull request just add the following
 words to your commit message: `strudel`, `remove`, `logs` (in any order).
 
@@ -126,7 +126,6 @@ uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml
    secrets:
 </pre>
 
-## Frequently Asked Questions
 
 ## Frequently Asked Questions
 
