@@ -8,15 +8,15 @@ Strudel’s intelligent bots seamlessly handle routine tasks.
 By automating up to 50% of the development process, Strudel will empower
 teams to accelerate productivity and drive meaningful innovation. The result? Faster development cycles, higher-quality code, and engineers who can 
 focus on engineering the extraordinary.
-## About Strudel MVP 
-Strudel's MVP simplifies telemetry integration 
+## About Strudel Pilot (version 0.11.11)
+Strudel's pilot simplifies telemetry integration 
 by automatically embedding logging and business metrics directly into your Python code.
 With Strudel, logging code is automatically added to your pull requests, 
 letting you focus solely on business logic without worrying about implementing logs.
 
 ## Pre-Requisites
-1. **Python**: Strudel MVP is currently available for Python projects only.
-1. **Register for Strudel**: [strudelbots.com](https://strudelbots.com/signup)
+1. **Python**: Strudel pilot is currently available for Python projects only (python versions 3.10+).
+1. **Register for Strudel**: [strudelbots.com](https://www.strudelbots.com/pilot-program)
 2. **Receive Strudel Secrets**: You will receive an email containing your Strudel secrets. 
 Keep this email safe and do not share the secrets with anyone.
 2. **GitHub Account**:
@@ -27,7 +27,7 @@ Keep this email safe and do not share the secrets with anyone.
    
 ## Onboarding  (On Prem Through Github Actions)
 ### Setup Keys to Access Strudel
-1. Go to the repository &rarr; Settings &rarr; Secrets and variables  &rarr; Actions 
+1. Go to the `repository` &rarr; `Settings` &rarr; `Secrets` and `Variables`  &rarr; `Actions`. 
 1. Add a new secret,  `STRUDEL_ACCESS_KEY_ID`,  with the access key value 
 you received from Strudel support. 
 1. Add a new secret, e `STRUDEL_SECRET_KEY`, with the secret key value you 
@@ -51,42 +51,30 @@ test-client-job-come-here
 `run_strudel_for_logs.yml`
 2. Copy the following code into the file:
 ```yaml
+
 run-client-job-come-here
+
 ```
 2. Commit and push the changes to the repository
 
-## Add Logging Code to Your Pull Request
+## Steps to add logging code to your pull request (example)
 With Strudel, logging code is automatically added to your pull requests, 
 letting you focus solely on business logic without worrying about implementing logs.
 
-1. Start developing new functionality or fixing a bug in your Python code.
-   1. Create a new branch
-   2. Implement your changes by writing and testing your code, 
-   making commits regularly as you progress.
-2. When ready for a code review, create a pull request. 
-You can use either the GitHub web interface or the GitHub CLI.
-   1. [You can create a pull request using the web api.](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=webui)
-   2. [You can create a pull request using the Github cli.](https://external.ink?to=/docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=cli#creating-the-pull-request)
+1. Create a new branch, for example, `test-strudel-logging`. 
+2. Change a few files in this branch (e.g., add/remove functionality, fix a bug, or just add a few lines). 
+2. Commit your changes. **In the commit message write the 
+following text: `strudel add logs`**.
+3. Push your branch to the repository.
+4. Go to action tab in github, you will see a new action running. `run strudel-for-logs`
+4. Strudel automatically adds the necessary logging code to the files you change in your branch.
+5. When you open pull request, Code reviewers will see both the logging code and your business logic during the review.
 
-4. Create a new commit with a message that 
-includes the words `strudel`, `add`,  and `logs` (in any order).
-4. Strudel automatically adds the necessary logging code to your branch.
-5. Code reviewers will see both the logging code and your business logic during the review.
-6. Once the review is approved and everyone is satisfied, merge the pull request.
 
-### Add trace-level logging code to your pull request 
-In this mode, Strudel adds logging code that enables detailed tracing. 
-These logs provide insights into the full execution flow, including method calls 
-and control flow, helping you quickly understand the behavior at every level.
-This is especially useful during development when you need to verify the flow of execution.
-
-To enable trace-level logging code Commit with a message 
-that includes the words `strudel`, `add`,  `logs`, and `trace` 
-(in any order).
-
-### Remove all logging-code to your pull request
+## Remove all logging-code to your branch
 To remove all Strudel logging-code from a pull request just add the following
 words to your commit message: `strudel`, `remove`, `logs` (in any order).
+
 ## Configuring Strudel 
 ### Setting the logger name
 By default, Strudel will use the name `strudel` as the logger name. That is, Strudel produces
@@ -98,6 +86,35 @@ uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml
        logger_name: &#60;your logger name&gt; </b>
    secrets:
 </pre>
-## Frequently Asked Questions
-We will add here questions and answers as we get them. 
 
+## Frequently Asked Questions
+Here's a refined version of your README file for improved style and conciseness:
+
+---
+
+## Frequently Asked Questions
+
+#### How can I verify that Strudel is working?  
+Check the logs for the Strudel action in the **GitHub Actions** tab.
+
+#### Does Strudel collect any IP or PII from my repository?  
+No, Strudel does not collect any IP or PII from your repository. 
+It gathers only encrypted metadata in the following format:  
+
+```json
+{"f0b25bddf6b3213fd77fa89b02d8d3d5": [[3, 12]]}
+```
+This format is cryptographically secure and ensures that no one, including Strudel, can reverse-engineer your code.  
+
+
+## In the next release
+### Add trace-level logging code to your pull request 
+In this mode, Strudel adds logging code that enables detailed tracing. 
+These logs provide insights into the full execution flow, including method calls 
+and control flow, helping you quickly understand the behavior at every level.
+This is especially useful during development when you need to verify the flow of execution.
+
+### More options to trigger Strudel 
+In addition to the commit message, you will be able to trigger Strudel using a
+GitHub label or a comment in the pull request. This will give you more flexibility
+in controlling when Strudel adds logging code to your pull request.
