@@ -63,6 +63,7 @@ jobs:
 `run_strudel_for_logs.yml`
 2. Copy the following code into the file:
 ```yaml
+
 name: run strudel-for-logs
 on:
   pull_request:
@@ -71,6 +72,8 @@ on:
      branches:
        - main
   push:
+    branches:
+      - '!main'
 jobs:
   run-strudel-for-logs:
     uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.11.11
@@ -83,7 +86,9 @@ jobs:
 
 permissions:
   actions: write
-  contents: write```
+  contents: write
+
+```
 2. Commit and push the changes to the repository
 
 ## Add Logging Code to Your Pull Request

@@ -51,7 +51,9 @@ test-client-job-come-here
 `run_strudel_for_logs.yml`
 2. Copy the following code into the file:
 ```yaml
+
 run-client-job-come-here
+
 ```
 2. Commit and push the changes to the repository
 
