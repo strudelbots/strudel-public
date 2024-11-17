@@ -55,7 +55,7 @@ runs:
           echo '3'
           cat ${workflow_path} | grep -F $strudel_script | grep '\s\+uses'| cut -d"@" -f2
 
-          ref=$(cat ${workflow_path} | grep -F $strudel_script | grep '\s\+uses| cut -d"@" -f2)
+          ref=$(cat ${workflow_path} | grep -F $strudel_script | grep '\s\+uses'| cut -d"@" -f2)
           echo "**   Strudel version: $ref  **end"
           #echo "ref=$ref" >> $GITHUB_ENV
           }
