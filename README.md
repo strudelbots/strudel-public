@@ -121,7 +121,9 @@ uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml
    secrets:
 </pre>
 ## Frequently Asked Questions
-We will add here questions and answers as we get them. 
+- Question: How do I know if Strudel is working?
+  
+ Answer: You can check the logs of the Strudel action in the GitHub Actions tab.
 
 ## Roadmap
 ### Add trace-level logging code to your pull request 
