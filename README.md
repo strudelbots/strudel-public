@@ -8,7 +8,7 @@ Strudel’s intelligent bots seamlessly handle routine tasks.
 By automating up to 50% of the development process, Strudel will empower
 teams to accelerate productivity and drive meaningful innovation. The result? Faster development cycles, higher-quality code, and engineers who can 
 focus on engineering the extraordinary.
-## About Strudel Alpha 
+## About Strudel MVP 
 Strudel's MVP simplifies telemetry integration 
 by automatically embedding logging and business metrics directly into your Python code.
 With Strudel, logging code is automatically added to your pull requests, 
@@ -40,15 +40,20 @@ This step is optional and can be used to run a Strudel test to verify that your 
 2. Create a new file in the `.github/workflows` directory with the name `strudel-test.yml`.
 2. Copy the following code into the file:
 ```yaml
-name: strudel-test
+name: run strudel-test
 on:
   workflow_dispatch:
+  push:
 jobs:
   run-strudel-test:
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.9.0
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.11.11
+    with:
+      logger_name: ansible
+      master_branch: main
     secrets:
         strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
         strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
+
 ```
 2. Commit and push the changes to the repository
 3. Manually run the new work flow. 
@@ -59,23 +64,27 @@ jobs:
 `run_strudel_for_logs.yml`
 2. Copy the following code into the file:
 ```yaml
-name: strudel-for-logs
+name: run strudel-for-logs
 on:
   pull_request:
 # If you want to run the workflow only for other
 # branches than main change the name of the branch
      branches:
        - main
+  push:
 jobs:
   run-strudel-for-logs:
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.9.0
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.11.11
+    with:
+      master_branch: main
     secrets:
       strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
       strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
+
+
 permissions:
   actions: write
-  contents: write
-```
+  contents: write```
 2. Commit and push the changes to the repository
 
 ## Add Logging Code to Your Pull Request
