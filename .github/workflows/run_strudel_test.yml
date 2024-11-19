@@ -16,6 +16,10 @@ on:
       strudel_secret_key:
         required: true
   workflow_dispatch:
+  push:
+    branches:
+      - (!main)
+      - *
 jobs:
   run-strudel-test:
     runs-on: ubuntu-22.04
