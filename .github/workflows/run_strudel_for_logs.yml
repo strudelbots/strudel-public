@@ -22,10 +22,10 @@ jobs:
     outputs:
       run_strudel: ${{ steps.check_head_commit_message.outputs.run_strudel_value }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-
+          fetch-depth: 0
       - name: check head commit message
         id: check_head_commit_message
         env:
@@ -56,7 +56,7 @@ jobs:
     steps:
 #      - uses: actions/checkout@v3
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
