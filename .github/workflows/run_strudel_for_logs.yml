@@ -85,7 +85,7 @@ jobs:
 
       - name: Get changed files
         id: get_changed_files
-        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@v0.11.11
+        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@v0.12.01
         with:
           master_branch: ${{ inputs.master_branch }}
 
