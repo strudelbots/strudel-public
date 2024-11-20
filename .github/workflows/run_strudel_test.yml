@@ -1,5 +1,6 @@
 name: run-strudel-test
 
+
 on:
   workflow_call:
     inputs:
