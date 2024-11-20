@@ -47,7 +47,7 @@ jobs:
           mode: 'test_strudel'
 
       - name: get strudel-public files
-        uses: strudelbots/strudel-public/.github/actions/get_public_files@v0.11.11
+        uses: strudelbots/strudel-public/.github/actions/get_public_files@v28-enable-using-dev-image-repository-for-authorized-user
 
       - name: check user keys
         uses: strudelbots/strudel-public/.github/actions/check-user-keys@v0.11.11
