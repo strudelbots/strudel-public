@@ -10,6 +10,11 @@ on:
       master_branch:
         type: string
         required: true
+      use_dev_ecr_repository:
+        type: boolean
+        required: false
+        default: false
+
     secrets:
       strudel_access_key:
         required: true
@@ -22,6 +27,7 @@ jobs:
     env:
       strudel_access_key: ${{ secrets.strudel_access_key }}
       strudel_secret_key: ${{ secrets.strudel_secret_key }}
+      use_dev_ecr_repository: ${{ inputs.use_dev_ecr_repository }}
     steps:
 #      - uses: actions/checkout@v3
       - name: Check out repository
@@ -66,7 +72,7 @@ jobs:
 
 
       - name: run docker compose
-        uses: strudelbots/strudel-public/.github/actions/run_compose@v0.11.11
+        uses: strudelbots/strudel-public/.github/actions/run_compose@28-enable-using-dev-image-repository-for-authorized-user
         with:
           image_tag: ${{ env.image_tag }}
           logger_name: ${{ inputs.logger_name }}

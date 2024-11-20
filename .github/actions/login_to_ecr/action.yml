@@ -15,6 +15,6 @@ runs:
         if: ${{ env.strudel_secret_key == '' }}
         run: |
           echo STRUDEL_SECRET_KEY is not defined!
-          echo Please follow instruction in strudel-manual XXX
+          echo Please follow instruction in strudel-manual https://strudelbots.github.io/strudel-public/
           exit 1
 
