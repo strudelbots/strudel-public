@@ -45,7 +45,7 @@ on:
   workflow_dispatch:
 jobs:
   run-strudel-test:
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.11.11
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.12.01
     with:
       # Make sure to change the name of your master branch if it is not main
       master_branch: main
@@ -76,7 +76,7 @@ on:
       - '!main'
 jobs:
   run-strudel-for-logs:
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.11.11
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.12.01
     with:
       master_branch: main
     secrets:

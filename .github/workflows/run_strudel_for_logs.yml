@@ -69,11 +69,11 @@ jobs:
 
       - name: Extract user branch name
         id: exract-branch-name
-        uses: strudelbots/strudel-public/.github/actions/get_current_branch@v0.11.11
+        uses: strudelbots/strudel-public/.github/actions/get_current_branch@v0.12.01
 
       - name: extract strudel version
         id: extract_strudel_version
-        uses: strudelbots/strudel-public/.github/actions/extract_strudel_version@v0.11.11
+        uses: strudelbots/strudel-public/.github/actions/extract_strudel_version@v0.12.01
         with:
           mode: 'run_logs'
 
@@ -81,7 +81,7 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/get_public_files@v0.12.01
 
       - name: check user keys
-        uses: strudelbots/strudel-public/.github/actions/check-user-keys@v0.11.11
+        uses: strudelbots/strudel-public/.github/actions/check-user-keys@v0.12.01
 
       - name: Get changed files
         id: get_changed_files
@@ -91,15 +91,15 @@ jobs:
 
       - name: install python
         id: install-python
-        uses: strudelbots/strudel-public/.github/actions/install-python@v0.11.11
+        uses: strudelbots/strudel-public/.github/actions/install-python@v0.12.01
 
       - name: get image tag
-        uses: strudelbots/strudel-public/.github/actions/get_image_tag@v0.11.11
+        uses: strudelbots/strudel-public/.github/actions/get_image_tag@v0.12.01
         with:
           version_tag: ${{ env.ref }}
 
       - name: login to ecr
-        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@v0.11.11
+        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@v0.12.01
 
 
       - name: run docker compose
@@ -111,7 +111,7 @@ jobs:
           secret_key: ${{ secrets.strudel_secret_key }}
 
       - name: sanity tests
-        uses: strudelbots/strudel-public/.github/actions/sanity_tests@v0.11.11
+        uses: strudelbots/strudel-public/.github/actions/sanity_tests@v0.12.01
 
       - name: Run Strudel
         run: |
