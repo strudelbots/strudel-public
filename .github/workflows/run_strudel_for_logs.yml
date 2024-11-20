@@ -101,7 +101,6 @@ jobs:
       - name: login to ecr
         uses: strudelbots/strudel-public/.github/actions/login_to_ecr@v0.12.01
 
-
       - name: run docker compose
         uses: strudelbots/strudel-public/.github/actions/run_compose@v0.12.01
         with:
