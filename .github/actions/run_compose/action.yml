@@ -17,12 +17,23 @@ inputs:
         description: 'Secret token for strudel-public'
         required: true
         type: string
+
 runs:
   using: 'composite'
   steps:
       - name: Run docker compose
         shell: bash
         run: |
+          use_dev_ecr=${{ env.use_dev_ecr_repository }}
+          {
+            if [[ "$use_dev_ecr" = true ]]; then
+              echo "Using dev ECR repository"
+              export ECR_REGISTRY=446759808364.dkr.ecr.eu-central-1.amazonaws.com/strudel-dev
+            else
+              echo "Using prod ECR repository"
+              export ECR_REGISTRY=446759808364.dkr.ecr.eu-central-1.amazonaws.com/shtruddel
+            fi
+          }
           echo "image_tag=${{ inputs.image_tag }}"
           export IMAGE_TAG=${{ inputs.image_tag }}
           export LOGGER_NAME=${{ inputs.logger_name }}
