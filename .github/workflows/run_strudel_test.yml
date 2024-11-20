@@ -63,7 +63,7 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/install-python@v0.11.11
 
       - name: get image tag
-        uses: strudelbots/strudel-public/.github/actions/get_image_tag@v0.11.11
+        uses: strudelbots/strudel-public/.github/actions/get_image_tag@28-enable-using-dev-image-repository-for-authorized-user
         with:
           version_tag: ${{ env.ref }}
 
