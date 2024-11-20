@@ -10,6 +10,10 @@ runs:
           echo "GITHUB_HEAD_REF=${GITHUB_HEAD_REF}"
           echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}"
           echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_ENV
+          if [[ branch == "*tags*" ]]; then
+            echo "Error in getting branch name"
+            exit 11
+          fi
         id: extract_branch
 
 
