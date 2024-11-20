@@ -9,7 +9,6 @@ services:
       - STRUDEL_USER_ACCESS_KEY_ID=$STRUDEL_USER_ACCESS_KEY_ID
       - STRUDEL_USER_SECRET_KEY=$STRUDEL_USER_SECRET_KEY
       - ENABLE_LOGGING_CODE_UPDATE=True
-
     container_name: logs
     image: $ECR_REGISTRY:$IMAGE_TAG
     expose:
