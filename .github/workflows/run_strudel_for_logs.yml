@@ -109,6 +109,7 @@ jobs:
           logger_name: ${{ inputs.logger_name }}
           access_token: ${{ secrets.strudel_access_key }}
           secret_key: ${{ secrets.strudel_secret_key }}
+          use_dev_ecr_repository: ${{ inputs.use_dev_ecr_repository }}
 
       - name: sanity tests
         uses: strudelbots/strudel-public/.github/actions/sanity_tests@v0.12.01
