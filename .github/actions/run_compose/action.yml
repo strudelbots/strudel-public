@@ -24,7 +24,7 @@ runs:
       - name: Run docker compose
         shell: bash
         run: |
-          use_dev_ecr = ${{ env.use_dev_ecr_repository }}
+          use_dev_ecr=${{ env.use_dev_ecr_repository }}
           {
             if [[ "$use_dev_exr" = true ]]; then
               echo "Using dev ECR repository"
