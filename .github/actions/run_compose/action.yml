@@ -28,10 +28,10 @@ runs:
           {
             if [[ "$use_dev_ecr" = true ]]; then
               echo "Using dev ECR repository"
-              #export ECR_REGISTRY=446759808364.dkr.ecr.eu-central-1.amazonaws.com
+              export ECR_REGISTRY=446759808364.dkr.ecr.eu-central-1.amazonaws.com/strudel-dev
             else
               echo "Using prod ECR repository"
-              #export ECR_REGISTRY=446759808364.dkr.ecr.eu-central-1.amazonaws.com
+              export ECR_REGISTRY=446759808364.dkr.ecr.eu-central-1.amazonaws.com/shtruddel
             fi
           }
           echo "image_tag=${{ inputs.image_tag }}"
