@@ -72,7 +72,7 @@ jobs:
 
 
       - name: run docker compose
-        uses: strudelbots/strudel-public/.github/actions/run_compose@v0.11.11
+        uses: strudelbots/strudel-public/.github/actions/run_compose@v0.12.01
         with:
           image_tag: ${{ env.image_tag }}
           logger_name: ${{ inputs.logger_name }}
