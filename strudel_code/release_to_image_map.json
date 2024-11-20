@@ -19,6 +19,17 @@
                     "id": "3917C7"
                 }
             ]
+        },
+                {
+            "release_tag": "28-enable-using-dev-image-repository-for-authorized-user",
+            "image": [
+                {
+                    "tag": "v-0.0.2-b-2",
+                    "added_date": "11/15/2024, 21:12:40",
+                    "id": "3917C7"
+                }
+            ]
         }
+
     ]
 }
