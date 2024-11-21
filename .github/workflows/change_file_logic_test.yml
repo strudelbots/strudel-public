@@ -7,12 +7,7 @@ on:
 #        type: string
 #        required: true
 #        default: 'main'
-  workflow_dispatch:
-    inputs:
-      master_branch:
-        type: string
-        required: false
-        default: 'main'
+
 
 jobs:
   run-strudel-test:
@@ -20,7 +15,7 @@ jobs:
     env:
       strudel_access_key: ${{ secrets.strudel_access_key }}
       strudel_secret_key: ${{ secrets.strudel_secret_key }}
-      master_branch: ${{ inputs.master_branch }}
+      master_branch: main
     steps:
 
       - name: Check out repository
