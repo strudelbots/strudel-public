@@ -1,6 +1,12 @@
 name: supportability, changed files logic
 
 on:
+  workflow_dispatch:
+    inputs:
+      master_branch:
+        default: 'main'
+        required: true
+        type: string
 #  workflow_call:
 #    inputs:
 #      master_branch:
