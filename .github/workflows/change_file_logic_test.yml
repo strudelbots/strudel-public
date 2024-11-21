@@ -9,6 +9,7 @@ jobs:
   checkout_and_get_changed_files_v3_0:
     runs-on: ubuntu-22.04
     strategy:
+      fail-fast: false
       matrix:
         depth: [ 0, 1 ]
     env:
