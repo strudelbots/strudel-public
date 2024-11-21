@@ -5,7 +5,6 @@ inputs:
     description: 'The name of the master branch'
     required: true
 runs:
-
     using: 'composite'
     steps:
 #      - name: checkout
