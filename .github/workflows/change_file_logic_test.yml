@@ -2,6 +2,7 @@ name: supportability, changed files logic
 
 on:
   workflow_dispatch:
+  push:
 
 
 jobs:
