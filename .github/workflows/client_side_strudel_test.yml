@@ -1,10 +1,6 @@
 name: run strudel-test
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - '**'
-      - '!devel'
 jobs:
   run-strudel-test:
     uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.12.01
