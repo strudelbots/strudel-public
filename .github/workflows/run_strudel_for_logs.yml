@@ -10,6 +10,11 @@ on:
       master_branch:
         type: string
         required: true
+      use_dev_ecr_repository:
+        type: boolean
+        required: false
+        default: false
+
     secrets:
       strudel_access_key:
         required: true
@@ -22,9 +27,10 @@ jobs:
     outputs:
       run_strudel: ${{ steps.check_head_commit_message.outputs.run_strudel_value }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
 
       - name: check head commit message
         id: check_head_commit_message
@@ -47,65 +53,65 @@ jobs:
     env:
       strudel_access_key: ${{ secrets.strudel_access_key }}
       strudel_secret_key: ${{ secrets.strudel_secret_key }}
+      use_dev_ecr_repository: ${{ inputs.use_dev_ecr_repository }}
     permissions:
       actions: write
       contents: write
-
 
     runs-on: ubuntu-22.04
     steps:
 #      - uses: actions/checkout@v3
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
       - name: Extract user branch name
         id: exract-branch-name
-        uses: strudelbots/strudel-public/.github/actions/get_current_branch@v0.11.11
+        uses: strudelbots/strudel-public/.github/actions/get_current_branch@v0.12.01
 
       - name: extract strudel version
         id: extract_strudel_version
-        uses: strudelbots/strudel-public/.github/actions/extract_strudel_version@v0.11.11
+        uses: strudelbots/strudel-public/.github/actions/extract_strudel_version@v0.12.01
         with:
           mode: 'run_logs'
 
       - name: get strudel-public files
-        uses: strudelbots/strudel-public/.github/actions/get_public_files@v0.11.11
+        uses: strudelbots/strudel-public/.github/actions/get_public_files@v0.12.01
 
       - name: check user keys
-        uses: strudelbots/strudel-public/.github/actions/check-user-keys@v0.11.11
+        uses: strudelbots/strudel-public/.github/actions/check-user-keys@v0.12.01
 
       - name: Get changed files
         id: get_changed_files
-        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@v0.11.11
+        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@v0.12.01
         with:
           master_branch: ${{ inputs.master_branch }}
 
       - name: install python
         id: install-python
-        uses: strudelbots/strudel-public/.github/actions/install-python@v0.11.11
+        uses: strudelbots/strudel-public/.github/actions/install-python@v0.12.01
 
       - name: get image tag
-        uses: strudelbots/strudel-public/.github/actions/get_image_tag@v0.11.11
+        uses: strudelbots/strudel-public/.github/actions/get_image_tag@v0.12.01
         with:
           version_tag: ${{ env.ref }}
 
       - name: login to ecr
-        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@v0.11.11
-
+        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@v0.12.01
 
       - name: run docker compose
-        uses: strudelbots/strudel-public/.github/actions/run_compose@v0.11.11
+        uses: strudelbots/strudel-public/.github/actions/run_compose@v0.12.01
         with:
           image_tag: ${{ env.image_tag }}
           logger_name: ${{ inputs.logger_name }}
           access_token: ${{ secrets.strudel_access_key }}
           secret_key: ${{ secrets.strudel_secret_key }}
 
+
       - name: sanity tests
-        uses: strudelbots/strudel-public/.github/actions/sanity_tests@v0.11.11
+        uses: strudelbots/strudel-public/.github/actions/sanity_tests@v0.12.01
 
       - name: Run Strudel
         run: |
