@@ -40,7 +40,7 @@ jobs:
           echo "branch=${{ env.branch }}"
           master_branch=${{ inputs.master_branch }}
   
-          git_command="git diff --diff-filter=AMR --name-only origin/${{ input.master_branch }} origin/${{ env.branch }}"
+          git_command="git diff --diff-filter=AMR --name-only origin/${{ inputs.master_branch }} origin/${{ env.branch }}"
           echo "git command is: $git_command"
           eval " $git_command"
           {
