@@ -1,0 +1,123 @@
+name: run changed files test
+
+on:
+  workflow_call:
+    inputs:
+      master_branch:
+        type: string
+        required: true
+
+jobs:
+  checkout_and_get_changed_files_v2:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        depth: [ 0, 1 ]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: ${{ matrix.depth }}
+
+      - name: Extract user branch name
+        id: extract-branch-name
+        uses: strudelbots/strudel-public/.github/actions/get_current_branch@v0.12.01
+
+
+      - name: Get changed files -- RUN
+        id: get_changed_files
+        run: |
+          repository=$GITHUB_REPOSITORY
+          echo "repository=$repository"
+          echo "master_branch=${{ inputs.master_branch }}"
+          echo "branch=${{ env.branch }}"
+          master_branch=${{ inputs.master_branch }}
+  
+          git_command="git diff --diff-filter=AMR --name-only origin/$master_branch origin/${{ env.branch }}"
+          echo "git command is: $git_command"
+          echo "changed file:"
+          eval " $git_command"
+
+      - name: Get changed files - USES
+        if: always()
+        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@v0.12.01
+        with:
+          master_branch: ${{ inputs.master_branch }}
+
+  checkout_and_get_changed_files_v3:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        depth: [ 0, 1 ]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: ${{ matrix.depth }}
+
+      - name: Extract user branch name
+        id: extract-branch-name
+        uses: strudelbots/strudel-public/.github/actions/get_current_branch@v0.12.01
+
+      - name: Get changed files -- RUN
+        id: get_changed_files
+        run: |
+          repository=$GITHUB_REPOSITORY
+          echo "repository=$repository"
+          echo "master_branch=${{ inputs.master_branch }}"
+          echo "branch=${{ env.branch }}"
+          master_branch=${{ inputs.master_branch }}
+
+          git_command="git diff --diff-filter=AMR --name-only origin/$master_branch origin/${{ env.branch }}"
+          echo "git command is: $git_command"
+          echo "changed file:"
+          eval " $git_command"
+
+      - name: Get changed files - USES
+        if: always()
+        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@v0.12.01
+        with:
+          master_branch: ${{ inputs.master_branch }}
+
+  checkout_and_get_changed_files_v4:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        depth: [ 0, 1 ]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: ${{ matrix.depth }}
+
+      - name: Extract user branch name
+        id: extract-branch-name
+        uses: strudelbots/strudel-public/.github/actions/get_current_branch@v0.12.01
+
+
+      - name: Get changed files -- RUN
+        id: get_changed_files
+        run: |
+          repository=$GITHUB_REPOSITORY
+          echo "repository=$repository"
+          echo "master_branch=${{ inputs.master_branch }}"
+          echo "branch=${{ env.branch }}"
+          master_branch=${{ inputs.master_branch }}
+
+          git_command="git diff --diff-filter=AMR --name-only origin/$master_branch origin/${{ env.branch }}"
+          echo "git command is: $git_command"
+          echo "changed file:"
+          eval " $git_command"
+
+      - name: Get changed files - USES
+        if: always()
+        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@v0.12.01
+        with:
+          master_branch: ${{ inputs.master_branch }}
+
