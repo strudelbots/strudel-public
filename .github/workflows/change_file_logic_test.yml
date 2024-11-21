@@ -95,7 +95,7 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/get_current_branch@v0.12.01
 
 
-      - name: Get changed files
+      - name: Get changed files - RUN
         id: get_changed_files
         run: |
           repository=$GITHUB_REPOSITORY
@@ -110,4 +110,9 @@ jobs:
           eval " $git_command"
 
 
+      - name: Get changed files - USES
+        if: always()
+        uses: strudelbots/strudel-public/.github/actions/get_changed_files@v0.12.01
+        with:
+          master_branch: ${{ env.master_branch }}
 
