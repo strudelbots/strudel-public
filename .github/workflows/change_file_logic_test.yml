@@ -6,8 +6,11 @@ on:
 
 
 jobs:
-  run-strudel-test:
+  checkout_and_get_changed_files_v3_0:
     runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        depth: [ 0, 1 ]
     env:
       strudel_access_key: ${{ secrets.strudel_access_key }}
       strudel_secret_key: ${{ secrets.strudel_secret_key }}
@@ -18,7 +21,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
+          fetch-depth: ${{ matrix.depth }}
 
       - name: Extract user branch name
         id: extract-branch-name
