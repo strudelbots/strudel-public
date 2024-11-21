@@ -12,6 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         depth: [ 0, 1 ]
+        checkout_version: [ v3 ]
     env:
       strudel_access_key: ${{ secrets.strudel_access_key }}
       strudel_secret_key: ${{ secrets.strudel_secret_key }}
@@ -19,7 +20,7 @@ jobs:
     steps:
 
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@${{ matrix.checkout_version }}
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: ${{ matrix.depth }}
