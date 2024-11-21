@@ -1,0 +1,52 @@
+name: supportability, changed files logic
+
+on:
+  workflow_call:
+    inputs:
+      master_branch:
+        type: string
+        required: true
+        default: 'main'
+  workflow_dispatch:
+  push:
+    branches:
+      - '**'
+jobs:
+  run-strudel-test:
+    runs-on: ubuntu-22.04
+    env:
+      strudel_access_key: ${{ secrets.strudel_access_key }}
+      strudel_secret_key: ${{ secrets.strudel_secret_key }}
+      use_dev_ecr_repository: ${{ inputs.use_dev_ecr_repository }}
+    steps:
+
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Extract user branch name
+        id: extract-branch-name
+        uses: strudelbots/strudel-public/.github/actions/get_current_branch@v0.12.01
+
+
+      - name: Get changed files
+        id: get_changed_files
+        run: |
+          repository=$GITHUB_REPOSITORY
+          echo "repository=$repository"
+          echo "master_branch=${{ inputs.master_branch }}"
+          echo "branch=${{ env.branch }}"
+          master_branch=${{ inputs.master_branch }}
+  
+          git_command="git diff --diff-filter=AMR --name-only origin/$master_branch origin/${{ env.branch }}"
+          echo "git command is: $git_command"
+          eval " $git_command"
+          {
+            echo 'ALL_CHANGED_FILES<<EOF'
+            eval " $git_command"
+            echo EOF
+          } >> $GITHUB_ENV
+
+
