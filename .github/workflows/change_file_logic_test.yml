@@ -42,7 +42,7 @@ jobs:
 
       - name: Get changed files - USES
         if: always()
-        uses: strudelbots/strudel-public/.github/actions/get_changed_files@v0.12.01
+        uses: strudelbots/strudel-public/.github/actions/get_changed_files@main
         with:
           master_branch: ${{ env.master_branch }}
 
