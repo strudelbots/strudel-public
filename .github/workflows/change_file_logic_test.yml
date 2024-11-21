@@ -37,10 +37,5 @@ jobs:
           git_command="git diff --diff-filter=AMR --name-only origin/$master_branch origin/${{ env.branch }}"
           echo "git command is: $git_command"
           eval " $git_command"
-          {
-            echo 'ALL_CHANGED_FILES<<EOF'
-            eval " $git_command"
-            echo EOF
-          } >> $GITHUB_ENV
 
 
