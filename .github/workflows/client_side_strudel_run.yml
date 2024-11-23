@@ -7,10 +7,11 @@ on:
        - main
   push:
     branches:
+      - "**"
       - '!main'
 jobs:
   run-strudel-for-logs:
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.12.01
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.13.01
     with:
       master_branch: main
     secrets:
