@@ -19,6 +19,7 @@ def get_image_for_tag(release_tag):
     strudel.info('Method "get_image_for_tag" returns "result"') #  # STRUDEL_RETURN_TRACE_0
     return result
 
+
 if __name__ == '__main__':
     try:
         release_tag = sys.argv[1]
