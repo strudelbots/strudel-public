@@ -3,7 +3,7 @@ import sys
 
 from strudel_code.image_map_data_classes import verify_release_tag, load_current_map
 
-
+#v0.13.02
 strudel = logging.getLogger(__name__) # STRUDEL_IMPORT_1
 strudel.addHandler(logging.StreamHandler()) # STRUDEL_IMPORT_2
 strudel.setLevel(logging.INFO) # STRUDEL_IMPORT_3
