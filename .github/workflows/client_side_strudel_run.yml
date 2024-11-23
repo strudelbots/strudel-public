@@ -1,10 +1,5 @@
 name: run strudel-for-logs
 on:
-  pull_request:
-# If you want to run the workflow only for other
-# branches than main change the name of the branch
-     branches:
-       - main
   push:
     branches:
       - "**"
