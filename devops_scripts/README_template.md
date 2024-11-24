@@ -8,7 +8,11 @@ Strudel’s intelligent bots seamlessly handle routine tasks.
 By automating up to 50% of the development process, Strudel will empower
 teams to accelerate productivity and drive meaningful innovation. The result? Faster development cycles, higher-quality code, and engineers who can 
 focus on engineering the extraordinary.
-## About Strudel Pilot (version 0.11.11)
+### What is Strudel Pilot?
+#### Nov-24-24: Version 0.13.02 released. 
+1. Bug fix: Strudel correctly change logging code once developer changes the underlying business logic.  
+
+## About Strudel Pilot (version 0.13.02)
 Strudel's pilot simplifies telemetry integration 
 by automatically embedding logging and business metrics directly into your Python code.
 With Strudel, logging code is automatically added to your pull requests, 

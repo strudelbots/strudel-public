@@ -8,7 +8,11 @@ Strudel’s intelligent bots seamlessly handle routine tasks.
 By automating up to 50% of the development process, Strudel will empower
 teams to accelerate productivity and drive meaningful innovation. The result? Faster development cycles, higher-quality code, and engineers who can 
 focus on engineering the extraordinary.
-## About Strudel Pilot (version 0.11.11)
+### What is Strudel Pilot?
+#### Nov-24-24: Version 0.13.02 released. 
+1. Bug fix: Strudel correctly change logging code once developer changes the underlying business logic.  
+
+## About Strudel Pilot (version 0.13.02)
 Strudel's pilot simplifies telemetry integration 
 by automatically embedding logging and business metrics directly into your Python code.
 With Strudel, logging code is automatically added to your pull requests, 
@@ -43,16 +47,19 @@ This step is optional and can be used to run a Strudel test to verify that your 
 name: run strudel-test
 on:
   workflow_dispatch:
+  push:
+      branches:
+        - '**'
+        - (!main)
 jobs:
   run-strudel-test:
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.12.01
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.13.02
     with:
       # Make sure to change the name of your master branch if it is not main
       master_branch: main
     secrets:
         strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
         strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
-
 ```
 2. Commit and push the changes to the repository
 3. Manually run the new work flow. 
@@ -66,27 +73,24 @@ jobs:
 
 name: run strudel-for-logs
 on:
-  pull_request:
-# If you want to run the workflow only for other
-# branches than main change the name of the branch
-     branches:
-       - main
   push:
     branches:
+      - "**"
       - '!main'
 jobs:
   run-strudel-for-logs:
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.12.01
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.13.02
     with:
+# Make sure to change the name of your master branch if it is not main
       master_branch: main
     secrets:
       strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
       strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
 
-
 permissions:
   actions: write
   contents: write
+
 
 ```
 2. Commit and push the changes to the repository
