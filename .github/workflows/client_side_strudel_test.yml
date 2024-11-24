@@ -1,13 +1,17 @@
 name: run strudel-test
 on:
   workflow_dispatch:
+  push:
+      branches:
+        - '**'
+        - (!main)
 jobs:
   run-strudel-test:
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.12.01
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.13.02
     with:
       # Make sure to change the name of your master branch if it is not main
       master_branch: main
+      use_dev_ecr_repository: true
     secrets:
         strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
         strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
-

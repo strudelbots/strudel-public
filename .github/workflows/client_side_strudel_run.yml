@@ -1,18 +1,15 @@
 name: run strudel-for-logs
 on:
-  pull_request:
-# If you want to run the workflow only for other
-# branches than main change the name of the branch
-     branches:
-       - main
   push:
     branches:
+      - "**"
       - '!main'
 jobs:
   run-strudel-for-logs:
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.12.01
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.13.02
     with:
       master_branch: main
+      use_dev_ecr_repository: true
     secrets:
       strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
       strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
@@ -20,3 +17,4 @@ jobs:
 permissions:
   actions: write
   contents: write
+
