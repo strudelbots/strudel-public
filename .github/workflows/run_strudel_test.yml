@@ -29,7 +29,6 @@ jobs:
       strudel_secret_key: ${{ secrets.strudel_secret_key }}
       use_dev_ecr_repository: ${{ inputs.use_dev_ecr_repository }}
     steps:
-#      - uses: actions/checkout@v3
       - name: Check out repository
         uses: actions/checkout@v3
         with:
