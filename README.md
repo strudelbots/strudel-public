@@ -142,7 +142,7 @@ It gathers only encrypted metadata in the following format:
 {"f0b25bddf6b3213fd77fa89b02d8d3d5": [[3, 12]]}
 ```
 This format is cryptographically secure and ensures that no one, including Strudel, can reverse-engineer your code.  
-### What's new in Strudel Pilot?
+## What's New in Strudel Pilot?
 1. **Nov-24-24: Version 0.13.02 released.** 
    - Bug fix: Strudel correctly change logging code once developer changes the underlying business logic.  
 
