@@ -1,4 +1,4 @@
-name: run strudel-test
+name: run strudel files-change test
 on:
   workflow_dispatch:
 # Enter your master branch name in the branches section
