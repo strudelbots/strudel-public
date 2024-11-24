@@ -143,7 +143,7 @@ It gathers only encrypted metadata in the following format:
 ```
 This format is cryptographically secure and ensures that no one, including Strudel, can reverse-engineer your code.  
 ### What's new in Strudel Pilot?
-1. Nov-24-24: Version 0.13.02 released. 
+1. **Nov-24-24: Version 0.13.02 released.** 
    - Bug fix: Strudel correctly change logging code once developer changes the underlying business logic.  
 
 
