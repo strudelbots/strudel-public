@@ -42,7 +42,7 @@ This step is optional and can be used to run a Strudel test to verify that your 
 1. Open your repository in GitHub/IDE. 
 2. Create a new file in the `.github/workflows` directory with the name `strudel-test.yml`.
 2. Copy the following code into the file:
-```yaml
+```
 name: run strudel-test
 on:
   workflow_dispatch:
@@ -69,7 +69,6 @@ jobs:
 `run_strudel_for_logs.yml`
 2. Copy the following code into the file:
 ```
-
 name: run strudel-for-logs
 on:
   push:
