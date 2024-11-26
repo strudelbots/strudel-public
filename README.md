@@ -42,6 +42,7 @@ This step is optional and can be used to run a Strudel test to verify that your 
 1. Open your repository in GitHub/IDE. 
 2. Create a new file in the `.github/workflows` directory with the name `strudel-test.yml`.
 2. Copy the following code into the file:
+
 ```
 name: run strudel-test
 on:
@@ -60,6 +61,7 @@ jobs:
         strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
         strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
 ```
+
 2. Commit and push the changes to the repository
 3. Manually run the new work flow. 
 4. Check the steps and the logs of the action to ensure that the test ran successfully.
