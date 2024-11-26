@@ -68,7 +68,7 @@ jobs:
 1. Create a new file in the `.github/workflows` directory with the name 
 `run_strudel_for_logs.yml`
 2. Copy the following code into the file:
-```yaml
+```
 
 name: run strudel-for-logs
 on:
@@ -89,8 +89,6 @@ jobs:
 permissions:
   actions: write
   contents: write
-
-
 ```
 2. Commit and push the changes to the repository
 
