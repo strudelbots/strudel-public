@@ -69,7 +69,8 @@ jobs:
 ### Create Strudel Add-Logs  Action in Your Github Repository
 1. Create a new file in the `.github/workflows` directory with the name 
 `run_strudel_for_logs.yml`
-2. Copy the following code into the file:
+2. CCopy the following code into the file:
+
 ```
 name: run strudel-for-logs
 on:
@@ -91,7 +92,8 @@ permissions:
   actions: write
   contents: write
 ```
-2. Commit and push the changes to the repository
+
+3. Commit and push the changes to the repository
 
 ## Steps to add logging code to your pull request (example)
 With Strudel, logging code is automatically added to your pull requests, 
