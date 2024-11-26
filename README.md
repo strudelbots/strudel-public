@@ -41,7 +41,7 @@ received from Strudel Support.
 This step is optional and can be used to run a Strudel test to verify that your setup is correct.
 1. Open your repository in GitHub/IDE. 
 2. Create a new file in the `.github/workflows` directory with the name `strudel-test.yml`.
-2. Copy the following code into the file:
+3. Copy the following code into the file:
 
 ```
 name: run strudel-test
