@@ -57,8 +57,8 @@ jobs:
       # Make sure to change the name of your master branch if it is not main
       master_branch: main
     secrets:
-        strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
-        strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
+        strudel_access_key: $\{\{ secrets.STRUDEL_ACCESS_KEY_ID \}\}
+        strudel_secret_key: $\{\{ secrets.STRUDEL_SECRET_KEY \}\}
 ```
 2. Commit and push the changes to the repository
 3. Manually run the new work flow. 
