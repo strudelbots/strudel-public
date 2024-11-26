@@ -41,8 +41,8 @@ received from Strudel Support.
 This step is optional and can be used to run a Strudel test to verify that your setup is correct.
 1. Open your repository in GitHub/IDE. 
 2. Create a new file in the `.github/workflows` directory with the name `strudel-test.yml`.
-2. Copy the following code into the file:
-```yaml
+2. CCopy the following code into the file:
+```
 test-client-job-come-here
 ```
 2. Commit and push the changes to the repository
@@ -53,7 +53,7 @@ test-client-job-come-here
 1. Create a new file in the `.github/workflows` directory with the name 
 `run_strudel_for_logs.yml`
 2. Copy the following code into the file:
-```yaml
+```
 
 run-client-job-come-here
 
