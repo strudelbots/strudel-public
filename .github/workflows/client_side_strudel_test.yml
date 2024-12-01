@@ -7,7 +7,7 @@ on:
         - (!main)
 jobs:
   run-strudel-test:
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.13.02
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@test-v-0.0.4-b-19
     with:
       # Make sure to change the name of your master branch if it is not main
       master_branch: main
