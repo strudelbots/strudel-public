@@ -78,7 +78,7 @@ jobs:
           mode: 'run_logs'
 
       - name: get strudel-public files
-        uses: strudelbots/strudel-public/.github/actions/get_public_files@v0.13.02
+        uses: strudelbots/strudel-public/.github/actions/get_public_files@v0.13.02-01
 
       - name: check user keys
         uses: strudelbots/strudel-public/.github/actions/check-user-keys@v0.13.02
