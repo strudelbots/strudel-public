@@ -1,9 +1,7 @@
 name: 'Get public strudel files'
 description: 'Get public strudel files from strudel-public repository'
 runs:
-
     using: 'composite'
-
     steps:
       - name: get_public_files 1
         shell: bash
@@ -54,7 +52,6 @@ runs:
             } 
             ls -alt /tmp/release_to_image_map.json
             #cat /tmp/release_to_image_map.json
-
             file=strudel_code/get_image_for_tag.py
             echo "url=$url$file"
             wget -q -P /tmp $url$file
