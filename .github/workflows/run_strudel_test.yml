@@ -47,8 +47,7 @@ jobs:
 
       - name: get strudel-public files
         uses: strudelbots/strudel-public/.github/actions/get_public_files@v0.14.02
-        with :
-          main_or_tag: ${{ github.current_branch }}
+
       - name: check user keys
         uses: strudelbots/strudel-public/.github/actions/check-user-keys@v0.14.02
 
