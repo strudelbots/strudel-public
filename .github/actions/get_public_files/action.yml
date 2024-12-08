@@ -1,9 +1,13 @@
 name: 'Get public strudel files'
 description: 'Get public strudel files from strudel-public repository'
+inputs:
+  main_or_tag:
+    description: 'main or tag for strudel-public'
+    required: false
+    type: string
+    default: 'main'
 runs:
-
     using: 'composite'
-
     steps:
       - name: get_public_files 1
         shell: bash
@@ -41,7 +45,7 @@ runs:
             } 
             ls -alt /tmp/$file
             # NOTE: MAIN BRANCH 
-            url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/"
+            url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/${{ inputs.main_or_tag }}/"
             file=strudel_code/release_to_image_map.json
             echo "url=$url$file"
             wget -q -P /tmp $url$file
