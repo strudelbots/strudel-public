@@ -1,14 +1,14 @@
 name: run strudel files-change test
 on:
   workflow_dispatch:
-# Enter your master branch name in the branches section
-#  push:
-#    branches:
-#      - '**'
-#      - (!main)
+ Enter your master branch name in the branches section
+  push:
+    branches:
+      - '**'
+      - (!main)
 jobs:
   run-strudel-test:
-    uses: strudelbots/strudel-public/.github/workflows/run_file_change_test.yml@main
+    uses: strudelbots/strudel-public/.github/workflows/run_file_change_test.yml@38-improve-change-file-test
     with:
       # Make sure to change the name of your master branch if it is not main
       master_branch: main
