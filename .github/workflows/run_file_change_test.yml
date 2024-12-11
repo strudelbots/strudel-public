@@ -35,7 +35,7 @@ jobs:
           echo "branch=${{ env.branch }}"
           master_branch=${{ inputs.master_branch }}
   
-          git_command="git diff --diff-filter=AMR --name-status origin/$master_branch origin/${{ env.branch }}"
+          git_command="git diff -name-status origin/$master_branch origin/${{ env.branch }}"
           echo "git command is: $git_command"
           echo "changed file:"
           eval " $git_command"
@@ -49,7 +49,7 @@ jobs:
           echo "branch=${{ env.branch }}"
           master_branch=${{ inputs.master_branch }}
   
-          git_command="git diff --diff-filter=AMR origin/${{ env.branch }} origin/$master_branch"
+          git_command="git diff --name-status origin/${{ env.branch }} origin/$master_branch"
           echo "git command is: $git_command"
           echo "changed file:"
           eval " $git_command"
