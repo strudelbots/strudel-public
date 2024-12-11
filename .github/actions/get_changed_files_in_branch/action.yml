@@ -12,7 +12,7 @@ runs:
 #        uses: actions/checkout@v4
 #        with:
 #          fetch-depth: 0
-      - name: List changed files
+      - name: List changed files 1
         id: list-changed-files
         shell: bash
         run: |
@@ -22,13 +22,13 @@ runs:
           echo "branch=${{ env.branch }}"
           master_branch=${{ inputs.master_branch }}
   
-          git_command="git diff --diff-filter=AMR --name-only origin/$master_branch origin/${{ env.branch }}"
+          git_command="git diff --name-status origin/$master_branch origin/${{ env.branch }}"
           echo "** git command is: 
           echo "$git_command"
           eval " $git_command"
           {
-            echo 'ALL_CHANGED_FILES<<EOF'
+            echo 'ALL_CHANGED_FILES1<<EOF'
             eval " $git_command"
             echo EOF
-          } >> $GITHUB_ENV
-          echo "** ALL_CHANGED_FILES is : $ALL_CHANGED_FILES"
+          } 
+          echo ALL_CHANGED_FILES1=$ALL_CHANGED_FILES1
