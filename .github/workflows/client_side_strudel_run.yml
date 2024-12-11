@@ -1,5 +1,6 @@
 name: run strudel-for-logs
 on:
+
   push:
     branches:
       - "**"
