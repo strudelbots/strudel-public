@@ -34,11 +34,10 @@ jobs:
           echo "master_branch=${{ inputs.master_branch }}"
           echo "branch=${{ env.branch }}"
           master_branch=${{ inputs.master_branch }}
-  
-          #git_command="git diff --name-status origin/$master_branch origin/${{ env.branch }}"
-          echo "git command is: ${{ matrix.depth }}
+          git_command="git diff --name-status origin/$master_branch origin/${{ env.branch }}"
+          echo "git command is: $git_command"
           echo "changed file:"
-          eval " ${{ matrix.depth }}"
+          eval " $git_command"
 
       - name: Get changed files -- RUN A=branch, B=master
         id: get_changed_files2
