@@ -26,9 +26,3 @@ runs:
           echo "** git command is: 
           echo "$git_command"
           eval " $git_command"
-          {
-            echo 'ALL_CHANGED_FILES1<<EOF'
-            eval " $git_command"
-            echo EOF
-          } 
-          echo ALL_CHANGED_FILES1=$ALL_CHANGED_FILES1
