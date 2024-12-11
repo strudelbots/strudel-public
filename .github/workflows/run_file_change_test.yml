@@ -35,10 +35,10 @@ jobs:
           echo "branch=${{ env.branch }}"
           master_branch=${{ inputs.master_branch }}
   
-          git_command="git diff --name-status origin/$master_branch origin/${{ env.branch }}"
-          echo "git command is: $git_command"
+          #git_command="git diff --name-status origin/$master_branch origin/${{ env.branch }}"
+          echo "git command is: ${{ matrix.depth }}
           echo "changed file:"
-          eval " $git_command"
+          eval " ${{ matrix.depth }}"
 
       - name: Get changed files -- RUN A=branch, B=master
         id: get_changed_files2
@@ -47,50 +47,63 @@ jobs:
           echo "repository=$repository"
           echo "master_branch=${{ inputs.master_branch }}"
           echo "branch=${{ env.branch }}"
-          master_branch=${{ inputs.master_branch }}
-  
+          master_branch=${{ inputs.master_branch }}  
           git_command="git diff --name-status origin/${{ env.branch }} origin/$master_branch"
           echo "git command is: $git_command"
           echo "changed file:"
           eval " $git_command"
-
-      - name: Get changed files - USES
-        if: always()
-        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@38-improve-change-file-test
-        with:
-          master_branch: ${{ inputs.master_branch }}
 #
-#  checkout_and_get_changed_files_v3:
-#    runs-on: ubuntu-22.04
-#    strategy:
-#      fail-fast: false
-#      matrix:
-#        depth: [ 0 ]
-#    steps:
-#      - name: Check out repository
-#        uses: actions/checkout@v3
+#      - name: Get changed files - USES
+#        if: always()
+#        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@38-improve-change-file-test
 #        with:
-#          token: ${{ secrets.GITHUB_TOKEN }}
-#          fetch-depth: ${{ matrix.depth }}
+#          master_branch: ${{ inputs.master_branch }}
 #
-#      - name: Extract user branch name
-#        id: extract-branch-name
-#        uses: strudelbots/strudel-public/.github/actions/get_current_branch@38-improve-change-file-test
-#
-#      - name: Get changed files -- RUN
-#        id: get_changed_files
-#        run: |
-#          repository=$GITHUB_REPOSITORY
-#          echo "repository=$repository"
-#          echo "master_branch=${{ inputs.master_branch }}"
-#          echo "branch=${{ env.branch }}"
-#          master_branch=${{ inputs.master_branch }}
-#
-#          git_command="git diff --diff-filter=AMR --name-only origin/$master_branch origin/${{ env.branch }}"
-#          echo "git command is: $git_command"
-#          echo "changed file:"
-#          eval " $git_command"
-#
+  checkout_and_get_changed_files_v3:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        depth: [ 0 ]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: ${{ matrix.depth }}
+
+      - name: Extract user branch name
+        id: extract-branch-name
+        uses: strudelbots/strudel-public/.github/actions/get_current_branch@38-improve-change-file-test
+
+      - name: Get changed files -- RUN  A=master, B=branch
+        id: get_changed_files
+        run: |
+          repository=$GITHUB_REPOSITORY
+          echo "repository=$repository"
+          echo "master_branch=${{ inputs.master_branch }}"
+          echo "branch=${{ env.branch }}"
+          master_branch=${{ inputs.master_branch }}
+
+          git_command="git diff --diff-filter=AMR --name-only origin/$master_branch origin/${{ env.branch }}"
+          echo "git command is: $git_command"
+          echo "changed file:"
+          eval " $git_command"
+
+      - name: Get changed files -- RUN  A=branch, B=master
+        id: get_changed_files2
+        run: |
+          repository=$GITHUB_REPOSITORY
+          echo "repository=$repository"
+          echo "master_branch=${{ inputs.master_branch }}"
+          echo "branch=${{ env.branch }}"
+          master_branch=${{ inputs.master_branch }}
+
+          git_command="git diff --name-status  origin/${{ env.branch }} origin/$master_branch"
+          echo "git command is: $git_command"
+          echo "changed file:"
+          eval " $git_command"
+
 #      - name: Get changed files - USES
 #        if: always()
 #        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@38-improve-change-file-test
