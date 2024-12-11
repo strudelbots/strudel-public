@@ -26,7 +26,7 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/get_current_branch@38-improve-change-file-test
 
 
-      - name: Get changed files RUN A=master, B=branch
+      - name: Get changed files -- RUN A=master, B=branch
         id: get_changed_files
         run: |
           repository=$GITHUB_REPOSITORY
