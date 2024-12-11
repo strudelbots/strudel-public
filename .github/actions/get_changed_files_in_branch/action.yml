@@ -23,6 +23,6 @@ runs:
           master_branch=${{ inputs.master_branch }}
   
           git_command="git diff --name-status origin/$master_branch origin/${{ env.branch }}"
-          echo "** git command is: 
+          echo "** git command is: "
           echo "$git_command"
           eval " $git_command"
