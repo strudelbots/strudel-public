@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        depth: [ 0, 1 ]
+        depth: [ 0 ]
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
@@ -26,7 +26,7 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/get_current_branch@38-improve-change-file-test
 
 
-      - name: Get changed files -- RUN
+      - name: Get changed files -- RUN A=master, B=branch
         id: get_changed_files
         run: |
           repository=$GITHUB_REPOSITORY
@@ -35,7 +35,21 @@ jobs:
           echo "branch=${{ env.branch }}"
           master_branch=${{ inputs.master_branch }}
   
-          git_command="git diff --diff-filter=AMR --name-only origin/$master_branch origin/${{ env.branch }}"
+          git_command="git diff --diff-filter=AMR --name-status origin/$master_branch origin/${{ env.branch }}"
+          echo "git command is: $git_command"
+          echo "changed file:"
+          eval " $git_command"
+
+      - name: Get changed files -- RUN A=branch, B=master
+        id: get_changed_files
+        run: |
+          repository=$GITHUB_REPOSITORY
+          echo "repository=$repository"
+          echo "master_branch=${{ inputs.master_branch }}"
+          echo "branch=${{ env.branch }}"
+          master_branch=${{ inputs.master_branch }}
+  
+          git_command="git diff --diff-filter=AMR origin/${{ env.branch }} origin/$master_branch"
           echo "git command is: $git_command"
           echo "changed file:"
           eval " $git_command"
