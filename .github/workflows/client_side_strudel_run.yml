@@ -1,10 +1,10 @@
 name: run strudel-for-logs
 on:
 
-  push:
-    branches:
-      - "**"
-      - '!main'
+#  push:
+#    branches:
+#      - "**"
+#      - '!main'
 jobs:
   run-strudel-for-logs:
     uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.14.02
