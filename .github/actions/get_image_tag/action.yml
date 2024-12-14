@@ -16,6 +16,7 @@ runs:
           cd /tmp
           touch __init__.py
           version_tag=${{ inputs.version_tag }}
+          version_tag="v0.14.02"
           output=$(python3 get_image_for_tag.py $version_tag)
           echo "image_tag=$output"
           if [[ $output = "no-tag-found" ]]; then
