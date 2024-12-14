@@ -179,7 +179,7 @@ last_common_commit() {
     echo "Branch2: $branch2" >> /tmp/last_common_commit.txt
     # Find the merge base (common ancestor) of the two branches
     git fetch origin
-    git merge-base origin/main "$branch2"
+    git merge-base origin/main "$branch2" >> /tmp/last_common_commit.txt
     #git merge-base $branch1 $branch2
     #echo "end of last_common_commit"
 }
