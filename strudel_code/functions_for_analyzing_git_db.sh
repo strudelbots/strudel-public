@@ -217,6 +217,7 @@ file_exists_in_branch() {
 #        #echo "File $file_name does NOT exist in branch '$branch_name'."
 #        return 1
 #    fi
+    return 0
 }
 
 
