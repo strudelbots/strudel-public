@@ -42,8 +42,6 @@ class ImageMap:
                 if len(release.image) > 1:
                     raise ValueError(f"Multiple images found for tag: {release_tag}")
                 return release.image[0]
-        strudel.info('Method "find_image" returns') #  # STRUDEL_RETURN_TRACE_0
-        return None
     def find_tag(self, input_tag):
         for tag_details in self.release_details:
             if tag_details.release_tag == input_tag:

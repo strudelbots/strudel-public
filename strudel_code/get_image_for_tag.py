@@ -13,6 +13,10 @@ def get_image_for_tag(release_tag):
         for entry in map.release_details:
             if release_tag.startswith(entry.release_tag):
                 return entry.image[0]
+    if not result: # partial match like v0.13.02 -> v0.13
+         for entry in map.release_details:
+             if entry.release_tag.startswith(release_tag[:-2]):
+                 return entry.image[0]
     return result
 
 

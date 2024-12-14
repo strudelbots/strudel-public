@@ -7,7 +7,7 @@ echo $PYTHONPATH
 output=$(python ../strudel_code/get_image_for_tag.py v0.10.11)
 echo
 echo "output:$output"
-if [[ $output = "no-tag-found" ]]; then
+if [[ $output = "v-0.0.1-b-1" ]]; then
 	echo "test 1 passed"
 else
 	echo "*** test 1 failed ***"
@@ -56,5 +56,32 @@ if [[ $output = "no-tag-found" ]]; then
 	echo "test 5 passed"
 else
 	echo "*** test 5 failed ***"
+	exit 1
+fi
+output=$(python ../strudel_code/get_image_for_tag.py v0.14.03)
+echo
+echo "output:$output"
+if [[ $output = "v-0.0.4-b-21" ]]; then
+	echo "test 6 passed"
+else
+	echo "*** test 6 failed ***"
+	exit 1
+fi
+output=$(python ../strudel_code/get_image_for_tag.py v0.14.02)
+echo
+echo "output:$output"
+if [[ $output = "v-0.0.4-b-21" ]]; then
+	echo "test 7 passed"
+else
+	echo "*** test 7 failed ***"
+	exit 1
+fi
+output=$(python ../strudel_code/get_image_for_tag.py v0.07.02)
+echo
+echo "output:$output"
+if [[ $output = "no-tag-found" ]]; then
+	echo "test 8 passed"
+else
+	echo "*** test 8 failed ***"
 	exit 1
 fi
