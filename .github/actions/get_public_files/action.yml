@@ -45,7 +45,7 @@ runs:
               wget_result=$?
               if [ $wget_result -ne 0 ]; then
                 echo "Failed to get files from strudel-public with $wget_result"
-                exit 2
+                exit 3
               fi
             } 
             ls -alt /tmp/$file
@@ -59,7 +59,7 @@ runs:
               wget_result=$?
               if [ $wget_result -ne 0 ]; then
                 echo "Failed to get files from strudel-public with $wget_result"
-                exit 2
+                exit 4
               fi
             } 
             ls -alt /tmp/release_to_image_map.json
@@ -71,7 +71,7 @@ runs:
               wget_result=$?
               if [ $wget_result -ne 0 ]; then
                 echo "Failed to get files from strudel-public with $wget_result"
-                exit 2
+                exit 5
               fi
             } 
             ls -alt /tmp/get_image_for_tag.py
@@ -83,7 +83,7 @@ runs:
               wget_result=$?
               if [ $wget_result -ne 0 ]; then
                 echo "Failed to get files from strudel-public with $wget_result"
-                exit 2
+                exit 6
               fi
             } 
             ls -alt /tmp/image_map_data_classes.py
