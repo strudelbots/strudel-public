@@ -200,7 +200,7 @@ file_exists_in_branch() {
     # The command lists all files in the branch and also checks for files that are marked as deleted in git
     sleep 15
     echo "after sleep"
-    git log --name-status $branch_name -- $file_name | grep -q $'^D[ \t]'
+    git log --name-status $branch_name -- $file_name
     #(git log --name-status $branch_name -- $file_name | grep -q $'^D[ \t]')
     #    deleted=$?
     #    # If the file is marked as deleted in the branch, it does not exists
