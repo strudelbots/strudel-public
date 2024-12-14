@@ -1,5 +1,5 @@
 #!/bin/bash
-#get_file_name() {
+get_file_name() {
 #    if [ "$#" -ne 1 ]; then
 #        echo "Usage: get_file_name <full_path_to_file>"
 #        return 1
@@ -12,7 +12,8 @@
 #
 #    # Return the file name
 #    echo "$file_name"
-#}
+    echo "get_file_name"
+}
 
 
 # Function to get all commits up to a given commit hash in a branch
