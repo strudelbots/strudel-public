@@ -9,7 +9,7 @@ By automating up to 50% of the development process, Strudel will empower
 teams to accelerate productivity and drive meaningful innovation. The result? Faster development cycles, higher-quality code, and engineers who can 
 focus on engineering the extraordinary.
 
-## About Strudel Pilot (version 0.13.02)
+## About Strudel Pilot (version 0.13.xx)
 Strudel's pilot simplifies telemetry integration 
 by automatically embedding logging and business metrics directly into your Python code.
 With Strudel, logging code is automatically added to your pull requests, 
@@ -41,8 +41,7 @@ received from Strudel Support.
 This step is optional and can be used to run a Strudel test to verify that your setup is correct.
 1. Open your repository in GitHub/IDE. 
 2. Create a new file in the `.github/workflows` directory with the name `strudel-test.yml`.
-3. Copy the following code into the file:
-
+2. CCopy the following code into the file:
 ```
 name: run strudel-test
 on:
@@ -53,15 +52,15 @@ on:
         - (!main)
 jobs:
   run-strudel-test:
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.13.02
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.14.03
     with:
-      # Make sure to change the name of your master branch if it is not main
+    # Make sure to change the name of your master branch if it is not main
       master_branch: main
     secrets:
         strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
         strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
-```
 
+```
 2. Commit and push the changes to the repository
 3. Manually run the new work flow. 
 4. Check the steps and the logs of the action to ensure that the test ran successfully.
@@ -69,9 +68,9 @@ jobs:
 ### Create Strudel Add-Logs  Action in Your Github Repository
 1. Create a new file in the `.github/workflows` directory with the name 
 `run_strudel_for_logs.yml`
-2. CCopy the following code into the file:
-
+2. Copy the following code into the file:
 ```
+
 name: run strudel-for-logs
 on:
   push:
@@ -80,7 +79,7 @@ on:
       - '!main'
 jobs:
   run-strudel-for-logs:
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.13.02
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.14.03
     with:
 # Make sure to change the name of your master branch if it is not main
       master_branch: main
@@ -91,9 +90,10 @@ jobs:
 permissions:
   actions: write
   contents: write
-```
 
-3. Commit and push the changes to the repository
+
+```
+2. Commit and push the changes to the repository
 
 ## Steps to add logging code to your pull request (example)
 With Strudel, logging code is automatically added to your pull requests, 

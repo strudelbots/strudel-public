@@ -2,10 +2,10 @@ name: run strudel files-change test
 on:
   workflow_dispatch:
 # Enter your master branch name in the branches section
-#  push:
-#    branches:
-#      - '**'
-#      - (!main)
+  push:
+    branches:
+      - '**'
+      - (!main)
 jobs:
   run-strudel-test:
     uses: strudelbots/strudel-public/.github/workflows/run_file_change_test.yml@v0.14.03
