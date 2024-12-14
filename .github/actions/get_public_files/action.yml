@@ -50,45 +50,45 @@ runs:
               fi
             }
             ls -alt /tmp/$file
-#
-#            # NOTE: MAIN BRANCH
-#            url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/"
-#            file=strudel_code/release_to_image_map.json
-#            echo "url=$url$file"
-#            wget -q -P /tmp $url$file
-#            {
-#              wget_result=$?
-#              if [ $wget_result -ne 0 ]; then
-#                echo "Failed to get files from strudel-public with $wget_result"
-#                exit 4
-#              fi
-#            }
-#            ls -alt /tmp/release_to_image_map.json
-#            #cat /tmp/release_to_image_map.json
-#            file=strudel_code/get_image_for_tag.py
-#            echo "url=$url$file"
-#            wget -q -P /tmp $url$file
-#            {
-#              wget_result=$?
-#              if [ $wget_result -ne 0 ]; then
-#                echo "Failed to get files from strudel-public with $wget_result"
-#                exit 5
-#              fi
-#            }
-#            ls -alt /tmp/get_image_for_tag.py
-#
-#            file=strudel_code/image_map_data_classes.py
-#            echo "url=$url$file"
-#            wget -q -P /tmp $url$file
-#            {
-#              wget_result=$?
-#              if [ $wget_result -ne 0 ]; then
-#                echo "Failed to get files from strudel-public with $wget_result"
-#                exit 6
-#              fi
-#            }
-#            ls -alt /tmp/image_map_data_classes.py
-#            cd /tmp
-#            mkdir -p strudel_code
-#            mv image_map_data_classes.py strudel_code
-#            ls -alt /tmp/strudel_code
+
+            # NOTE: MAIN BRANCH
+            url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/"
+            file=strudel_code/release_to_image_map.json
+            echo "url=$url$file"
+            wget -q -P /tmp $url$file
+            {
+              wget_result=$?
+              if [ $wget_result -ne 0 ]; then
+                echo "Failed to get files from strudel-public with $wget_result"
+                exit 4
+              fi
+            }
+            ls -alt /tmp/release_to_image_map.json
+            #cat /tmp/release_to_image_map.json
+            file=strudel_code/get_image_for_tag.py
+            echo "url=$url$file"
+            wget -q -P /tmp $url$file
+            {
+              wget_result=$?
+              if [ $wget_result -ne 0 ]; then
+                echo "Failed to get files from strudel-public with $wget_result"
+                exit 5
+              fi
+            }
+            ls -alt /tmp/get_image_for_tag.py
+
+            file=strudel_code/image_map_data_classes.py
+            echo "url=$url$file"
+            wget -q -P /tmp $url$file
+            {
+              wget_result=$?
+              if [ $wget_result -ne 0 ]; then
+                echo "Failed to get files from strudel-public with $wget_result"
+                exit 6
+              fi
+            }
+            ls -alt /tmp/image_map_data_classes.py
+            cd /tmp
+            mkdir -p strudel_code
+            mv image_map_data_classes.py strudel_code
+            ls -alt /tmp/strudel_code
