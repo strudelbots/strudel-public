@@ -18,7 +18,7 @@ echo "new tag is: $new_tag"
 cd ../.github/workflows
 pwd
 find . -name "*.yml" -exec sed -i s/$old_tag/$new_tag/g {} \;
-#sed -i s/$old_tag/$new_tag/g run_strudel_for_logs.yml
+git commit -am "Update tags in workflows" -m "$new_tag"
 
 
 
