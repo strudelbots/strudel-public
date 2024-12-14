@@ -18,7 +18,7 @@ runs:
           echo "master_branch=${{ inputs.master_branch }}"
           echo "branch=${{ env.branch }}"
           master_branch=${{ inputs.master_branch }}
-          git fetch origin $master_branch
+          #git fetch origin $master_branch
           common_ancestor=$(last_common_commit "$master_branch" "$branch")
           echo "** The last common commit between '$master_branch' and '$branch': $common_ancestor"
 #          commits_after_common_commits=$(commits_after_common_commit $branch main)
