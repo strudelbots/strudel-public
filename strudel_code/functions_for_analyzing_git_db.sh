@@ -168,7 +168,7 @@ files_changed_in_commit() {
 last_common_commit() {
     if [ "$#" -ne 3 ]; then
         echo "Usage: last_common_commit <branch1> <branch2>"
-        return 1
+        return 11
     fi
 
     local branch1="$1"
