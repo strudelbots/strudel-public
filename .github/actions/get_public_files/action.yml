@@ -39,8 +39,9 @@ runs:
               fi
             } 
             file=functions_for_analyzing_git_db.sh
-            echo "url=$url/strudel_code/$file"
-            wget -q -P /tmp $url$file
+            dir="strudel_code/"
+            echo "url=$url$dir$file"
+            wget -q -P /tmp $url$dir$file
             {
               wget_result=$?
               if [ $wget_result -ne 0 ]; then
