@@ -43,7 +43,7 @@ runs:
           final_files=""
           for file in ${unique_files}; do
               echo "Checking if file $file exists in branch $branch"
-              #              (file_exists_in_branch "$file" "$branch")
+              (file_exists_in_branch "$file" "$branch")
               #              if [ $? -eq 0 ]; then
               #                  echo "  +++    File $file exists in branch $branch  +++"
               #                  final_files+="$file "
