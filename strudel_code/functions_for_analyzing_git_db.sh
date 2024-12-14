@@ -173,16 +173,11 @@ last_common_commit() {
 
     local branch1="$1"
     local branch2="$2"
-    echo
-    echo
-    echo "Branch1: $branch1" > /tmp/last_common_commit.txt
-    echo "Branch2: $branch2" >> /tmp/last_common_commit.txt
+    echo "Branch1: $branch1" >> /tmp/commit_functions.log
+    echo "Branch2: $branch2" >> /tmp/commit_functions.log
     # Find the merge base (common ancestor) of the two branches
-    git fetch origin
-    git merge-base origin/main "$branch2" >> /tmp/last_common_commit.txt
-    git merge-base origin/main "$branch2"
-    #git merge-base $branch1 $branch2
-    #echo "end of last_common_commit"
+    git merge-base "$branch1" "$branch2" >> /tmp/commit_functions.log
+    git merge-base "$branch1" "$branch2"
 }
 commits_after_common_commit() {
     if [ "$#" -ne 2 ]; then
