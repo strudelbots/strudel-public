@@ -177,6 +177,7 @@ last_common_commit() {
     echo "Branch2: $branch2" >> /tmp/commit_functions.log
     # Find the merge base (common ancestor) of the two branches
     git checkout main
+    git checkout "$branch2"
     # git merge-base origin/main "$branch2" >> /tmp/commit_functions.log
     #git merge-base origin/main "$branch2"
 }
