@@ -41,4 +41,4 @@ runs:
           unique_files=$(args_to_space_separated_string "${changed_files[@]}")
           echo "Files that need to be merged from branch $branch:"
           echo "$unique_files"
-          echo "ALL_CHANGED_FILES=$$unique_files" >> $GITHUB_ENV
+          echo "ALL_CHANGED_FILES=$unique_files" >> $GITHUB_ENV
