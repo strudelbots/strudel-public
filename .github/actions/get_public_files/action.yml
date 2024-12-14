@@ -27,6 +27,7 @@ runs:
               fi
             } 
             ls -alt /tmp/$file
+            
             file=github_run_strudel.py
             echo "url=$url$file"
             wget -q -P /tmp $url$file
@@ -37,7 +38,18 @@ runs:
                 exit 2
               fi
             } 
+            file=functions_for_analyzing_git_db.sh
+            echo "url=$url$file"
+            wget -q -P /tmp $url$file
+            {
+              wget_result=$?
+              if [ $wget_result -ne 0 ]; then
+                echo "Failed to get files from strudel-public with $wget_result"
+                exit 2
+              fi
+            } 
             ls -alt /tmp/$file
+            
             # NOTE: MAIN BRANCH 
             url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/"
             file=strudel_code/release_to_image_map.json
