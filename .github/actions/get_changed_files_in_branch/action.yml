@@ -17,12 +17,10 @@ runs:
           echo "master_branch=${{ inputs.master_branch }}"
           echo "branch=${{ env.branch }}"
           master_branch=${{ inputs.master_branch }}
-          sleep 1
           git checkout $master_branch
-          sleep 1
           git checkout $branch
           sleep 1
-          source "./strudel_code/functions_for_analyzing_git_db.sh"
+          source "/tmp/functions_for_analyzing_git_db.sh"
 
           common_ancestor=$(last_common_commit "$master_branch" "$branch")
           echo "** The last common commit between '$master_branch' and '$branch': $common_ancestor"
