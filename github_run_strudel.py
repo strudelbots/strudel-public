@@ -43,7 +43,7 @@ def get_all_files():
     if not changed_files:
         print(f'No files found for strudel.')
     else:
-        all_files = changed_files.split('\n')
+        all_files = changed_files.split(' ')
         if len(all_files) ==0:
             raise ValueError('ALL_CHANGED_FILES is empty')
         print(f"Length of files: {len(all_files)}")
