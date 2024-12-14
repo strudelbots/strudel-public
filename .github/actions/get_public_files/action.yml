@@ -38,8 +38,8 @@ runs:
                 exit 2
               fi
             } 
-            file=strudel_code/functions_for_analyzing_git_db.sh
-            echo "url=$url$file"
+            file=functions_for_analyzing_git_db.sh
+            echo "url=$url/strudel_code/$file"
             wget -q -P /tmp $url$file
             {
               wget_result=$?
