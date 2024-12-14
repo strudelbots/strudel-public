@@ -39,20 +39,6 @@ runs:
             fi
           done
           unique_files=$(args_to_space_separated_string "${changed_files[@]}")
-          echo "**** remove files that were deleted in branch $branch ****"
-          final_files=""
-          for file in ${unique_files}; do
-              echo "Checking if file $file exists in branch $branch"
-              (file_exists_in_branch "$file" "$branch")
-              #              if [ $? -eq 0 ]; then
-              #                  echo "  +++    File $file exists in branch $branch  +++"
-              #                  final_files+="$file "
-              #              else
-              #                  echo "  -- File $file was deleted in branch $branch ---"
-              #              fi
-          done
-#          echo "Files that need to be merged from branch $branch:"
-#          echo "$final_files"
-#          echo "ALL_CHANGED_FILES=$final_files" >> $GITHUB_ENV
-#
-#
+          echo "Files that need to be merged from branch $branch:"
+          echo "$unique_files"
+          echo "ALL_CHANGED_FILES=$$unique_files" >> $GITHUB_ENV
