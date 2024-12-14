@@ -23,4 +23,3 @@ git commit -am "Update tags in workflows" -m "$new_tag"
 git tag $new_tag
 git push --atomic origin  $branch $new_tag
 
-
