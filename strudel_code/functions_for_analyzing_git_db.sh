@@ -1,18 +1,17 @@
 #!/bin/bash
 get_file_name() {
-#    if [ "$#" -ne 1 ]; then
-#        echo "Usage: get_file_name <full_path_to_file>"
-#        return 1
-#    fi
-#
-#    local full_path="$1"
-#    #echo "Full path: $full_path"
-#    # Use basename to extract the file name
-#    local file_name=$(basename "$full_path")
-#
-#    # Return the file name
-#    echo "$file_name"
-    echo "get_file_name"
+    if [ "$#" -ne 1 ]; then
+        echo "Usage: get_file_name <full_path_to_file>"
+        return 1
+    fi
+
+    local full_path="$1"
+    #echo "Full path: $full_path"
+    # Use basename to extract the file name
+    local file_name=$(basename "$full_path")
+
+    # Return the file name
+    echo "$file_name"
 }
 
 
@@ -196,26 +195,27 @@ file_exists_in_branch() {
     local full_file_name="$1"
     local branch_name="$2"
     file_name=$(get_file_name "$full_file_name")
+    echo "File name: $file_name"
     # Check if the file exists in the branch or if it was deleted
     # The command lists all files in the branch and also checks for files that are marked as deleted in git
-    $(git log --name-status "$branch_name" -- "$file_name" | grep -q $'^D[ \t]')
-    deleted=$?
-    # If the file is marked as deleted in the branch, it does not exists
-    if [ $deleted -eq 0 ]; then
-        #echo "File '$file_name' was deleted in branch '$branch_name'."
-        return 1
-    fi
-# Check if the file exists in the specified branch
-    #echo $(git ls-tree -r "$branch_name" --name-only)
-    git ls-tree -r "$branch_name" --name-only --full-tree | grep -q "$file_name$"
-    # Check the result of grep
-    if [ $? -eq 0 ]; then
-        #echo "File $file_name exists in branch '$branch_name'."
-        return 0
-    else
-        #echo "File $file_name does NOT exist in branch '$branch_name'."
-        return 1
-    fi
+#    $(git log --name-status "$branch_name" -- "$file_name" | grep -q $'^D[ \t]')
+#    deleted=$?
+#    # If the file is marked as deleted in the branch, it does not exists
+#    if [ $deleted -eq 0 ]; then
+#        #echo "File '$file_name' was deleted in branch '$branch_name'."
+#        return 1
+#    fi
+## Check if the file exists in the specified branch
+#    #echo $(git ls-tree -r "$branch_name" --name-only)
+#    git ls-tree -r "$branch_name" --name-only --full-tree | grep -q "$file_name$"
+#    # Check the result of grep
+#    if [ $? -eq 0 ]; then
+#        #echo "File $file_name exists in branch '$branch_name'."
+#        return 0
+#    else
+#        #echo "File $file_name does NOT exist in branch '$branch_name'."
+#        return 1
+#    fi
 }
 
 
