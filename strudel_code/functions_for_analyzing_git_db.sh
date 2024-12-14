@@ -166,7 +166,7 @@ files_changed_in_commit() {
 
 # Function to find the last common commit between two branches
 last_common_commit() {
-    if [ "$#" -ne 2 ]; then
+    if [ "$#" -ne 3 ]; then
         echo "Usage: last_common_commit <branch1> <branch2>"
         return 1
     fi
