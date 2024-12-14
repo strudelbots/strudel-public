@@ -22,7 +22,7 @@ runs:
           common_ancestor=$(last_common_commit "$master_branch" "$branch")
           echo "common_ancestor=$common_ancestor"
           echo "done"
-          cat /tmp/latest_commit_files.txt
+          cat /tmp/last_common_commit.txt
 #          echo "** The last common commit between '$master_branch' and '$branch': $common_ancestor"
 #          commits_after_common_commits=$(commits_after_common_commit $branch main)
 #          changed_files=()
