@@ -12,9 +12,8 @@ runs:
         id: list-changed-files
         shell: bash
         run: |
-          ls -alt /tmp/
           source "/tmp/functions_for_analyzing_git_db.sh"
-          if [ $? ne 0 ]; then
+          if [ $? eq 0 ]; then
             echo "Error sourcing functions_for_analyzing_git_db.sh"
             exit 1
           fi
