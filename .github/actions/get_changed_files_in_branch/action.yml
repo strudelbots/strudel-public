@@ -13,7 +13,11 @@ runs:
         shell: bash
         run: |
           ls -alt /tmp/
-          source /tmp/functions_for_analyzing_git_db.sh
+          source "/tmp/functions_for_analyzing_git_db.sh"
+          if [ $? ne 0 ]; then
+            echo "Error sourcing functions_for_analyzing_git_db.sh"
+            exit 1
+          fi
           repository=$GITHUB_REPOSITORY
           echo "repository=$repository"
           echo "master_branch=${{ inputs.master_branch }}"
