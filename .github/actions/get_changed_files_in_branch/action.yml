@@ -18,7 +18,9 @@ runs:
           echo "master_branch=${{ inputs.master_branch }}"
           echo "branch=${{ env.branch }}"
           master_branch=${{ inputs.master_branch }}
+          sleep 1
           git checkout $master_branch
+          sleep 1
           git checkout $branch
           sleep 1
 
