@@ -6,7 +6,7 @@ on:
       - '!main'
 jobs:
   run-strudel-for-logs:
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@39-add-single-developer-mode-for-selecting-the-files-on-which-strudel-will-work-on
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@main
     with:
 # Make sure to change the name of your master branch if it is not main
       master_branch: main
