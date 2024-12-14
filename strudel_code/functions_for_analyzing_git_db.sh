@@ -179,7 +179,7 @@ last_common_commit() {
     git checkout main
     git checkout 39-add-single-developer-mode-for-selecting-the-files-on-which-strudel-will-work-on
     # git merge-base origin/main "$branch2" >> /tmp/commit_functions.log
-    #git merge-base origin/main "$branch2"
+    git merge-base main 39-add-single-developer-mode-for-selecting-the-files-on-which-strudel-will-work-on
 }
 commits_after_common_commit() {
     if [ "$#" -ne 2 ]; then
