@@ -44,8 +44,6 @@ class ImageMap:
                 return release.image[0]
         strudel.info('Method "find_image" returns') #  # STRUDEL_RETURN_TRACE_0
         return None
-    def add_image(self, image_details):
-        pass
     def find_tag(self, input_tag):
         for tag_details in self.release_details:
             if tag_details.release_tag == input_tag:
@@ -56,7 +54,7 @@ class ImageMap:
 
 def verify_release_tag(tag):
     if tag == 'main':
-        return "0.14.02" # TODO - generalize
+        tag =  "0.14.02" # TODO - generalize
     match = re.match(r"v0\.[0-9]{1,2}\.[0-9]{1,2}", tag)
     if not match:
         strudel.error(' Raise ValueError( ** Invalid release tag:   . . .) because "match" is evaluated to False') #  # STRUDEL_IF_LOG_1
