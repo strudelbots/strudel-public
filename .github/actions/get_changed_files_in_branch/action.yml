@@ -12,6 +12,7 @@ runs:
         id: list-changed-files
         shell: bash
         run: |
+          ls -alt /tmp/
           source /tmp/functions_for_analyzing_git_db.sh
           repository=$GITHUB_REPOSITORY
           echo "repository=$repository"
