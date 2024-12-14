@@ -1,52 +1,19 @@
 #!/bin/bash
+get_file_name() {
+    if [ "$#" -ne 1 ]; then
+        echo "Usage: get_file_name <full_path_to_file>"
+        return 1
+    fi
 
-# Function to get the first commit on a branch
-get_first_commit() {
-  local branch_name=$1
+    local full_path="$1"
+    #echo "Full path: $full_path"
+    # Use basename to extract the file name
+    local file_name=$(basename "$full_path")
 
-  # Check if branch name is provided
-  if [ -z "$branch_name" ]; then
-    echo "Error: No branch name provided to get_first_commit function."
-    return 1
-  fi
-
-  # Verify if the branch exists
-  if ! git show-ref --verify --quiet refs/heads/$branch_name && ! git show-ref --verify --quiet refs/remotes/origin/$branch_name; then
-    echo "Error: Branch '$branch_name' does not exist."
-    return 1
-  fi
-
-  # Get the first commit on the branch
-  local first_commit=$(git rev-list --max-parents=0 $branch_name 2>/dev/null)
-
-  if [ -z "$first_commit" ]; then
-    echo "Error: Unable to find the first commit on branch '$branch_name'."
-    return 1
-  fi
-
-  echo "$first_commit"
+    # Return the file name
+    echo "$file_name"
 }
 
-# Function to get the date and time of a commit
-get_commit_date() {
-  local commit_hash=$1
-
-  # Check if commit hash is provided
-  if [ -z "$commit_hash" ]; then
-    echo "Error: No commit hash provided to get_commit_date function."
-    return 1
-  fi
-
-  # Get the commit date and time
-  local commit_date=$(git show -s --format=%ci "$commit_hash" 2>/dev/null)
-
-  if [ -z "$commit_date" ]; then
-    echo "Error: Unable to find the date and time for commit '$commit_hash'."
-    return 1
-  fi
-
-  echo "$commit_date"
-}
 
 # Function to get all commits up to a given commit hash in a branch
 get_commits_up_to() {
