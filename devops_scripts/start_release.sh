@@ -13,12 +13,13 @@ if [ -z "$2" ]; then
 fi
 old_tag=$1
 new_tag=$2
+branch=$(git rev-parse --abbrev-ref HEAD)
 echo "old tag is: $old_tag"
 echo "new tag is: $new_tag"
 cd ../.github/workflows
 pwd
 find . -name "*.yml" -exec sed -i s/$old_tag/$new_tag/g {} \;
-#sed -i s/$old_tag/$new_tag/g run_strudel_for_logs.yml
-
-
+git commit -am "Update tags in workflows" -m "$new_tag"
+git tag $new_tag
+git push --atomic origin  $branch $new_tag
 
