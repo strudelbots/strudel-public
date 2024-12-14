@@ -176,7 +176,7 @@ last_common_commit() {
     echo "Branch1: $branch1"
     echo "Branch2: $branch2"
     # Find the merge base (common ancestor) of the two branches
-    git merge-base "$branch1" "$branch2"
+    #git merge-base "$branch1" "$branch2"
 }
 commits_after_common_commit() {
     if [ "$#" -ne 2 ]; then
