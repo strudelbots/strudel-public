@@ -27,6 +27,7 @@ runs:
               fi
             } 
             ls -alt /tmp/$file
+            
             file=github_run_strudel.py
             echo "url=$url$file"
             wget -q -P /tmp $url$file
@@ -37,8 +38,20 @@ runs:
                 exit 2
               fi
             } 
+            file=functions_for_analyzing_git_db.sh
+            dir="strudel_code/"
+            echo "url=$url$dir$file"
+            wget -q -P /tmp $url$dir$file
+            {
+              wget_result=$?
+              if [ $wget_result -ne 0 ]; then
+                echo "Failed to get files from strudel-public with $wget_result"
+                exit 3
+              fi
+            }
             ls -alt /tmp/$file
-            # NOTE: MAIN BRANCH 
+
+            # NOTE: MAIN BRANCH
             url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/"
             file=strudel_code/release_to_image_map.json
             echo "url=$url$file"
@@ -47,9 +60,9 @@ runs:
               wget_result=$?
               if [ $wget_result -ne 0 ]; then
                 echo "Failed to get files from strudel-public with $wget_result"
-                exit 2
+                exit 4
               fi
-            } 
+            }
             ls -alt /tmp/release_to_image_map.json
             #cat /tmp/release_to_image_map.json
             file=strudel_code/get_image_for_tag.py
@@ -59,9 +72,9 @@ runs:
               wget_result=$?
               if [ $wget_result -ne 0 ]; then
                 echo "Failed to get files from strudel-public with $wget_result"
-                exit 2
+                exit 5
               fi
-            } 
+            }
             ls -alt /tmp/get_image_for_tag.py
 
             file=strudel_code/image_map_data_classes.py
@@ -71,11 +84,12 @@ runs:
               wget_result=$?
               if [ $wget_result -ne 0 ]; then
                 echo "Failed to get files from strudel-public with $wget_result"
-                exit 2
+                exit 6
               fi
-            } 
+            }
             ls -alt /tmp/image_map_data_classes.py
             cd /tmp
             mkdir -p strudel_code
             mv image_map_data_classes.py strudel_code
             ls -alt /tmp/strudel_code
+
