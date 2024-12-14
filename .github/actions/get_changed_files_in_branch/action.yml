@@ -12,7 +12,6 @@ runs:
         id: list-changed-files
         shell: bash
         run: |
-          source "/tmp/functions_for_analyzing_git_db.sh"
           repository=$GITHUB_REPOSITORY
           echo "repository=$repository"
           echo "master_branch=${{ inputs.master_branch }}"
@@ -23,6 +22,7 @@ runs:
           sleep 1
           git checkout $branch
           sleep 1
+          source "./strudel_code/functions_for_analyzing_git_db.sh"
 
           common_ancestor=$(last_common_commit "$master_branch" "$branch")
           echo "** The last common commit between '$master_branch' and '$branch': $common_ancestor"
