@@ -1,18 +1,18 @@
 #!/bin/bash
-get_file_name() {
-    if [ "$#" -ne 1 ]; then
-        echo "Usage: get_file_name <full_path_to_file>"
-        return 1
-    fi
-
-    local full_path="$1"
-    #echo "Full path: $full_path"
-    # Use basename to extract the file name
-    local file_name=$(basename "$full_path")
-
-    # Return the file name
-    echo "$file_name"
-}
+#get_file_name() {
+#    if [ "$#" -ne 1 ]; then
+#        echo "Usage: get_file_name <full_path_to_file>"
+#        return 1
+#    fi
+#
+#    local full_path="$1"
+#    #echo "Full path: $full_path"
+#    # Use basename to extract the file name
+#    local file_name=$(basename "$full_path")
+#
+#    # Return the file name
+#    echo "$file_name"
+#}
 
 
 # Function to get all commits up to a given commit hash in a branch
