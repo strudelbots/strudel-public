@@ -9,7 +9,7 @@ By automating up to 50% of the development process, Strudel will empower
 teams to accelerate productivity and drive meaningful innovation. The result? Faster development cycles, higher-quality code, and engineers who can 
 focus on engineering the extraordinary.
 
-## About Strudel Pilot (version 0.13.02)
+## About Strudel Pilot (version 0.13.xx)
 Strudel's pilot simplifies telemetry integration 
 by automatically embedding logging and business metrics directly into your Python code.
 With Strudel, logging code is automatically added to your pull requests, 
@@ -46,36 +46,15 @@ This step is optional and can be used to run a Strudel test to verify that your 
 name: run strudel-test
 on:
   workflow_dispatch:
-    inputs:
-      user_command:
-        description: 'The user request'
-        required: true
   push:
       branches:
         - '**'
         - (!main)
 jobs:
-  should_run_strudel:
-    runs-on: ubuntu-22.04
-    outputs:
-      run_strudel: ${{ steps.check_head_commit_message.outputs.run_strudel_value }}
-    steps:
-      - name: check user command
-        id: check_head_commit_message
-        shell: bash
-        run: |
-          user_command=${{ inputs.user_command }} 
-          user_command=${user_command^^}
-          if [[ $user_command == *"TEST-STRUDEL"* ]] then;
-            echo "run_strudel_value=$user_command" >> "$GITHUB_OUTPUT"
-          else
-            echo "run_strudel_value=none" >> "$GITHUB_OUTPUT"
-          fi
   run-strudel-test:
-    needs: should_run_strudel
-    if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
     uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.14.03
     with:
+    # Make sure to change the name of your master branch if it is not main
       master_branch: main
     secrets:
         strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
