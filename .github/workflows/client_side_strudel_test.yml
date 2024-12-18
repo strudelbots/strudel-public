@@ -5,10 +5,10 @@ on:
       user_command:
         description: 'The user request'
         required: true
-  push:
-      branches:
-        - '**'
-        - (!main)
+#  push:
+#      branches:
+#        - '**'
+#        - (!main)
 jobs:
   should_run_strudel:
     runs-on: ubuntu-22.04
