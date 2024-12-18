@@ -21,7 +21,7 @@ jobs:
         run: |
           user_command=${{ inputs.user_command }} 
           user_command=${user_command^^}
-          if [[ $user_command == *"TEST-STRUDEL"* ]] then;
+          if [[ $user_command == *"TEST-STRUDEL"* ]]; then
             echo "run_strudel_value=$user_command" >> "$GITHUB_OUTPUT"
           else
             echo "run_strudel_value=none" >> "$GITHUB_OUTPUT"
