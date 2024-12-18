@@ -47,10 +47,10 @@ jobs:
           last_commit=${last_commit^^}
           echo "last_commit:  $last_commit"
           {
-            if [[ $user_command == *"ADD-LOGS"* ]]; then
+            if [[ $last_commit == *"ADD-LOGS"* ]]; then
               echo "Run strudel add logs"
               echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
-            elif [[ $user_command == *"REMOVE-LOGS"* ]]; then
+            elif [[ $last_commit == *"REMOVE-LOGS"* ]]; then
               echo "Run strudel remove logs"
               echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT
             else
