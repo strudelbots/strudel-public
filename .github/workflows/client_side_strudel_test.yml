@@ -24,7 +24,7 @@ jobs:
           if [[ $user_command == *"TEST-STRUDEL"* ]]; then
             echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
           else
-            echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
+            echo "RUN_STRUDEL=SHAI" >> $GITHUB_OUTPUT
           fi
           echo "RUN_STRUDEL=$user_command"
   test:
@@ -38,8 +38,7 @@ jobs:
 
   run-strudel-test:
     needs: [ should_run_strudel ]
-    # if: ${{ ! null}}
-    if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
+    if: ${{ needs.should_run_strudel.outputs.run_strudel!=none }}
     uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.14.03
     with:
       master_branch: main
