@@ -47,3 +47,13 @@ if [[ "$command" == "test-strudel" ]]; then
     /repos/strudelbots/strudel-public/actions/workflows/client_side_strudel_test.yml/dispatches \
     -f "ref=$branch"  -f "inputs[user_command]=$command"
 fi
+if [[ "$command" == "add-logs" || "$command" == "remove-logs" ]]; then
+    echo "Running client-side tests"
+    command="test-strudel"
+  gh api \
+    --method POST \
+    -H "Accept: application/vnd.github+json" \
+    -H "X-GitHub-Api-Version: 2022-11-28" \
+    /repos/strudelbots/strudel-public/actions/workflows/client_side_strudel_run.yml/dispatches \
+    -f "ref=$branch"  -f "inputs[user_command]=$command"
+fi

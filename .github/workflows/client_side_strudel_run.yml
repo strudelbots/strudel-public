@@ -5,6 +5,28 @@ on:
       - "**"
       - '!main'
 jobs:
+  should_run_strudel:
+    runs-on: ubuntu-22.04
+    outputs:
+      run_strudel: ${{ steps.user_command.outputs.RUN_STRUDEL }}
+    steps:
+      - name: check user command
+        id: user_command
+        shell: bash
+        run: |
+          echo "Working branch:" ${{ github.ref }}
+          user_command=${{ inputs.user_command }} 
+          user_command=${user_command^^}
+          {
+          if [[ $user_command == "ADD-LOGS" || $user_command == "REMOVE_LOGS"]]; then
+            echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
+          else
+            echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
+            echo "No strudel add/remove logs required, to add/remove logs, please include 'ADD-LOGS' \ 
+                  or 'REMOVE-LOGS' in your command"
+          fi
+          }
+
   run-strudel-for-logs:
     uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.14.03
     with:
