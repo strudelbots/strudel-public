@@ -41,6 +41,16 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
+      - name: Validate input
+        id: validate_input
+        shell: bash
+        run: |
+            if [[ "${{ inputs.user_command }}" != "add-logs" && "${{ inputs.user_command }}" != "remove-logs" ]]; then
+                echo "Invalid user command: ${{ inputs.user_command }}"
+                exit 1
+            else
+                echo "Start Running Strudel with user command: ${{ inputs.user_command }}"
+            fi
 
       - name: Extract user branch name
         id: exract-branch-name
