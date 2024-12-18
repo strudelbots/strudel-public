@@ -46,7 +46,7 @@ jobs:
               echo "Run strudel remove logs"
               echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT
             else
-              echo "no commit me3ssage to match
+              echo "no commit me3ssage to match"
               echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
           fi
           }
