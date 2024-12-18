@@ -28,18 +28,22 @@ if [[ "$1" == "--help" ]]; then
     done
     exit 0
 fi
-ARG="$1"
+command="$1"
 
 # Check if the argument is valid
-if ! is_valid_arg "$ARG"; then
+if ! is_valid_arg "$command"; then
     echo "Error: Invalid argument '$ARG'."
     echo "Valid values are: ${VALID_ARGS[*]}"
     exit 1
 fi
 branch=$(git rev-parse --abbrev-ref HEAD)
-gh api \
-  --method POST \
-  -H "Accept: application/vnd.github+json" \
-  -H "X-GitHub-Api-Version: 2022-11-28" \
-  /repos/strudelbots/strudel-public/actions/workflows/client_side_strudel_test.yml/dispatches \
-   -f "ref=$branch"  -f "inputs[user_command]=add-strudel"
+if [[ "$command" == "test-strudel" ]]; then
+    echo "Running client-side tests"
+    command="test-strudel"
+  gh api \
+    --method POST \
+    -H "Accept: application/vnd.github+json" \
+    -H "X-GitHub-Api-Version: 2022-11-28" \
+    /repos/strudelbots/strudel-public/actions/workflows/client_side_strudel_test.yml/dispatches \
+    -f "ref=$branch"  -f "inputs[user_command]=$command"
+fi
