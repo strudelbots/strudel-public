@@ -24,7 +24,7 @@ jobs:
           if [[ $user_command == *"TEST-STRUDEL"* ]]; then
             echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
           else
-            echo "RUN_STRUDEL=SHAI" >> $GITHUB_OUTPUT
+            echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
           fi
           echo "RUN_STRUDEL=$user_command"
   test:
