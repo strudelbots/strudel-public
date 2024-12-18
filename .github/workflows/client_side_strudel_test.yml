@@ -22,13 +22,14 @@ jobs:
           echo "Working branch:" ${{ github.ref }}
           user_command=${{ inputs.user_command }} 
           user_command=${user_command^^}
+          {
           if [[ $user_command == *"TEST-STRUDEL"* ]]; then
             echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
           else
             echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
             echo "No strudel test requested, to run strudel test, please include 'TEST-STRUDEL' in your command"
-            exit 0
           fi
+          }
 
   run-strudel-test:
     needs: [ should_run_strudel ]
