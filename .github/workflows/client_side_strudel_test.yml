@@ -1,6 +1,10 @@
 name: run strudel-test
 on:
   workflow_dispatch:
+    inputs:
+      user_command:
+        description: 'The user request'
+        required: true
   push:
       branches:
         - '**'
