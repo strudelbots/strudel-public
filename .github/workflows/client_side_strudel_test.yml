@@ -19,6 +19,13 @@ jobs:
         id: check_head_commit_message
         shell: bash
         run: |
+          user_command=${{ inputs.user_command }} 
+          user_command=${user_command^^}
+          if [[ ${{ inputs.user_command == *ADD-LOGS"* ]] then;
+            echo "add-logs" 
+          else
+            echo "no-add-logs"
+          fi
           echo "command is ${{ inputs.user_command }}"
           echo "run_strudel_value=$command" >> "$GITHUB_OUTPUT"
 
