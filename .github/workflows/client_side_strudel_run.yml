@@ -30,23 +30,21 @@ jobs:
           echo "Working branch:" ${{ github.ref }}
           user_command=${{ inputs.user_command }} 
           user_command=${user_command^^}
-          {
-          if [[ $user_command == "ADD-LOGS" || $user_command == "REMOVE_LOGS" ]]; then
-            echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
-          fi
-          }
           last_commit=$(git log -1 --pretty=%B $sha_last_commit)
           last_commit=${last_commit^^}
           echo "last_commit: $last_commit"
+
           {
-            if [[ $last_commit == *"ADD-LOGS"* ]]; then
+          if [[ $user_command == "ADD-LOGS" || $user_command == "REMOVE_LOGS" ]]; then
+            echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
+          elif [[ $last_commit == *"ADD-LOGS"* ]]; then
               echo "Run strudel add logs"
               echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
-            elif [[ $last_commit == *"REMOVE-LOGS"* ]]; then
+          elif [[ $last_commit == *"REMOVE-LOGS"* ]]; then
               echo "Run strudel remove logs"
               echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT
-            else
-              echo "no commit me3ssage to match"
+          else
+              echo "no commit message to match"
               echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
           fi
           }
@@ -54,7 +52,7 @@ jobs:
   run-strudel-for-logs:
     needs: [ should_run_strudel ]
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@44-run-addremove-logs-with-gh-cli
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@main
     with:
 # Make sure to change the name of your master branch if it is not main
       master_branch: main
