@@ -46,8 +46,10 @@ jobs:
           last_commit=$(git log -1 --pretty=%B $sha_last_commit)
           echo "last_commit:  $last_commit"
                     {
-          if [[ $user_command == *"ADD-LOGS"* || $user_command == *"REMOVE_LOGS"* ]]; then
-            echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
+          if [[ $user_command == *"ADD-LOGS"* ]]; then
+            echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
+          elif [[ $user_command == *"REMOVE-LOGS"* ]]; then
+            echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT
           else
             echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
           fi
@@ -63,6 +65,7 @@ jobs:
     with:
 # Make sure to change the name of your master branch if it is not main
       master_branch: main
+      user_command: ${{ needs.should_run_strudel.outputs.run_strudel }}
     secrets:
       strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
       strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
