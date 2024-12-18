@@ -16,7 +16,14 @@ jobs:
     outputs:
       run_strudel: ${{ steps.user_command.outputs.RUN_STRUDEL }}
     steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
       - name: check user command
+        env:
+          sha_last_commit: ${{ github.event.pull_request.head.sha }}
         id: user_command
         shell: bash
         run: |
@@ -32,17 +39,6 @@ jobs:
                   or 'REMOVE-LOGS' in your command"
           fi
           }
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: 0
-
-      - name: check head commit message
-        id: check_head_commit_message
-        env:
-          sha_last_commit: ${{ github.event.pull_request.head.sha }}
-        shell: bash
-        run: |
           last_commit=$(git log -1 --pretty=%B $sha_last_commit)
           last_commit=${last_commit^^}
           echo "last_commit:  $last_commit"
