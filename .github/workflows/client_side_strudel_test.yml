@@ -27,7 +27,7 @@ jobs:
             echo "run_strudel_value=none" >> "$GITHUB_OUTPUT"
           fi
   run-strudel-test:
-    needs:
+    needs: should_run_strudel
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
     uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.14.03
     with:
