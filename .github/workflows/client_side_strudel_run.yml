@@ -45,18 +45,17 @@ jobs:
         run: |
           last_commit=$(git log -1 --pretty=%B $sha_last_commit)
           echo "last_commit:  $last_commit"
-                    {
-          if [[ $user_command == *"ADD-LOGS"* ]]; then
-            echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
-          elif [[ $user_command == *"REMOVE-LOGS"* ]]; then
-            echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT
-          else
-            echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
+          {
+            if [[ $user_command == *"ADD-LOGS"* ]]; then
+              echo "Run strudel add logs"
+              echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
+            elif [[ $user_command == *"REMOVE-LOGS"* ]]; then
+              echo "Run strudel remove logs"
+              echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT
+            else
+              echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
           fi
           }
-
-          echo "command is $command"
-          echo "run_strudel_value=$command" >> "$GITHUB_OUTPUT"
 
   run-strudel-for-logs:
     needs: [ should_run_strudel ]
