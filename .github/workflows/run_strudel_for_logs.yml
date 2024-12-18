@@ -1,5 +1,4 @@
 name: run-strudel-on-branch
-
 on:
   workflow_call:
     inputs:
