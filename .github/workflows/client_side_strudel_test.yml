@@ -19,8 +19,7 @@ jobs:
         id: check_head_commit_message
         shell: bash
         run: |
-          command="my_command"
-          echo "command is $command"
+          echo "command is ${{ inputs.user_command }}"
           echo "run_strudel_value=$command" >> "$GITHUB_OUTPUT"
 
 #  run-strudel-test:
