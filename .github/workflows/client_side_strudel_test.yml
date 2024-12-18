@@ -13,24 +13,24 @@ jobs:
   should_run_strudel:
     runs-on: ubuntu-22.04
     outputs:
-      run_strudel: ${{ steps.check_head_commit_message.outputs.run_strudel_value }}
+      run_strudel: ${{ steps.user_command.outputs.RUN_STRUDEL }}
     steps:
       - name: check user command
-        id: check_head_commit_message
+        id: user_command
         shell: bash
         run: |
           user_command=${{ inputs.user_command }} 
           user_command=${user_command^^}
           if [[ $user_command == *"TEST-STRUDEL"* ]]; then
-            echo "run_strudel_value=$user_command" >> "$GITHUB_OUTPUT"
+            echo "RUN_STRUDEL=$user_command" >> "$GITHUB_OUTPUT"
           else
-            echo "run_strudel_value=none" >> "$GITHUB_OUTPUT"
+            echo "RUN_STRUDEL=none" >> "$GITHUB_OUTPUT"
           fi
-          echo "run_strudel_value=$user_command"
+          echo "RUN_STRUDEL=$user_command"
   run-strudel-test:
     needs: should_run_strudel
     # if: ${{ ! null}}
-    #    if: ${{ needs.should_run_strudel.outputs.run_strudel_value=='STRUDEL-TEST' }}
+    if: ${{ needs.should_run_strudel.outputs.RUN_STRUDEL != 'none' }}
     uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.14.03
     with:
       master_branch: main
