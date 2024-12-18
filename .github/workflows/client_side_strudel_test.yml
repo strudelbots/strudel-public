@@ -21,19 +21,18 @@ jobs:
         run: |
           user_command=${{ inputs.user_command }} 
           user_command=${user_command^^}
-          if [[ $user_command == *"ADD-LOGS"* ]] then;
-            echo "add-logs" 
+          if [[ $user_command == *"TEST-STRUDEL"* ]] then;
+            echo "run_strudel_value=$user_command" >> "$GITHUB_OUTPUT"
           else
-            echo "no-add-logs"
+            echo "run_strudel_value=none" >> "$GITHUB_OUTPUT"
           fi
-          echo "command is ${{ inputs.user_command }}"
-          echo "run_strudel_value=$command" >> "$GITHUB_OUTPUT"
-
-#  run-strudel-test:
-#    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.14.03
-#    with:
-#      master_branch: main
-#    secrets:
-#        strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
-#        strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
+  run-strudel-test:
+    needs:
+    if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.14.03
+    with:
+      master_branch: main
+    secrets:
+        strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
+        strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
 
