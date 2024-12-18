@@ -6,12 +6,24 @@ on:
         - '**'
         - (!main)
 jobs:
-  run-strudel-test:
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.14.03
-    with:
-    # Make sure to change the name of your master branch if it is not main
-      master_branch: main
-    secrets:
-        strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
-        strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
+  should_run_strudel:
+    runs-on: ubuntu-22.04
+    outputs:
+      run_strudel: ${{ steps.check_head_commit_message.outputs.run_strudel_value }}
+    steps:
+      - name: check user command
+        id: check_head_commit_message
+        shell: bash
+        run: |
+          command="my_command"
+          echo "command is $command"
+          echo "run_strudel_value=$command" >> "$GITHUB_OUTPUT"
+
+#  run-strudel-test:
+#    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.14.03
+#    with:
+#      master_branch: main
+#    secrets:
+#        strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
+#        strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
 
