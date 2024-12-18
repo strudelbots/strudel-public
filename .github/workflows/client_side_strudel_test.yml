@@ -26,6 +26,7 @@ jobs:
           else
             echo "run_strudel_value=none" >> "$GITHUB_OUTPUT"
           fi
+          echo "run_strudel_value=$user_command"
   run-strudel-test:
     needs: should_run_strudel
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
