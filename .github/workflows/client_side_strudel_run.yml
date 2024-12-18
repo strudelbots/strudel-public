@@ -57,7 +57,7 @@ jobs:
           echo "run_strudel_value=$command" >> "$GITHUB_OUTPUT"
 
   run-strudel-for-logs:
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.14.03
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@44-run-addremove-logs-with-gh-cli
     with:
 # Make sure to change the name of your master branch if it is not main
       master_branch: main
