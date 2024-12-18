@@ -1,5 +1,11 @@
 name: run strudel-for-logs
 on:
+  workflow_dispatch:
+    inputs:
+      user_command:
+        description: 'The user request'
+        required: true
+
   push:
     branches:
       - "**"
