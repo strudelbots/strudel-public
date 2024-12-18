@@ -38,7 +38,7 @@ jobs:
 
   run-strudel-test:
     needs: [ should_run_strudel ]
-    if: ${{ needs.should_run_strudel.outputs.run_strudel!=none }}
+    if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
     uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.14.03
     with:
       master_branch: main
