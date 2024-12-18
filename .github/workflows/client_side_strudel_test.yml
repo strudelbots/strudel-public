@@ -27,14 +27,6 @@ jobs:
             echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
           fi
           echo "RUN_STRUDEL=$user_command"
-  test:
-    needs: [ should_run_strudel ]
-    runs-on: ubuntu-latest
-    env:
-      RUN_STRUDEL: ${{ needs.should_run_strudel.outputs.run_strudel }}
-    steps:
-      - name: hello world
-        run: echo "Hello, world! $RUN_STRUDEL"
 
   run-strudel-test:
     needs: [ should_run_strudel ]
