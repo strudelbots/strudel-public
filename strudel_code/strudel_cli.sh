@@ -36,7 +36,7 @@ if ! is_valid_arg "$ARG"; then
     echo "Valid values are: ${VALID_ARGS[*]}"
     exit 1
 fi
-branch=$(bit rev-parse --abbrev-ref HEAD)
+branch=$(git rev-parse --abbrev-ref HEAD)
 gh api \
   --method POST \
   -H "Accept: application/vnd.github+json" \

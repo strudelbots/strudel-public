@@ -19,6 +19,7 @@ jobs:
         id: user_command
         shell: bash
         run: |
+          echo "Working branch:" ${{ github.ref }}
           user_command=${{ inputs.user_command }} 
           user_command=${user_command^^}
           if [[ $user_command == *"TEST-STRUDEL"* ]]; then
