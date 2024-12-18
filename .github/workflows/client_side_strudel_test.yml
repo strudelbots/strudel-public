@@ -25,8 +25,8 @@ jobs:
             echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
           else
             echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
+            echo "No strudel test requested, to run strudel test, please include 'TEST-STRUDEL' in your command"
           fi
-          echo "RUN_STRUDEL=$user_command"
 
   run-strudel-test:
     needs: [ should_run_strudel ]
