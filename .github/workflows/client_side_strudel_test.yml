@@ -28,8 +28,8 @@ jobs:
           fi
           echo "run_strudel_value=$user_command"
   run-strudel-test:
-    needs: should_run_strudel
-    if: ${{ ! null}}
+    # needs: should_run_strudel
+    # if: ${{ ! null}}
     #    if: ${{ needs.should_run_strudel.outputs.run_strudel_value=='STRUDEL-TEST' }}
     uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.14.03
     with:
