@@ -33,10 +33,6 @@ jobs:
           {
           if [[ $user_command == "ADD-LOGS" || $user_command == "REMOVE_LOGS" ]]; then
             echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
-          else
-            echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
-            echo "No strudel add/remove logs required, to add/remove logs, please include 'ADD-LOGS' \ 
-                  or 'REMOVE-LOGS' in your command"
           fi
           }
           last_commit=$(git log -1 --pretty=%B $sha_last_commit)
@@ -50,6 +46,7 @@ jobs:
               echo "Run strudel remove logs"
               echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT
             else
+              echo "no commit me3ssage to match
               echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
           fi
           }
