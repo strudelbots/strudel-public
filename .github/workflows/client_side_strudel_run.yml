@@ -32,6 +32,24 @@ jobs:
                   or 'REMOVE-LOGS' in your command"
           fi
           }
+      - name: check head commit message
+        id: check_head_commit_message
+        env:
+          sha_last_commit: ${{ github.event.pull_request.head.sha }}
+        shell: bash
+        run: |
+          last_commit=$(git log -1 --pretty=%B $sha_last_commit)
+          echo "last_commit:  $last_commit"
+                    {
+          if [[ $user_command == *"ADD-LOGS"* || $user_command == *"REMOVE_LOGS"* ]]; then
+            echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
+          else
+            echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
+          fi
+          }
+
+          echo "command is $command"
+          echo "run_strudel_value=$command" >> "$GITHUB_OUTPUT"
 
   run-strudel-for-logs:
     uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.14.03

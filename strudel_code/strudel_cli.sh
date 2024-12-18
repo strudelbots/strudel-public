@@ -39,7 +39,7 @@ fi
 branch=$(git rev-parse --abbrev-ref HEAD)
 if [[ "$command" == "test-strudel" ]]; then
     echo "Running client-side tests"
-    command="test-strudel"
+
   gh api \
     --method POST \
     -H "Accept: application/vnd.github+json" \
@@ -48,8 +48,7 @@ if [[ "$command" == "test-strudel" ]]; then
     -f "ref=$branch"  -f "inputs[user_command]=$command"
 fi
 if [[ "$command" == "add-logs" || "$command" == "remove-logs" ]]; then
-    echo "Running client-side tests"
-    command="test-strudel"
+    echo "Running add/remove logs"
   gh api \
     --method POST \
     -H "Accept: application/vnd.github+json" \
