@@ -51,7 +51,6 @@ jobs:
             else
                 echo "Start Running Strudel with user command: ${{ inputs.user_command }}"
             fi
-
       - name: Extract user branch name
         id: exract-branch-name
         uses: strudelbots/strudel-public/.github/actions/get_current_branch@v0.14.03
