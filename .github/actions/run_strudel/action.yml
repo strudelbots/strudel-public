@@ -1,0 +1,38 @@
+name: 'Run Strudel'
+description: 'Get image tag for strudel-public'
+inputs:
+  user_command:
+    description: 'The user request'
+    required: true
+    default: 'none'
+    type: string
+  last_commit:
+    description: 'The last commit message'
+    required: true
+    type: string
+  changed_files:
+    description: 'The changed files'
+    required: true
+    type: string
+runs:
+  using: 'composite'
+  steps:
+      - name: Run strudel
+        shell: bash
+        run: |
+           export ALL_CHANGED_FILES="${{ inputs.changed_files
+           echo " *** ALL_CHANGED_FILES=$ALL_CHANGED_FILES"
+           export ROOT_DIR=$(pwd)/
+           export OVERWRITE_ORIG_FILES=True
+           if [[ "${{ inputs.user_command }}" eq 'none' ]]; then
+               echo "user command is ${{ inputs.user_command }}"
+               exit 1
+           else
+               echo "Start Running Strudel with user command: ${{ inputs.user_command }}"
+           fi
+           exit 66
+           #echo run_strudel ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel }}
+           #python /tmp/github_run_strudel.py ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel  }}
+
+
+
