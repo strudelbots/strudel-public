@@ -1,0 +1,27 @@
+name: 'Run Strudel'
+description: 'Get image tag for strudel-public'
+inputs:
+  user_command:
+    description: 'The user request'
+    required: true
+    type: string
+  changed_files:
+    description: 'The changed files'
+    required: true
+    type: string
+runs:
+  using: 'composite'
+  steps:
+      - name: Run strudel
+        shell: bash
+        run: |
+           echo "files: ${{ inputs.changed_files }}"
+           export ALL_CHANGED_FILES="${{ inputs.changed_files }}"
+           echo "user_command: ${{ inputs.user_command }}"
+           echo "Start Running Strudel with user command: ${{ inputs.user_command }}"
+           export OVERWRITE_ORIG_FILES=True
+           python /tmp/github_run_strudel.py ${{ inputs.user_command  }}
+
+
+
+

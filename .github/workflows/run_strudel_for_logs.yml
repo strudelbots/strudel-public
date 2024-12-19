@@ -81,6 +81,7 @@ jobs:
         with:
           version_tag: ${{ env.ref }}
 
+
       - name: login to ecr
         uses: strudelbots/strudel-public/.github/actions/login_to_ecr@v0.14.03
 
@@ -97,13 +98,11 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/sanity_tests@v0.14.03
 
       - name: Run Strudel
-        run: |
-           export ALL_CHANGED_FILES="${{ env.ALL_CHANGED_FILES }}"
-           echo " *** ALL_CHANGED_FILES=$ALL_CHANGED_FILES"
-           export ROOT_DIR=$(pwd)/
-           export OVERWRITE_ORIG_FILES=True
-           echo run_strudel ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel }}
-           python /tmp/github_run_strudel.py ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel  }}
+        uses: strudelbots/strudel-public/.github/actions/run_strudel@main
+        with:
+          user_command: ${{ inputs.user_command }}
+          changed_files: ${{ env.ALL_CHANGED_FILES}}
+
       - name: Commit and push Strudel logs
         run: |
           if [ -z "$(git status --porcelain)" ]; then echo "no files to push" && exit 0; fi
