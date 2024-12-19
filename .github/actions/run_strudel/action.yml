@@ -3,7 +3,7 @@ description: 'Get image tag for strudel-public'
 inputs:
   user_command:
     description: 'The user request'
-    required: true
+    required: false
     default: 'none'
     type: string
   last_commit:
