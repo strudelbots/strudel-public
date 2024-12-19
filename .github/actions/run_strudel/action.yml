@@ -24,7 +24,8 @@ runs:
            echo " *** ALL_CHANGED_FILES=$ALL_CHANGED_FILES"
            export ROOT_DIR=$(pwd)/
            export OVERWRITE_ORIG_FILES=True
-           if [[ "${{ inputs.user_command }}" eq 'none' ]]; then
+           user_command = ${{ inputs.user_command }}
+           if [[ $user_command eq 'none' ]]; then
                echo "user command is ${{ inputs.user_command }}"
                exit 1
            else
