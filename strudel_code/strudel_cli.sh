@@ -14,6 +14,16 @@ is_valid_arg() {
     return 1
 }
 
+owner=set-me
+repo=set-me
+if [[ $owner == "set-me" ]]; then
+    echo "Please set the owner variable !"
+    exit 1
+fi
+if [[ $repo == "set-me" ]]; then
+    echo "Please set the repo variable !"
+    exit 1
+fi
 # Check if the script receives exactly one argument
 if [[ "$#" -ne 1 ]]; then
     echo "Error: This script requires exactly one argument."
@@ -44,7 +54,7 @@ if [[ "$command" == "test-strudel" ]]; then
     --method POST \
     -H "Accept: application/vnd.github+json" \
     -H "X-GitHub-Api-Version: 2022-11-28" \
-    /repos/strudelbots/strudel-public/actions/workflows/client_side_strudel_test.yml/dispatches \
+    /repos/$owner/$repo/actions/workflows/client_side_strudel_test.yml/dispatches \
     -f "ref=$branch"  -f "inputs[user_command]=$command"
 fi
 if [[ "$command" == "add-logs" || "$command" == "remove-logs" ]]; then
@@ -53,6 +63,6 @@ if [[ "$command" == "add-logs" || "$command" == "remove-logs" ]]; then
     --method POST \
     -H "Accept: application/vnd.github+json" \
     -H "X-GitHub-Api-Version: 2022-11-28" \
-    /repos/strudelbots/strudel-public/actions/workflows/client_side_strudel_run.yml/dispatches \
+    /repos/$owner/$repo/actions/workflows/client_side_strudel_run.yml/dispatches \
     -f "ref=$branch"  -f "inputs[user_command]=$command"
 fi
