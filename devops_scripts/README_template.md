@@ -90,7 +90,8 @@ test-client-job-come-here
 run-client-job-come-here
 
 ```
-2. Commit and push the changes to the repository
+2. **Make sure** you configure the name of you main branch in the file above
+3. Commit and push the changes to the repository
 
 ## Steps to add logging code to your pull request (example)
 With Strudel, logging code is automatically added to your pull requests, 
