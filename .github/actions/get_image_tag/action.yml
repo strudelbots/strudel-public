@@ -11,17 +11,18 @@ runs:
       - name: Run docker compose
         shell: bash
         run: |
-          repository=${{ github.repository }}
-          echo "version_tag=${{ inputs.version_tag }}"
-          cd /tmp
-          touch __init__.py
-          version_tag=${{ inputs.version_tag }}
-          output=$(python3 get_image_for_tag.py $version_tag)
-          echo "image_tag=$output"
-          if [[ $output = "no-tag-found" ]]; then
-              echo "error: image tag not found"
-              exit 17
-          fi
-          echo "image_tag=$output" >> $GITHUB_ENV
+          echo "image_tag=v-0.0.4-b-21" >> $GITHUB_ENV
+#          repository=${{ github.repository }}
+#          echo "version_tag=${{ inputs.version_tag }}"
+#          cd /tmp
+#          touch __init__.py
+#          version_tag=${{ inputs.version_tag }}
+#          output=$(python3 get_image_for_tag.py $version_tag)
+#          echo "image_tag=$output"
+#          if [[ $output = "no-tag-found" ]]; then
+#              echo "error: image tag not found"
+#              exit 17
+#          fi
+#          echo "image_tag=$output" >> $GITHUB_ENV
 
 
