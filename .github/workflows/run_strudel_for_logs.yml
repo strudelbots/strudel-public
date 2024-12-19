@@ -104,7 +104,7 @@ jobs:
       - name: Run Strudel
         uses: strudelbots/strudel-public/.github/actions/run_strudel@add-strudel-run-action
         with:
-          user_command: "not implemented"
+          user_command: "add-logs"
           last_commit: "not implemented"
           changed_files: ${{ env.ALL_CHANGED_FILES}}
 
