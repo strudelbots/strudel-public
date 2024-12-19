@@ -16,7 +16,7 @@ With Strudel, logging code is automatically added to your pull requests,
 letting you focus solely on business logic without worrying about implementing logs.
 
 1. New to Strudel? Onboard [now](#pre-requisites).
-2. Already using Strudel? Upgrade to the latest [version 0.20.0](#Create-Main-Strudel-Action-in-Your-Github-Repository).
+2. Already using Strudel? Upgrade to the latest [version 0.20.2](#Create-Main-Strudel-Action-in-Your-Github-Repository).
 3. Questions about using Strudel? Check out the [Using Strudel](#using-strudel) section.
 4. See what's new in Strudel Pilot [below](#whats-new-in-strudel-pilot).
 
@@ -35,7 +35,8 @@ use `remove-logs` in your commit message.
    ```
    curl -o strudel_cli.sh https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/strudel_code/strudel_cli.sh
    ```
-   4. Run the Strudel CLI to add logging code to your pull request. Run the CLI from your 
+   4. Add strudel CLI to your path.
+   5. Run the Strudel CLI to add logging code to your pull request. Run the CLI from your 
    branch, with the following commands 
    - To add logs `strudel_cli.sh add-logs`
    - To remove logs `strudel_cli.sh remove-logs`
