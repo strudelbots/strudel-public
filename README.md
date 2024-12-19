@@ -184,7 +184,7 @@ jobs:
           if [[ $last_commit == *"REMOVE-LOGS"* ]]; then
               echo "Run strudel remove logs"
               echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT
-          elif [[ $last_commit == * ]]; then # change this line if you want to limit 'add-logs' for a specific commit message
+          elif [[ $last_commit == *"ADD-LOGS"* ]]; then # change this line if you want to limit 'add-logs' for a specific commit message
               echo "Run strudel add logs"
               echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
           else
@@ -220,7 +220,7 @@ letting you focus solely on business logic without worrying about implementing l
 1. Create a new branch, for example, `test-strudel-logging`. 
 2. Change a few files in this branch (e.g., add/remove functionality, fix a bug, or just add a few lines). 
 2. Commit your changes. **In the commit message write the 
-following text: `strudel add logs`**.
+following text: `strudel add-logs`**.
 3. Push your branch to the repository.
 4. Go to action tab in Github, you will see a new action running. `run strudel-for-logs`
 4. Strudel automatically adds the necessary logging code to the files you change in your branch.
