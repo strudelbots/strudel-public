@@ -31,7 +31,11 @@ and Strudel will automatically update the logging code. To remove all logs from 
 use `remove-logs` in your commit message.
 1. **Trigger Strudel using Strudel CLI** (for Mac and Linux): 
    1. Download Strudel CLI <a href=https://github.com/strudelbots/strudel-public/blob/main/strudel_code/strudel_cli.sh>Click to Download</a>: 
-   2. Run the Strudel CLI to add logging code to your pull request. Run the CLI from your 
+   ```
+   curl -o strudel_cli.sh https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/strudel_code/strudel_cli.sh
+   ```
+   3. 
+   4. Run the Strudel CLI to add logging code to your pull request. Run the CLI from your 
    branch, with the following commands 
    - To add logs `strudel_cli.sh add-logs`
    - To remove logs `strudel_cli.sh remove-logs`
@@ -52,6 +56,7 @@ uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml
 ## Pre-Requisites
 1. **Python**: Strudel pilot is currently available for Python projects only (python versions 3.10+).
 1. **Register for Strudel**: [strudelbots.com](https://www.strudelbots.com/pilot-program)
+
 2. **Receive Strudel Secrets**: You will receive an email containing your Strudel secrets. 
 Keep this email safe and do not share the secrets with anyone.
 2. **GitHub Account**:
