@@ -107,14 +107,6 @@ jobs:
           user_command: ${{ inputs.user_command }}
           changed_files: ${{ env.ALL_CHANGED_FILES}}
 
-#      - name: Run Strudel
-#        run: |
-#           export ALL_CHANGED_FILES="${{ env.ALL_CHANGED_FILES }}"
-#           echo " *** ALL_CHANGED_FILES=$ALL_CHANGED_FILES"
-#           export ROOT_DIR=$(pwd)/
-#           export OVERWRITE_ORIG_FILES=True
-#           echo run_strudel ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel }}
-#           python /tmp/github_run_strudel.py ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel  }}
       - name: Commit and push Strudel logs
         run: |
           if [ -z "$(git status --porcelain)" ]; then echo "no files to push" && exit 0; fi
