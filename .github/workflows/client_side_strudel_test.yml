@@ -1,4 +1,4 @@
-name: run strudel-test
+name: client side run strudel test
 on:
   workflow_dispatch:
     inputs:

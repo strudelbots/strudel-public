@@ -1,4 +1,4 @@
-name: run strudel-for-logs
+name: client side run strudel-for-logs
 on:
   workflow_dispatch:
     inputs:
