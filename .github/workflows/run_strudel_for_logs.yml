@@ -44,7 +44,7 @@ jobs:
         id: validate_input
         shell: bash
         run: |
-            if [[ "${{ inputs.user_command }}" != "add-logs" && "${{ inputs.user_command }}" != "remove-logs" ]]; then
+            if [[ "${{ inputs.user_command }}" != "ADD-LOGS" && "${{ inputs.user_command }}" != "REMOVE-LOGS" ]]; then
                 echo "Invalid user command: ${{ inputs.user_command }}"
                 exit 1
             else
