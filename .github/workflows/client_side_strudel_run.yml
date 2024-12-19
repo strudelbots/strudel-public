@@ -6,7 +6,7 @@ on:
         description: 'The user command'
         required: true
 
-  # ***** By default the workflow runs on every push event on all branches besides the main branch
+  # ***** By default the workflow runs every push on all branches besides the main branch
   push:
     branches:
       - "**"
