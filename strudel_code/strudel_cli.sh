@@ -48,7 +48,7 @@ if [[ "$command" == "test-strudel" ]]; then
     -f "ref=$branch"  -f "inputs[user_command]=$command"
 fi
 if [[ "$command" == "add-logs" || "$command" == "remove-logs" ]]; then
-    echo "Running add/remove logs"
+    echo "Running add/remove logs, branch: $branch"
   gh api \
     --method POST \
     -H "Accept: application/vnd.github+json" \
