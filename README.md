@@ -28,9 +28,9 @@ and Strudel will automatically update the logging code.
 2. Use Strudel CLI (for Mac and Linux): 
    1. Download Strudel CLI <a href=https://github.com/strudelbots/strudel-public/blob/47-release-020xx/strudel_code/strudel_cli.sh>Click to Download</a>: 
    2. Run the Strudel CLI to add logging code to your pull request.
-            - To add logs `strudel_cli add-logs`
-            - To remove logs `strudel_cli remove-logs`
-            - To run Strudel test `strudel_cli test-strudel`
+   - To add logs `strudel_cli add-logs`
+   - To remove logs `strudel_cli remove-logs`
+   - To run Strudel test `strudel_cli test-strudel`
 ### Remove all logging-code to your branch
 To remove all Strudel logging-code from a pull request just add the following
 words to your commit message: `strudel`, `remove`, `logs` (in any order).
