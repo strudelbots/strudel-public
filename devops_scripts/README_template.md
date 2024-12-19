@@ -22,21 +22,21 @@ letting you focus solely on business logic without worrying about implementing l
 
 ## Using Strudel 
 ### Automatic Logging Updates in Your Pull Request
-Strudel streamlines logging updates in your pull requests or branch. 
-1. Trigger strudel using a commit message: Simply include `add-logs` in your commit message, 
+Strudel streamlines logging updates in your pull requests or branch.
+3. Strudel automatically adds/removes logging code to the files you change in your branch.
+4. Strudel avoids duplicate logging code by checking for existing logs in the files you change.
+5. Trigger strudel using a commit message: Simply include `add-logs` in your commit message, 
 and Strudel will automatically update the logging code.
-2. Use Strudel CLI (for Mac and Linux): 
+6. Trigger using Strudel CLI (for Mac and Linux): 
    1. Download Strudel CLI <a href=https://github.com/strudelbots/strudel-public/blob/47-release-020xx/strudel_code/strudel_cli.sh>Click to Download</a>: 
-   2. Run the Strudel CLI to add logging code to your pull request.
-   - To add logs `strudel_cli add-logs`
-   - To remove logs `strudel_cli remove-logs`
-   - To run Strudel test `strudel_cli test-strudel`
-### Remove all logging-code to your branch
-To remove all Strudel logging-code from a pull request just add the following
-words to your commit message: `strudel`, `remove`, `logs` (in any order).
+   2. Run the Strudel CLI to add logging code to your pull request. Run the CLI from your 
+   branch, with the following commands 
+   - To add logs `strudel_cli.sh add-logs`
+   - To remove logs `strudel_cli.sh remove-logs`
+   - To run Strudel test `strudel_cli.sh test-strudel`
 
-## Configuring Strudel 
-### Setting the logger name
+### Configuring Strudel 
+#### Setting the logger name
 By default, Strudel will use the name `strudel` as the logger name. That is, Strudel produces
 logs of the form `strudel.<log-level>(<log message>)`. 
 If you want to change the logger name, you can do so by adding the following line to your code:
