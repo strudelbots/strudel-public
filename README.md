@@ -30,7 +30,7 @@ Strudel streamlines logging updates in your pull requests or branch.
 and Strudel will automatically update the logging code. To remove all logs from your code,
 use `remove-logs` in your commit message.
 1. **Trigger Strudel using Strudel CLI** (for Mac and Linux): 
-   1. Download Strudel CLI <a href=https://github.com/strudelbots/strudel-public/blob/main/strudel_code/strudel_cli.sh>link</a>:
+   1. Download Strudel CLI <a href=https://github.com/strudelbots/strudel-public/blob/main/strudel_code/strudel_cli.sh>link</a>. 
    Here is a `curl` command to download the CLI:
    ```
    curl -o strudel_cli.sh https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/strudel_code/strudel_cli.sh
