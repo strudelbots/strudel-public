@@ -15,7 +15,6 @@ runs:
       - name: Run strudel
         shell: bash
         run: |
-           echo "hello strudel"
            echo "files: ${{ inputs.changed_files }}"
            export ALL_CHANGED_FILES="${{ inputs.changed_files }}"
            echo "user_command: ${{ inputs.user_command }}"

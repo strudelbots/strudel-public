@@ -76,14 +76,10 @@ jobs:
         id: install-python
         uses: strudelbots/strudel-public/.github/actions/install-python@v0.14.03
 
-#      - name: get image tag
-#        uses: strudelbots/strudel-public/.github/actions/get_image_tag@v0.14.03
-#        with:
-#          version_tag: ${{ env.ref }}
-
       - name: get image tag
-        shell: bash
-        run: echo "image_tag=v-0.0.4-b-21" >> $GITHUB_ENV
+        uses: strudelbots/strudel-public/.github/actions/get_image_tag@v0.14.03
+        with:
+          version_tag: ${{ env.ref }}
 
 
       - name: login to ecr
@@ -102,7 +98,7 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/sanity_tests@v0.14.03
 
       - name: Run Strudel
-        uses: strudelbots/strudel-public/.github/actions/run_strudel@add-strudel-run-action
+        uses: strudelbots/strudel-public/.github/actions/run_strudel@main
         with:
           user_command: ${{ inputs.user_command }}
           changed_files: ${{ env.ALL_CHANGED_FILES}}
