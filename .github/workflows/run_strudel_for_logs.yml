@@ -97,7 +97,7 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/sanity_tests@v0.14.03
 
       - name: sanity tests
-        uses: strudelbots/strudel-public/.github/actions/run_strudel@44-run-addremove-logs-with-gh-cli
+        uses: strudelbots/strudel-public/.github/actions/run_strudel@add-strudel-run-action
         with:
           user_command: "not implemented"
           last_commit: "not implemented"
