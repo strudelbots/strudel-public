@@ -16,7 +16,7 @@ With Strudel, logging code is automatically added to your pull requests,
 letting you focus solely on business logic without worrying about implementing logs.
 
 1. New to Strudel? Onboard [now](#pre-requisites).
-2. Already using Strudel? Upgrade to the latest version 0.20.0
+2. Already using Strudel? Upgrade to the latest [version 0.20.0[#Create-Strudel-Add/Remove-Logs-Action-in-Your-Github-Repository]
 3. Questions about using Strudel? Check out the [Using Strudel](#using-strudel) section.
 4. See what's new in Strudel Pilot [below](#whats-new-in-strudel-pilot).
 
@@ -124,13 +124,14 @@ jobs:
 3. Manually run the new work flow. 
 4. Check the steps and the logs of the action to ensure that the test ran successfully.
 
-### Create Strudel Add-Logs  Action in Your Github Repository
+### Create Strudel Add/Remove-Logs  Action in Your Github Repository
 1. Create a new file in the `.github/workflows` directory with the name 
 `run_strudel_for_logs.yml`
 2. Copy the following code into the file:
 ```
 
 name: Client side run strudel-for-logs
+# version: 0.20.02
 on:
   workflow_dispatch:
     inputs:

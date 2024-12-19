@@ -1,4 +1,5 @@
 name: Client side run strudel-for-logs
+# version: 0.20.02
 on:
   workflow_dispatch:
     inputs:
