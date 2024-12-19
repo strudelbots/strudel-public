@@ -40,6 +40,7 @@ jobs:
 # *******  The following block is an example on how to use strudel cli
 # *******  to trigger strudel based on the user command
 # *******  Get the cli for linux ad mac:
+# *******  https://github.com/strudelbots/strudel-public/blob/main/strudel_code/strudel_cli.sh
           if [[ $user_command == "ADD-LOGS" || $user_command == "REMOVE-LOGS" ]]; then
             user_command=${user_command,,}
             echo "Run strudel with command: $user_command"
