@@ -35,7 +35,6 @@ use `remove-logs` in your commit message.
    ```
    curl -o strudel_cli.sh https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/strudel_code/strudel_cli.sh
    ```
-   3. 
    4. Run the Strudel CLI to add logging code to your pull request. Run the CLI from your 
    branch, with the following commands 
    - To add logs `strudel_cli.sh add-logs`
