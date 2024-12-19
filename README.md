@@ -9,7 +9,7 @@ By automating up to 50% of the development process, Strudel will empower
 teams to accelerate productivity and drive meaningful innovation. The result? Faster development cycles, higher-quality code, and engineers who can 
 focus on engineering the extraordinary.
 
-## About Strudel Pilot (version 0.13.xx)
+## About Strudel Pilot (version 0.20.02)
 Strudel's pilot simplifies telemetry integration 
 by automatically embedding logging and business metrics directly into your Python code.
 With Strudel, logging code is automatically added to your pull requests, 
@@ -43,18 +43,44 @@ This step is optional and can be used to run a Strudel test to verify that your 
 2. Create a new file in the `.github/workflows` directory with the name `strudel-test.yml`.
 2. CCopy the following code into the file:
 ```
-name: run strudel-test
+name: client side run strudel test
 on:
   workflow_dispatch:
-  push:
-      branches:
-        - '**'
-        - (!main)
+    inputs:
+      user_command:
+        description: "inset 'test-strudel' to run this job"
+        required: true
+#  push:
+#      branches:
+#        - '**'
+#        - (!main)
 jobs:
+  should_run_strudel:
+    runs-on: ubuntu-22.04
+    outputs:
+      run_strudel: ${{ steps.user_command.outputs.RUN_STRUDEL }}
+    steps:
+      - name: check user command
+        id: user_command
+        shell: bash
+        run: |
+          echo "Working branch:" ${{ github.ref }}
+          user_command=${{ inputs.user_command }} 
+          user_command=${user_command^^}
+          {
+          if [[ $user_command == *"TEST-STRUDEL"* ]]; then
+            echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
+          else
+            echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
+            echo "No strudel test requested, to run strudel test, please include 'TEST-STRUDEL' in your command"
+          fi
+          }
+
   run-strudel-test:
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.14.03
+    needs: [ should_run_strudel ]
+    if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.20.02
     with:
-    # Make sure to change the name of your master branch if it is not main
       master_branch: main
     secrets:
         strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
@@ -71,18 +97,67 @@ jobs:
 2. Copy the following code into the file:
 ```
 
-name: run strudel-for-logs
+name: client side run strudel-for-logs
 on:
+  workflow_dispatch:
+    inputs:
+      user_command:
+        description: 'The user request'
+        required: true
+
   push:
     branches:
       - "**"
       - '!main'
 jobs:
+  should_run_strudel:
+    runs-on: ubuntu-22.04
+    outputs:
+      run_strudel: ${{ steps.user_command.outputs.RUN_STRUDEL }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: check user command
+        env:
+          sha_last_commit: ${{ github.event.pull_request.head.sha }}
+        id: user_command
+        shell: bash
+        run: |
+          echo "Working branch:" ${{ github.ref }}
+          user_command=${{ inputs.user_command }} 
+          user_command=${user_command^^}
+          last_commit=$(git log -1 --pretty=%B $sha_last_commit)
+          last_commit=${last_commit^^}
+          echo "last_commit: $last_commit"
+
+          {
+          if [[ $user_command == "ADD-LOGS" || $user_command == "REMOVE-LOGS" ]]; then
+            user_command=${user_command,,}
+            echo "Run strudel with command: $user_command"
+            echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
+          elif [[ $last_commit == *"ADD-LOGS"* ]]; then
+              echo "Run strudel add logs"
+              echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
+          elif [[ $last_commit == *"REMOVE-LOGS"* ]]; then
+              echo "Run strudel remove logs"
+              echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT
+          else
+              echo "no commit message to match"
+              echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
+          fi
+          }
+
   run-strudel-for-logs:
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.14.03
+    needs: [ should_run_strudel ]
+    if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml0.20.02
     with:
 # Make sure to change the name of your master branch if it is not main
       master_branch: main
+      user_command: ${{ needs.should_run_strudel.outputs.run_strudel }}
     secrets:
       strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
       strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
