@@ -76,6 +76,7 @@ This step is optional and can be used to run a Strudel test to verify that your 
 2. CCopy the following code into the file:
 ```
 name: client side run strudel test
+# version 0.20.02
 on:
   workflow_dispatch:
     inputs:
