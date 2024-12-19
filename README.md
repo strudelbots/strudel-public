@@ -87,7 +87,7 @@ on:
   workflow_dispatch:
     inputs:
       user_command:
-        description: "inset 'test-strudel' to run this job"
+        description: "insert 'test-strudel' to run this job"
         required: true
   push:
       branches:
@@ -175,29 +175,22 @@ jobs:
           echo "last_commit: $last_commit"
 
           {
-# *******  The following block is an example on how to use strudel cli
-# *******  to trigger strudel based on the user command
-# *******  Get the cli for linux ad mac:
-# *******  https://github.com/strudelbots/strudel-public/blob/main/strudel_code/strudel_cli.sh
           if [[ $user_command == "ADD-LOGS" || $user_command == "REMOVE-LOGS" ]]; then
             user_command=${user_command,,}
             echo "Run strudel with command: $user_command"
             echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
-
-# *******  The following block ios an example on how to
-# *******  use the last commit message to determine the user command
-# *******  uncomment the block if you want to trigger strudel based on the last commit message
-#          elif [[ $last_commit == *"ADD-LOGS"* ]]; then
-#              echo "Run strudel add logs"
-#              echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
-#          elif [[ $last_commit == *"REMOVE-LOGS"* ]]; then
-#              echo "Run strudel remove logs"
-#              echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT
-#          else
-#              echo "no commit message to match"
-#              echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
-#          fi
+          fi
           }
+          if [[ $last_commit == *"REMOVE-LOGS"* ]]; then
+              echo "Run strudel remove logs"
+              echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT
+          elif [[ $last_commit == * ]]; then # change this line if you want to limit 'add-logs' for a specific commit message
+              echo "Run strudel add logs"
+              echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
+          else
+                echo "no commit message to match"
+                echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
+          fi
 
   run-strudel-for-logs:
     needs: [ should_run_strudel ]
