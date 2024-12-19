@@ -97,12 +97,12 @@ jobs:
 2. Copy the following code into the file:
 ```
 
-name: client side run strudel-for-logs
+name: Client side run strudel-for-logs
 on:
   workflow_dispatch:
     inputs:
       user_command:
-        description: 'The user request'
+        description: 'The user command'
         required: true
 
   push:
@@ -134,20 +134,27 @@ jobs:
           echo "last_commit: $last_commit"
 
           {
+# *******  The following block is an example on how to use strudel cli
+# *******  to trigger strudel based on the user command
+# *******  Get the cli for linux ad mac:
           if [[ $user_command == "ADD-LOGS" || $user_command == "REMOVE-LOGS" ]]; then
             user_command=${user_command,,}
             echo "Run strudel with command: $user_command"
             echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
-          elif [[ $last_commit == *"ADD-LOGS"* ]]; then
-              echo "Run strudel add logs"
-              echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
-          elif [[ $last_commit == *"REMOVE-LOGS"* ]]; then
-              echo "Run strudel remove logs"
-              echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT
-          else
-              echo "no commit message to match"
-              echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
-          fi
+
+# *******  The following block ios an example on how to
+# *******  use the last commit message to determine the user command
+# *******  uncomment the block if you want to trigger strudel based on the last commit message
+#          elif [[ $last_commit == *"ADD-LOGS"* ]]; then
+#              echo "Run strudel add logs"
+#              echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
+#          elif [[ $last_commit == *"REMOVE-LOGS"* ]]; then
+#              echo "Run strudel remove logs"
+#              echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT
+#          else
+#              echo "no commit message to match"
+#              echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
+#          fi
           }
 
   run-strudel-for-logs:
