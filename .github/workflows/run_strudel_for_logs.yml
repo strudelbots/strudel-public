@@ -101,7 +101,7 @@ jobs:
       - name: sanity tests
         uses: strudelbots/strudel-public/.github/actions/sanity_tests@v0.14.03
 
-      - name: sanity tests
+      - name: Run Strudel
         uses: strudelbots/strudel-public/.github/actions/run_strudel@add-strudel-run-action
         with:
           user_command: "not implemented"

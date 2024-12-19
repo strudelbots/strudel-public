@@ -22,8 +22,8 @@ runs:
         run: |
            changed_files=${{ inputs.changed_files }}
            echo " *** changed_files=$changed_files"
-           export ALL_CHANGED_FILES=$changed_files
-           echo " *** ALL_CHANGED_FILES=$ALL_CHANGED_FILES"
+#           export ALL_CHANGED_FILES=$changed_files
+#           echo " *** ALL_CHANGED_FILES=$ALL_CHANGED_FILES"
 #           export ROOT_DIR=$(pwd)/
 #           export OVERWRITE_ORIG_FILES=True
 #           user_command = ${{ inputs.user_command }}
