@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       user_command:
-        description: 'The user request'
+        description: 'inset test-strudel to run this job'
         required: true
 #  push:
 #      branches:
