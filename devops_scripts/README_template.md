@@ -26,9 +26,10 @@ Strudel streamlines logging updates in your pull requests or branch.
 
 1. Strudel automatically adds/removes logging code to the files you change in your branch.
 1. Strudel avoids duplicate logging code by checking for existing logs in the files you change.
-1. Trigger strudel using a commit message: Simply include `add-logs` in your commit message, 
-and Strudel will automatically update the logging code.
-1. Trigger using Strudel CLI (for Mac and Linux): 
+1. *Trigger strudel using a commit message*: Simply include `add-logs` in your commit message, 
+and Strudel will automatically update the logging code. To remove all logs from your code,
+use `remove-logs` in your commit message.
+1. *Trigger using Strudel CLI* (for Mac and Linux): 
    1. Download Strudel CLI <a href=https://github.com/strudelbots/strudel-public/blob/47-release-020xx/strudel_code/strudel_cli.sh>Click to Download</a>: 
    2. Run the Strudel CLI to add logging code to your pull request. Run the CLI from your 
    branch, with the following commands 
