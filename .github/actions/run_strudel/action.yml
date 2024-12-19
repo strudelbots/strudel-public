@@ -22,7 +22,7 @@ runs:
         run: |
            echo "hello strudel"
            echo "files: ${{ inputs.changed_files }}"
-           export ALL_CHANGED_FILES="${{ inputs.changed_files }}" >> $GITHUB_ENV
+           export ALL_CHANGED_FILES="${{ inputs.changed_files }}"
 #           echo " *** changed_files=$changed_files"
 #           export ALL_CHANGED_FILES=$changed_files
 #           echo " *** ALL_CHANGED_FILES=$ALL_CHANGED_FILES"
