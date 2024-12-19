@@ -15,7 +15,31 @@ by automatically embedding logging and business metrics directly into your Pytho
 With Strudel, logging code is automatically added to your pull requests, 
 letting you focus solely on business logic without worrying about implementing logs.
 
-See what's new in Strudel Pilot [below](#whats-new-in-strudel-pilot).
+1. New to Strudel? onboard now [below](#pre-requisites).
+2. Already using Strudel? Upgrade to the latest version 0.20.0
+3. Questions about using Strudel? Check out the [Using Strudel](#using-strudel) section.
+4. See what's new in Strudel Pilot [below](#whats-new-in-strudel-pilot).
+
+# Using Strudel 
+### Automatic Logging Updates in Your Pull Request
+Strudel streamlines logging updates in your pull requests. Simply include `strudel add logs` in your commit message, 
+and Strudel will automatically update the logging code each time you make changes.
+
+### Remove all logging-code to your branch
+To remove all Strudel logging-code from a pull request just add the following
+words to your commit message: `strudel`, `remove`, `logs` (in any order).
+
+## Configuring Strudel 
+### Setting the logger name
+By default, Strudel will use the name `strudel` as the logger name. That is, Strudel produces
+logs of the form `strudel.<log-level>(<log message>)`. 
+If you want to change the logger name, you can do so by adding the following line to your code:
+<pre>
+uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml       
+   <b>with:
+       logger_name: &#60;your logger name&gt; </b>
+   secrets:
+</pre>
 
 ## Pre-Requisites
 1. **Python**: Strudel pilot is currently available for Python projects only (python versions 3.10+).
@@ -74,26 +98,6 @@ following text: `strudel add logs`**.
 You can see the new code if you open a pull request, or pull strudel changes back into your local branch. 
 5. When you open pull request, reviewers will see both the logging code and your business logic during the review.
 
-
-### Automatic Logging Updates in Your Pull Request
-Strudel streamlines logging updates in your pull requests. Simply include `strudel add logs` in your commit message, 
-and Strudel will automatically update the logging code each time you make changes.
-
-### Remove all logging-code to your branch
-To remove all Strudel logging-code from a pull request just add the following
-words to your commit message: `strudel`, `remove`, `logs` (in any order).
-
-## Configuring Strudel 
-### Setting the logger name
-By default, Strudel will use the name `strudel` as the logger name. That is, Strudel produces
-logs of the form `strudel.<log-level>(<log message>)`. 
-If you want to change the logger name, you can do so by adding the following line to your code:
-<pre>
-uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml       
-   <b>with:
-       logger_name: &#60;your logger name&gt; </b>
-   secrets:
-</pre>
 
 
 ## Frequently Asked Questions

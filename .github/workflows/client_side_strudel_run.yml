@@ -10,7 +10,7 @@ on:
   push:
     branches:
       - "**"
-      - '!main'       # chang this to your master branch name if it is not main
+      - '!main'       # chang this to your master branch name if it is not 'main'
 jobs:
   should_run_strudel:
     runs-on: ubuntu-22.04
