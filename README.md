@@ -16,7 +16,7 @@ With Strudel, logging code is automatically added to your pull requests,
 letting you focus solely on business logic without worrying about implementing logs.
 
 1. New to Strudel? Onboard [now](#pre-requisites).
-2. Already using Strudel? Upgrade to the latest [version 0.20.0[#Create-Strudel-Add/Remove-Logs-Action-in-Your-Github-Repository]
+2. Already using Strudel? Upgrade to the latest [version 0.20.0](#Create-Strudel-Add/Remove-Logs-Action-in-Your-Github-Repository)
 3. Questions about using Strudel? Check out the [Using Strudel](#using-strudel) section.
 4. See what's new in Strudel Pilot [below](#whats-new-in-strudel-pilot).
 
