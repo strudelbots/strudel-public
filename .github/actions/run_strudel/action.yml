@@ -3,8 +3,7 @@ description: 'Get image tag for strudel-public'
 inputs:
   user_command:
     description: 'The user request'
-    required: false
-    default: 'none'
+    required: true
     type: string
   changed_files:
     description: 'The changed files'
@@ -20,25 +19,7 @@ runs:
            echo "files: ${{ inputs.changed_files }}"
            export ALL_CHANGED_FILES="${{ inputs.changed_files }}"
            echo "user_command: ${{ inputs.user_command }}"
-            if [[ ${{ inputs.user_command }} == 'none' ]]; then
-                echo "error: user command is none"
-                exit 1
-            else
-                echo "Start Running Strudel with user command: ${{ inputs.user_command }}"
-            fi
-#           echo " *** changed_files=$changed_files"
-#           export ALL_CHANGED_FILES=$changed_files
-#           echo " *** ALL_CHANGED_FILES=$ALL_CHANGED_FILES"
-#           export ROOT_DIR=$(pwd)/
-#           export OVERWRITE_ORIG_FILES=True
-#           user_command = ${{ inputs.user_command }}
-#           if [[ $user_command eq 'none' ]]; then
-#               echo "user command is ${{ inputs.user_command }}"
-#               exit 1
-#           else
-#               echo "Start Running Strudel with user command: ${{ inputs.user_command }}"
-#           fi
-#           exit 66
+           echo "Start Running Strudel with user command: ${{ inputs.user_command }}"
 
 
 
