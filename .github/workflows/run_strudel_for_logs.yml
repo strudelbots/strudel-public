@@ -76,10 +76,15 @@ jobs:
         id: install-python
         uses: strudelbots/strudel-public/.github/actions/install-python@v0.14.03
 
+#      - name: get image tag
+#        uses: strudelbots/strudel-public/.github/actions/get_image_tag@v0.14.03
+#        with:
+#          version_tag: ${{ env.ref }}
+
       - name: get image tag
-        uses: strudelbots/strudel-public/.github/actions/get_image_tag@v0.14.03
-        with:
-          version_tag: ${{ env.ref }}
+        shell: bash
+        run: echo "image_tag=v-0.0.4-b-21" >> $GITHUB_ENV
+
 
       - name: login to ecr
         uses: strudelbots/strudel-public/.github/actions/login_to_ecr@v0.14.03
