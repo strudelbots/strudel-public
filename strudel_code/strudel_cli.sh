@@ -1,5 +1,6 @@
 #!/bin/bash
 echo "Hello from Strudel CLI"
+echo "Strudel CLI requires github CLI to be installed !"
 # Valid values for the argument
 VALID_ARGS=("add-logs" "remove-logs" "test-strudel")
 
