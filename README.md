@@ -105,10 +105,11 @@ on:
         description: 'The user command'
         required: true
 
+  # ***** By default the workflow runs on every push event on all branches besides the main branch
   push:
     branches:
       - "**"
-      - '!main'
+      - '!main'       # chang this to your master branch name if it is not main
 jobs:
   should_run_strudel:
     runs-on: ubuntu-22.04
