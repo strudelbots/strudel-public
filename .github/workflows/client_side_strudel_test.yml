@@ -1,15 +1,41 @@
 name: run strudel-test
 on:
   workflow_dispatch:
-  push:
-      branches:
-        - '**'
-        - (!main)
+    inputs:
+      user_command:
+        description: 'The user request'
+        required: true
+#  push:
+#      branches:
+#        - '**'
+#        - (!main)
 jobs:
+  should_run_strudel:
+    runs-on: ubuntu-22.04
+    outputs:
+      run_strudel: ${{ steps.user_command.outputs.RUN_STRUDEL }}
+    steps:
+      - name: check user command
+        id: user_command
+        shell: bash
+        run: |
+          echo "Working branch:" ${{ github.ref }}
+          user_command=${{ inputs.user_command }} 
+          user_command=${user_command^^}
+          {
+          if [[ $user_command == *"TEST-STRUDEL"* ]]; then
+            echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
+          else
+            echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
+            echo "No strudel test requested, to run strudel test, please include 'TEST-STRUDEL' in your command"
+          fi
+          }
+
   run-strudel-test:
+    needs: [ should_run_strudel ]
+    if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
     uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.14.03
     with:
-    # Make sure to change the name of your master branch if it is not main
       master_branch: main
     secrets:
         strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}

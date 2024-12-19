@@ -1,5 +1,4 @@
 name: run-strudel-on-branch
-
 on:
   workflow_call:
     inputs:
@@ -14,6 +13,9 @@ on:
         type: boolean
         required: false
         default: false
+      user_command:
+        type: string
+        required: true
 
     secrets:
       strudel_access_key:
@@ -22,34 +24,7 @@ on:
         required: true
 #  push:
 jobs:
-  pre_run_strudel_on_pull_request:
-    runs-on: ubuntu-22.04
-    outputs:
-      run_strudel: ${{ steps.check_head_commit_message.outputs.run_strudel_value }}
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: 0
-
-      - name: check head commit message
-        id: check_head_commit_message
-        env:
-          sha_last_commit: ${{ github.event.pull_request.head.sha }}
-        shell: bash
-        run: |
-          last_commit=$(git log -1 --pretty=%B $sha_last_commit)
-          echo "last_commit:  $last_commit"
-          curl -sSL https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/strudel_code/determine_strudel_action.sh -o /tmp/tmp.sh
-          cat /tmp/tmp.sh
-          chmod +x /tmp/tmp.sh
-          command=$(/tmp/tmp.sh  "$last_commit")
-          echo "command is $command"
-          echo "run_strudel_value=$command" >> "$GITHUB_OUTPUT"
-
   run-strudel:
-    needs: pre_run_strudel_on_pull_request
-    if: ${{ needs.pre_run_strudel_on_pull_request.outputs.run_strudel!='none' }}
     env:
       strudel_access_key: ${{ secrets.strudel_access_key }}
       strudel_secret_key: ${{ secrets.strudel_secret_key }}
@@ -60,13 +35,21 @@ jobs:
 
     runs-on: ubuntu-22.04
     steps:
-#      - uses: actions/checkout@v3
       - name: Check out repository
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
-
+      - name: Validate input
+        id: validate_input
+        shell: bash
+        run: |
+            if [[ "${{ inputs.user_command }}" != "add-logs" && "${{ inputs.user_command }}" != "remove-logs" ]]; then
+                echo "Invalid user command: ${{ inputs.user_command }}"
+                exit 1
+            else
+                echo "Start Running Strudel with user command: ${{ inputs.user_command }}"
+            fi
       - name: Extract user branch name
         id: exract-branch-name
         uses: strudelbots/strudel-public/.github/actions/get_current_branch@v0.14.03
