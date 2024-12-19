@@ -20,11 +20,14 @@ letting you focus solely on business logic without worrying about implementing l
 3. Questions about using Strudel? Check out the [Using Strudel](#using-strudel) section.
 4. See what's new in Strudel Pilot [below](#whats-new-in-strudel-pilot).
 
-# Using Strudel 
+## Using Strudel 
 ### Automatic Logging Updates in Your Pull Request
-Strudel streamlines logging updates in your pull requests. Simply include `strudel add logs` in your commit message, 
-and Strudel will automatically update the logging code each time you make changes.
-
+Strudel streamlines logging updates in your pull requests or branch. 
+1. Trigger strudel using a commit message: Simply include `add-logs` in your commit message, 
+and Strudel will automatically update the logging code.
+2. Use Strudel CLI (for Mac and Linux): 
+   1. Download Strudel CLI <a href="myFile.js" download>Click to Download</a>: 
+   2. Run the Strudel CLI to add logging code to your pull request.
 ### Remove all logging-code to your branch
 To remove all Strudel logging-code from a pull request just add the following
 words to your commit message: `strudel`, `remove`, `logs` (in any order).
