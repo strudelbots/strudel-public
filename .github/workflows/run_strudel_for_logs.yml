@@ -98,7 +98,7 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/sanity_tests@v0.20.02
 
       - name: Run Strudel
-        uses: strudelbots/strudel-public/.github/actions/run_strudel0.20.02
+        uses: strudelbots/strudel-public/.github/actions/run_strudel@v0.20.02
         with:
           user_command: ${{ inputs.user_command }}
           changed_files: ${{ env.ALL_CHANGED_FILES}}
