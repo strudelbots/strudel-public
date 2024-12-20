@@ -1,15 +1,17 @@
-name: client side run strudel-for-logs
+name: Client side run strudel-for-logs
+# version: 0.20.02
 on:
   workflow_dispatch:
     inputs:
       user_command:
-        description: 'The user request'
+        description: 'The user command'
         required: true
 
+  # ***** By default the workflow runs every push on all branches besides the main branch
   push:
     branches:
       - "**"
-      - '!main'
+      - '!main'       # chang this to your master branch name if it is not 'main'
 jobs:
   should_run_strudel:
     runs-on: ubuntu-22.04
@@ -39,22 +41,23 @@ jobs:
             user_command=${user_command,,}
             echo "Run strudel with command: $user_command"
             echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
-          elif [[ $last_commit == *"ADD-LOGS"* ]]; then
-              echo "Run strudel add logs"
-              echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
-          elif [[ $last_commit == *"REMOVE-LOGS"* ]]; then
-              echo "Run strudel remove logs"
-              echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT
-          else
-              echo "no commit message to match"
-              echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
           fi
           }
+          if [[ $last_commit == *"REMOVE-LOGS"* ]]; then
+              echo "Run strudel remove logs"
+              echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT
+          elif [[ $last_commit == *"ADD-LOGS"* ]]; then # change this line if you want to limit 'add-logs' for a specific commit message
+              echo "Run strudel add logs"
+              echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
+          else
+                echo "no commit message to match"
+                echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
+          fi
 
   run-strudel-for-logs:
     needs: [ should_run_strudel ]
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@main
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.20.02
     with:
 # Make sure to change the name of your master branch if it is not main
       master_branch: main

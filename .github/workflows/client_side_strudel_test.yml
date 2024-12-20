@@ -1,14 +1,15 @@
 name: client side run strudel test
+# version 0.20.02
 on:
   workflow_dispatch:
     inputs:
       user_command:
-        description: 'inset test-strudel to run this job'
+        description: "insert 'test-strudel' to run this job"
         required: true
-#  push:
-#      branches:
-#        - '**'
-#        - (!main)
+  push:
+      branches:
+        - '**'
+        - (!main)
 jobs:
   should_run_strudel:
     runs-on: ubuntu-22.04
@@ -34,7 +35,7 @@ jobs:
   run-strudel-test:
     needs: [ should_run_strudel ]
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.14.03
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.20.02
     with:
       master_branch: main
     secrets:
