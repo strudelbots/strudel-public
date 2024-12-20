@@ -1,6 +1,13 @@
 #!/bin/bash
 echo "Hello from Strudel CLI"
 echo "Strudel CLI requires github CLI to be installed !"
+echo "The CLI assumes that you have two actions defined with the names
+(as described in onboarding document):"
+echo "    1. strudel-test.yml"
+echo "    2. run_strudel_for_logs.yml"
+echo "Please make sure that you have these actions defined in your repository"
+
+
 # Valid values for the argument
 VALID_ARGS=("add-logs" "remove-logs" "test-strudel")
 
@@ -55,7 +62,7 @@ if [[ "$command" == "test-strudel" ]]; then
     --method POST \
     -H "Accept: application/vnd.github+json" \
     -H "X-GitHub-Api-Version: 2022-11-28" \
-    /repos/$owner/$repo/actions/workflows/client_side_strudel_test.yml/dispatches \
+    /repos/$owner/$repo/actions/workflows/strudel-test.yml/dispatches \
     -f "ref=$branch"  -f "inputs[user_command]=$command"
 fi
 if [[ "$command" == "add-logs" || "$command" == "remove-logs" ]]; then
@@ -64,6 +71,6 @@ if [[ "$command" == "add-logs" || "$command" == "remove-logs" ]]; then
     --method POST \
     -H "Accept: application/vnd.github+json" \
     -H "X-GitHub-Api-Version: 2022-11-28" \
-    /repos/$owner/$repo/actions/workflows/client_side_strudel_run.yml/dispatches \
+    /repos/$owner/$repo/actions/workflows/run_strudel_for_logs.yml/dispatches \
     -f "ref=$branch"  -f "inputs[user_command]=$command"
 fi
