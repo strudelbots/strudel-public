@@ -244,6 +244,11 @@ This format is cryptographically secure and ensures that no one, including Strud
 ## What's New in Strudel Pilot?
 1. **Dec-24-19: Version 0.20.02 released.** 
    - Strudel CLI for Mac and Unix users.
+   Get the CLI:
+   ```
+   curl -o strudel_cli.sh https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/strudel_code/strudel_cli.sh
+   ```
+   
    - Logging for Return Statements isa more accurate.
 1. **Nov-24-24: Version 0.13.02 released.** 
    - Bug fix: Strudel correctly change logging code once developer changes the underlying business logic.  
