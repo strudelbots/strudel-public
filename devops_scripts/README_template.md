@@ -9,14 +9,14 @@ By automating up to 50% of the development process, Strudel will empower
 teams to accelerate productivity and drive meaningful innovation. The result? Faster development cycles, higher-quality code, and engineers who can 
 focus on engineering the extraordinary.
 
-## About Strudel Pilot (version 0.20.02)
+## About Strudel Pilot (version 0.22.04)
 Strudel's pilot simplifies telemetry integration 
 by automatically embedding logging and business metrics directly into your Python code.
 With Strudel, logging code is automatically added to your pull requests, 
 letting you focus solely on business logic without worrying about implementing logs.
 
 1. New to Strudel? Onboard [now](#pre-requisites).
-2. Already using Strudel? Upgrade to the latest [version 0.20.2](#Create-Main-Strudel-Action-in-Your-Github-Repository).
+2. Already using Strudel? Upgrade to the latest [version 0.22.4](#Create-Main-Strudel-Action-in-Your-Github-Repository).
 3. Questions about using Strudel? Check out the [Using Strudel](#using-strudel) section.
 4. See what's new in Strudel Pilot [below](#whats-new-in-strudel-pilot).
 
@@ -128,7 +128,7 @@ It gathers only encrypted metadata in the following format:
 ```
 This format is cryptographically secure and ensures that no one, including Strudel, can reverse-engineer your code.  
 ## What's New in Strudel Pilot?
-1. **Dec-24-19: Version 0.20.02 released.** 
+1. **Dec-24-19: Version 0.22.04 released.** 
    - Strudel CLI for Mac and Unix users.
    Get the CLI:
    ```

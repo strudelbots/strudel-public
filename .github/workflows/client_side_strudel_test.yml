@@ -1,5 +1,5 @@
 name: client side run strudel test
-# version 0.20.02
+# version 0.22.04
 on:
   workflow_dispatch:
     inputs:
@@ -35,7 +35,7 @@ jobs:
   run-strudel-test:
     needs: [ should_run_strudel ]
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.20.02
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.22.04
     with:
       master_branch: main
     secrets:
