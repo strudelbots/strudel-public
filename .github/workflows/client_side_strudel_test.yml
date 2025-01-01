@@ -1,5 +1,5 @@
 name: client side run strudel test
-# version 0.22.04
+# version v0.22.04
 on:
   workflow_dispatch:
     inputs:
