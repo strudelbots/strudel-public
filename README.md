@@ -82,7 +82,7 @@ This step is optional and can be used to run a Strudel test to verify that your 
 2. CCopy the following code into the file:
 ```
 name: client side run strudel test
-# version 0.20.02
+# version v0.22.04
 on:
   workflow_dispatch:
     inputs:
@@ -118,7 +118,7 @@ jobs:
   run-strudel-test:
     needs: [ should_run_strudel ]
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.20.02
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.22.04
     with:
       master_branch: main
     secrets:
@@ -137,7 +137,7 @@ jobs:
 ```
 
 name: Client side run strudel-for-logs
-# version: 0.20.02
+# version: v0.22.04
 on:
   workflow_dispatch:
     inputs:
@@ -195,7 +195,7 @@ jobs:
   run-strudel-for-logs:
     needs: [ should_run_strudel ]
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.20.02
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.22.04
     with:
 # Make sure to change the name of your master branch if it is not main
       master_branch: main
