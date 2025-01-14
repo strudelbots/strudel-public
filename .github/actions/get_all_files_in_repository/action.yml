@@ -18,7 +18,6 @@ runs:
           git checkout $branch
           sleep 1
           source "$RUNNER_TEMP/functions_for_analyzing_git_db.sh"
-          find . name "*.py"
-          echo "done"
+          find . -name "*.py"
           
           
