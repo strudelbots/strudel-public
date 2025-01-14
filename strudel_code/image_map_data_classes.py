@@ -35,13 +35,13 @@ class ImageMap:
             json.dump(self.to_dict(), f, indent=4)
     def find_image(self, release_tag):
         if not release_tag:
-            strudel.info(f' Return None because "release_tag" is evaluated to False') #  # STRUDEL_IF_LOG_1
+            strudel.info(f' Return None because "release_tag" is evaluated to False')
             return None
         for release in self.release_details:
             if release.release_tag == release_tag:
-                raise ValueError(f"do we get here 4: {release.release_tag}")
                 if len(release.image) > 1:
                     raise ValueError(f"Multiple images found for tag: {release_tag}")
+                raise ValueError(f"Do we get here 5 'release.image[0]'")
                 return release.image[0]
     def find_tag(self, input_tag):
         for tag_details in self.release_details:
