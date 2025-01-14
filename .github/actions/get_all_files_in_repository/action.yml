@@ -1,0 +1,42 @@
+name: 'Get Changed Files'
+description: 'Get changed files'
+inputs:
+  master_branch:
+    description: 'The name of the master branch'
+    required: true
+runs:
+
+    using: 'composite'
+    steps:
+      - name: List changed files
+        id: list-changed-files
+        shell: bash
+        run: |
+          repository=$GITHUB_REPOSITORY
+          echo "repository=$repository"
+          echo "master_branch=${{ inputs.master_branch }}"
+          echo "branch=${{ env.branch }}"
+          master_branch=${{ inputs.master_branch }}
+          git checkout $master_branch
+          git checkout $branch
+          sleep 1
+          source "/tmp/functions_for_analyzing_git_db.sh"
+
+          common_ancestor=$(last_common_commit "$master_branch" "$branch")
+          echo "** The last common commit between '$master_branch' and '$branch': $common_ancestor"
+          commits_after_common_commits=$(commits_after_common_commit $branch $common_ancestor)
+          changed_files=()
+          for hash in $commits_after_common_commits; do
+            (is_commit_only_on_branch "$hash" "$branch")
+            if [ $? -eq 0 ]; then
+              commit_files=$(files_changed_in_commit "$hash")
+              echo
+              echo "Commit $hash has the following files:"
+              printf "%s\n" "${commit_files[@]}"
+              changed_files+=( $commit_files )
+            fi
+          done
+          unique_files=$(args_to_space_separated_string "${changed_files[@]}")
+          echo "Files that need to be merged from branch $branch:"
+          echo "$unique_files"
+          echo "ALL_CHANGED_FILES=$unique_files" >> $GITHUB_ENV
