@@ -13,7 +13,7 @@ runs:
         run: |
           repository=${{ github.repository }}
           echo "version_tag=${{ inputs.version_tag }}"
-          cd /tmp
+          cd $RUNNER_TEMP
           touch __init__.py
           version_tag=${{ inputs.version_tag }}
           output=$(python3 get_image_for_tag.py $version_tag)
