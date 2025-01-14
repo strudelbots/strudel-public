@@ -2,8 +2,6 @@ import sys
 
 from strudel_code.image_map_data_classes import verify_release_tag, load_current_map
 
-
-#v0.13.02
 def get_image_for_tag(release_tag):
     if release_tag.startswith('branch'):
         release_tag =  "v0.22.02" # TODO - generalize
