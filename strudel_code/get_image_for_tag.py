@@ -5,8 +5,8 @@ from strudel_code.image_map_data_classes import verify_release_tag, load_current
 
 #v0.13.02
 def get_image_for_tag(release_tag):
-    if release_tag == 'main':
-        release_tag =  "v0.14.02" # TODO - generalize
+    if release_tag == 'run-entire-repository':
+        release_tag =  "v0.22.04" # TODO - generalize
     map = load_current_map()
     result = map.find_image(release_tag)
     if not result:
