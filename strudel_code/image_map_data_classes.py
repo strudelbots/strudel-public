@@ -51,8 +51,8 @@ class ImageMap:
 
 
 def verify_release_tag(tag):
-    if tag == 'main':
-        tag =  "v0.14.02" # TODO - generalize
+    if tag == 'run-entire-repository':
+        tag =  "v0.22.02" # TODO - generalize
     match = re.match(r"v0\.[0-9]{1,2}\.[0-9]{1,2}", tag)
     if not match:
         strudel.error(' Raise ValueError( ** Invalid release tag:   . . .) because "match" is evaluated to False') #  # STRUDEL_IF_LOG_1
