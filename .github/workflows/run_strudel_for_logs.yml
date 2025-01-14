@@ -16,6 +16,10 @@ on:
       user_command:
         type: string
         required: true
+      entire_repository:
+        type: boolean
+        required: false
+        default: false
 
     secrets:
       strudel_access_key:
@@ -66,7 +70,15 @@ jobs:
       - name: check user keys
         uses: strudelbots/strudel-public/.github/actions/check-user-keys@branch-run-entire-repository
 
+      - name: Run on entire repository
+        if : ${{ inputs.entire_repository }} == 'true'
+        id: run-on-entire-repository
+        uses: strudelbots/strudel-public/.github/actions/get_all_files_in_repository@branch-run-entire-repository
+        with:
+          master_branch: ${{ inputs.master_branch }}
+
       - name: Get changed files
+        if : ${{ inputs.entire_repository }} == 'false'
         id: get_changed_files
         uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@branch-run-entire-repository
         with:
