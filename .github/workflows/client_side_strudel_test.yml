@@ -16,6 +16,10 @@ jobs:
     outputs:
       run_strudel: ${{ steps.user_command.outputs.RUN_STRUDEL }}
     steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
       - name: check user command
         id: user_command
         shell: bash
@@ -34,11 +38,11 @@ jobs:
             echo "No strudel test requested, to run strudel test, please include 'TEST-STRUDEL' in your command"
           fi
           }
-          
-          if [[ $last_commit == *"TEST-STRUDEL"* ]]; then
-              echo "Run strudel-test by commit message"
-              echo "RUN_STRUDEL=TEST-STRUDERL" >> $GITHUB_OUTPUT
-          fi
+          #if [[ $last_commit == *"TEST-STRUDEL"* ]]; then
+          #    echo "Run strudel-test by commit message"
+          #    echo "RUN_STRUDEL=TEST-STRUDERL" >> $GITHUB_OUTPUT
+          #fi
+          #
 
   run-strudel-test:
     needs: [ should_run_strudel ]
