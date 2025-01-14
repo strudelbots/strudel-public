@@ -76,7 +76,7 @@ runs:
               fi
             }
             ls -alt /tmp/get_image_for_tag.py
-            #cat /tmp/get_image_for_tag.py
+            cat /tmp/get_image_for_tag.py
             file=strudel_code/image_map_data_classes.py
             echo "url=$url$file"
             wget -q -P /tmp $url$file
