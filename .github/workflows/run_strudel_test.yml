@@ -57,6 +57,12 @@ jobs:
         with:
           master_branch: ${{ inputs.master_branch }}
 
+      - name: Get all python files
+        id: get_all_python_files
+        uses: strudelbots/strudel-public/.github/actions/get_all_files_in_repository@branch-run-entire-repository
+        with:
+          master_branch: ${{ inputs.master_branch }}
+
       - name: install python
         id: install-python
         uses: strudelbots/strudel-public/.github/actions/install-python@branch-run-entire-repository
