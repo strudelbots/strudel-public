@@ -85,3 +85,12 @@ else
 	echo "*** test 8 failed ***"
 	exit 1
 fi
+output=$(python ../strudel_code/get_image_for_tag.py branch)
+echo
+echo "output:$output"
+if [[ $output = "v-0.0.4-b-22" ]]; then
+	echo "test 9 passed"
+else
+	echo "*** test 9 failed ***"
+	exit 1
+fi

@@ -41,7 +41,7 @@ class ImageMap:
             if release.release_tag == release_tag:
                 if len(release.image) > 1:
                     raise ValueError(f"Multiple images found for tag: {release_tag}")
-                raise ValueError(f"Do we get here 5 '{release.image[0]}'")
+                #raise ValueError(f"Do we get here 6 '{release.image[0]}'")
                 return release.image[0]
     def find_tag(self, input_tag):
         for tag_details in self.release_details:
@@ -52,7 +52,7 @@ class ImageMap:
 
 
 def verify_release_tag(tag):
-    if tag == 'run-entire-repository':
+    if tag.startswith('branch'):
         tag =  "v0.22.02" # TODO - generalize
     match = re.match(r"v0\.[0-9]{1,2}\.[0-9]{1,2}", tag)
     if not match:
