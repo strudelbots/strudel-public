@@ -46,7 +46,7 @@ jobs:
   run-strudel-test:
     needs: [ should_run_strudel ]
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@main
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@branch-test-new-cli
     with:
       master_branch: main
     secrets:

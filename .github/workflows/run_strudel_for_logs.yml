@@ -53,49 +53,49 @@ jobs:
             fi
       - name: Extract user branch name
         id: exract-branch-name
-        uses: strudelbots/strudel-public/.github/actions/get_current_branch@main
+        uses: strudelbots/strudel-public/.github/actions/get_current_branch@branch-test-new-cli
 
       - name: extract strudel version
         id: extract_strudel_version
-        uses: strudelbots/strudel-public/.github/actions/extract_strudel_version@main
+        uses: strudelbots/strudel-public/.github/actions/extract_strudel_version@branch-test-new-cli
         with:
           mode: 'run_logs'
 
       - name: get strudel-public files
-        uses: strudelbots/strudel-public/.github/actions/get_public_files@main
+        uses: strudelbots/strudel-public/.github/actions/get_public_files@branch-test-new-cli
 
       - name: check user keys
-        uses: strudelbots/strudel-public/.github/actions/check-user-keys@main
+        uses: strudelbots/strudel-public/.github/actions/check-user-keys@branch-test-new-cli
 
       - name: Run on entire repository
         if : ${{ env.entire_repository }} == true
         id: run-on-entire-repository
-        uses: strudelbots/strudel-public/.github/actions/get_all_files_in_repository@main
+        uses: strudelbots/strudel-public/.github/actions/get_all_files_in_repository@branch-test-new-cli
         with:
           master_branch: ${{ inputs.master_branch }}
 
       - name: Get changed files
         if : ${{ env.entire_repository }} == false
         id: get_changed_files
-        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@main
+        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@branch-test-new-cli
         with:
           master_branch: ${{ inputs.master_branch }}
 #
 #      - name: install python
 #        id: install-python
-#        uses: strudelbots/strudel-public/.github/actions/install-python@main
+#        uses: strudelbots/strudel-public/.github/actions/install-python@branch-test-new-cli
 #
 #      - name: get image tag
-#        uses: strudelbots/strudel-public/.github/actions/get_image_tag@main
+#        uses: strudelbots/strudel-public/.github/actions/get_image_tag@branch-test-new-cli
 #        with:
 #          version_tag: ${{ env.ref }}
 #
 #
 #      - name: login to ecr
-#        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@main
+#        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@branch-test-new-cli
 #
 #      - name: run docker compose
-#        uses: strudelbots/strudel-public/.github/actions/run_compose@main
+#        uses: strudelbots/strudel-public/.github/actions/run_compose@branch-test-new-cli
 #        with:
 #          image_tag: ${{ env.image_tag }}
 #          logger_name: ${{ inputs.logger_name }}
@@ -104,10 +104,10 @@ jobs:
 #
 #
 #      - name: sanity tests
-#        uses: strudelbots/strudel-public/.github/actions/sanity_tests@main
+#        uses: strudelbots/strudel-public/.github/actions/sanity_tests@branch-test-new-cli
 #
 #      - name: Run Strudel
-#        uses: strudelbots/strudel-public/.github/actions/run_strudel@main
+#        uses: strudelbots/strudel-public/.github/actions/run_strudel@branch-test-new-cli
 #        with:
 #          user_command: ${{ inputs.user_command }}
 #          changed_files: ${{ env.ALL_CHANGED_FILES}}
