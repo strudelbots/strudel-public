@@ -23,7 +23,7 @@ jobs:
 
       - name: Extract user branch name
         id: extract-branch-name
-        uses: strudelbots/strudel-public/.github/actions/get_current_branch@run-entire-repository
+        uses: strudelbots/strudel-public/.github/actions/get_current_branch@branch-run-entire-repository
 
 
       - name: Get changed files -- RUN
@@ -42,7 +42,7 @@ jobs:
 
       - name: Get changed files - USES
         if: always()
-        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@run-entire-repository
+        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@branch-run-entire-repository
         with:
           master_branch: ${{ inputs.master_branch }}
 
@@ -61,7 +61,7 @@ jobs:
 
       - name: Extract user branch name
         id: extract-branch-name
-        uses: strudelbots/strudel-public/.github/actions/get_current_branch@run-entire-repository
+        uses: strudelbots/strudel-public/.github/actions/get_current_branch@branch-run-entire-repository
 
       - name: Get changed files -- RUN
         id: get_changed_files
@@ -79,7 +79,7 @@ jobs:
 
       - name: Get changed files - USES
         if: always()
-        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@run-entire-repository
+        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@branch-run-entire-repository
         with:
           master_branch: ${{ inputs.master_branch }}
 
@@ -98,7 +98,7 @@ jobs:
 
       - name: Extract user branch name
         id: extract-branch-name
-        uses: strudelbots/strudel-public/.github/actions/get_current_branch@run-entire-repository
+        uses: strudelbots/strudel-public/.github/actions/get_current_branch@branch-run-entire-repository
 
 
       - name: Get changed files -- RUN
@@ -117,7 +117,7 @@ jobs:
 
       - name: Get changed files - USES
         if: always()
-        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@run-entire-repository
+        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@branch-run-entire-repository
         with:
           master_branch: ${{ inputs.master_branch }}
 
