@@ -8,6 +8,7 @@ def get_image_for_tag(release_tag):
     if release_tag == 'run-entire-repository':
         raise ValueError("run-entire-repository is not a valid release tag")
         release_tag =  "v0.22.02" # TODO - generalize
+    raise ValueError("do we get here 2")
     map = load_current_map()
     result = map.find_image(release_tag)
     if not result:
