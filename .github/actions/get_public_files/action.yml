@@ -8,6 +8,7 @@ runs:
         env:
           version_tag: ${{ env.ref }}
         run: |
+            rm -rf /tmp/*
             echo "*** version_tag=$version_tag"
             file=docker_compose_run.yml
             {
