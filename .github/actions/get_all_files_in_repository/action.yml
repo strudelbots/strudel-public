@@ -16,3 +16,7 @@ runs:
           echo "repository=$repository"
           echo "branch=${{ env.branch }}"
           git checkout $branch
+          sleep 1
+          source "$RUNNER_TEMP/functions_for_analyzing_git_db.sh"
+          find . name '*.py' 
+          
