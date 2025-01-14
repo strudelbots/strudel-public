@@ -37,9 +37,9 @@ class ImageMap:
         if not release_tag:
             strudel.info(f' Return None because "release_tag" is evaluated to False') #  # STRUDEL_IF_LOG_1
             return None
-        raise ValueError(f"do we get here 3 {release_tag}")
         for release in self.release_details:
             if release.release_tag == release_tag:
+                raise ValueError(f"do we get here 4: {release.release_tag}")
                 if len(release.image) > 1:
                     raise ValueError(f"Multiple images found for tag: {release_tag}")
                 return release.image[0]
