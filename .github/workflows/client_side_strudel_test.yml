@@ -32,17 +32,16 @@ jobs:
           echo "last_commit: $last_commit"
           {
           if [[ $user_command == *"TEST-STRUDEL"* ]]; then
+            echo "Run strudel with cli command: $user_command"
             echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
+          elif [[ $last_commit == *"TEST-STRUDEL"* ]]; then
+              echo "Run strudel-test by commit message"
+              echo "RUN_STRUDEL=TEST-STRUDERL" >> $GITHUB_OUTPUT
           else
             echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
             echo "No strudel test requested, to run strudel test, please include 'TEST-STRUDEL' in your command"
           fi
           }
-          #if [[ $last_commit == *"TEST-STRUDEL"* ]]; then
-          #    echo "Run strudel-test by commit message"
-          #    echo "RUN_STRUDEL=TEST-STRUDERL" >> $GITHUB_OUTPUT
-          #fi
-          #
 
   run-strudel-test:
     needs: [ should_run_strudel ]
