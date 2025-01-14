@@ -41,8 +41,16 @@ jobs:
             user_command=${user_command,,}
             echo "Run strudel with command: $user_command"
             echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
-          fi
+          fi          
           }
+          {
+          if [[ $user_command == "ADD-REPO-LOGS" || $user_command == "REMOVE-REPO-LOGS" ]]; then
+            user_command=${user_command,,}
+            echo "Run strudel with command: $user_command"
+            echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
+          fi          
+          }
+          
           if [[ $last_commit == *"REMOVE-LOGS"* ]]; then
               echo "Run strudel remove logs"
               echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT

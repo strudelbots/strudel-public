@@ -13,6 +13,7 @@ runs:
         shell: bash
         run: |
           repository=$GITHUB_REPOSITORY
+          echo "run strudel on branch"
           echo "repository=$repository"
           echo "master_branch=${{ inputs.master_branch }}"
           echo "branch=${{ env.branch }}"
@@ -21,7 +22,6 @@ runs:
           git checkout $branch
           sleep 1
           source "$RUNNER_TEMP/functions_for_analyzing_git_db.sh"
-
           common_ancestor=$(last_common_commit "$master_branch" "$branch")
           echo "** The last common commit between '$master_branch' and '$branch': $common_ancestor"
           commits_after_common_commits=$(commits_after_common_commit $branch $common_ancestor)
