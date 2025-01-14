@@ -24,12 +24,20 @@ is_valid_arg() {
 
 owner=set-me
 repo=set-me
+RED='\033[0;31m'
+NC='\033[0m'
 if [[ $owner == "set-me" ]]; then
-    echo "Please set the owner variable !"
+    printf "\n"
+    printf "please edit this cli script and set the repository 'owner' variable !\n"
+    printf "The owner is the name appearing after 'github.com' in your repository url.\n"
+    printf "For example, ${RED}strudelbot${NC} is the owner in https://github.com/${RED}strudelbots${NC}/strudel-public/\n"
     exit 1
 fi
 if [[ $repo == "set-me" ]]; then
-    echo "Please set the repo variable !"
+    printf "\n"
+    printf "please edit this cli script and set the 'repo' variable !\n"
+    printf "The repo is the name appearing after the repository owner in  your github-url.\n".
+    printf "For example, ${RED}strudel-public${NC} is the repo in https://github.com/strudelbots/${RED}strudel-public${NC}/\n"
     exit 1
 fi
 # Check if the script receives exactly one argument
