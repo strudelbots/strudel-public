@@ -129,7 +129,7 @@ jobs:
   run-strudel-test:
     needs: [ should_run_strudel ]
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@branch-run-entire-repository
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@main
     with:
       master_branch: main
     secrets:
@@ -206,7 +206,7 @@ jobs:
   run-strudel-for-logs:
     needs: [ should_run_strudel ]
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@branch-run-entire-repository
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@main
     with:
 # Make sure to change the name of your master branch if it is not main
       master_branch: main
