@@ -1,0 +1,28 @@
+name: 'Get All Files in Repository'
+description: 'Get all files'
+inputs:
+  master_branch:
+    description: 'The name of the master branch'
+    required: true
+runs:
+
+    using: 'composite'
+    steps:
+      - name: get all files
+        id: get-al-files
+        shell: bash
+        run: |
+          echo "run strudel on entire repository"
+          repository=$GITHUB_REPOSITORY
+          echo "repository=$repository"
+          echo "branch=${{ env.branch }}"
+          git checkout $branch
+          sleep 1
+          source "$RUNNER_TEMP/functions_for_analyzing_git_db.sh"
+          python_files=$(find . -name "*.py")
+          unique_files=$(args_to_space_separated_string "${python_files[@]}")
+          echo "$unique_files"
+          echo "ALL_CHANGED_FILES=$unique_files" >> $GITHUB_ENV
+
+          
+          

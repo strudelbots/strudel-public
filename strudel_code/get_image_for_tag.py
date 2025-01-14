@@ -2,11 +2,9 @@ import sys
 
 from strudel_code.image_map_data_classes import verify_release_tag, load_current_map
 
-
-#v0.13.02
 def get_image_for_tag(release_tag):
-    if release_tag == 'main':
-        release_tag =  "v0.14.02" # TODO - generalize
+    if release_tag.startswith('branch'):
+        release_tag =  "v0.22.02" # TODO - generalize
     map = load_current_map()
     result = map.find_image(release_tag)
     if not result:
@@ -18,6 +16,7 @@ def get_image_for_tag(release_tag):
              if entry.release_tag.startswith(release_tag[:-2]):
                  return entry.image[0]
     return result
+
 
 
 if __name__ == '__main__':

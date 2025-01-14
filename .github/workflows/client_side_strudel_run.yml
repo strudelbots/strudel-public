@@ -41,8 +41,16 @@ jobs:
             user_command=${user_command,,}
             echo "Run strudel with command: $user_command"
             echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
-          fi
+          fi          
           }
+          {
+          if [[ $user_command == "ADD-REPO-LOGS" || $user_command == "REMOVE-REPO-LOGS" ]]; then
+            user_command=${user_command,,}
+            echo "Run strudel with command: $user_command"
+            echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
+          fi          
+          }
+          
           if [[ $last_commit == *"REMOVE-LOGS"* ]]; then
               echo "Run strudel remove logs"
               echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT
@@ -57,7 +65,7 @@ jobs:
   run-strudel-for-logs:
     needs: [ should_run_strudel ]
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.22.04
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@main
     with:
 # Make sure to change the name of your master branch if it is not main
       master_branch: main
