@@ -21,6 +21,7 @@ def get_image_for_tag(release_tag):
     return result
 
 
+
 if __name__ == '__main__':
     try:
         release_tag = sys.argv[1]
