@@ -52,7 +52,7 @@ runs:
             ls -alt /tmp/$file
 
             # NOTE: MAIN BRANCH
-            #url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/"
+            url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/"
             file=strudel_code/release_to_image_map.json
             echo "url=$url$file"
             wget -q -P /tmp $url$file
