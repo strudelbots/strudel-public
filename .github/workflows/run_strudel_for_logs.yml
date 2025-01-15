@@ -47,7 +47,9 @@ jobs:
         run: |
             {
             if [[ "${{ inputs.user_command }}" != "add-logs" && \
-                  "${{ inputs.user_command }}" != "remove-logs" ]]; then
+                  "${{ inputs.user_command }}" != "remove-logs" && \
+                  "${{ inputs.user_command }}" != "remove-repo-logs" && \
+                  "${{ inputs.user_command }}" != "add-repo-logs"  ]]; then
                 echo "Invalid user command: ${{ inputs.user_command }}"
                 exit 1
             else
