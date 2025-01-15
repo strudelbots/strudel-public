@@ -46,7 +46,8 @@ jobs:
         shell: bash
         run: |
             {
-            if [[ "${{ inputs.user_command }}" != "add-logs" && "${{ inputs.user_command }}" != "remove-logs" ]]; then
+            if [[ "${{ inputs.user_command }}" != "add-logs" && \
+                  "${{ inputs.user_command }}" != "remove-logs" ]]; then
                 echo "Invalid user command: ${{ inputs.user_command }}"
                 exit 1
             else
