@@ -7,9 +7,24 @@ echo "    1. run-strudel-test.yml"
 echo "    2. run_strudel_for_logs.yml"
 echo "Please make sure that you have these actions defined in your repository"
 
+trigger_workflow() {
+  local owner=$1         # First argument: repository owner
+  local repo=$2          # Second argument: repository name
+  local workflow_id=$3   # Third argument: workflow ID
+  local branch=$4        # Fourth argument: branch name
+  local command=$5       # Fifth argument: user command
+
+  gh api \
+    --method POST \
+    -H "Accept: application/vnd.github+json" \
+    -H "X-GitHub-Api-Version: 2022-11-28" \
+    /repos/$owner/$repo/actions/workflows/$workflow_id/dispatches \
+    -f "ref=$branch" \
+    -f "inputs[user_command]=$command"
+}
 
 # Valid values for the argument
-VALID_ARGS=("add-logs" "remove-logs" "test-strudel")
+VALID_ARGS=("add-logs" "remove-logs" "test-strudel" "add-repo-logs" "remove-repo-logs")
 
 # Function to check if an argument is valid
 is_valid_arg() {
@@ -65,20 +80,9 @@ fi
 branch=$(git rev-parse --abbrev-ref HEAD)
 if [[ "$command" == "test-strudel" ]]; then
     echo "Running client-side tests"
-
-  gh api \
-    --method POST \
-    -H "Accept: application/vnd.github+json" \
-    -H "X-GitHub-Api-Version: 2022-11-28" \
-    /repos/$owner/$repo/actions/workflows/run-strudel-test.yml/dispatches \
-    -f "ref=$branch"  -f "inputs[user_command]=$command"
+    trigger_workflow $owner $repo 120122122 $branch $command
 fi
-if [[ "$command" == "add-logs" || "$command" == "remove-logs" ]]; then
-    echo "Running add/remove logs, branch: $branch"
-  gh api \
-    --method POST \
-    -H "Accept: application/vnd.github+json" \
-    -H "X-GitHub-Api-Version: 2022-11-28" \
-    /repos/$owner/$repo/actions/workflows/run_strudel_for_logs.yml/dispatches \
-    -f "ref=$branch"  -f "inputs[user_command]=$command"
+if [[ "$command" == "add-logs" || "$command" == "remove-logs" || "$command" == "add-repo-logs" || "$command" == "remove-repo-logs" ]]; then
+    echo "Running add/remove logs, branch: $branch, command: $command"
+    trigger_workflow $owner $repo 120122121 $branch $command
 fi

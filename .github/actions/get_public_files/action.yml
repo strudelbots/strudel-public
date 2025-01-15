@@ -38,6 +38,7 @@ runs:
                 exit 2
               fi
             } 
+            ls -alt $RUNNER_TEMP/$file
             file=functions_for_analyzing_git_db.sh
             dir="strudel_code/"
             echo "url=$url$dir$file"
@@ -76,7 +77,7 @@ runs:
               fi
             }
             ls -alt $RUNNER_TEMP/get_image_for_tag.py
-            cat $RUNNER_TEMP/get_image_for_tag.py
+            #cat $RUNNER_TEMP/get_image_for_tag.py
             file=strudel_code/image_map_data_classes.py
             echo "url=$url$file"
             wget -q -P $RUNNER_TEMP $url$file

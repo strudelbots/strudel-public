@@ -35,7 +35,7 @@ class ImageMap:
             json.dump(self.to_dict(), f, indent=4)
     def find_image(self, release_tag):
         if not release_tag:
-            strudel.info(f' Return None because "release_tag" is evaluated to False')
+            strudel.info(f' Return None because "release_tag" is evaluated to False') #  # STRUDEL_IF_LOG_1
             return None
         for release in self.release_details:
             if release.release_tag == release_tag:
@@ -52,6 +52,7 @@ class ImageMap:
 
 def verify_release_tag(tag):
     if tag.startswith('branch'):
+        strudel.info(' Assign tag="v0.22.02" because tag.startswith("branch")') #  # STRUDEL_IF_LOG_1
         tag =  "v0.22.02" # TODO - generalize
     match = re.match(r"v0\.[0-9]{1,2}\.[0-9]{1,2}", tag)
     if not match:
@@ -73,4 +74,6 @@ def load_current_map():
     map_class = ImageMap.from_json(json_string)
     strudel.info('Method "load_current_map" returns "map_class"') #  # STRUDEL_RETURN_TRACE_0
     return map_class
+
+
 

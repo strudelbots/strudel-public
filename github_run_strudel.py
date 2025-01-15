@@ -101,14 +101,14 @@ def analyze_files(python_files):
 
 
 def _set_url(action):
-    if action == 'add-logs':
-        strudel.info(f' Return "http://localhost:8080/add_logs/" because action({action}) == "add-logs"') #  # STRUDEL_IF_LOG_1
+    if action == 'add-logs' or action == 'add-repo-logs':
+        strudel.info(f' Return "http://localhost:8080/add_logs/" because action == "add-logs" OR action == "add-repo-logs"') #  # STRUDEL_IF_LOG_1
         return 'http://localhost:8080/add_logs/'
-    elif action == 'remove-logs':
-        strudel.info(f' Return "http://localhost:8080/remove_logs/" because action({action}) == "remove-logs"') #  # STRUDEL_IF_LOG_1
+    elif action == 'remove-logs' or action == 'remove-repo-logs':
+        strudel.info(f' Return "http://localhost:8080/remove_logs/" because action == "remove-logs" OR action == "remove-repo-logs"') #  # STRUDEL_IF_LOG_1
         return 'http://localhost:8080/remove_logs/'
     else:
-        strudel.error(' Raise ValueError("Invalid action") because action({action}) != "remove-logs"') #  # STRUDEL_IF_LOG_ELSE_2
+        strudel.error(' Raise ValueError("Invalid action") because Condition: not (action == "remove-logs" OR action == "remove-repo-logs")') #  # STRUDEL_IF_LOG_ELSE_2
         raise ValueError('Invalid action')
 
 if __name__ == '__main__':
@@ -125,4 +125,6 @@ if __name__ == '__main__':
     files_200, files_400, = analyze_files(python_files)
     print(f'files_200, {files_200}')
     print(f'files_400, {files_400}')
+
+
 
