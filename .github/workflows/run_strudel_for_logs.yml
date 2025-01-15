@@ -45,13 +45,16 @@ jobs:
         id: validate_input
         shell: bash
         run: |
-            if [[ "${{ inputs.user_command }}" != "add-logs" && "${{ inputs.user_command }}" != "remove-logs" ]]; then
+            {
+            if [[ "${{ inputs.user_command }}" != "add-logs" && \
+              "${{ inputs.user_command }}" != "remove-logs" ]]; then
                 echo "Invalid user command: ${{ inputs.user_command }}"
                 exit 1
             else
                 echo "Start Running Strudel with user command: ${{ inputs.user_command }}"
             fi
-            echo ${{ env.entire_repository }}
+           }
+            echo entire_repository_value: ${{ env.entire_repository }}
       - name: Extract user branch name
         id: exract-branch-name
         uses: strudelbots/strudel-public/.github/actions/get_current_branch@branch-test-new-cli
