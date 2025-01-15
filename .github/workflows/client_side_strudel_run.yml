@@ -39,29 +39,23 @@ jobs:
           {
           if [[ $user_command == "ADD-LOGS" || $user_command == "REMOVE-LOGS" ]]; then
             user_command=${user_command,,}
-            echo "Run strudel with command: $user_command"
+            echo "Run strudel with user command: $user_command"
             echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
-          fi          
-          }
-          {
-          if [[ $user_command == "ADD-REPO-LOGS" || $user_command == "REMOVE-REPO-LOGS" ]]; then
+          elif [[ $user_command == "ADD-REPO-LOGS" || $user_command == "REMOVE-REPO-LOGS" ]]; then
             user_command=${user_command,,}
-            echo "Run strudel with command: $user_command"
+            echo "Run strudel with user command: $user_command"
             echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
-          fi          
-          }
-          
-          if [[ $last_commit == *"REMOVE-LOGS"* ]]; then
-              echo "Run strudel remove logs"
-              echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT
+          elif [[ $last_commit == *"REMOVE-LOGS"* ]]; then
+            echo "Run strudel remove logs commit message: $last_commit"
+            echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT
           elif [[ $last_commit == *"ADD-LOGS"* ]]; then # change this line if you want to limit 'add-logs' for a specific commit message
-              echo "Run strudel add logs"
+              echo "Run strudel add logs commit message: $last_commit"
               echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
           else
-                echo "no commit message to match"
+                echo "no commit message or user commandto match "
                 echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
           fi
-
+          }
   run-strudel-for-logs:
     needs: [ should_run_strudel ]
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
