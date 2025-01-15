@@ -9,7 +9,7 @@ By automating up to 50% of the development process, Strudel will empower
 teams to accelerate productivity and drive meaningful innovation. The result? Faster development cycles, higher-quality code, and engineers who can 
 focus on engineering the extraordinary.
 
-## About Strudel Pilot (version 0.22.04)
+## About Strudel Pilot (version 0.24.02)
 Strudel's pilot simplifies telemetry integration 
 by automatically embedding logging and business metrics directly into your Python code.
 With Strudel, logging code is automatically added to your pull requests, 
@@ -129,7 +129,7 @@ jobs:
   run-strudel-test:
     needs: [ should_run_strudel ]
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@main
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@0.24.02
     with:
       master_branch: main
     secrets:
@@ -184,29 +184,32 @@ jobs:
           last_commit=$(git log -1 --pretty=%B $sha_last_commit)
           last_commit=${last_commit^^}
           echo "last_commit: $last_commit"
+          echo "user_command: $user_command"
 
           {
           if [[ $user_command == "ADD-LOGS" || $user_command == "REMOVE-LOGS" ]]; then
             user_command=${user_command,,}
-            echo "Run strudel with command: $user_command"
+            echo "Run strudel with user command: $user_command"
             echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
-          fi
-          }
-          if [[ $last_commit == *"REMOVE-LOGS"* ]]; then
-              echo "Run strudel remove logs"
-              echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT
+          elif [[ $user_command == "ADD-REPO-LOGS" || $user_command == "REMOVE-REPO-LOGS" ]]; then
+            user_command=${user_command,,}
+            echo "Run strudel with user command: $user_command"
+            echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
+          elif [[ $last_commit == *"REMOVE-LOGS"* ]]; then
+            echo "Run strudel remove logs commit message: $last_commit"
+            echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT
           elif [[ $last_commit == *"ADD-LOGS"* ]]; then # change this line if you want to limit 'add-logs' for a specific commit message
-              echo "Run strudel add logs"
+              echo "Run strudel add logs commit message: $last_commit"
               echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
           else
-                echo "no commit message to match"
+                echo "no commit message or user commandto match "
                 echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
           fi
-
+          }
   run-strudel-for-logs:
     needs: [ should_run_strudel ]
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@main
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@0.24.02
     with:
 # Make sure to change the name of your master branch if it is not main
       master_branch: main

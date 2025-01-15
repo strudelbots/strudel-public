@@ -36,7 +36,7 @@ jobs:
           fetch-depth: 0
 
       - name: Extract user branch name
-        id: exract-branch-name
+        id: extract-branch-name
         uses: strudelbots/strudel-public/.github/actions/get_current_branch@0.24.02
 
       - name: extract strudel version
