@@ -35,6 +35,7 @@ jobs:
           last_commit=$(git log -1 --pretty=%B $sha_last_commit)
           last_commit=${last_commit^^}
           echo "last_commit: $last_commit"
+          echo "user_command: $user_command"
 
           {
           if [[ $user_command == "ADD-LOGS" || $user_command == "REMOVE-LOGS" ]]; then
