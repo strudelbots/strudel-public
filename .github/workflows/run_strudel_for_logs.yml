@@ -68,14 +68,14 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/check-user-keys@branch-test-new-cli
 
       - name: Run on entire repository
-        if : ${{ env.entire_repository }} == false
+        if : ${{ env.entire_repository == false }}
         id: run-on-entire-repository
         uses: strudelbots/strudel-public/.github/actions/get_all_files_in_repository@branch-test-new-cli
         with:
           master_branch: ${{ inputs.master_branch }}
 
       - name: Get changed files
-        if : ${{ env.entire_repository }} == true
+        if : ${{ env.entire_repository == true }}
         id: get_changed_files
         uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@branch-test-new-cli
         with:
