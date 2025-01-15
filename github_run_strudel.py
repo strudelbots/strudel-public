@@ -101,10 +101,10 @@ def analyze_files(python_files):
 
 
 def _set_url(action):
-    if action == 'add-logs':
+    if action == 'add-logs' or action == 'add-repo-logs':
         strudel.info(f' Return "http://localhost:8080/add_logs/" because action({action}) == "add-logs"') #  # STRUDEL_IF_LOG_1
         return 'http://localhost:8080/add_logs/'
-    elif action == 'remove-logs':
+    elif action == 'remove-logs' or action == 'remove-repo-logs':
         strudel.info(f' Return "http://localhost:8080/remove_logs/" because action({action}) == "remove-logs"') #  # STRUDEL_IF_LOG_1
         return 'http://localhost:8080/remove_logs/'
     else:
