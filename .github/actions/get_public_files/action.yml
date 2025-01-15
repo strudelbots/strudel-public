@@ -38,6 +38,7 @@ runs:
                 exit 2
               fi
             } 
+            ls -alt $RUNNER_TEMP/$file
             file=functions_for_analyzing_git_db.sh
             dir="strudel_code/"
             echo "url=$url$dir$file"
