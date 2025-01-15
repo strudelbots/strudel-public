@@ -86,53 +86,53 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@branch-test-new-cli
         with:
           master_branch: ${{ inputs.master_branch }}
-#
-#      - name: install python
-#        id: install-python
-#        uses: strudelbots/strudel-public/.github/actions/install-python@branch-test-new-cli
-#
-#      - name: get image tag
-#        uses: strudelbots/strudel-public/.github/actions/get_image_tag@branch-test-new-cli
-#        with:
-#          version_tag: ${{ env.ref }}
-#
-#
-#      - name: login to ecr
-#        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@branch-test-new-cli
-#
-#      - name: run docker compose
-#        uses: strudelbots/strudel-public/.github/actions/run_compose@branch-test-new-cli
-#        with:
-#          image_tag: ${{ env.image_tag }}
-#          logger_name: ${{ inputs.logger_name }}
-#          access_token: ${{ secrets.strudel_access_key }}
-#          secret_key: ${{ secrets.strudel_secret_key }}
-#
-#
-#      - name: sanity tests
-#        uses: strudelbots/strudel-public/.github/actions/sanity_tests@branch-test-new-cli
-#
-#      - name: Run Strudel
-#        uses: strudelbots/strudel-public/.github/actions/run_strudel@branch-test-new-cli
-#        with:
-#          user_command: ${{ inputs.user_command }}
-#          changed_files: ${{ env.ALL_CHANGED_FILES}}
-#
-#      - name: Commit and push Strudel logs
-#        run: |
-#          if [ -z "$(git status --porcelain)" ]; then echo "no files to push" && exit 0; fi
-#          git config --global user.name 'strudel-logger'
-#          git config --global user.email 'strudel-logger@users.noreply.github.com'
-#          git checkout ${{ env.branch }}
-#          git commit -am "Automated strudel-logger commit for branch ${{ env.branch }}"
-#          git push --set-upstream origin ${{ env.branch }}
-#
-#      - name: print docker logs
-#        shell: bash
-#        run: |
-#            echo "*** docker logs nginx_proxy"
-#            docker logs nginx_proxy
-#            echo "*** docker logs logs"
-#            docker logs logs
-#            echo "*** docker logs templates"
-#            docker logs templates
+
+      - name: install python
+        id: install-python
+        uses: strudelbots/strudel-public/.github/actions/install-python@branch-test-new-cli
+
+      - name: get image tag
+        uses: strudelbots/strudel-public/.github/actions/get_image_tag@branch-test-new-cli
+        with:
+          version_tag: ${{ env.ref }}
+
+
+      - name: login to ecr
+        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@branch-test-new-cli
+
+      - name: run docker compose
+        uses: strudelbots/strudel-public/.github/actions/run_compose@branch-test-new-cli
+        with:
+          image_tag: ${{ env.image_tag }}
+          logger_name: ${{ inputs.logger_name }}
+          access_token: ${{ secrets.strudel_access_key }}
+          secret_key: ${{ secrets.strudel_secret_key }}
+
+
+      - name: sanity tests
+        uses: strudelbots/strudel-public/.github/actions/sanity_tests@branch-test-new-cli
+
+      - name: Run Strudel
+        uses: strudelbots/strudel-public/.github/actions/run_strudel@branch-test-new-cli
+        with:
+          user_command: ${{ inputs.user_command }}
+          changed_files: ${{ env.ALL_CHANGED_FILES}}
+
+      - name: Commit and push Strudel logs
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then echo "no files to push" && exit 0; fi
+          git config --global user.name 'strudel-logger'
+          git config --global user.email 'strudel-logger@users.noreply.github.com'
+          git checkout ${{ env.branch }}
+          git commit -am "Automated strudel-logger commit for branch ${{ env.branch }}"
+          git push --set-upstream origin ${{ env.branch }}
+
+      - name: print docker logs
+        shell: bash
+        run: |
+            echo "*** docker logs nginx_proxy"
+            docker logs nginx_proxy
+            echo "*** docker logs logs"
+            docker logs logs
+            echo "*** docker logs templates"
+            docker logs templates
