@@ -20,7 +20,7 @@ runs:
            echo "user_command: ${{ inputs.user_command }}"
            echo "Start Running Strudel with user command: ${{ inputs.user_command }}"
            export OVERWRITE_ORIG_FILES=True
-           python /tmp/github_run_strudel.py ${{ inputs.user_command  }}
+           python $RUNNER_TEMP/github_run_strudel.py ${{ inputs.user_command  }}
 
 
 
