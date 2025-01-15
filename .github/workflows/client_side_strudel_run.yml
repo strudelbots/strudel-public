@@ -60,7 +60,7 @@ jobs:
   run-strudel-for-logs:
     needs: [ should_run_strudel ]
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@0.24.02
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.24.02
     with:
 # Make sure to change the name of your master branch if it is not main
       master_branch: main
