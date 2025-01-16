@@ -63,7 +63,7 @@
             ]
         },
         {
-            "release_tag": "v0.24.02",
+            "release_tag": "v0.24.03",
             "image": [
                 {
                     "tag": "v-0.0.5-b-23",
