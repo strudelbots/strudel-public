@@ -42,6 +42,20 @@ use `remove-logs` in your commit message.
    - To remove logs `strudel_cli.sh remove-logs`
    - To run Strudel test `strudel_cli.sh test-strudel`
 
+## Add logging-code to your pull request (default Strudel settings)
+With Strudel, logging logging-code is automatically added to your pull requests, 
+letting you focus solely on business logic without worrying about implementing logs.
+
+1. Create a new branch, for example, `test-strudel-logging`. 
+2. Change a few files in this branch (e.g., add/remove functionality, fix a bug, or just add a few lines). 
+2. Commit your changes. 
+3. Push your changes 
+4. By default Strudel will run on every push ()
+4. Go to action tab in Github, you will see a new action running. `run strudel-for-logs`
+4. Strudel automatically adds the necessary logging code to the files you change in your branch. 
+5. When you open pull request, reviewers will see both the logging code and your business logic during the review.
+
+
 ### Configuring Strudel 
 #### Setting the logger name
 By default, Strudel will use the name `strudel` as the logger name. That is, Strudel produces
@@ -99,19 +113,6 @@ run-client-job-come-here
 2. **Make sure** you configure the name of you main branch in the file above
 3. Commit and push the changes to the repository
 
-## Steps to add logging code to your pull request (example)
-With Strudel, logging code is automatically added to your pull requests, 
-letting you focus solely on business logic without worrying about implementing logs.
-
-1. Create a new branch, for example, `test-strudel-logging`. 
-2. Change a few files in this branch (e.g., add/remove functionality, fix a bug, or just add a few lines). 
-2. Commit your changes. **In the commit message write the 
-following text: `strudel add-logs`**.
-3. Push your branch to the repository.
-4. Go to action tab in Github, you will see a new action running. `run strudel-for-logs`
-4. Strudel automatically adds the necessary logging code to the files you change in your branch.
-You can see the new code if you open a pull request, or pull strudel changes back into your local branch. 
-5. When you open pull request, reviewers will see both the logging code and your business logic during the review.
 
 
 
