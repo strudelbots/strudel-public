@@ -99,7 +99,6 @@ If you'd like more control over when Strudel is invoked (e.g., to avoid triggeri
    - To **add logging code** to your branch, include the keyword `add-logs` in your commit message when committing your changes.  
    - To **remove logging code** from your branch, include the keyword `remove-logs` in your commit message when committing your changes.
 
-### Add or remove logging-code by changing the code in the `run_strudel_for_logs.yml` file
 
 
 ## Configuring Strudel 
@@ -161,7 +160,6 @@ run-client-job-come-here
 
 
 
-
 ## Frequently Asked Questions
 
 #### How can I verify that Strudel is working?  
@@ -186,13 +184,7 @@ This format is cryptographically secure and ensures that no one, including Strud
 1. **Nov-24-24: Version 0.13.02 released.** 
    - Bug fix: Strudel correctly change logging code once developer changes the underlying business logic.  
 
-
-## In the next release
-### Add trace-level logging code to your pull request 
-In this mode, Strudel adds logging code that enables detailed tracing. 
-These logs provide insights into the full execution flow, including method calls 
-and control flow, helping you quickly understand the behavior at every level.
-This is especially useful during development when you need to verify the flow of execution.
+   
 
 ### More options to trigger Strudel 
 In addition to the commit message, you will be able to trigger Strudel using a
