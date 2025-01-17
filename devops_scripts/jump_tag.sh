@@ -13,6 +13,6 @@ echo "tag is $1:"
 git push -d origin $1
 git tag -d $1
 git tag $1
-git push --tags origin $branch
+git push --atomic origin $branch $1 
 
 
