@@ -52,11 +52,6 @@ If you want to manually add or remove logging code to your branch, you can do so
 3. Customize the code in the `run_strudel_for_logs.yml` file [link](#add-or-remove-logging-code-by-changing-the-code-in-the-runstrudelforlogsyml-file).
 
 
-#### Add or remove logging-code to your branch using Strudel CLI
-Here’s a revised version of your instructions for improved clarity:
-
----
-
 #### Add or Remove Logging Code Using Strudel CLI
 
 1. **Platform Support**  
