@@ -1,4 +1,4 @@
-name: Client side run strudel-for-logs
+name: Run strudel-for-logs
 # version: 0.24.03
 on:
   workflow_dispatch:
@@ -27,6 +27,7 @@ jobs:
         env:
           sha_last_commit: ${{ github.event.pull_request.head.sha }}
           is_push: ${{ github.event_name == 'push' }}
+          enable_on_push: true
         id: user_command
         shell: bash
         run: |
@@ -39,7 +40,7 @@ jobs:
           echo "user_command: $user_command"
 
           { # feel free to change the logic here to decide when to run strudel
-          if [[ "$is_push" = true ]]; then
+          if [[ "$is_push" = true $$ "$enable_on_push" = true ]]; then
             echo "Run default strudel settings for push"
             echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
           elif [[ $user_command == "ADD-LOGS" || $user_command == "REMOVE-LOGS" ]]; then

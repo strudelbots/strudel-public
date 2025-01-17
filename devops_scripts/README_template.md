@@ -42,7 +42,7 @@ use `remove-logs` in your commit message.
    - To remove logs `strudel_cli.sh remove-logs`
    - To run Strudel test `strudel_cli.sh test-strudel`
 
-## Add logging-code to your pull request (default Strudel settings)
+### Add logging-code to your branch automatically (default Strudel settings)
 With Strudel, logging logging-code is automatically added to your pull requests, 
 letting you focus solely on business logic without worrying about implementing logs.
 
@@ -56,6 +56,19 @@ letting you focus solely on business logic without worrying about implementing l
 4. Strudel automatically adds the necessary logging code to the files you change in your branch.
 5. You can now 'pull' strudel changes to your local branch.
 5. When you open pull request, reviewers will see both the logging code and your business logic during the review.
+
+### Add or remove logging-code to your branch manually
+If you want to manually add or remove logging code to your branch, you can do so by using three methods 
+1. Using a [commit message](#add-or-remove-logging-code-to-your-branch-using-a-commit-message)
+2. Using Strudel [CLI](#add-or-remove-logging-code-to-your-branch-using-strudel-cli)
+3. Customize the code in the `run_strudel_for_logs.yml` file [link](#add-or-remove-logging-code-by-changing-the-code-in-the-runstrudelforlogsyml-file)
+
+#### Add or remove logging-code to your branch using a commit message
+
+#### Add or remove logging-code to your branch using Strudel CLI
+
+#### Add or remove logging-code by changing the code in the `run_strudel_for_logs.yml` file
+
 
 
 ### Configuring Strudel 
