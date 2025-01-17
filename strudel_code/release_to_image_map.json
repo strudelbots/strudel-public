@@ -1,16 +1,6 @@
 {
     "release_details": [
         {
-            "release_tag": "v0.10.21",
-            "image": [
-                {
-                    "tag": "v-0.0.1-b-1",
-                    "added_date": "11/15/2024, 09:06:56",
-                    "id": "1E8220"
-                }
-            ]
-        },
-        {
             "release_tag": "v0.11.11",
             "image": [
                 {
@@ -61,7 +51,16 @@
                     "id": "THYU987"
                 }
             ]
+        },
+        {
+            "release_tag": "v0.24.03",
+            "image": [
+                {
+                    "tag": "v-0.0.5-b-23",
+                    "added_date": "15/1/2025, 11:14:40",
+                    "id": "THY97"
+                }
+            ]
         }
-
     ]
 }
