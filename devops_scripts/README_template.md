@@ -102,8 +102,8 @@ If you'd like more control over when Strudel is invoked (e.g., to avoid triggeri
 ### Add or remove logging-code by changing the code in the `run_strudel_for_logs.yml` file
 
 
-### Configuring Strudel 
-#### Setting the logger name
+## Configuring Strudel 
+### Setting the logger name
 By default, Strudel will use the name `strudel` as the logger name. That is, Strudel produces
 logs of the form `strudel.<log-level>(<log message>)`. 
 If you want to change the logger name, you can do so by adding the following line to your code:
