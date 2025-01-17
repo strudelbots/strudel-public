@@ -41,7 +41,7 @@ jobs:
           { # feel free to change the logic here to decide when to run strudel
           if [[ "$is_push" = true ]]; then
             echo "Run default strudel settings for push"
-            echo "RUN_STRUDEL=ADD-LOGS" >> $GITHUB_OUTPUT
+            echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
           elif [[ $user_command == "ADD-LOGS" || $user_command == "REMOVE-LOGS" ]]; then
             user_command=${user_command,,}
             echo "Run strudel with user command: $user_command"
