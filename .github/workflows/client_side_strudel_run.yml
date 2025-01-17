@@ -54,7 +54,7 @@ jobs:
           elif [[ $last_commit == *"REMOVE-LOGS"* ]]; then
             echo "Run strudel remove logs commit message: $last_commit"
             echo "RUN_STRUDEL=remove-logs" >> $GITHUB_OUTPUT
-          elif [[ $last_commit == *"ADD-LOGS"* ]]; then # change this line if you want to limit 'add-logs' for a specific commit message
+          elif [[ $last_commit == *"ADD-LOGS"* ]]; then 
               echo "Run strudel add logs commit message: $last_commit"
               echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
           else
