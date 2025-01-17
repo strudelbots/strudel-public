@@ -29,18 +29,6 @@ Strudel streamlines logging updates in your pull requests or branch.
 1. **Trigger Strudel using a commit message**: Simply include `add-logs` in your commit message, 
 and Strudel will automatically update the logging code. To remove all logs from your code,
 use `remove-logs` in your commit message.
-1. **Trigger Strudel using Strudel CLI** (for Mac and Linux): 
-   1. Download Strudel CLI <a href=https://github.com/strudelbots/strudel-public/blob/main/strudel_code/strudel_cli.sh>link</a>. 
-   Here is a `curl` command to download the CLI:
-   ```
-   curl -o strudel_cli.sh https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/strudel_code/strudel_cli.sh
-   ```
-   4. Add strudel CLI to your path.
-   5. Run the Strudel CLI to add logging code to your pull request. Run the CLI from your 
-   branch, with the following commands 
-   - To add logs `strudel_cli.sh add-logs`
-   - To remove logs `strudel_cli.sh remove-logs`
-   - To run Strudel test `strudel_cli.sh test-strudel`
 
 ### Add logging-code to your branch automatically (default Strudel settings)
 With Strudel, logging logging-code is automatically added to your pull requests, 
@@ -68,6 +56,20 @@ If you want to manually add or remove logging code to your branch, you can do so
 #### Add or remove logging-code to your branch using Strudel CLI
 
 #### Add or remove logging-code by changing the code in the `run_strudel_for_logs.yml` file
+1. The current version of the Strudel CLI only supports MAC and Linux  
+2. Download Strudel CLI <a href=https://github.com/strudelbots/strudel-public/blob/main/strudel_code/strudel_cli.sh>link</a>. 
+   Here is a `curl` command to download the CLI:
+   ```
+   curl -o strudel_cli.sh https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/strudel_code/strudel_cli.sh
+   ```
+   4. Add strudel CLI to your path.
+   5. Run the Strudel CLI to add logging code to your branch. Run the CLI from your 
+   branch, with the following commands 
+   - To add logs: `strudel_cli.sh add-logs`
+   - To remove logs: `strudel_cli.sh remove-logs`
+   - To add logs to all python files in you repository: `strudel_cli.sh add-repo-logs` 
+   - To remove logs to all python files in you repository: `strudel_cli.sh remove-repo-logs` 
+   - To run Strudel test `strudel_cli.sh test-strudel`
 
 
 
