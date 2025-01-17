@@ -46,6 +46,7 @@ use `remove-logs` in your commit message.
 With Strudel, logging logging-code is automatically added to your pull requests, 
 letting you focus solely on business logic without worrying about implementing logs.
 
+
 1. Create a new branch, for example, `test-strudel-logging`. 
 2. Change a few files in this branch (e.g., add/remove functionality, fix a bug, or just add a few lines). 
 2. Commit your changes. 
