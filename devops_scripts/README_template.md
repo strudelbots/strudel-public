@@ -47,9 +47,9 @@ letting you focus solely on business logic without worrying about implementing l
 
 ### Add or remove logging-code to your branch manually
 If you want to manually add or remove logging code to your branch, you can do so by using three methods 
-1. Using a [commit message](#add-or-remove-logging-code-to-your-branch-using-a-commit-message)
-2. Using Strudel [CLI](#add-or-remove-logging-code-to-your-branch-using-strudel-cli)
-3. Customize the code in the `run_strudel_for_logs.yml` file [link](#add-or-remove-logging-code-by-changing-the-code-in-the-runstrudelforlogsyml-file)
+1. Using a [commit message](#add-or-remove-logging-code-to-your-branch-using-a-commit-message).
+2. Using Strudel [CLI](#add-or-remove-logging-code-to-your-branch-using-strudel-cli).
+3. Customize the code in the `run_strudel_for_logs.yml` file [link](#add-or-remove-logging-code-by-changing-the-code-in-the-runstrudelforlogsyml-file).
 
 #### Add or remove logging-code to your branch using a commit message
 
@@ -62,9 +62,9 @@ If you want to manually add or remove logging code to your branch, you can do so
    ```
    curl -o strudel_cli.sh https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/strudel_code/strudel_cli.sh
    ```
-   4. Add strudel CLI to your path.
-   5. Run the Strudel CLI to add logging code to your branch. Run the CLI from your 
-   branch, with the following commands 
+2. Add strudel CLI to your path.
+2. Run the Strudel CLI to add logging code to your branch. Run the CLI from your 
+branch, with the following commands 
    - To add logs: `strudel_cli.sh add-logs`
    - To remove logs: `strudel_cli.sh remove-logs`
    - To add logs to all python files in you repository: `strudel_cli.sh add-repo-logs` 
