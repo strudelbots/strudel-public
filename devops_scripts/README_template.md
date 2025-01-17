@@ -87,8 +87,6 @@ If you want to manually add or remove logging code to your branch, you can do so
      strudel_cli.sh test-strudel
      ```
 
-
-
    
 ### Adding or Removing Logging Code in Your Branch via Commit Messages
 
@@ -101,7 +99,7 @@ If you'd like more control over when Strudel is invoked (e.g., to avoid triggeri
    - To **add logging code** to your branch, include the keyword `add-logs` in your commit message when committing your changes.  
    - To **remove logging code** from your branch, include the keyword `remove-logs` in your commit message when committing your changes.
 
-#### Add or remove logging-code by changing the code in the `run_strudel_for_logs.yml` file
+### Add or remove logging-code by changing the code in the `run_strudel_for_logs.yml` file
 
 
 ### Configuring Strudel 
