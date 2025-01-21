@@ -65,7 +65,7 @@ runs:
               fi
             }
             ls -alt $RUNNER_TEMP/release_to_image_map.json
-            #cat $RUNNER_TEMP/release_to_image_map.json
+            cat $RUNNER_TEMP/release_to_image_map.json
             file=strudel_code/get_image_for_tag.py
             echo "url=$url$file"
             wget -q -P $RUNNER_TEMP $url$file
