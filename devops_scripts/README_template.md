@@ -9,14 +9,14 @@ By automating up to 50% of the development process, Strudel will empower
 teams to accelerate productivity and drive meaningful innovation. The result? Faster development cycles, higher-quality code, and engineers who can 
 focus on engineering the extraordinary.
 
-## About Strudel Pilot (version 0.24.02)
+## About Strudel Pilot (version 0.24.xx)
 Strudel's pilot simplifies telemetry integration 
 by automatically embedding logging and business metrics directly into your Python code.
 With Strudel, logging code is automatically added to your pull requests, 
 letting you focus solely on business logic without worrying about implementing logs.
 
 1. New to Strudel? Onboard [now](#pre-requisites).
-2. Already using Strudel? Upgrade to the latest [version 0.24.2](#Create-Main-Strudel-Action-in-Your-Github-Repository).
+2. Already using Strudel? Upgrade to the latest [version 0.24.xx](#Create-Main-Strudel-Action-in-Your-Github-Repository).
 3. Questions about using Strudel? Check out the [Using Strudel](#using-strudel) section.
 4. See what's new in Strudel Pilot [below](#whats-new-in-strudel-pilot).
 
@@ -173,16 +173,15 @@ It gathers only encrypted metadata in the following format:
 ```
 This format is cryptographically secure and ensures that no one, including Strudel, can reverse-engineer your code.  
 ## What's New in Strudel Pilot?
-1. **Dec-24-19: Version 0.22.04 released.** 
+1. **Jan-25-19: Version 0.24.04 released.** 
+   - Support for entire repository add/remove logging-code (see [Using Strudel](#using-strudel) section).
+
+2. **Dec-24-19: Version 0.22.04 released.** 
    - Strudel CLI for Mac and Unix users.
    Get the CLI:
    ```
    curl -o strudel_cli.sh https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/strudel_code/strudel_cli.sh
    ```
-   
-   - Logging for Return Statements isa more accurate.
-1. **Nov-24-24: Version 0.13.02 released.** 
-   - Bug fix: Strudel correctly change logging code once developer changes the underlying business logic.  
 
    
 
