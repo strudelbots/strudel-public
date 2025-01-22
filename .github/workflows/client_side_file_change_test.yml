@@ -7,7 +7,7 @@ on:
 #      - main
 jobs:
   run-strudel-test:
-    uses: strudelbots/strudel-public/.github/workflows/run_file_change_test.yml@v0.24.03
+    uses: strudelbots/strudel-public/.github/workflows/run_file_change_test.yml@v0.24.04
     with:
       # Make sure to change the name of your master branch if it is not main
       master_branch: main

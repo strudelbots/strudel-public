@@ -53,9 +53,11 @@ runs:
             ls -alt $RUNNER_TEMP/$file
 
             # NOTE: MAIN BRANCH
-            # url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/"
+            url="https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/"
             file=strudel_code/release_to_image_map.json
             echo "url=$url$file"
+            echo "removing $RUNNER_TEMP$file"
+            rm -rf $RUNNER_TEMP$file
             wget -q -P $RUNNER_TEMP $url$file
             {
               wget_result=$?
