@@ -141,7 +141,7 @@ This step is optional and can be used to run a Strudel test to verify that your 
 2. CCopy the following code into the file:
 ```
 name: client side run strudel test
-# version 0.24.03
+# version 0.24.04
 on:
   workflow_dispatch:
     inputs:
@@ -207,7 +207,7 @@ jobs:
 ```
 
 name: Run strudel-for-logs
-# version: 0.24.03
+# version: 0.24.04
 on:
   workflow_dispatch:
     inputs:
