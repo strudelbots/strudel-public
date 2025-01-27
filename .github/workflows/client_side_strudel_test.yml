@@ -42,7 +42,6 @@ jobs:
             echo "No strudel test requested, to run strudel test, please include 'TEST-STRUDEL' in your command"
           fi
           }
-
   run-strudel-test:
     needs: [ should_run_strudel ]
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
