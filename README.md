@@ -184,11 +184,10 @@ jobs:
             echo "No strudel test requested, to run strudel test, please include 'TEST-STRUDEL' in your command"
           fi
           }
-
   run-strudel-test:
     needs: [ should_run_strudel ]
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.24.03
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.24.04
     with:
       master_branch: main
     secrets:
@@ -273,7 +272,7 @@ jobs:
   run-strudel-for-logs:
     needs: [ should_run_strudel ]
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.24.03
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.24.04
     with:
 # Make sure to change the name of your master branch if it is not main
       master_branch: main
