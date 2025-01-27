@@ -19,7 +19,7 @@ runs:
           git checkout $branch
           sleep 1
           source "$RUNNER_TEMP/functions_for_analyzing_git_db.sh"
-          python_files=$(find . -name *.py | grep -v test)
+          python_files=$(find . -name '*.py' | grep -v test)
           unique_files=$(args_to_space_separated_string "${python_files[@]}")
           echo "$unique_files"
           echo "ALL_CHANGED_FILES=$unique_files" >> $GITHUB_ENV

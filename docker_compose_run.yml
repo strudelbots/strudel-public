@@ -19,13 +19,13 @@ services:
   templates:
     environment:
       - LOGGER_NAME=$LOGGER_NAME
-      - REPOSITORY_ROOT=$REPOSITORY_ROOT
+      - REPOSITORY_ROOT=$REPOSITORY_ROOTL
       - STRUDEL_TEMP_DIR=/tmp
       - HASHER_STORAGE_TYPE=$HASHER_STORAGE_TYPE
       - STRUDEL_USER_ACCESS_KEY_ID=$STRUDEL_USER_ACCESS_KEY_ID
       - STRUDEL_USER_SECRET_KEY=$STRUDEL_USER_SECRET_KEY
       - ENABLE_LOGGING_CODE_UPDATE=True
-    container_name: templates
+    container_name: templatesL
     image: $ECR_REGISTRY:$IMAGE_TAG
     expose:
       - "8000" # should we remove that in prod?
