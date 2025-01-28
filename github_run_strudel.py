@@ -95,7 +95,7 @@ def analyze_files(python_files):
                         #print(f'line is: {line}')
                         f.write(line+'\n')
         else:
-            raise ValueError(f'Unexpected status code: {response.status_code}')
+            raise ValueError(f'Unexpected status code: {response.status_code}, file: {file}')
     strudel.info('Method "analyze_files" returns') #  # STRUDEL_RETURN_TRACE_0
     return files_200, files_400
 
