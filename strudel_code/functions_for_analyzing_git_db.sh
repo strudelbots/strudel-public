@@ -152,12 +152,21 @@ filter_files() {
 
     local files=($1)
     local exclude_directories=($2)
-    local result=''
+    if [[ ${#exclude_directories[@]} -gt 10 ]]; then
+      echo "Number of excluded directories is limited to 10"
+      return 1
+    fi
+
+    local result=""
     # Get the last common commit between the two branches
     for file in "${files[@]}"; do
       for dir in "${exclude_directories[@]}"; do
-        if [[ ! "$file" == *"$dir"* ]]; then
-          result="$result $file"
+        if [[ ! "$file" == *"$dir/"* ]]; then
+          if [[ ! $result =~ $file ]]; then
+            #echo "appending $file"
+            result="$result $file"
+            break
+          fi
         fi
       done
     done
