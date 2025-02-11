@@ -157,18 +157,25 @@ filter_files() {
       return 1
     fi
 
-    local result=""
+    local excluded=""
     # Get the last common commit between the two branches
     for file in "${files[@]}"; do
       for dir in "${exclude_directories[@]}"; do
-        if [[ ! "$file" == *"$dir/"* ]]; then
-          if [[ ! $result =~ $file ]]; then
-            #echo "appending $file"
-            result="$result $file"
+        if [[  "$file" == *"$dir/"* ]]; then
+          if [[ ! $excluded =~ $file ]]; then
+            excluded="$excluded $file"
             break
           fi
         fi
       done
+    done
+    local result=""
+    for item in "${files[@]}"; do
+        if [[ ! "$excluded" =~ $item ]]; then
+          if [[ ! "$result" =~ $file ]]; then
+            result="$result $item"
+          fi
+        fi
     done
     echo $result
 }

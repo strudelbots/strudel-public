@@ -46,7 +46,7 @@ result=$(filter_files ".github/actions/get_all_files_in_repository/action.yml .g
 echo "result of test 6 is $result"
 if [[ $result != ".github/actions/get_all_files_in_repository/action.yml" ]]; then
   echo "ERROR 6"
-  exit 5
+  exit 6
 fi
 
 echo "test seven"
@@ -54,5 +54,12 @@ result=$(filter_files ".github/actions/get_all_files_in_repository/action.yml .g
 echo "result of test 7 is $result"
 if [[ $result != "" ]]; then
   echo "ERROR 7"
-  exit 5
+  exit 7
+fi
+echo "test eight"
+result=$(filter_files ".github/actions/get_all_files_in_repository/action.yml .github/workflows/get_all_files_in_repository/action.yml" "workflows actions")
+echo "result of test 8 is $result"
+if [[ $result != "" ]]; then
+  echo "ERROR 8"
+  exit 8
 fi
