@@ -156,7 +156,7 @@ filter_files() {
 
     # Get the last common commit between the two branches
     for item in "${files[@]}"; do
-        echo "$item"
+        echo "file to filter: $item"
     done
     echo $1
 }
