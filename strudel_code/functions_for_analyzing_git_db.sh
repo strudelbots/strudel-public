@@ -156,8 +156,7 @@ filter_files() {
     # Get the last common commit between the two branches
     for file in "${files[@]}"; do
       for dir in "${exclude_directories[@]}"; do
-        if ! [[ "$file" == *"$dir/"* ]]; then
-          echo "adding $file to result"
+        if [[ ! "$file" == *"$dir/"* ]]; then
           result="$result $file"
         fi
       done
