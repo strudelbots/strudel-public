@@ -157,6 +157,7 @@ filter_files() {
     for file in "${files[@]}"; do
       for dir in "${exclude_directories[@]}"; do
         if ! [[ "$file" == *"$dir/"* ]]; then
+          echo "adding $file to result"
           result="$result $file"
         fi
       done
