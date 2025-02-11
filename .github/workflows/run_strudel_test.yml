@@ -17,7 +17,7 @@ on:
       excluded_directories:
         type: string
         required: false
-        default: 'workflows actions'
+        default: ''
 
 
 
