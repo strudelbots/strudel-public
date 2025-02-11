@@ -153,18 +153,18 @@ filter_files() {
 
     local files=($1)
     local exclude_directories=($2)
-
+    local result=''
     # Get the last common commit between the two branches
     for file in "${files[@]}"; do
       for dir in "${exclude_directories[@]}"; do
         if [[ "$file" == *"$dir/"* ]]; then
             echo "Filtering file: $file"
         else
-            echo "Do not filter file: $file"
+          result="$result $file"
         fi
       done
     done
-    echo $1
+    echo $result
 }
 
 commits_after_common_commit() {
