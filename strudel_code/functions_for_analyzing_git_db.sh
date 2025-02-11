@@ -142,15 +142,10 @@ last_common_commit() {
     local branch2="$2"
     echo "Branch1: $branch1" >> /tmp/commit_functions.log
     echo "Branch2: $branch2" >> /tmp/commit_functions.log
-    # Find the merge base (common ancestor) of the two branches
-    #git checkout $branch1 >> /tmp/commit_functions.log
-    #git checkout $branch2 >> /tmp/commit_functions.log
-    #sleep 1
-    # git merge-base origin/main "$branch2" >> /tmp/commit_functions.log
     git merge-base $branch1 $branch2
 }
 filter_files() {
-    printf "Filtering files"
+    echo "Filtering files"
     if [ "$#" -ne 2 ]; then
         echo "Usage: commits_after_common_commit <branch1> <branch2>"
         return 1
