@@ -150,7 +150,7 @@ last_common_commit() {
     git merge-base $branch1 $branch2
 }
 filter_files() {
-    echo "Filtering files"
+    printf "Filtering files"
     if [ "$#" -ne 2 ]; then
         echo "Usage: commits_after_common_commit <branch1> <branch2>"
         return 1
