@@ -149,9 +149,9 @@ filter_files() {
         echo "Usage: commits_after_common_commit <branch1> <branch2>"
         return 1
     fi
-    local input_files="$1"
-    local files=(${input_files//+/ })  # Replace all '+' with ' '
-    local exclude_directories=($2)
+    local dirs=$2
+    local files=($1)  # Replace all '+' with ' '
+    local exclude_directories=(${dirs//+/ })
     if [[ ${#exclude_directories[@]} -gt 10 ]]; then
       echo "Number of excluded directories is limited to 10"
       return 1

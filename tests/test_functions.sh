@@ -57,9 +57,16 @@ if [[ $result != "" ]]; then
   exit 7
 fi
 echo "test eight"
-result=$(filter_files ".github/actions/get_all_files_in_repository/action.yml .github/workflows/get_all_files_in_repository/action.yml" "workflows actions")
+result=$(filter_files ".github/actions/get_all_files_in_repository/action.yml .github/workflows/get_all_files_in_repository/action.yml" "workflows+actions")
 echo "result of test 8 is $result"
 if [[ $result != "" ]]; then
   echo "ERROR 8"
   exit 8
+fi
+echo "test nine"
+result=$(filter_files ".github/actions/get_all_files_in_repository/action.yml .github/workflows/get_all_files_in_repository/action.yml" "boy+girl")
+echo "result of test 9 is $result"
+if [[ $result != ".github/actions/get_all_files_in_repository/action.yml .github/workflows/get_all_files_in_repository/action.yml" ]]; then
+  echo "ERROR 9"
+  exit 9
 fi
