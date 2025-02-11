@@ -20,6 +20,7 @@ runs:
           repository=$GITHUB_REPOSITORY
           echo "repository=$repository"
           echo "branch=${{ env.branch }}"
+          echo "excluded directories=${{ inputs.excluded_directories }}"
           git checkout $branch
           sleep 1
           source "$RUNNER_TEMP/functions_for_analyzing_git_db.sh"
