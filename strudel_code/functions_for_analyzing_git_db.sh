@@ -155,8 +155,14 @@ filter_files() {
     local exclude_directories=($2)
 
     # Get the last common commit between the two branches
-    for item in "${files[@]}"; do
-        echo "file to filter: $item"
+    for file in "${files[@]}"; do
+      for dir in "${exclude_directories[@]}"; do
+        if [[ "$file" == *"$dir"* ]]; then
+            echo "Filtering file: $file"
+          else
+            echo "Do not filter file: $file"
+          fi
+        done
     done
     echo $1
 }
