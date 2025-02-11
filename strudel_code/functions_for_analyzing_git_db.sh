@@ -145,7 +145,7 @@ last_common_commit() {
     git merge-base $branch1 $branch2
 }
 filter_files() {
-    echo "Filtering files"
+    #echo "Filtering files"
     if [ "$#" -ne 2 ]; then
         echo "Usage: commits_after_common_commit <branch1> <branch2>"
         return 1
@@ -158,7 +158,7 @@ filter_files() {
     for file in "${files[@]}"; do
       for dir in "${exclude_directories[@]}"; do
         if [[ "$file" == *"$dir/"* ]]; then
-            echo "Filtering file: $file"
+            printf "Filtering file: $file"
         else
           result="$result $file"
         fi
