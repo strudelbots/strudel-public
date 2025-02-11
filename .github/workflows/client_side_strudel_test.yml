@@ -48,6 +48,7 @@ jobs:
     uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.26.02
     with:
       master_branch: main
+      use_dev_ecr_repository: true
     secrets:
         strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
         strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
