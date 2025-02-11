@@ -3,10 +3,6 @@ name: run-strudel-test
 on:
   workflow_call:
     inputs:
-      logger_name:
-        default: 'strudel'
-        required: false
-        type: string
       master_branch:
         type: string
         required: true
@@ -18,6 +14,10 @@ on:
         type: string
         required: false
         default: ''
+      logger_name:
+        default: 'strudel'
+        required: false
+        type: string
 
 
 
