@@ -49,7 +49,7 @@ jobs:
     with:
       master_branch: main
       use_dev_ecr_repository: true
-      excluded_directories: worklows
+      excluded_directories: workflows
     secrets:
         strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
         strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
