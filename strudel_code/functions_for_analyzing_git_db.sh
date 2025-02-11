@@ -149,6 +149,21 @@ last_common_commit() {
     # git merge-base origin/main "$branch2" >> /tmp/commit_functions.log
     git merge-base $branch1 $branch2
 }
+filter_files() {
+    if [ "$#" -ne 2 ]; then
+        echo "Usage: commits_after_common_commit <branch1> <branch2>"
+        return 1
+    fi
+
+    local files="$1"
+    local exclude_directories="$2"
+
+    # Get the last common commit between the two branches
+    print $files
+    print $exclude_directories
+    echo $files
+}
+
 commits_after_common_commit() {
     if [ "$#" -ne 2 ]; then
         echo "Usage: commits_after_common_commit <branch1> <branch2>"
@@ -202,24 +217,6 @@ file_exists_in_branch() {
     echo "after sleep"
     git log --name-status $branch_name -- $file_name
     echo "after log"
-    #(git log --name-status $branch_name -- $file_name | grep -q $'^D[ \t]')
-    #    deleted=$?
-    #    # If the file is marked as deleted in the branch, it does not exists
-    #    if [ $deleted -eq 0 ]; then
-    #        #echo "File '$file_name' was deleted in branch '$branch_name'."
-    #        return 1
-    #    fi
-    ## Check if the file exists in the specified branch
-    #    #echo $(git ls-tree -r "$branch_name" --name-only)
-    #    git ls-tree -r "$branch_name" --name-only --full-tree | grep -q "$file_name$"
-    #    # Check the result of grep
-    #    if [ $? -eq 0 ]; then
-    #        #echo "File $file_name exists in branch '$branch_name'."
-    #        return 0
-    #    else
-    #        #echo "File $file_name does NOT exist in branch '$branch_name'."
-    #        return 1
-    #    fi
 }
 
 
