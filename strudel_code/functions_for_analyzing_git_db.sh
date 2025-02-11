@@ -159,10 +159,10 @@ filter_files() {
       for dir in "${exclude_directories[@]}"; do
         if [[ "$file" == *"$dir"* ]]; then
             echo "Filtering file: $file"
-          else
+        else
             echo "Do not filter file: $file"
-          fi
-        done
+        fi
+      done
     done
     echo $1
 }
