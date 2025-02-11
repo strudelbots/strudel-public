@@ -159,9 +159,10 @@ filter_files() {
     local exclude_directories=("$2")
 
     # Get the last common commit between the two branches
-    print $files
-    print $exclude_directories
-    echo $files
+    for item in "${files[@]}"; do
+        echo "$item"
+    done
+    echo $1
 }
 
 commits_after_common_commit() {
