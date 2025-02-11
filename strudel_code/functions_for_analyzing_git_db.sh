@@ -155,8 +155,8 @@ filter_files() {
         return 1
     fi
 
-    local files="$1"
-    local exclude_directories="$2"
+    local files=("$1")
+    local exclude_directories=("$2")
 
     # Get the last common commit between the two branches
     print $files
