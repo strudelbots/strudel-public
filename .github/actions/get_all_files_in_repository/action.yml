@@ -4,6 +4,10 @@ inputs:
   master_branch:
     description: 'The name of the master branch'
     required: true
+  excluded_directories:
+    description: 'Comma seperated list of directory names'
+    required: true
+
 runs:
 
     using: 'composite'

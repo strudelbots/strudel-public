@@ -14,6 +14,12 @@ on:
         type: boolean
         required: false
         default: false
+      excluded_directories:
+        type: string
+        required: false
+        default: 'workflows actions'
+
+
 
     secrets:
       strudel_access_key:
@@ -56,12 +62,16 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@v0.26.02
         with:
           master_branch: ${{ inputs.master_branch }}
+          excluded_directories: ${{ inputs.excluded_directories }}
 
-      - name: Get all python files
+
+      - name: Get all python files in repository
         id: get_all_python_files
         uses: strudelbots/strudel-public/.github/actions/get_all_files_in_repository@v0.26.02
         with:
           master_branch: ${{ inputs.master_branch }}
+          excluded_directories: ${{ inputs.excluded_directories }}
+
 
       - name: install python
         id: install-python
