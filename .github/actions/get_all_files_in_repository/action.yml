@@ -24,7 +24,7 @@ runs:
           git checkout $branch
           sleep 1
           source "$RUNNER_TEMP/functions_for_analyzing_git_db.sh"
-          python_files=$(find . -name '*.py' | grep -v test)
+          python_files=$(find . -name '*.py')
           unique_files=$(args_to_space_separated_string "${python_files[@]}")
           echo "$unique_files"
           count=$(echo $unique_files | wc -w)
