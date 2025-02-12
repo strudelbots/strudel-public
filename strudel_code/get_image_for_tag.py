@@ -1,28 +1,20 @@
-import logging # STRUDEL_IMPORT_0
 import sys
 
 from strudel_code.image_map_data_classes import verify_release_tag, load_current_map
 
-strudel = logging.getLogger(__name__) # STRUDEL_IMPORT_1
-strudel.addHandler(logging.StreamHandler()) # STRUDEL_IMPORT_2
-strudel.setLevel(logging.INFO) # STRUDEL_IMPORT_3
 def get_image_for_tag(release_tag):
     if release_tag.startswith('branch'):
-        strudel.info(' Assign release_tag="v0.22.02" because release_tag.startswith("branch")') #  # STRUDEL_IF_LOG_1
         release_tag =  "v0.22.02" # TODO - generalize
     map = load_current_map()
     result = map.find_image(release_tag)
     if not result:
-        strudel.info(' "result" is evaluated to False') #  # STRUDEL_IF_LOG_0
         for entry in map.release_details:
             if release_tag.startswith(entry.release_tag):
                 return entry.image[0]
     if not result: # partial match like v0.13.02 -> v0.13
-         strudel.info(' "result" is evaluated to False') #  # STRUDEL_IF_LOG_0
          for entry in map.release_details:
              if entry.release_tag.startswith(release_tag[:-2]):
                  return entry.image[0]
-    strudel.info('Method "get_image_for_tag" returns "result"') #  # STRUDEL_RETURN_TRACE_0
     return result
 
 
@@ -45,6 +37,7 @@ if __name__ == '__main__':
         print("no-tag-found", file=sys.stdout)
     else:
         print(image_tag.tag, file=sys.stdout)
+
 
 
 
