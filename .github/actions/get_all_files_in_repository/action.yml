@@ -5,7 +5,7 @@ inputs:
     description: 'The name of the master branch'
     required: true
   excluded_directories:
-    description: 'Comma seperated list of directory names'
+    description: '+ seperated list of directory names'
     required: true
 
 runs:
@@ -20,7 +20,8 @@ runs:
           repository=$GITHUB_REPOSITORY
           echo "repository=$repository"
           echo "branch=${{ env.branch }}"
-          echo "excluded directories=${{ inputs.excluded_directories }}"
+          excluded_directories=${{ inputs.excluded_directories }}
+          echo "excluded directories=$excluded_directories"
           git checkout $branch
           sleep 1
           source "$RUNNER_TEMP/functions_for_analyzing_git_db.sh"

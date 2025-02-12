@@ -57,7 +57,7 @@ jobs:
       - name: check user keys
         uses: strudelbots/strudel-public/.github/actions/check-user-keys@v0.26.02
 
-      - name: Get changed files
+      - name: Get changed files in branch
         id: get_changed_files
         uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@v0.26.02
         with:
