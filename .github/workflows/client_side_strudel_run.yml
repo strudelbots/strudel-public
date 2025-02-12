@@ -77,7 +77,7 @@ jobs:
       master_branch: main
       user_command: ${{ needs.should_run_strudel.outputs.run_strudel }}
       use_dev_ecr_repository: true
-      excluded_directories: workflows+actions+tests+strudel_code
+      excluded_directories: workflows+actions+tests+devops_scripts
 
     secrets:
       strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
