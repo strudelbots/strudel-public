@@ -16,6 +16,11 @@ on:
       user_command:
         type: string
         required: true
+      excluded_directories:
+        type: string
+        required: false
+        default: ''
+
 
     secrets:
       strudel_access_key:
