@@ -57,6 +57,12 @@ jobs:
           elif [[ $last_commit == *"ADD-LOGS"* ]]; then 
               echo "Run strudel add logs commit message: $last_commit"
               echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
+          elif [[ $last_commit == *"ADD-REPO-LOGS"* ]]; then 
+              echo "Run strudel add repo logs commit message: $last_commit"
+              echo "RUN_STRUDEL=add-repo-logs" >> $GITHUB_OUTPUT
+          elif [[ $last_commit == *"REMOVE-REPO-LOGS"* ]]; then 
+              echo "Run strudel remove repo logs commit message: $last_commit"
+              echo "RUN_STRUDEL=remove-repo-logs" >> $GITHUB_OUTPUT
           else
                 echo "no commit message or user commandto match "
                 echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
