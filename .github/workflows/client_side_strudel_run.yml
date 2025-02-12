@@ -40,10 +40,7 @@ jobs:
           echo "user_command: $user_command"
 
           { # feel free to change the logic here to decide when to run strudel
-          if [[ "$is_push" = true && "$enable_on_push" = true ]]; then
-            echo "Run default strudel settings for push"
-            echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
-          elif [[ $user_command == "ADD-LOGS" || $user_command == "REMOVE-LOGS" ]]; then
+          if [[ $user_command == "ADD-LOGS" || $user_command == "REMOVE-LOGS" ]]; then
             user_command=${user_command,,}
             echo "Run strudel with user command: $user_command"
             echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
@@ -63,6 +60,9 @@ jobs:
           elif [[ $last_commit == *"REMOVE-REPO-LOGS"* ]]; then 
               echo "Run strudel remove repo logs commit message: $last_commit"
               echo "RUN_STRUDEL=remove-repo-logs" >> $GITHUB_OUTPUT
+          elif [[ "$is_push" = true && "$enable_on_push" = true ]]; then
+            echo "Run default strudel settings for push"
+            echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
           else
                 echo "no commit message or user commandto match "
                 echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
