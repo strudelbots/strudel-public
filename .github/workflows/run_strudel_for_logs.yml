@@ -78,12 +78,13 @@ jobs:
       - name: check user keys
         uses: strudelbots/strudel-public/.github/actions/check-user-keys@v0.26.02
 
-      - name: Run on entire repository
+      - name: Get all files in repository repository
         if : ${{ env.entire_repository == 'true' }}
         id: run-on-entire-repository
         uses: strudelbots/strudel-public/.github/actions/get_all_files_in_repository@v0.26.02
         with:
           master_branch: ${{ inputs.master_branch }}
+          excluded_directories: ${{ inputs.excluded_directories }}
 
       - name: Get changed files
         if : ${{ env.entire_repository == 'false' }}
@@ -91,6 +92,7 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@v0.26.02
         with:
           master_branch: ${{ inputs.master_branch }}
+          excluded_directories: ${{ inputs.excluded_directories }}
 
       - name: install python
         id: install-python
