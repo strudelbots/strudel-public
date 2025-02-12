@@ -45,5 +45,7 @@ runs:
           unique_files=$(args_to_space_separated_string "${changed_files[@]}")
           filtered_files=$(filter_files "$unique_files" "$excluded_directories")
           echo "Files that need to be merged from branch $branch:"
+          echo "$unique_files"
+          echo "Files that need to be analyzed by Strudel after filtering:"
           echo "$filtered_files"
           echo "ALL_CHANGED_FILES=$filtered_files" >> $GITHUB_ENV

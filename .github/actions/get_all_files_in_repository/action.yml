@@ -28,8 +28,11 @@ runs:
           unique_files=$(args_to_space_separated_string "${python_files[@]}")
           echo "$unique_files"
           count=$(echo $unique_files | wc -w)
-          echo "Total files $count"
-          echo "ALL_CHANGED_FILES=$unique_files" >> $GITHUB_ENV
+          echo "Total files found: $count"
+          filtered_files=$(filter_files "$unique_files" "$excluded_directories")
+          echo "Files that need to be analyzed by Strudel after filtering:"
+          echo "$filtered_files"
+          echo "ALL_CHANGED_FILES=$filtered_files" >> $GITHUB_ENV
 
           
           
