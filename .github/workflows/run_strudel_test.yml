@@ -67,6 +67,7 @@ jobs:
         with:
           master_branch: ${{ inputs.master_branch }}
           excluded_directories: ${{ inputs.excluded_directories }}
+          changed_files: $RUNNER_TEMP/changed_files.txt
 
 
       - name: Get all python files in repository

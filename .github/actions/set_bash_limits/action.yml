@@ -8,9 +8,4 @@ runs:
         run: |
           true | xargs --show-limits
           var='.'
-          while true
-          for i in {6..10}
-            do
-              echo "$(date) $(numfmt --to=iec-i --suffix=B --padding=7 ${#var})" 
-              var=$(tr --delete --complement A-Za-z0-9 </dev/urandom | head --bytes=$((i*100))MiB)
-            done
+          echo "Changed files file: ${{ env.changed_files }}
