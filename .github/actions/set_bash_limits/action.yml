@@ -1,0 +1,11 @@
+name: 'Login to ECR'
+description: 'Login to AWS ECR'
+runs:
+    using: 'composite'
+    steps:
+      - name: Test and set limits
+        shell: bash
+        run: |
+          true | xargs --show-limits
+
+

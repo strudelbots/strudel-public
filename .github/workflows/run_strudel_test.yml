@@ -41,6 +41,10 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
+      - name: Test and set bash limits
+        id: test-and-set-limits
+        uses: strudelbots/strudel-public/.github/actions/set_bash_limits@v0.26.02
+
       - name: Extract user branch name
         id: extract-branch-name
         uses: strudelbots/strudel-public/.github/actions/get_current_branch@v0.26.02
