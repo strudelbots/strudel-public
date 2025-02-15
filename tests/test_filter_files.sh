@@ -71,7 +71,7 @@ if [[ $result != ".github/actions/get_all_files_in_repository/action.yml .github
   exit 9
 fi
 echo "test ten"
-result=$(filter_files ".github/actions/get_all_files_in_repository/action.yml init.py" "boy+girl")
+result=$(filter_files ".github/actions/get_all_files_in_repository/action.yml __init__.py" "boy+girl")
 echo "result of test 10 is $result"
 if [[ $result != ".github/actions/get_all_files_in_repository/action.yml" ]]; then
   echo "ERROR 10"

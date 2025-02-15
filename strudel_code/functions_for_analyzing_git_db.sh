@@ -177,7 +177,7 @@ filter_files() {
           fi
         fi
     done
-    result=$(echo $result | sed  's/init.py//g')
+    result=$(echo $result | sed  's/__init__.py//g')
     echo $result
 }
 
