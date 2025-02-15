@@ -48,7 +48,7 @@ def get_all_files():
         raise ValueError(f'No files found for strudel.')
     else:
         with open(changed_files, 'r') as f:
-            all_files = f.readlines()
+            all_files = f.read()
         print('content of the file of change files : '+ str(all_files))
         if len(all_files) != 1:
             strudel.error(' Raise ValueError("ALL_CHANGED_FILES_FILE is empty") because Length of'

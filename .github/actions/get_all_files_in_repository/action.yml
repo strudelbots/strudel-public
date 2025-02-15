@@ -37,7 +37,6 @@ runs:
           #echo "$filtered_files"
           echo "$filtered_files" > $out_file
           cat $out_file
-          echo $(tr -d '\n' << $out_file) 
 
           
           
