@@ -16,8 +16,10 @@ runs:
         id: get-al-files
         shell: bash
         run: |
-          echo "run strudel on entire repository"
+          echo "Get all files in repository"
           repository=$GITHUB_REPOSITORY
+          out_file=${{ env.changed_files }}
+          echo "Changed files file: out_file"
           echo "repository=$repository"
           echo "branch=${{ env.branch }}"
           excluded_directories=${{ inputs.excluded_directories }}
@@ -32,8 +34,9 @@ runs:
           echo "Total files found: $count"
           filtered_files=$(filter_files "$unique_files" "$excluded_directories")
           echo "Files that need to be analyzed by Strudel after filtering:"
-          echo "$filtered_files"
-          echo "ALL_CHANGED_FILES=$filtered_files" >> $GITHUB_ENV
+          #echo "$filtered_files"
+          echo "$filtered_files" >> $out_file
+          cat $out_file
 
           
           
