@@ -119,7 +119,10 @@ if __name__ == '__main__':
     python_files, not_python_files =  get_all_files()
     url = _set_url(action)
     if action == 'test-strudel':
-        raise ValueError(' Raise ValueError("No action provided") because len(sys.argv) < 2')
+        print("Test strudel run")
+        for file in python_files:
+            print(file)
+        print(f"Total files: {len(python_files)}")
     if not python_files:
         print('No python files found' )
         exit(0)
