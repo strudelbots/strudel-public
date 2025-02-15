@@ -203,12 +203,13 @@ commits_after_common_commit() {
 }
 args_to_space_separated_string() {
     local num_args="$#"
-    # Echo the number of arguments
-    #echo "Number of arguments: $num_args"
-    # Join all arguments with a space separator
-    local unique_args=$(echo "$*" | tr ' ' '\n' | sort -u | tr '\n' ' ' | sed 's/ *$//')
+    #echo "all args $*"
 
-    local num_unique_args=$(echo "$unique_args" | tr ' ' '\n' | wc -l)
+    local unique_args=$(echo "$*" |
+      sed 's/,/ /g' |
+      sed 's/\\n/ /g' |
+      sed 's/  */ /g' |
+      sed 's/[ \t]*$//')
 
     # Print the number of unique arguments
     #echo "Number of unique arguments: $num_unique_args"
