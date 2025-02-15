@@ -49,6 +49,7 @@ def get_all_files():
     else:
         with open(changed_files, 'r') as f:
             all_files = f.readlines()
+        print(all_files)
         if len(all_files) == 0:
             strudel.error(' Raise ValueError("ALL_CHANGED_FILES is empty") because Length of'
             'all_files={len(all_files)} == 0')
@@ -123,6 +124,7 @@ if __name__ == '__main__':
         for file in python_files:
             print(file)
         print(f"Total files: {len(python_files)}")
+        exit(0)
     if not python_files:
         print('No python files found' )
         exit(0)
