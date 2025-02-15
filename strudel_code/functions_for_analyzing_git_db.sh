@@ -205,15 +205,12 @@ args_to_space_separated_string() {
     local num_args="$#"
     #echo "all args $*"
 
-    local unique_args=$(echo "$*" |
+    local clean_args=$(echo "$*" |
       sed 's/,/ /g' |
       sed 's/\\n/ /g' |
       sed 's/  */ /g' |
-      sed 's/[ \t]*$//')
-
-    # Print the number of unique arguments
-    #echo "Number of unique arguments: $num_unique_args"
-    # Return the unique space-separated string of arguments
+      sed 's/[ \t]*$//' | tr ' ' '\n')
+    local unique_args=$(echo "$clean_args" | sort -u | tr '\n' ' ' | sed 's/[ \t]*$//' )
     echo "$unique_args"
 }
 

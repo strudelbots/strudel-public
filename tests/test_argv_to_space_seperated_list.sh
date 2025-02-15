@@ -6,6 +6,9 @@ result=$(args_to_space_separated_string ".github/actions/get_all_files_in_reposi
 echo "result of test 1 is $result"
 if [[ $result != ".github/actions/get_all_files_in_repository/action.yml" ]]; then
   echo "ERROR 1"
+  for (( i=0; i<${#result}; i++ )); do
+    echo "${result:$i:1}"
+  done
   exit 1
 fi
 echo "test two"
@@ -49,4 +52,19 @@ if [[ $result != "ccc ddd eee" ]]; then
     echo "${result:$i:1}"
   done
   exit 7
+fi
+echo "test eight"
+result=$(args_to_space_separated_string "ccc ccc ccc")
+echo "result of test 8 is $result"
+if [[ $result != "ccc" ]]; then
+  echo "ERROR 8"
+  exit 8
+fi
+
+echo "test nine"
+result=$(args_to_space_separated_string "ccc ddd ccc eee ccc eee")
+echo "result of test 9 is $result"
+if [[ $result != "ccc ddd eee" ]]; then
+  echo "ERROR 9"
+  exit 9
 fi
