@@ -49,13 +49,12 @@ def get_all_files():
     else:
         with open(changed_files, 'r') as f:
             all_files = f.readlines()
-        print('all files: '+ str(all_files))
-        if len(all_files) == 0:
+        print('content of change files : '+ str(all_files))
+        if len(all_files) != 1:
             strudel.error(' Raise ValueError("ALL_CHANGED_FILES_FILE is empty") because Length of'
             'all_files={len(all_files)} == 0')
             raise ValueError('ALL_CHANGED_FILES is empty')
-        print(f"Length of files: {len(all_files)}")
-        for file in all_files:
+        for file in all_files[0].split(' '):
             if file.endswith('.py'):
                 python_files.append(file)
     return python_files, []
