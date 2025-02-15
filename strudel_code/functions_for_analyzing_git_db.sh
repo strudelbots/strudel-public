@@ -177,7 +177,7 @@ filter_files() {
           fi
         fi
     done
-    result=$(echo $result | sed  's/__init__.py//g')
+    result=$(echo $result | sed  's/[\.\/a-zA-Z0-9]*__init__.py//g')
     echo $result
 }
 
