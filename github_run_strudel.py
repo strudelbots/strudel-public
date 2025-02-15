@@ -54,8 +54,9 @@ def get_all_files():
             strudel.error(' Raise ValueError("ALL_CHANGED_FILES_FILE is empty") because Length of'
             'all_files={len(all_files)} == 0')
             raise ValueError('ALL_CHANGED_FILES is empty')
-        for file in all_files[0].split(' '):
-            if file.removesuffix('\\n').endswith('.py'):
+        files = all_files[0].removesuffix('n')
+        for file in files.split(' '):
+            if file.endswith('.py'):
                 python_files.append(file)
     return python_files, []
 
