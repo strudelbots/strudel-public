@@ -173,11 +173,13 @@ filter_files() {
     for item in "${files[@]}"; do
         if [[ ! "$excluded" =~ $item ]]; then
           if [[ ! "$result" =~ $file ]]; then
-            result="$result $item"
+            basename=$(basename "$item")
+            if [[ $basename != "__init__.py" ]]; then
+              result="$result $item"
+            fi
           fi
         fi
     done
-    result=$(echo $result | sed  's/[\.\/a-zA-Z0-9]*__init__.py//g')
     echo $result
 }
 
