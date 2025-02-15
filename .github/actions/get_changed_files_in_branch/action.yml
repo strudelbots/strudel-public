@@ -48,5 +48,5 @@ runs:
           echo "Files that need to be merged from branch $branch:"
           echo "$unique_files"
           echo "Files that need to be analyzed by Strudel after filtering:"
-          echo "$filtered_files" >> $out_file
+          echo "$filtered_files" > $out_file
           cat $out_file

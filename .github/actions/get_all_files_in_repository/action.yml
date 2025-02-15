@@ -35,7 +35,7 @@ runs:
           filtered_files=$(filter_files "$unique_files" "$excluded_directories")
           echo "Files that need to be analyzed by Strudel after filtering:"
           #echo "$filtered_files"
-          echo "$filtered_files" >> $out_file
+          echo "$filtered_files" > $out_file
           cat $out_file
 
           
