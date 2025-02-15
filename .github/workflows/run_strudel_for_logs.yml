@@ -31,6 +31,7 @@ on:
 jobs:
   run-strudel:
     env:
+      changed_files: $RUNNER_TEMP/changed_files.txt
       strudel_access_key: ${{ secrets.strudel_access_key }}
       strudel_secret_key: ${{ secrets.strudel_secret_key }}
       use_dev_ecr_repository: ${{ inputs.use_dev_ecr_repository }}

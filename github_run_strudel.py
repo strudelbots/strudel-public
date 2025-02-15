@@ -47,8 +47,9 @@ def get_all_files():
     if not changed_files:
         print(f'No files found for strudel.')
     else:
-        all_files = changed_files.split(' ')
-        if len(all_files) ==0:
+        with open(changed_files, 'r') as f:
+            all_files = f.readlines()
+        if len(all_files) == 0:
             strudel.error(' Raise ValueError("ALL_CHANGED_FILES is empty") because Length of'
             'all_files={len(all_files)} == 0')
             raise ValueError('ALL_CHANGED_FILES is empty')
@@ -102,6 +103,8 @@ def _set_url(action):
         return 'http://localhost:8080/add_logs/'
     elif action == 'remove-logs' or action == 'remove-repo-logs':
         return 'http://localhost:8080/remove_logs/'
+    elif action == 'test-strudel':
+        return None
     else:
         strudel.error(' Raise ValueError("Invalid action") because Condition: not (action =='
             '"remove-logs" OR action == "remove-repo-logs")')
@@ -113,8 +116,10 @@ if __name__ == '__main__':
         raise ValueError('No action provided')
     print(f'argv: {sys.argv}')
     action = sys.argv[1]
-    url = _set_url(action)
     python_files, not_python_files =  get_all_files()
+    url = _set_url(action)
+    if action == 'test-strudel':
+        raise ValueError(' Raise ValueError("No action provided") because len(sys.argv) < 2')
     if not python_files:
         print('No python files found' )
         exit(0)
