@@ -7,5 +7,11 @@ runs:
         shell: bash
         run: |
           true | xargs --show-limits
+          var='.'
+          while true
+          do
+            echo "$(date) $(numfmt --to=iec-i --suffix=B --padding=7 ${#var})" 
+            var=$var$var
+          done
 
 
