@@ -26,6 +26,7 @@ runs:
           master_branch=${{ inputs.master_branch }}
           git checkout $master_branch
           git checkout $branch
+          out_file=${{ env.changed_files }}
           sleep 1
           source "$RUNNER_TEMP/functions_for_analyzing_git_db.sh"
           common_ancestor=$(last_common_commit "$master_branch" "$branch")
@@ -47,5 +48,5 @@ runs:
           echo "Files that need to be merged from branch $branch:"
           echo "$unique_files"
           echo "Files that need to be analyzed by Strudel after filtering:"
-          echo "$filtered_files"
-          echo "ALL_CHANGED_FILES=$filtered_files" >> $GITHUB_ENV
+          echo "$filtered_files" >> $out_file
+          cat $out_file
