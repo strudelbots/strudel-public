@@ -27,7 +27,7 @@ jobs:
         env:
           sha_last_commit: ${{ github.event.pull_request.head.sha }}
           is_push: ${{ github.event_name == 'push' }}
-          enable_on_push: true
+          enable_on_push: false
         id: user_command
         shell: bash
         run: |
