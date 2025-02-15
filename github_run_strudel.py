@@ -43,15 +43,15 @@ def _read_file_as_string(file_name, dir=""):
     return python_string
 def get_all_files():
     python_files = []
-    changed_files = os.getenv('ALL_CHANGED_FILES', None)
+    changed_files = os.getenv('ALL_CHANGED_FILES_FILE', None)
     if not changed_files:
-        print(f'No files found for strudel.')
+        raise ValueError(f'No files found for strudel.')
     else:
         with open(changed_files, 'r') as f:
             all_files = f.readlines()
         print(all_files)
         if len(all_files) == 0:
-            strudel.error(' Raise ValueError("ALL_CHANGED_FILES is empty") because Length of'
+            strudel.error(' Raise ValueError("ALL_CHANGED_FILES_FILE is empty") because Length of'
             'all_files={len(all_files)} == 0')
             raise ValueError('ALL_CHANGED_FILES is empty')
         print(f"Length of files: {len(all_files)}")
