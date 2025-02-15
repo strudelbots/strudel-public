@@ -55,7 +55,7 @@ def get_all_files():
             'all_files={len(all_files)} == 0')
             raise ValueError('ALL_CHANGED_FILES is empty')
         for file in all_files[0].split(' '):
-            if file.removesuffix('\n').endswith('.py'):
+            if file.removesuffix('\\n').endswith('.py'):
                 python_files.append(file)
     return python_files, []
 
