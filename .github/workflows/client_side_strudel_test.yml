@@ -1,4 +1,4 @@
-name: client side run strudel test
+name: run strudel test
 # version 0.26.02
 on:
   workflow_dispatch:
