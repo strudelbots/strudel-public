@@ -211,7 +211,7 @@ args_to_space_separated_string() {
       sed 's/\\n/ /g' |
       sed 's/  */ /g' |
       sed 's/[ \t]*$//' | tr ' ' '\n')
-    local unique_args=$(echo "$clean_args" | sort -u | tr '\n' ' ' | sed 's/[ \t]*$//' )
+    local unique_args=$(echo "$clean_args" | sort -u | tr '\n' ' ' | sed 's/[ \t\n]*$//' )
     echo "$unique_args"
 }
 
