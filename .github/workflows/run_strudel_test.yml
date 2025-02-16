@@ -3,10 +3,6 @@ name: run-strudel-test
 on:
   workflow_call:
     inputs:
-      logger_name:
-        default: 'strudel'
-        required: false
-        type: string
       master_branch:
         type: string
         required: true
@@ -14,6 +10,16 @@ on:
         type: boolean
         required: false
         default: false
+      excluded_directories:
+        type: string
+        required: false
+        default: ''
+      logger_name:
+        default: 'strudel'
+        required: false
+        type: string
+
+
 
     secrets:
       strudel_access_key:
@@ -28,6 +34,9 @@ jobs:
       strudel_access_key: ${{ secrets.strudel_access_key }}
       strudel_secret_key: ${{ secrets.strudel_secret_key }}
       use_dev_ecr_repository: ${{ inputs.use_dev_ecr_repository }}
+      changed_files: $RUNNER_TEMP/changed_files.txt
+
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -37,47 +46,51 @@ jobs:
 
       - name: Extract user branch name
         id: extract-branch-name
-        uses: strudelbots/strudel-public/.github/actions/get_current_branch@v0.24.04
+        uses: strudelbots/strudel-public/.github/actions/get_current_branch@v0.26.02
 
       - name: extract strudel version
         id: extract_strudel_version
-        uses: strudelbots/strudel-public/.github/actions/extract_strudel_version@v0.24.04
+        uses: strudelbots/strudel-public/.github/actions/extract_strudel_version@v0.26.02
         with:
           mode: 'test_strudel'
 
       - name: get strudel-public files
-        uses: strudelbots/strudel-public/.github/actions/get_public_files@v0.24.04
+        uses: strudelbots/strudel-public/.github/actions/get_public_files@v0.26.02
 
       - name: check user keys
-        uses: strudelbots/strudel-public/.github/actions/check-user-keys@v0.24.04
+        uses: strudelbots/strudel-public/.github/actions/check-user-keys@v0.26.02
 
-      - name: Get changed files
+      - name: Get changed files in branch
         id: get_changed_files
-        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@v0.24.04
+        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@v0.26.02
         with:
           master_branch: ${{ inputs.master_branch }}
+          excluded_directories: ${{ inputs.excluded_directories }}
 
-      - name: Get all python files
+
+      - name: Get all python files in repository
         id: get_all_python_files
-        uses: strudelbots/strudel-public/.github/actions/get_all_files_in_repository@v0.24.04
+        uses: strudelbots/strudel-public/.github/actions/get_all_files_in_repository@v0.26.02
         with:
           master_branch: ${{ inputs.master_branch }}
+          excluded_directories: ${{ inputs.excluded_directories }}
+
 
       - name: install python
         id: install-python
-        uses: strudelbots/strudel-public/.github/actions/install-python@v0.24.04
+        uses: strudelbots/strudel-public/.github/actions/install-python@v0.26.02
 
       - name: get image tag
-        uses: strudelbots/strudel-public/.github/actions/get_image_tag@v0.24.04
+        uses: strudelbots/strudel-public/.github/actions/get_image_tag@v0.26.02
         with:
           version_tag: ${{ env.ref }}
 
       - name: login to ecr
-        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@v0.24.04
+        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@v0.26.02
 
 
       - name: run docker compose
-        uses: strudelbots/strudel-public/.github/actions/run_compose@v0.24.04
+        uses: strudelbots/strudel-public/.github/actions/run_compose@v0.26.02
         with:
           image_tag: ${{ env.image_tag }}
           logger_name: ${{ inputs.logger_name }}
@@ -85,7 +98,12 @@ jobs:
           secret_key: ${{ secrets.strudel_secret_key }}
 
       - name: sanity tests
-        uses: strudelbots/strudel-public/.github/actions/sanity_tests@v0.24.04
+        uses: strudelbots/strudel-public/.github/actions/sanity_tests@v0.26.02
+
+      - name: Run Strudel
+        uses: strudelbots/strudel-public/.github/actions/run_strudel@v0.26.02
+        with:
+          user_command: test-strudel
 
       - name: print docker logs
         shell: bash

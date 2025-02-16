@@ -4,6 +4,10 @@ inputs:
   master_branch:
     description: 'The name of the master branch'
     required: true
+  excluded_directories:
+    description: 'Comma seperated list of directory names'
+    required: true
+
 runs:
 
     using: 'composite'
@@ -16,10 +20,13 @@ runs:
           echo "run strudel on branch"
           echo "repository=$repository"
           echo "master_branch=${{ inputs.master_branch }}"
-          echo "branch=${{ env.branch }}"
+          echo "current branch=${{ env.branch }}"
+          excluded_directories="${{ inputs.excluded_directories }}"
+          echo "excluded directories=$excluded_directories"
           master_branch=${{ inputs.master_branch }}
           git checkout $master_branch
           git checkout $branch
+          out_file=${{ env.changed_files }}
           sleep 1
           source "$RUNNER_TEMP/functions_for_analyzing_git_db.sh"
           common_ancestor=$(last_common_commit "$master_branch" "$branch")
@@ -37,6 +44,9 @@ runs:
             fi
           done
           unique_files=$(args_to_space_separated_string "${changed_files[@]}")
+          filtered_files=$(filter_files "$unique_files" "$excluded_directories")
           echo "Files that need to be merged from branch $branch:"
           echo "$unique_files"
-          echo "ALL_CHANGED_FILES=$unique_files" >> $GITHUB_ENV
+          echo "Files that need to be analyzed by Strudel after filtering:"
+          echo "$filtered_files" > $out_file
+          cat $out_file

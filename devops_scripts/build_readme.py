@@ -1,7 +1,7 @@
-import logging # STRUDEL_IMPORT_0
-strudel = logging.getLogger(__name__) # STRUDEL_IMPORT_1
-strudel.addHandler(logging.StreamHandler()) # STRUDEL_IMPORT_2
-strudel.setLevel(logging.INFO) # STRUDEL_IMPORT_3
+import logging
+strudel = logging.getLogger(__name__)
+strudel.addHandler(logging.StreamHandler())
+strudel.setLevel(logging.INFO)
 if __name__ == '__main__':
     print('start')
     test_job_content = ''
@@ -23,4 +23,10 @@ if __name__ == '__main__':
             else:
                 f.write(line)
     print('done')
+
+
+
+
+
+
 

@@ -142,13 +142,47 @@ last_common_commit() {
     local branch2="$2"
     echo "Branch1: $branch1" >> /tmp/commit_functions.log
     echo "Branch2: $branch2" >> /tmp/commit_functions.log
-    # Find the merge base (common ancestor) of the two branches
-    #git checkout $branch1 >> /tmp/commit_functions.log
-    #git checkout $branch2 >> /tmp/commit_functions.log
-    #sleep 1
-    # git merge-base origin/main "$branch2" >> /tmp/commit_functions.log
     git merge-base $branch1 $branch2
 }
+filter_files() {
+    if [ "$#" -ne 2 ]; then
+        echo "Usage: commits_after_common_commit <branch1> <branch2>"
+        return 1
+    fi
+    local dirs=$2
+    local files=($1)  # Replace all '+' with ' '
+    local exclude_directories=(${dirs//+/ })
+    if [[ ${#exclude_directories[@]} -gt 10 ]]; then
+      echo "Number of excluded directories is limited to 10"
+      return 1
+    fi
+
+    local excluded=""
+    # Get the last common commit between the two branches
+    for file in "${files[@]}"; do
+      for dir in "${exclude_directories[@]}"; do
+        if [[  "$file" == *"$dir/"* ]]; then
+          if [[ ! $excluded =~ $file ]]; then
+            excluded="$excluded $file"
+            break
+          fi
+        fi
+      done
+    done
+    local result=""
+    for item in "${files[@]}"; do
+        if [[ ! "$excluded" =~ $item ]]; then
+          if [[ ! "$result" =~ $file ]]; then
+            basename=$(basename "$item")
+            if [[ $basename != "__init__.py" ]]; then
+              result="$result $item"
+            fi
+          fi
+        fi
+    done
+    echo $result
+}
+
 commits_after_common_commit() {
     if [ "$#" -ne 2 ]; then
         echo "Usage: commits_after_common_commit <branch1> <branch2>"
@@ -172,16 +206,15 @@ commits_after_common_commit() {
 }
 args_to_space_separated_string() {
     local num_args="$#"
-    # Echo the number of arguments
-    #echo "Number of arguments: $num_args"
-    # Join all arguments with a space separator
-    local unique_args=$(echo "$*" | tr ' ' '\n' | sort -u | tr '\n' ' ' | sed 's/ *$//')
+    #echo "all args $*"
 
-    local num_unique_args=$(echo "$unique_args" | tr ' ' '\n' | wc -l)
-
-    # Print the number of unique arguments
-    #echo "Number of unique arguments: $num_unique_args"
-    # Return the unique space-separated string of arguments
+    local clean_args=$(echo "$*" |
+      sed 's/,/ /g' |
+      sed 's/\\n/ /g' |
+      sed 's/  */ /g' |
+      sed 's/[ \t]*$//' | tr ' ' '\n')
+    local unique_args=$(echo "$clean_args" | sort -u | tr '\n' ' ' |  sed 's/[ \t\n]*$//' )
+  # | sed 's/[ \t\n]*$//' )
     echo "$unique_args"
 }
 
@@ -202,24 +235,6 @@ file_exists_in_branch() {
     echo "after sleep"
     git log --name-status $branch_name -- $file_name
     echo "after log"
-    #(git log --name-status $branch_name -- $file_name | grep -q $'^D[ \t]')
-    #    deleted=$?
-    #    # If the file is marked as deleted in the branch, it does not exists
-    #    if [ $deleted -eq 0 ]; then
-    #        #echo "File '$file_name' was deleted in branch '$branch_name'."
-    #        return 1
-    #    fi
-    ## Check if the file exists in the specified branch
-    #    #echo $(git ls-tree -r "$branch_name" --name-only)
-    #    git ls-tree -r "$branch_name" --name-only --full-tree | grep -q "$file_name$"
-    #    # Check the result of grep
-    #    if [ $? -eq 0 ]; then
-    #        #echo "File $file_name exists in branch '$branch_name'."
-    #        return 0
-    #    else
-    #        #echo "File $file_name does NOT exist in branch '$branch_name'."
-    #        return 1
-    #    fi
 }
 
 

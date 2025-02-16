@@ -16,7 +16,7 @@ runs:
         shell: bash
         run: |
            echo "files: ${{ inputs.changed_files }}"
-           export ALL_CHANGED_FILES="${{ inputs.changed_files }}"
+           export ALL_CHANGED_FILES_FILE="${{ env.changed_files }}"
            echo "user_command: ${{ inputs.user_command }}"
            echo "Start Running Strudel with user command: ${{ inputs.user_command }}"
            export OVERWRITE_ORIG_FILES=True

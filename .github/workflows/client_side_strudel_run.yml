@@ -1,5 +1,5 @@
 name: Run strudel-for-logs
-# version: 0.24.04
+# version: 0.26.02
 on:
   workflow_dispatch:
     inputs:
@@ -40,10 +40,7 @@ jobs:
           echo "user_command: $user_command"
 
           { # feel free to change the logic here to decide when to run strudel
-          if [[ "$is_push" = true && "$enable_on_push" = true ]]; then
-            echo "Run default strudel settings for push"
-            echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
-          elif [[ $user_command == "ADD-LOGS" || $user_command == "REMOVE-LOGS" ]]; then
+          if [[ $user_command == "ADD-LOGS" || $user_command == "REMOVE-LOGS" ]]; then
             user_command=${user_command,,}
             echo "Run strudel with user command: $user_command"
             echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
@@ -57,6 +54,15 @@ jobs:
           elif [[ $last_commit == *"ADD-LOGS"* ]]; then 
               echo "Run strudel add logs commit message: $last_commit"
               echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
+          elif [[ $last_commit == *"ADD-REPO-LOGS"* ]]; then 
+              echo "Run strudel add repo logs commit message: $last_commit"
+              echo "RUN_STRUDEL=add-repo-logs" >> $GITHUB_OUTPUT
+          elif [[ $last_commit == *"REMOVE-REPO-LOGS"* ]]; then 
+              echo "Run strudel remove repo logs commit message: $last_commit"
+              echo "RUN_STRUDEL=remove-repo-logs" >> $GITHUB_OUTPUT
+          elif [[ "$is_push" = true && "$enable_on_push" = true ]]; then
+            echo "Run default strudel settings for push"
+            echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
           else
                 echo "no commit message or user commandto match "
                 echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
@@ -65,11 +71,14 @@ jobs:
   run-strudel-for-logs:
     needs: [ should_run_strudel ]
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.24.04
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.26.02
     with:
 # Make sure to change the name of your master branch if it is not main
       master_branch: main
       user_command: ${{ needs.should_run_strudel.outputs.run_strudel }}
+      use_dev_ecr_repository: false
+      excluded_directories: test+tests
+
     secrets:
       strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
       strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
@@ -77,4 +86,3 @@ jobs:
 permissions:
   actions: write
   contents: write
-
