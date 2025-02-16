@@ -1,4 +1,5 @@
 #!/bin/bash
+clear
 source  ../strudel_code/functions_for_analyzing_git_db.sh
 
 echo "test one"
