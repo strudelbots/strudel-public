@@ -327,10 +327,14 @@ It gathers only encrypted metadata in the following format:
 ```
 This format is cryptographically secure and ensures that no one, including Strudel, can reverse-engineer your code.  
 ## What's New in Strudel Pilot?
-1. **Jan-25-19: Version 0.24.04 released.** 
+1. 1. **Feb-15-25: Version 0.26.02 released.** 
+   - Support for [exclusion of directories](#exclude-directories-from-strudel-analysis) 
+   from Strudel analysis.
+
+2. **Jan-19-25: Version 0.24.04 released.** 
    - Support for entire repository add/remove logging-code (see [Using Strudel](#using-strudel) section).
 
-2. **Dec-24-19: Version 0.22.04 released.** 
+2. **Dec-19-24: Version 0.22.04 released.** 
    - Strudel CLI for Mac and Unix users.
    Get the CLI:
    ```
