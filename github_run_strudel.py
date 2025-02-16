@@ -49,12 +49,9 @@ def get_all_files():
     else:
         with open(changed_files, 'r') as f:
             all_files = f.read()
-        print('content of the file of change files : '+ str(all_files))
         all_files = all_files.removesuffix('\n')
         files = all_files.split(' ')
         for file in files:
-            print(f'file: {file}')
-            print(f'last char: {ord(file[-1])}')
             if file.endswith('.py'):
                 python_files.append(file)
     return python_files, []
