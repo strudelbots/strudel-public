@@ -53,7 +53,7 @@ def get_all_files():
         files = all_files.split(' ')
         for file in files:
             print(f'file: {file}')
-            print(f'last char: ord({file[-1]})')
+            print(f'last char: {ord(file[-1])}')
             if file.endswith('.py'):
                 python_files.append(file)
     return python_files, []
