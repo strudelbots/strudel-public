@@ -16,9 +16,9 @@ With Strudel, logging code is automatically added to your pull requests,
 letting you focus solely on business logic without worrying about implementing logs.
 
 1. New to Strudel? Onboard [now](#pre-requisites).
-2. Already using Strudel? Upgrade to the latest [version 0.24.xx](#Create-Main-Strudel-Action-in-Your-Github-Repository).
-3. Questions about using Strudel? Check out the [Using Strudel](#using-strudel) section.
-4. See what's new in Strudel Pilot [below](#whats-new-in-strudel-pilot).
+2. Already using Strudel? See whats new in [version 0.26](#Exclude-Directories-from-StrudelAnalysis) and upgrade [version 0.24.xx](#Create-Main-Strudel-Action-in-Your-Github-Repository).
+4. Questions about using Strudel? Check out the [Using Strudel](#using-strudel) section.
+5. See what's new in Strudel Pilot [below](#whats-new-in-strudel-pilot).
 
 ## Using Strudel
 Strudel streamlines logging updates in your pull requests or branch.
@@ -36,7 +36,7 @@ letting you focus solely on business logic without worrying about implementing l
 2. Commit your changes. 
 3. Push your changes 
 4. By default Strudel will run on every push (you can change those here)
-4. Go to action tab in Github, you will see a new action running. `run strudel-for-logs`
+4. Go to action tab in Github, you will see a new action running. `run strudel_for_logs`
 4. Strudel automatically adds the necessary logging code to the files you change in your branch.
 5. You can now 'pull' strudel changes to your local branch.
 5. When you open pull request, reviewers will see both the logging code and your business logic during the review.
@@ -45,7 +45,6 @@ letting you focus solely on business logic without worrying about implementing l
 If you want to manually add or remove logging code to your branch, you can do so by using three methods 
 1. Using Strudel [CLI](#add-or-remove-logging-code-using-strudel-cli).
 2. Using a [commit message](#adding-or-removing-logging-code-in-your-branch-via-commit-messages).
-3. Customize the code in the `run_strudel_for_logs.yml` file [link](#add-or-remove-logging-code-by-changing-the-code-in-the-runstrudelforlogsyml-file).
 
 
 ### Add or Remove Logging Code Using Strudel CLI
@@ -93,7 +92,7 @@ If you want to manually add or remove logging code to your branch, you can do so
 If you'd like more control over when Strudel is invoked (e.g., to avoid triggering it on every push), you can do so by using specific commit messages. To enable this, follow these steps:
 
 1. **Disable Automatic Strudel Invocation:**  
-   Update the configuration by setting `enable_on_push` to `false` in the file `run-strudel-for-logs.yml`. This will disable the default behavior of invoking Strudel on every push.
+   Update the configuration by setting `enable_on_push` to `false` in the file `run_strudel_for_logs.yml`. This will disable the default behavior of invoking Strudel on every push.
 
 2. **Use Commit Messages to Control Logging Code:**  
    - To **add logging code** to your branch, include the keyword `add-logs` in your commit message when committing your changes.  
@@ -112,6 +111,18 @@ uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml
        logger_name: &#60;your logger name&gt; </b>
    secrets:
 </pre>
+### Exclude Directories from Strudel Analysis
+To exclude directories from Strudel analysis and modification, add 
+the `excluded_directories` parameter to the `run_strudel_for_logs.yml` file.  
+action. List the directories you want to exclude, separating them with the `+` character.
+By default, this parameter excludes the `test` and `tests` directories, as shown below:
+<pre>
+uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml
+  with:
+    excluded_directories: test+tests
+  secrets:
+</pre>
+
 
 ## Pre-Requisites
 1. **Python**: Strudel pilot is currently available for Python projects only (python versions 3.10+).
@@ -140,8 +151,8 @@ This step is optional and can be used to run a Strudel test to verify that your 
 2. Create a new file in the `.github/workflows` directory with the name `run-strudel-test.yml`.
 2. CCopy the following code into the file:
 ```
-name: client side run strudel test
-# version 0.24.04
+name: run strudel test
+# version 0.26.02
 on:
   workflow_dispatch:
     inputs:
@@ -187,9 +198,11 @@ jobs:
   run-strudel-test:
     needs: [ should_run_strudel ]
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.24.04
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v0.26.02
     with:
       master_branch: main
+      use_dev_ecr_repository: false
+      excluded_directories: test+tests
     secrets:
         strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
         strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
@@ -206,7 +219,7 @@ jobs:
 ```
 
 name: Run strudel-for-logs
-# version: 0.24.04
+# version: 0.26.02
 on:
   workflow_dispatch:
     inputs:
@@ -234,7 +247,7 @@ jobs:
         env:
           sha_last_commit: ${{ github.event.pull_request.head.sha }}
           is_push: ${{ github.event_name == 'push' }}
-          enable_on_push: true
+          enable_on_push: false
         id: user_command
         shell: bash
         run: |
@@ -247,10 +260,7 @@ jobs:
           echo "user_command: $user_command"
 
           { # feel free to change the logic here to decide when to run strudel
-          if [[ "$is_push" = true && "$enable_on_push" = true ]]; then
-            echo "Run default strudel settings for push"
-            echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
-          elif [[ $user_command == "ADD-LOGS" || $user_command == "REMOVE-LOGS" ]]; then
+          if [[ $user_command == "ADD-LOGS" || $user_command == "REMOVE-LOGS" ]]; then
             user_command=${user_command,,}
             echo "Run strudel with user command: $user_command"
             echo "RUN_STRUDEL=$user_command" >> $GITHUB_OUTPUT
@@ -264,6 +274,15 @@ jobs:
           elif [[ $last_commit == *"ADD-LOGS"* ]]; then 
               echo "Run strudel add logs commit message: $last_commit"
               echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
+          elif [[ $last_commit == *"ADD-REPO-LOGS"* ]]; then 
+              echo "Run strudel add repo logs commit message: $last_commit"
+              echo "RUN_STRUDEL=add-repo-logs" >> $GITHUB_OUTPUT
+          elif [[ $last_commit == *"REMOVE-REPO-LOGS"* ]]; then 
+              echo "Run strudel remove repo logs commit message: $last_commit"
+              echo "RUN_STRUDEL=remove-repo-logs" >> $GITHUB_OUTPUT
+          elif [[ "$is_push" = true && "$enable_on_push" = true ]]; then
+            echo "Run default strudel settings for push"
+            echo "RUN_STRUDEL=add-logs" >> $GITHUB_OUTPUT
           else
                 echo "no commit message or user commandto match "
                 echo "RUN_STRUDEL=none" >> $GITHUB_OUTPUT
@@ -272,11 +291,14 @@ jobs:
   run-strudel-for-logs:
     needs: [ should_run_strudel ]
     if: ${{ needs.should_run_strudel.outputs.run_strudel!='none' }}
-    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.24.04
+    uses: strudelbots/strudel-public/.github/workflows/run_strudel_for_logs.yml@v0.26.02
     with:
 # Make sure to change the name of your master branch if it is not main
       master_branch: main
       user_command: ${{ needs.should_run_strudel.outputs.run_strudel }}
+      use_dev_ecr_repository: false
+      excluded_directories: test+tests
+
     secrets:
       strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
       strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}
@@ -284,7 +306,6 @@ jobs:
 permissions:
   actions: write
   contents: write
-
 
 ```
 2. **Make sure** you configure the name of you main branch in the file above
