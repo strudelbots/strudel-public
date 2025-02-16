@@ -1,4 +1,3 @@
-import logging
 import difflib
 import os
 import sys
@@ -6,9 +5,6 @@ import sys
 import requests
 
 
-strudel = logging.getLogger(__name__)
-strudel.addHandler(logging.StreamHandler())
-strudel.setLevel(logging.INFO)
 url = 'http://localhost:8080/add_logs/'
 
 def _file_changed_by_strudel(file:tuple, response):
@@ -59,8 +55,6 @@ def get_all_files():
 
 def analyze_files(python_files):
     if len(python_files) > 5000:
-        strudel.error(' Raise ValueError("Too many files to analyze") because Length of'
-            'python_files={len(python_files)} > 5000')
         raise ValueError('Too many files to analyze')
     files_200 = 0
     files_400 = 0
@@ -103,13 +97,10 @@ def _set_url(action):
     elif action == 'test-strudel':
         return None
     else:
-        strudel.error(' Raise ValueError("Invalid action") because Condition: not (action =='
-            '"remove-logs" OR action == "remove-repo-logs")')
         raise ValueError('Invalid action')
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        strudel.error(' Raise ValueError("No action provided") because len(sys.argv) < 2')
         raise ValueError('No action provided')
     print(f'argv: {sys.argv}')
     action = sys.argv[1]
@@ -127,6 +118,7 @@ if __name__ == '__main__':
     files_200, files_400, = analyze_files(python_files)
     print(f'files_200, {files_200}')
     print(f'files_400, {files_400}')
+
 
 
 
