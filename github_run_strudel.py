@@ -50,6 +50,7 @@ def get_all_files():
         with open(changed_files, 'r') as f:
             all_files = f.read()
         print('content of the file of change files : '+ str(all_files))
+        all_files = all_files.removesuffix('\n')
         files = all_files.split(' ')
         for file in files:
             print(f'file: {file}')
