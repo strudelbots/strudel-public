@@ -104,7 +104,6 @@ jobs:
         uses: strudelbots/strudel-public/.github/actions/run_strudel@v0.26.02
         with:
           user_command: test-strudel
-          changed_files: ${{ env.changed_files}}
 
       - name: print docker logs
         shell: bash

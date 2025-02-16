@@ -19,7 +19,7 @@ runs:
           echo "Get all files in repository"
           repository=$GITHUB_REPOSITORY
           out_file=${{ env.changed_files }}
-          echo "Changed files file: out_file"
+          echo "Changed files file: $out_file"
           echo "repository=$repository"
           echo "branch=${{ env.branch }}"
           excluded_directories=${{ inputs.excluded_directories }}

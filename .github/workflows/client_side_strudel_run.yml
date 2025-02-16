@@ -76,8 +76,8 @@ jobs:
 # Make sure to change the name of your master branch if it is not main
       master_branch: main
       user_command: ${{ needs.should_run_strudel.outputs.run_strudel }}
-      use_dev_ecr_repository: true
-      excluded_directories: workflows+actions
+      use_dev_ecr_repository: false
+      excluded_directories: test+tests
 
     secrets:
       strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
