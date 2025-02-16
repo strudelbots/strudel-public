@@ -113,8 +113,9 @@ uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml
 </pre>
 ### Exclude Directories from Strudel Analysis
 To exclude directories from Strudel analysis and modification, add 
-the `excluded_directories` parameter to the `run_strudel_for_logs.yml` file.  
-action. List the directories you want to exclude, separating them with the `+` character.
+the `excluded_directories` parameter to the `run_strudel_for_logs.yml`  
+action. List the directories you want to exclude, separating them with the `+` character. 
+You can exclude up to ten directories.
 By default, this parameter excludes the `test` and `tests` directories, as shown below:
 <pre>
 uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml
