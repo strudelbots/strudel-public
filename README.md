@@ -119,8 +119,8 @@ You can exclude up to ten directories.
 By default, this parameter excludes the `test` and `tests` directories, as shown below:
 <pre>
 uses: strudel-ai/strudel-public/.github/workflows/run_strudel_for_logs.yml
-  with:
-    excluded_directories: test+tests
+  <b>with:
+    excluded_directories: test+tests</b>
   secrets:
 </pre>
 
