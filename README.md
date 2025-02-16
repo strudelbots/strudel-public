@@ -16,7 +16,7 @@ With Strudel, logging code is automatically added to your pull requests,
 letting you focus solely on business logic without worrying about implementing logs.
 
 1. New to Strudel? Onboard [now](#pre-requisites).
-2. Already using Strudel? See whats new in [version 0.26](#Exclude-Directories-from-StrudelAnalysis) and upgrade [version 0.24.xx](#Create-Main-Strudel-Action-in-Your-Github-Repository).
+2. Already using Strudel? See whats new in [version 0.26](#Exclude-Directories-from-Strudel-Analysis) and upgrade [version 0.26.](#Create-Main-Strudel-Action-in-Your-Github-Repository).
 4. Questions about using Strudel? Check out the [Using Strudel](#using-strudel) section.
 5. See what's new in Strudel Pilot [below](#whats-new-in-strudel-pilot).
 
@@ -247,7 +247,7 @@ jobs:
         env:
           sha_last_commit: ${{ github.event.pull_request.head.sha }}
           is_push: ${{ github.event_name == 'push' }}
-          enable_on_push: false
+          enable_on_push: true
         id: user_command
         shell: bash
         run: |
