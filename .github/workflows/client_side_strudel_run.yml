@@ -1,6 +1,7 @@
 name: Run strudel-for-logs
 # version: v28.0 
 
+on:
   workflow_dispatch:
     inputs:
       user_command:
