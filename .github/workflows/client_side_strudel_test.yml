@@ -1,5 +1,5 @@
 name: run strudel test
-# version 0.26.02
+# version v28.0
 on:
   workflow_dispatch:
     inputs:
