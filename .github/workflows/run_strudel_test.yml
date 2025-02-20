@@ -100,7 +100,7 @@ jobs:
       - name: sanity tests
         uses: strudelbots/strudel-public/.github/actions/sanity_tests@v28.0
 
-      - name: Run Strudel
+      - name: Run Strudel (test run)
         uses: strudelbots/strudel-public/.github/actions/run_strudel@v28.0
         with:
           user_command: test-strudel
