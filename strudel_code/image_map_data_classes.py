@@ -53,7 +53,7 @@ def verify_release_tag(tag):
     if tag.startswith('branch'):
         strudel.info(' Assign tag="v0.22.02" because tag.startswith("branch")')
         tag =  "v0.22.02" # TODO - generalize
-    match = re.match(r"v0\.[0-9]{1,2}\.[0-9]{1,2}", tag)
+    match = re.match(r"v[0-9]{1,2}\.[0-9]{1,2}", tag)
     if not match:
         strudel.error(' Raise ValueError( ** Invalid release tag:   . . .) because "match" is'
             'evaluated to False')
