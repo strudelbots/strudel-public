@@ -110,6 +110,7 @@ jobs:
           user_command: test-strudel
 
       - name: print docker logs
+        if: always()
         shell: bash
         run: |
             echo "*** docker logs nginx_proxy" 
