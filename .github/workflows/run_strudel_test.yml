@@ -18,6 +18,10 @@ on:
         default: 'strudel'
         required: false
         type: string
+      runner:
+        default: 'ubuntu-22.04'
+        required: false
+        type: string
 
 
 
@@ -29,7 +33,7 @@ on:
   workflow_dispatch:
 jobs:
   run-strudel-test:
-    runs-on: ubuntu-22.04
+    runs-on: ${{ inputs.runner }}
     env:
       strudel_access_key: ${{ secrets.strudel_access_key }}
       strudel_secret_key: ${{ secrets.strudel_secret_key }}
