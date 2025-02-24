@@ -20,6 +20,11 @@ on:
         type: string
         required: false
         default: ''
+      runner:
+        default: 'ubuntu-22.04'
+        required: false
+        type: string
+
 
 
     secrets:
