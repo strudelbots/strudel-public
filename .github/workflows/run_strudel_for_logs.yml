@@ -20,6 +20,11 @@ on:
         type: string
         required: false
         default: ''
+      runner:
+        default: 'ubuntu-22.04'
+        required: false
+        type: string
+
 
 
     secrets:
@@ -65,24 +70,24 @@ jobs:
             echo entire_repository_value: ${{ env.entire_repository }}
       - name: Extract user branch name
         id: exract-branch-name
-        uses: strudelbots/strudel-public/.github/actions/get_current_branch@v0.26.02
+        uses: strudelbots/strudel-public/.github/actions/get_current_branch@v28.0
 
       - name: extract strudel version
         id: extract_strudel_version
-        uses: strudelbots/strudel-public/.github/actions/extract_strudel_version@v0.26.02
+        uses: strudelbots/strudel-public/.github/actions/extract_strudel_version@v28.0
         with:
           mode: 'run_logs'
 
       - name: get strudel-public files
-        uses: strudelbots/strudel-public/.github/actions/get_public_files@v0.26.02
+        uses: strudelbots/strudel-public/.github/actions/get_public_files@v28.0
 
       - name: check user keys
-        uses: strudelbots/strudel-public/.github/actions/check-user-keys@v0.26.02
+        uses: strudelbots/strudel-public/.github/actions/check-user-keys@v28.0
 
       - name: Get all files in repository repository
         if : ${{ env.entire_repository == 'true' }}
         id: run-on-entire-repository
-        uses: strudelbots/strudel-public/.github/actions/get_all_files_in_repository@v0.26.02
+        uses: strudelbots/strudel-public/.github/actions/get_all_files_in_repository@v28.0
         with:
           master_branch: ${{ inputs.master_branch }}
           excluded_directories: ${{ inputs.excluded_directories }}
@@ -90,26 +95,26 @@ jobs:
       - name: Get changed files
         if : ${{ env.entire_repository == 'false' }}
         id: get_changed_files
-        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@v0.26.02
+        uses: strudelbots/strudel-public/.github/actions/get_changed_files_in_branch@v28.0
         with:
           master_branch: ${{ inputs.master_branch }}
           excluded_directories: ${{ inputs.excluded_directories }}
 
       - name: install python
         id: install-python
-        uses: strudelbots/strudel-public/.github/actions/install-python@v0.26.02
+        uses: strudelbots/strudel-public/.github/actions/install-python@v28.0
 
       - name: get image tag
-        uses: strudelbots/strudel-public/.github/actions/get_image_tag@v0.26.02
+        uses: strudelbots/strudel-public/.github/actions/get_image_tag@v28.0
         with:
           version_tag: ${{ env.ref }}
 
 
       - name: login to ecr
-        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@v0.26.02
+        uses: strudelbots/strudel-public/.github/actions/login_to_ecr@v28.0
 
       - name: run docker compose
-        uses: strudelbots/strudel-public/.github/actions/run_compose@v0.26.02
+        uses: strudelbots/strudel-public/.github/actions/run_compose@v28.0
         with:
           image_tag: ${{ env.image_tag }}
           logger_name: ${{ inputs.logger_name }}
@@ -118,10 +123,10 @@ jobs:
 
 
       - name: sanity tests
-        uses: strudelbots/strudel-public/.github/actions/sanity_tests@v0.26.02
+        uses: strudelbots/strudel-public/.github/actions/sanity_tests@v28.0
 
       - name: Run Strudel
-        uses: strudelbots/strudel-public/.github/actions/run_strudel@v0.26.02
+        uses: strudelbots/strudel-public/.github/actions/run_strudel@v28.0
         with:
           user_command: ${{ inputs.user_command }}
           changed_files: ${{ env.ALL_CHANGED_FILES}}
