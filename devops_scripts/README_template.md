@@ -36,7 +36,7 @@ letting you focus solely on business logic without worrying about implementing l
 2. Commit your changes. 
 3. Push your changes 
 4. By default Strudel will run on every push (you can change this setting 
-[here](#add-logging-code-to-your-branch-automatically-default-strudel-settings)).
+[here](#adding-or-removing-logging-code-in-your-branch-via-commit-messages)).
 4. Go to Actions tab in Github, you will see a new action running: `run strudel_for_logs`.
 4. Strudel automatically adds the necessary logging code to the files you change in your branch.
 5. You can now 'pull' strudel changes to your local branch.
