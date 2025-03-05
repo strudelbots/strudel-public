@@ -16,12 +16,12 @@ With Strudel, logging code is automatically added to your pull requests,
 letting you focus solely on business logic without worrying about implementing logs.
 
 1. New to Strudel? Onboard [now](#pre-requisites).
-2. Already using Strudel? See whats new in [version 28.0](#Exclude-Directories-from-Strudel-Analysis) and upgrade [version 28.0](#Create-Main-Strudel-Action-in-Your-Github-Repository).
+2. Already using Strudel? See whats [new in version 28.0](#whats-new-in-strudel-pilot) and upgrade [version 28.0](#Create-Main-Strudel-Action-in-Your-Github-Repository).
 4. Questions about using Strudel? Check out the [Using Strudel](#using-strudel) section.
 5. See what's new in Strudel Pilot [below](#whats-new-in-strudel-pilot).
 
 ## Using Strudel
-Strudel streamlines logging updates in your pull requests or branch.   
+Strudel streamlines logging-code updates in your pull requests or branch.   
 
 1. Strudel automatically adds/removes logging code to the files you change in your branch.
 1. Strudel avoids duplicate logging code by checking for existing logs in the files you change.
@@ -35,7 +35,8 @@ letting you focus solely on business logic without worrying about implementing l
 2. Change a few files in this branch (e.g., add/remove functionality, fix a bug, or just add a few lines). 
 2. Commit your changes. 
 3. Push your changes 
-4. By default Strudel will run on every push (you can change those [here](#Adding or Removing Logging Code in Your Branch via Commit Messages).)
+4. By default Strudel will run on every push (you can change this setting 
+[here](#add-logging-code-to-your-branch-automatically-default-strudel-settings)).
 4. Go to Actions tab in Github, you will see a new action running: `run strudel_for_logs`.
 4. Strudel automatically adds the necessary logging code to the files you change in your branch.
 5. You can now 'pull' strudel changes to your local branch.
