@@ -1,4 +1,4 @@
-
+<!-- 
 
 ## Strudel: Leave the grind to the bots. Engineer the extraordinary.
 Strudel is changing how we engineer software by merging human ingenuity with advanced automation. 
@@ -214,3 +214,127 @@ This format is cryptographically secure and ensures that no one, including Strud
 In addition to the commit message, you will be able to trigger Strudel using a
 GitHub label or a comment in the pull request. This will give you more flexibility
 in controlling when Strudel adds logging code to your pull request.
+ -->
+
+
+
+
+
+## Strudel: Leave the Grind to the Bots. Engineer the Extraordinary.
+Strudel is transforming how we engineer software by merging human ingenuity with advanced automation. 
+With Strudel, software engineers can shift their focus from repetitive, time-consuming tasks to what truly 
+matters—innovation, problem-solving, and building exceptional solutions. 
+Strudel’s intelligent bots seamlessly handle routine tasks. 
+By automating up to 50% of the development process, Strudel empowers
+teams to accelerate productivity and drive meaningful innovation. The result? Faster development cycles, higher-quality code, and engineers who can 
+focus on engineering the extraordinary.
+
+## About Strudel Pilot
+Strudel's pilot simplifies telemetry integration 
+by automatically embedding logging and business metrics directly into your Python code.
+With Strudel, logging code is automatically added to your pull requests, 
+letting you focus solely on business logic without worrying about implementing logs.
+
+1. New to Strudel? Onboard [now](#pre-requisites).
+2. Already using Strudel? See what's [new in version 28.0](#whats-new-in-strudel-pilot) and upgrade to [version 28.0](#create-main-strudel-action-in-your-github-repository).
+3. Questions about using Strudel? Check out the [Using Strudel](#using-strudel) section.
+4. See what's new in Strudel Pilot [below](#whats-new-in-strudel-pilot).
+
+## Using Strudel
+Strudel streamlines logging code updates in your pull requests or branch.   
+
+1. Strudel automatically adds/removes logging code to the files you change in your branch.
+2. Strudel avoids duplicate logging code by checking for existing logs in the files you change.
+
+### Add Logging Code to Your Branch Automatically (Default Strudel Settings)
+With Strudel, logging code is automatically added to your pull requests, 
+letting you focus solely on business logic without worrying about implementing logs.
+
+1. Create a new branch, for example, `test-strudel-logging`. 
+2. Change a few files in this branch (e.g., add/remove functionality, fix a bug, or just add a few lines). 
+3. Commit your changes. 
+4. Push your changes.
+5. By default, Strudel will run on every push (you can change this setting 
+[here](#adding-or-removing-logging-code-in-your-branch-via-commit-messages)).
+6. Go to the **Actions** tab in GitHub, and you will see a new action running: `run strudel_for_logs`.
+7. Strudel automatically adds the necessary logging code to the files you changed in your branch.
+8. You can now pull Strudel's changes to your local branch.
+9. When you open a pull request, reviewers will see both the logging code and your business logic during the review.
+
+### Add or Remove Logging Code in Your Branch Manually
+If you want to manually add or remove logging code in your branch, you can do so using two methods: 
+1. Using Strudel [CLI](#add-or-remove-logging-code-using-strudel-cli).
+2. Using a [commit message](#adding-or-removing-logging-code-in-your-branch-via-commit-messages).
+
+#### Add or Remove Logging Code Using Strudel CLI
+
+1. **Platform Support**  
+   The current version of the Strudel CLI is supported only on **Mac** and **Linux**.
+
+2. **Download Strudel CLI**  
+   You can download the Strudel CLI script from the following link:  
+   [Strudel CLI Download](https://github.com/strudelbots/strudel-public/blob/main/strudel_code/strudel_cli.sh)  
+   Alternatively, use this `curl` command to download it:  
+   ```bash
+   curl -o strudel_cli.sh https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/strudel_code/strudel_cli.sh
+   ```
+
+3. **Add Strudel CLI to Your Path**  
+   Ensure the `strudel_cli.sh` script is added to your system's PATH so it can be executed from anywhere.
+
+4. **Run the Strudel CLI Commands**  
+   Execute the Strudel CLI from your branch using one of the following commands:  
+   - **Add logs** to the current branch:  
+     ```bash
+     strudel_cli.sh add-logs
+     ```  
+   - **Remove logs** from the current branch:  
+     ```bash
+     strudel_cli.sh remove-logs
+     ```  
+   - **Add logs** to all Python files in the repository:  
+     ```bash
+     strudel_cli.sh add-repo-logs
+     ```  
+   - **Remove logs** from all Python files in the repository:  
+     ```bash
+     strudel_cli.sh remove-repo-logs
+     ```  
+   - **Run Strudel tests**:  
+     ```bash
+     strudel_cli.sh test-strudel
+     ```
+
+#### Adding or Removing Logging Code in Your Branch via Commit Messages
+If you'd like more control over when Strudel is invoked (e.g., to avoid triggering it on every push), you can do so by using specific commit messages. To enable this, follow these steps:
+
+1. **Disable Automatic Strudel Invocation:**  
+   Update the configuration by setting `enable_on_push` to `false` in the file `run_strudel_for_logs.yml`. This will disable the default behavior of invoking Strudel on every push.
+
+2. **Use Commit Messages to Control Logging Code:**  
+   - To **add logging code** to your branch, include the keyword `add-logs` in your commit message.
+   - To **remove logging code** from your branch, include the keyword `remove-logs` in your commit message.
+   - To **add logging code from all files in your repository**, include the keyword `add-repo-logs` in your commit message.
+   - To **remove logging code from all files in your repository**, include the keyword `remove-repo-logs` in your commit message.
+
+## What's New in Strudel Pilot?
+1. **March 4, 2025: Version 28.0 released.**  
+   - Improved logging code placements.
+   - Ability to set a runner type in Strudel actions.
+
+2. **February 15, 2025: Version 0.26.02 released.**  
+   - Support for [excluding directories](#exclude-directories-from-strudel-analysis) from Strudel analysis.
+
+3. **January 19, 2025: Version 0.24.04 released.**  
+   - Support for adding/removing logging code across the entire repository (see [Using Strudel](#using-strudel) section).
+
+4. **December 19, 2024: Version 0.22.04 released.**  
+   - Strudel CLI for Mac and Unix users.  
+   Get the CLI:
+   ```bash
+   curl -o strudel_cli.sh https://raw.githubusercontent.com/strudelbots/strudel-public/refs/heads/main/strudel_code/strudel_cli.sh
+   ```
+
+### More Options to Trigger Strudel  
+In addition to commit messages, you can trigger Strudel using a GitHub label or a comment in the pull request. This provides more flexibility in controlling when Strudel adds logging code to your pull request.
+
