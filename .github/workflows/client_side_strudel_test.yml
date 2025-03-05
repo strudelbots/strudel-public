@@ -50,6 +50,7 @@ jobs:
       master_branch: main
       use_dev_ecr_repository: true
       excluded_directories: test+tests
+      runner: ubuntu-22.04 # experimental
     secrets:
         strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
         strudel_secret_key: ${{ secrets.STRUDEL_SECRET_KEY }}

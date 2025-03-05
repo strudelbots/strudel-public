@@ -28,7 +28,7 @@ jobs:
         env:
           sha_last_commit: ${{ github.event.pull_request.head.sha }}
           is_push: ${{ github.event_name == 'push' }}
-          enable_on_push: false
+          enable_on_push: true
         id: user_command
         shell: bash
         run: |
@@ -79,6 +79,7 @@ jobs:
       user_command: ${{ needs.should_run_strudel.outputs.run_strudel }}
       use_dev_ecr_repository: true
       excluded_directories: test+tests
+      runner: ubuntu-22.04 # experimental 
 
     secrets:
       strudel_access_key: ${{ secrets.STRUDEL_ACCESS_KEY_ID }}
