@@ -48,7 +48,7 @@ jobs:
     uses: strudelbots/strudel-public/.github/workflows/run_strudel_test.yml@v28.0
     with:
       master_branch: main
-      use_dev_ecr_repository: true
+      use_dev_ecr_repository: false
       excluded_directories: test+tests
       runner: ubuntu-22.04 # experimental
     secrets:
