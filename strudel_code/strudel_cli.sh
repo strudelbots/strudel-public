@@ -1,12 +1,14 @@
 #!/bin/bash
 echo "Hello from Strudel CLI"
 echo "Strudel CLI requires github CLI to be installed !"
-echo "The CLI assumes that you have two actions defined with the names
-(as described in onboarding document):"
-echo "    1. run-strudel-test.yml"
-echo "    2. run_strudel_for_logs.yml"
-echo "Please make sure that you have these actions defined in your repository"
 
+get_workflow_id_by_path() {
+  local owner="$1"
+  local repo="$2"
+  local workflow_path="$3"
+
+  gh api "repos/$owner/$repo/actions/workflows" | jq -r ".workflows[] | select(.path==\"$workflow_path\") | .id"
+}
 trigger_workflow() {
   local owner=$1         # First argument: repository owner
   local repo=$2          # Second argument: repository name
@@ -37,8 +39,8 @@ is_valid_arg() {
     return 1
 }
 
-owner=set-me
-repo=set-me
+owner=strudelbots
+repo=playground-odoo
 RED='\033[0;31m'
 NC='\033[0m'
 if [[ $owner == "set-me" ]]; then
@@ -55,6 +57,28 @@ if [[ $repo == "set-me" ]]; then
     printf "For example, ${RED}strudel-public${NC} is the repo in https://github.com/strudelbots/${RED}strudel-public${NC}/\n"
     exit 1
 fi
+
+test_workflow_id=$(get_workflow_id_by_path "$owner" "$repo" ".github/workflows/run-strudel-test.yml")
+if [ -z "$test_workflow_id" ]; then
+    printf "Error: Workflow ID not found for the specified path for ${RED}run-strudel-test.yml${NC}.\n"
+    echo "The CLI assumes that you have two actions defined with the names
+    (as described in onboarding document):"
+    echo "    1. run-strudel-test.yml"
+    echo "    2. run-strudel-for-logs.yml"
+    echo "Please make sure that you have these actions defined in your repository"
+    exit 1
+fi
+run_strudel_worflow_id=$(get_workflow_id_by_path "$owner" "$repo" ".github/workflows/run-strudel-for-logs.yml")
+if [ -z "$run_strudel_worflow_id" ]; then
+    printf "Error: Workflow ID not found for the specified path for ${RED}run-strudel-for-logs.yml${NC}.\n"
+    echo "The CLI assumes that you have two actions defined with the names
+    (as described in onboarding document):"
+    echo "    1. run-strudel-test.yml"
+    echo "    2. run-strudel-for-logs.yml"
+    echo "Please make sure that you have these actions defined in your repository"
+    exit 1
+fi
+
 # Check if the script receives exactly one argument
 if [[ "$#" -ne 1 ]]; then
     echo "Error: This script requires exactly one argument."
@@ -77,12 +101,13 @@ if ! is_valid_arg "$command"; then
     echo "Valid values are: ${VALID_ARGS[*]}"
     exit 1
 fi
+
 branch=$(git rev-parse --abbrev-ref HEAD)
 if [[ "$command" == "test-strudel" ]]; then
     echo "Running client-side tests"
-    trigger_workflow $owner $repo 120122122 $branch $command
+    trigger_workflow $owner $repo $test_workflow_id $branch $command
 fi
 if [[ "$command" == "add-logs" || "$command" == "remove-logs" || "$command" == "add-repo-logs" || "$command" == "remove-repo-logs" ]]; then
     echo "Running add/remove logs, branch: $branch, command: $command"
-    trigger_workflow $owner $repo 120122121 $branch $command
+    trigger_workflow $owner $repo run_strudel_worflow_id $branch $command
 fi
